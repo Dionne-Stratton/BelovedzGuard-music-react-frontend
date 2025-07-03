@@ -2,15 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="about" style={{ paddingTop: "5vh", color: "#ebe7e2" }}>
-      <h1>About</h1>
-
-      <p>
-        Welcome to <strong>BelovedzGuard</strong> — a place where music is more
-        than sound. It’s a way of guarding the hearts of His beloved, helping
-        them draw near to the One who loves them more than they can imagine.
-      </p>
-
+    <div className="about">
       <p>
         This ministry was born out of a deep desire to lift up Jesus, to bring
         His people into deeper intimacy with Him, and to stir holy passion in

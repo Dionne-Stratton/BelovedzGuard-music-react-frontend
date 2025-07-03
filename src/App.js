@@ -6,13 +6,13 @@ import Home from "./views/Home";
 import About from "./views/About";
 import Merch from "./views/Merch";
 import Videos from "./views/Videos";
-import SongList from "./views/SongList";
-import SongPlayer from "./views/SongPlayer";
+import Music from "./views/Music";
+import SongPlayer from "./components/SongPlayer";
 import musicList from "./data/musicList";
 
 export default function App() {
   const reversedList = [...musicList].reverse(); // Reverse the musicList to show newest first
-  const [songs, setSongs] = useState(reversedList); //stock is the array of objects from the database initially set to an empty array and then set to the response from the database in the useEffect hook. The array is reversed so that the most recent items are displayed first and then passed down to the Music and Merch components as props
+  const [songs, setSongs] = useState(reversedList);
   const [currentIndex, setCurrentIndex] = useState(null); //currentIndex
 
   return (
@@ -26,7 +26,7 @@ export default function App() {
 
       <Switch>
         <Route path="/home">
-          <Home songs={songs} setCurrentIndex={setCurrentIndex} />
+          <Home setCurrentIndex={setCurrentIndex} />
         </Route>
         <Route path="/merch">
           <Merch />
@@ -38,7 +38,7 @@ export default function App() {
           <Videos />
         </Route>
         <Route path="/music">
-          <SongList setCurrentIndex={setCurrentIndex} />
+          <Music setCurrentIndex={setCurrentIndex} />
         </Route>
 
         <Route path="/">

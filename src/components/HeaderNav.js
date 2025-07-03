@@ -6,7 +6,7 @@ const HeaderNav = () => {
   return (
     <div className="headernav">
       <header>
-        <NavLink className="main-nav" activeClassName="active" to="/">
+        <NavLink to="/">
           <img
             src={logo}
             alt="BelovedzGuard Logo"
@@ -22,8 +22,6 @@ const HeaderNav = () => {
           <h1>
             {/* <a href="index.html">BelovedzGuard</a> */}
             <NavLink
-              className="main-nav"
-              activeClassName="active"
               to="/"
               style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
             >
@@ -33,8 +31,6 @@ const HeaderNav = () => {
           <h2>
             {/* <a href="index.html">Uplifting Christian Music</a> */}
             <NavLink
-              className="main-nav"
-              activeClassName="active"
               to="/"
               style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
             >

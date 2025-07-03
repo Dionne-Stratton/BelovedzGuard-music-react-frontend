@@ -12,31 +12,6 @@ html {
 body {
   background-color: #7d7771;
   margin-top: 1%;
-  /* padding-top: 100px; */
-}
-
-.left {
-  float: left;
-  width: auto;
-  margin-right: 10px;
-}
-
-.right {
-  float: right;
-  width: auto;
-  margin-left: 10px;
-}
-
-.center {
-  display: block;
-  text-align: center;
-  margin: 10px;
-}
-
-.anchor {
-  padding-top: 75px;
-  margin-top: -75px;
-  z-index: 50;
 }
 
 input[type="range"] {
@@ -76,22 +51,13 @@ input[type="range"]::-moz-range-track {
   border-radius: 5px;
 }
 
+/* //music page card styles */
 .song-title {
   width: 30rem;
-  /* max-width: 200px */
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  /* text-align: center; */
-  /* border-color: brown;
-  border-style: solid; */
 }
-
-/* .song-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4),
-    inset 0 0 12px rgba(255, 255, 255, 0.1);
-} */
 
 .song-card:hover {
   transform: scale(1.02);
@@ -100,13 +66,35 @@ input[type="range"]::-moz-range-track {
 }
 
 .main-nav {
+  position: relative;
   text-decoration: none;
-  color: inherit; /* or set a specific color if you want */
+  color: inherit;
 }
 
-.main-nav:hover {
-  color: #423b35; /* Change to the color you want on hover */
+/* Active link text style */
+.main-nav.active {
+  color: #e7e5e5;
+  text-shadow: 0 0 20px #1a1919, 0 0 5px #252525;
 }
+
+/* Underline animation */
+.main-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #787777;
+  transition: width 0.3s ease;
+}
+
+/* Expand underline from center */
+.main-nav.active::after {
+  width: 100%;
+}
+
 /********************************************** HEADER ********************************************/
 
 /* Center the Header */
@@ -114,9 +102,6 @@ input[type="range"]::-moz-range-track {
 #logo,
 .site_content,
 .site_content_index #footer {
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-  /* center */
   margin-left: 3%;
 }
 
@@ -124,10 +109,7 @@ input[type="range"]::-moz-range-track {
 header {
   background-color: #7d7771;
   display: flex;
-  /* height: 100px; */
   margin-left: 1%;
-  /* put border */
-  /* border: 0.2em solid #ff0000; */
 }
 
 nav {
@@ -135,11 +117,12 @@ nav {
   top: 0;
   z-index: 1001; /* higher than content, lower than modals if any */
 }
-/* Big Name Logo (Logo 1) and Subtitle (Logo 2) */
+
 #logo {
   position: relative;
   max-width: 80%;
   width: 80%;
+  margin-bottom: 1em;
 }
 
 #logo h1 {
@@ -180,44 +163,120 @@ nav {
   color: #ebe7e2;
 }
 
+/* //home page */
 .home {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  padding: 0.5em;
+  padding: 3vh;
+  color: #ebe7e2;
+}
+
+.home h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.featured {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.featured-song {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1rem 0;
+}
+
+.featured-song-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.featured-song-title {
+  margin: 0;
+}
+
+.featured-song-description {
+  margin: 0.25rem 0;
+  font-style: italic;
+}
+.home-verse {
+  font-style: italic;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .about {
-  position: relative;
+  padding: 3vh;
+  color: #ebe7e2;
+}
+
+.videos {
+  padding: 3vh;
+  color: #ebe7e2;
+}
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+.video-card {
+  width: 300px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+.video-thumbnail {
+  width: 100%;
+  object-fit: cover;
+}
+.video-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+.video-title {
+  background-color: #413b34;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: -1px; /* to align with the bottom of the thumbnail */
+}
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  padding: 0.5em;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* higher than header */
+}
+
+.video-modal-content {
+  width: 80%;
+  max-width: 800px;
+  aspect-ratio: 16/9;
 }
 
 @media screen and (min-width: 768px) {
-  .anchor-box {
-    background-color: transparent;
-    background-color: #7d7771;
-    color: #ebe7e2;
-    padding-top: 17px;
-    padding-bottom: 10px;
-    margin-right: -35px;
-    margin-left: -35px;
-  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .spacer {
     width: 100%;
     height: 40px;
-  }
-
-  .anchor-box {
-    background-color: transparent;
-    background-color: #7d7771;
-    color: #ebe7e2;
-    margin-right: -21px;
-    margin-left: -21px;
   }
 }
 
@@ -364,7 +423,7 @@ nav ul ul li a {
 nav a:hover,
 nav li.selected a,
 nav li.selected a:hover {
-  background-color: #7d7771;
+  background-color: #a5a09b;
   color: #fff;
 }
 
@@ -385,7 +444,7 @@ nav ul li.icon {
 }
 
 @media screen and (min-width: 320px) and (max-width: 1023px) {
-  nav ul li:not(:nth-child(-n + 0)) {
+  /* nav ul li:not(:nth-child(-n + 0)) {
     display: none;
   }
 
@@ -395,12 +454,12 @@ nav ul li.icon {
     color: #fff;
     color: #fff;
     background-color: #e8e8e8;
-  }
+  } */
 }
 
 /* The "responsive" class is added when the user clicks on the "menu" icon - for mobile support*/
 @media screen and (min-width: 320px) and (max-width: 1023px) {
-  nav ul.responsive {
+  /* nav ul.responsive {
     position: relative;
     text-align: center;
     background-color: #e8e8e8;
@@ -421,7 +480,6 @@ nav ul li.icon {
     letter-spacing: 0.2em;
   }
 
-  /* Display Dropdowns on Hover */
   nav li .down a {
     display: block;
     margin: 10px 0 -10px 0;
@@ -430,7 +488,7 @@ nav ul li.icon {
   nav .scroll {
     display: block;
     width: 100%;
-  }
+  } */
 }
 /***************************************************************************************************/
 
@@ -578,11 +636,6 @@ h3 {
   h3.lines {
     overflow: hidden;
     text-align: center;
-  }
-
-  .anchor-box h3.lines:before,
-  .anchor-box h3.lines:after {
-    background-color: #fff;
   }
 
   h3.lines:before,
@@ -1077,10 +1130,6 @@ ul.pages-music p {
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  #home {
-    padding-top: 0.5em;
-  }
-
   .hero {
     background-image: url("../src/images/misc/great-god-banner2.png");
     height: 320px;

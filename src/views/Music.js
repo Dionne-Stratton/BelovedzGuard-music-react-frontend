@@ -1,56 +1,68 @@
 import React from "react";
-import { useRouteMatch, Link } from "react-router-dom";
+import songs from "../data/musicList";
 
-export default function Music(props) {
-  const { search, onChange, theme, filtered } = props;
-  const { url } = useRouteMatch();
-  // const themeCurrent = props.theme || "all"; // default to 'all' if theme is not provided
-
-  const clearStyle = {
-    textDecoration: "none",
-  };
-
+export default function SongList({ setCurrentIndex }) {
   return (
-    <div>
-      <input
-        // onChange is setting the state of the search variable to the value of the input field as the user types to be used in the filter method below
-        className="search"
-        name="search"
-        type="text"
-        placeholder="Search"
-        onChange={(e) => onChange(e)}
-        value={search}
-      />
-      {/* // create a dropdown menu to filter the items by medium */}
-      <select
-        className="medium"
-        name="theme"
-        onChange={(e) => onChange(e)}
-        value={theme}
-      >
-        <option value="all">All</option>
-        <option value="digital">Worshipful</option>
-        <option value="acrylic">Praise</option>
-        <option value="ink">Prophetic</option>
-      </select>
-
-      {/* if the items array is empty, display the loading message */}
-      {filtered.length === 0 && <p>Loading... Please wait...</p>}
-      <div className="music">
-        {filtered.map((item) => {
-          //we are finding the index of the item in the items array so that we can use it in the Link to the Merch component
-          let index = filtered.findIndex((indexed) => indexed._id === item._id);
-          return (
-            <div style={{ margin: "1%" }} key={item.id}>
-              <div className="pic">
-                <Link to={`${url}/${index}`} style={clearStyle}>
-                  <img src={item.image} alt={item.title} />
-                </Link>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+    <div
+      style={{
+        padding: "2rem",
+        textAlign: "center",
+        display: "flex",
+        alignItems: "center",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
+      {songs
+        .slice() // create a copy
+        .reverse() // newest first
+        .map((song, index) => (
+          <div
+            key={index}
+            className="song-card"
+            style={{
+              margin: "2rem",
+              height: "15rem",
+              width: "12rem",
+              border: "1px solid #ccc",
+              padding: "1rem",
+              borderRadius: "8px",
+              cursor: "pointer",
+              boxShadow: "0 2px 4px rgba(0, 0,0, 0.5)",
+              transition: "transform 0.2s, box-shadow 0.2s",
+            }}
+            onClick={() => setCurrentIndex(index)} // Set the current index when clicked
+          >
+            <img
+              src={song.thumbnail}
+              alt={song.title}
+              style={{
+                width: "10rem",
+                height: "10rem",
+                objectFit: "cover",
+                // border: "2px solid #413b34",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 1)",
+              }}
+            />
+            <caption
+              style={{
+                display: "flex",
+                width: "8rem",
+                margin: "0 auto",
+                textAlign: "center",
+                justifyContent: "center",
+                marginTop: "0.5rem",
+                fontWeight: "bold",
+                fontSize: "1.2rem",
+                color: "#ebe7e2",
+                //add a shadow to the text
+                textShadow: "1px 1px 2px rgba(0, 0, 0, 1)",
+              }}
+            >
+              {song.title}
+            </caption>
+          </div>
+        ))}
     </div>
   );
 }

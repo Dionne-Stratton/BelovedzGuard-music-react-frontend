@@ -1,11 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import songs from "../data/musicList";
 
-export default function Home({ songs, setCurrentIndex }) {
-  const featured = songs[0];
+export default function Home({ setCurrentIndex }) {
+  const [featured, setFeatured] = React.useState({});
+  const songsReversed = [...songs].reverse(); // Reverse the songs array to show newest first
+  React.useEffect(() => {
+    setFeatured(songsReversed[0]);
+  }, []);
 
   return (
-    <div className="about" style={{ paddingTop: "5vh", color: "#ebe7e2" }}>
+    <div className="home">
       <h1>Welcome to BelovedzGuard</h1>
       <p>
         This is a space devoted to uplifting, Christ-centered music — songs
@@ -15,38 +20,17 @@ export default function Home({ songs, setCurrentIndex }) {
       </p>
 
       {featured && featured.thumbnail && (
-        <section
-          style={{
-            margin: "2rem 0",
-            padding: "1rem",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-          }}
-        >
+        <section className="featured">
           <h2>Featured Song</h2>
-          <div
-            onClick={() => setCurrentIndex(0)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1rem",
-              cursor: "pointer",
-              padding: "1rem 0",
-            }}
-          >
+          <div onClick={() => setCurrentIndex(0)} className="featured-song">
             <img
               src={featured.thumbnail}
               alt={featured.title}
-              style={{
-                width: "100px",
-                height: "100px",
-                objectFit: "cover",
-                borderRadius: "8px",
-              }}
+              className="featured-song-thumbnail"
             />
             <div>
-              <h3 style={{ margin: 0 }}>{featured.title}</h3>
-              <p style={{ margin: "0.25rem 0", fontStyle: "italic" }}>
+              <h3 className="featured-song-title">{featured.title}</h3>
+              <p className="featured-song-description">
                 Click to play the latest track
               </p>
             </div>
@@ -72,7 +56,7 @@ export default function Home({ songs, setCurrentIndex }) {
         </p>
       </div>
 
-      <blockquote style={{ fontStyle: "italic", marginTop: "2rem" }}>
+      <blockquote className="home-verse">
         “He has given me a new song to sing…” – Psalm 40:3
       </blockquote>
     </div>
