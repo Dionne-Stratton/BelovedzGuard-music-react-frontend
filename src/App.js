@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
@@ -15,6 +15,7 @@ export default function App() {
   const [songs, setSongs] = useState(reversedList);
   const [currentIndex, setCurrentIndex] = useState(null); //currentIndex
 
+  console.log("songs", setSongs);
   return (
     <div className="App" style={{ paddingBottom: "17vh" }}>
       <style>

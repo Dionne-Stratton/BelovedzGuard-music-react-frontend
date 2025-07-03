@@ -7,7 +7,7 @@ export default function Home({ setCurrentIndex }) {
   const songsReversed = [...songs].reverse(); // Reverse the songs array to show newest first
   React.useEffect(() => {
     setFeatured(songsReversed[0]);
-  }, []);
+  }, [songsReversed]);
 
   return (
     <div className="home">
