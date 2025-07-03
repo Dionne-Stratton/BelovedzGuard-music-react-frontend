@@ -1080,30 +1080,6 @@ ul.pages-music p {
 
 /************************************Hero Photos*******************************************/
 
-.hero {
-  background-image: url("../src/images/misc/great-god-banner2.png");
-  height: 380px;
-  z-index: 100;
-  background-position: top;
-  margin-bottom: -46px;
-  border-bottom: 0.2em solid #7d7771;
-}
-
-.music-hero {
-  background-image: url("../src/images/misc/album-cover2.png");
-  height: 300px;
-  margin-bottom: 2em;
-  margin-top: 2em;
-  background-position: center;
-}
-
-.hero,
-.music-hero {
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
 #overlay {
   height: 380px;
 }
@@ -1130,16 +1106,6 @@ ul.pages-music p {
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .hero {
-    background-image: url("../src/images/misc/great-god-banner2.png");
-    height: 320px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    margin-bottom: -56px;
-  }
-
   #overlay {
     position: sticky;
     width: 100%;
@@ -1438,66 +1404,6 @@ div li.hide {
     color: white;
     width: 100%;
   }
-}
-
-.a {
-  background-image: url("../src/images/gallery/light-show.jpg");
-  background-size: cover;
-}
-
-.b {
-  background-image: url("../src/images/gallery/synth.jpg");
-  background-size: cover;
-}
-
-.c {
-  background-image: url("../src/images/gallery/singing.jpg");
-  background-size: cover;
-}
-
-.d {
-  background-image: url("../src/images/gallery/guitar.jpg");
-  background-size: cover;
-}
-
-.e {
-  background-image: url("../src/images/gallery/bass.jpg");
-  background-size: cover;
-}
-
-.f {
-  background-image: url("../src/images/gallery/concert.jpg");
-  background-size: cover;
-}
-
-.g {
-  background-image: url("../src/images/blog/song.jpg");
-  background-size: cover;
-}
-
-.h {
-  background-image: url("../src/images/blog/edm.jpg");
-  background-size: cover;
-}
-
-.i {
-  background-image: url("../src/images/blog/eq.jpg");
-  background-size: cover;
-}
-
-.j {
-  background-image: url("../src/images/merch/logo.jpg");
-  background-size: cover;
-}
-
-.k {
-  background-image: url("../src/images/merch/thankful.jpg");
-  background-size: cover;
-}
-
-.l {
-  background-image: url("../src/images/merch/peace.jpg");
-  background-size: cover;
 }
 
 @media all and (max-width: 320px) {
