@@ -11,13 +11,11 @@ const HeaderNav = () => {
         </NavLink>
         <div id="logo">
           <h1>
-            {/* <a href="index.html">BelovedzGuard</a> */}
             <NavLink to="/" className="add-drop-shadow-thick">
               BelovedzGuard
             </NavLink>
           </h1>
           <h2>
-            {/* <a href="index.html">Uplifting Christian Music</a> */}
             <NavLink to="/" className="add-drop-shadow-thick">
               Uplifting Christian Music
             </NavLink>
