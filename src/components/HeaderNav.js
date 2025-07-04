@@ -7,33 +7,18 @@ const HeaderNav = () => {
     <div className="headernav">
       <header>
         <NavLink to="/">
-          <img
-            src={logo}
-            alt="BelovedzGuard Logo"
-            id="logo-img"
-            style={{
-              marginTop: "-0.5rem",
-              marginBottom: "0.5rem",
-              filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))",
-            }}
-          />
+          <img src={logo} alt="BelovedzGuard Logo" id="logo-img" />
         </NavLink>
         <div id="logo">
           <h1>
             {/* <a href="index.html">BelovedzGuard</a> */}
-            <NavLink
-              to="/"
-              style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
-            >
+            <NavLink to="/" className="add-drop-shadow-thick">
               BelovedzGuard
             </NavLink>
           </h1>
           <h2>
             {/* <a href="index.html">Uplifting Christian Music</a> */}
-            <NavLink
-              to="/"
-              style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
-            >
+            <NavLink to="/" className="add-drop-shadow-thick">
               Uplifting Christian Music
             </NavLink>
           </h2>
@@ -41,45 +26,32 @@ const HeaderNav = () => {
       </header>
 
       <nav class="container">
-        <ul
-          class="clearfix"
-          // style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
-          id="cfix"
-        >
+        <ul class="clearfix" id="cfix">
           <li>
             <ul class="scroll" id="scroll">
               <li>
                 <NavLink
-                  className="main-nav"
+                  className="main-nav add-drop-shadow-thin"
                   activeClassName="active"
                   to="/home"
-                  style={{
-                    filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))",
-                  }}
                 >
                   Home
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  className="main-nav"
+                  className="main-nav add-drop-shadow-thin"
                   activeClassName="active"
                   to="/about"
-                  style={{
-                    filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))",
-                  }}
                 >
                   About
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  className="main-nav"
+                  className="main-nav add-drop-shadow-thin"
                   activeClassName="active"
                   to="/music"
-                  style={{
-                    filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))",
-                  }}
                 >
                   Music
                 </NavLink>
@@ -87,40 +59,13 @@ const HeaderNav = () => {
 
               <li>
                 <NavLink
-                  className="main-nav"
+                  className="main-nav add-drop-shadow-thin"
                   activeClassName="active"
                   to="/videos"
-                  style={{
-                    filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))",
-                  }}
                 >
                   Videos
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink
-                  className="main-nav"
-                  activeClassName="active"
-                  to="/merch"
-                  style={{
-                    filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))",
-                  }}
-                >
-                  Merch
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className="main-nav"
-                  activeClassName="active"
-                  to="/subscribe"
-                  style={{
-                    filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3))",
-                  }}
-                >
-                  Subscribe
-                </NavLink>
-              </li> */}
             </ul>
           </li>
         </ul>

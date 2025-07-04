@@ -14,6 +14,124 @@ body {
   margin-top: 1%;
 }
 
+/********************************************** Full App ********************************************/
+
+.App {
+  padding-bottom: 17vh;
+}
+
+.add-drop-shadow-thick {
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 1));
+}
+
+.add-drop-shadow-thin {
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+/********************************************** HEADER and NAVIGATION ********************************************/
+
+/* Center the Header */
+#main,
+#logo,
+.site_content,
+.site_content_index #footer {
+  margin-left: 3%;
+}
+
+/* Sets the header background and height */
+header {
+  background-color: #7d7771;
+  display: flex;
+  margin-left: 1%;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1001; /* higher than content, lower than modals if any */
+}
+
+.main-nav {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Active link text style */
+.main-nav.active {
+  color: #e7e5e5;
+  text-shadow: 0 0 20px #1a1919, 0 0 5px #252525;
+}
+
+/* Underline animation */
+.main-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #787777;
+  transition: width 0.3s ease;
+}
+
+/* Expand underline from center */
+.main-nav.active::after {
+  width: 100%;
+}
+
+#logo {
+  position: relative;
+  max-width: 80%;
+  width: 80%;
+  margin-bottom: 1em;
+}
+
+#logo h1 {
+  display: block;
+  margin: 0.2em 0 0 0;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font: normal 300% "Tajawal", sans-serif;
+  color: #fff;
+}
+
+#logo-img {
+  /* position: fixed; */
+  display: block;
+  margin: 0.5%;
+  text-align: center;
+  width: 100px;
+  height: auto;
+  /* make round */
+  border-radius: 50%;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 1));
+}
+
+#hidden {
+  display: none;
+}
+
+#logo h2 {
+  display: block;
+  text-align: center;
+  letter-spacing: 0.35em;
+  font: normal 90% "Tajawal", sans-serif;
+  color: #ebe7e2;
+}
+
+#logo h1 a,
+#logo h2 a {
+  text-decoration: none;
+  color: #ebe7e2;
+}
+
+/********************************************** SongPlayer *********************************************/
+
+/* player volume styles */
 input[type="range"] {
   /* -webkit-appearance: none; */
   width: 100px;
@@ -51,119 +169,22 @@ input[type="range"]::-moz-range-track {
   border-radius: 5px;
 }
 
-/* //music page card styles */
-.song-title {
-  width: 30rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.song-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-  background-color: rgba(255, 255, 255, 0.05); /* faint glow */
-}
-
-.main-nav {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Active link text style */
-.main-nav.active {
-  color: #e7e5e5;
-  text-shadow: 0 0 20px #1a1919, 0 0 5px #252525;
-}
-
-/* Underline animation */
-.main-nav::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background-color: #787777;
-  transition: width 0.3s ease;
-}
-
-/* Expand underline from center */
-.main-nav.active::after {
-  width: 100%;
-}
-
-/********************************************** HEADER ********************************************/
-
-/* Center the Header */
-#main,
-#logo,
-.site_content,
-.site_content_index #footer {
-  margin-left: 3%;
-}
-
-/* Sets the header background and height */
-header {
-  background-color: #7d7771;
-  display: flex;
-  margin-left: 1%;
-}
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1001; /* higher than content, lower than modals if any */
-}
-
-#logo {
-  position: relative;
-  max-width: 80%;
-  width: 80%;
-  margin-bottom: 1em;
-}
-
-#logo h1 {
-  display: block;
-  margin: 0.2em 0 0 0;
-  text-align: center;
-  letter-spacing: 0.2em;
-  font: normal 300% "Tajawal", sans-serif;
+.song-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #413b34;
   color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #333;
+  z-index: 1000;
+  box-shadow: 0 -3px 10px rgba(36, 33, 33, 0.75);
 }
 
-#logo-img {
-  /* position: fixed; */
-  display: block;
-  margin: 0.5%;
-  text-align: center;
-  width: 100px;
-  height: auto;
-  /* make round */
-  border-radius: 50%;
-}
-
-#hidden {
-  display: none;
-}
-
-#logo h2 {
-  display: block;
-  text-align: center;
-  letter-spacing: 0.35em;
-  font: normal 90% "Tajawal", sans-serif;
-  color: #ebe7e2;
-}
-
-#logo h1 a,
-#logo h2 a {
-  text-decoration: none;
-  color: #ebe7e2;
-}
-
-/* //home page */
+/********************************************** Home page *********************************************/
 .home {
   padding: 3vh;
   color: #ebe7e2;
@@ -211,10 +232,64 @@ nav {
   text-align: center;
 }
 
+/********************************************** About page ********************************************/
+
 .about {
   padding: 3vh;
   color: #ebe7e2;
 }
+
+/********************************************** Music page ********************************************/
+
+.song-card {
+  margin: 2rem;
+  height: 15rem;
+  width: 12rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.song-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.05); /* faint glow */
+}
+
+.song-list {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.song-thumbnail {
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+.song-title {
+  display: flex;
+  flex-wrap: wrap;
+  width: 8rem;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ebe7e2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+/********************************************** Videos page ********************************************/
 
 .videos {
   padding: 3vh;
@@ -269,6 +344,8 @@ nav {
   max-width: 800px;
   aspect-ratio: 16/9;
 }
+
+/********************************************** Media Queries ********************************************/
 
 @media screen and (min-width: 768px) {
 }

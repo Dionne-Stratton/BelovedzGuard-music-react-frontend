@@ -75,22 +75,7 @@ export default function SongPlayer({ currentIndex, setCurrentIndex, songs }) {
 
   if (currentIndex === null) return null;
   return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        backgroundColor: "#413b34",
-        color: "#fff",
-        padding: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        borderTop: "1px solid #333",
-        zIndex: 1000,
-        boxShadow: "0 -3px 10px rgba(36, 33, 33, 0.75)",
-      }}
-    >
+    <div className="song-player">
       {/* Main control bar */}
       <div
         style={{

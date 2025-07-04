@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
 import Home from "./views/Home";
 import About from "./views/About";
-import Merch from "./views/Merch";
 import Videos from "./views/Videos";
 import Music from "./views/Music";
 import SongPlayer from "./components/SongPlayer";
@@ -17,7 +16,7 @@ export default function App() {
 
   console.log("songs", setSongs);
   return (
-    <div className="App" style={{ paddingBottom: "17vh" }}>
+    <div className="App">
       <style>
         @import
         url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lemonada&family=Lobster&family=Satisfy&display=swap');
@@ -29,19 +28,15 @@ export default function App() {
         <Route path="/home">
           <Home setCurrentIndex={setCurrentIndex} />
         </Route>
-        <Route path="/merch">
-          <Merch />
-        </Route>
         <Route path="/about">
           <About />
-        </Route>
-        <Route path="/videos">
-          <Videos />
         </Route>
         <Route path="/music">
           <Music setCurrentIndex={setCurrentIndex} />
         </Route>
-
+        <Route path="/videos">
+          <Videos />
+        </Route>
         <Route path="/">
           <Home />
         </Route>
