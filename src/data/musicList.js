@@ -6,6 +6,7 @@ import whereYouAreImage from "../images/coverArt/whereYouAre.jpg";
 import yourStoryOfLoveImage from "../images/coverArt/yourStoryOfLove.jpg";
 import evenWhenImage from "../images/coverArt/evenWhen.jpg";
 import youRescueMeImage from "../images/coverArt/youRescueMe.png";
+import iBelongToYouImage from "../images/coverArt/iBelongtoYou.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -15,8 +16,18 @@ import foreverIsntLongEnoughVideoThumbnail from "../images/videoThumbnails/foeve
 import whereYouAreVideoThumbnail from "../images/videoThumbnails/whereYouAre.jpg";
 import yourStoryOfLoveVideoThumbnail from "../images/videoThumbnails/yourStoryOfLove.jpg";
 import youRescueMeVideoThumbnail from "../images/videoThumbnails/youRescueMe.jpg";
+import iBelongToYouVideoThumbnail from "../images/videoThumbnails/iBelongToYou.jpg";
 
 const musicList = [
+  {
+    title: "I Belong to You",
+    url: "https://cdn1.suno.ai/830b7b45-bc35-4e37-80c7-d5ddaa46253b.mp3",
+    thumbnail: iBelongToYouImage,
+    videoThumbnail: iBelongToYouVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/MAXa1gRkQvY?si=EeJ0w8SP-Wh3lEeR",
+    theme: ["belonging", "identity", "faith"],
+    tone: ["uplifting", "hopeful", "joyful"],
+  },
   {
     title: "You Rescue Me",
     url: "https://cdn1.suno.ai/6e4daecf-21eb-4c5f-960c-fe23f1ae9716.webm",
