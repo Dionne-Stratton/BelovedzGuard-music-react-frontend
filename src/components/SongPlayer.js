@@ -77,121 +77,62 @@ export default function SongPlayer({ currentIndex, setCurrentIndex, songs }) {
   return (
     <div className="song-player">
       {/* Main control bar */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          position: "relative",
-        }}
-      >
+      <div className="song-player-control-bar">
         {/* Left: Thumbnail + Title */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-            minWidth: "200px",
-          }}
-        >
+        <div className="song-player-thumbnail-title">
           {currentSong.thumbnail && (
             <img
               src={currentSong.thumbnail}
               alt={currentSong.title}
-              style={{
-                width: "66px",
-                height: "66px",
-                objectFit: "cover",
-                boxShadow: "0 2px 4px rgba(0, 0, 0, 1)",
-              }}
+              className="song-player-thumbnail"
             />
           )}
-          <div
-            style={{
-              fontWeight: "bold",
-              fontSize: "1.5rem",
-              maxWidth: "18rem",
-              overflow: "hidden",
-              whiteSpace: "nowrap",
-              color: "#dedad9",
-              textShadow: "1px 1px 2px rgba(0, 0, 0, 1)",
-            }}
-          >
-            {currentSong.title}
-          </div>
+          <div className="song-player-title">{currentSong.title}</div>
         </div>
 
         {/* Center: Controls */}
-        <div
-          style={{
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            alignItems: "center",
-            gap: "1rem",
-          }}
-        >
+        <div className="song-player-controls">
           <FiShuffle
             size={15}
             color="#dedad9"
-            style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
+            className="add-drop-shadow-thick add-pointer"
           />
           <FaStepBackward
             size={18}
             color="#dedad9"
             onClick={prevSong}
-            style={{
-              cursor: "pointer",
-              filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))",
-            }}
+            className="add-drop-shadow-thick add-pointer"
           />
           {isPlaying ? (
             <FaPause
               size={20}
               color="#dedad9"
               onClick={togglePlay}
-              style={{
-                cursor: "pointer",
-                filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))",
-              }}
+              className="add-drop-shadow-thick add-pointer"
             />
           ) : (
             <FaPlay
               size={20}
               color="#dedad9"
               onClick={togglePlay}
-              style={{
-                cursor: "pointer",
-                filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))",
-              }}
+              className="add-drop-shadow-thick add-pointer"
             />
           )}
           <FaStepForward
             size={18}
             color="#dedad9"
             onClick={nextSong}
-            style={{
-              cursor: "pointer",
-              filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))",
-            }}
+            className="add-drop-shadow-thick add-pointer"
           />
           <FiRepeat
             size={15}
             color="#dedad9"
-            style={{ filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))" }}
+            className="add-drop-shadow-thick add-pointer"
           />
         </div>
 
         {/* Right: Volume */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            filter: "drop-shadow(2px 2px 2px rgba(0, 0, 0, 1))",
-          }}
-        >
+        <div className="song-player-volume add-drop-shadow-thick">
           {volume > 0 ? (
             <FaVolumeUp color="#dedad9" />
           ) : (
@@ -213,10 +154,8 @@ export default function SongPlayer({ currentIndex, setCurrentIndex, songs }) {
       </div>
 
       {/* Progress bar */}
-      <div
-        style={{ marginTop: "0.5rem", display: "flex", alignItems: "center" }}
-      >
-        <span style={{ fontSize: "0.8rem", marginRight: "0.5rem" }}>
+      <div className="song-player-progress-bar">
+        <span className="song-player-progress-time">
           {formatTime(audioRef.current?.currentTime || 0)}
         </span>
         <div
@@ -228,25 +167,15 @@ export default function SongPlayer({ currentIndex, setCurrentIndex, songs }) {
             const newTime = audioRef.current.duration * percent;
             audioRef.current.currentTime = newTime;
           }}
-          style={{
-            flexGrow: 1,
-            height: "4px",
-            background: "#7d7771",
-            position: "relative",
-            cursor: "pointer",
-          }}
+          className="song-player-progress"
         >
           <div
-            style={{
-              position: "absolute",
-              height: "100%",
-              width: `${progress}%`,
-              background: "#fff",
-            }}
+            className="song-player-progress-fill"
+            style={{ width: `${progress}%` }}
           />
         </div>
 
-        <span style={{ fontSize: "0.8rem", marginLeft: "0.5rem" }}>
+        <span className="song-player-progress-time">
           {formatTime(audioRef.current?.duration || 0)}
         </span>
       </div>

@@ -184,6 +184,82 @@ input[type="range"]::-moz-range-track {
   box-shadow: 0 -3px 10px rgba(36, 33, 33, 0.75);
 }
 
+.song-player-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.song-player-thumbnail-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 200px;
+}
+
+.song-player-thumbnail {
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+.song-player-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ebe7e2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.song-player-controls {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.song-player-volume {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.song-player-progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.song-player-progress-time {
+  font-size: 0.8rem;
+  color: #dedad9;
+}
+
+.song-player-progress {
+  flex-grow: 1;
+  height: 4px;
+  background: #7d7771; /* Track color */
+  position: relative;
+  cursor: pointer;
+}
+
+.song-player-progress-fill {
+  position: absolute;
+  height: 100%;
+  background: #fff; /* Fill color */
+  transition: width 0.2s ease;
+}
+
+.add-pointer {
+  cursor: pointer;
+  color: #dedad9;
+  transition: color 0.2s ease;
+}
+
 /********************************************** Home page *********************************************/
 .home {
   padding: 3vh;
