@@ -1,14 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import songs from "../data/musicList";
 
 export default function Home({ setCurrentIndex }) {
-  const [featured, setFeatured] = React.useState({});
-  const songsReversed = [...songs].reverse(); // Reverse the songs array to show newest first
-  React.useEffect(() => {
-    setFeatured(songsReversed[0]);
-  }, [songsReversed]);
-
   return (
     <div className="home">
       <h1>Welcome to BelovedzGuard</h1>
@@ -18,25 +11,6 @@ export default function Home({ setCurrentIndex }) {
         Jesus. Everything here was created to stir your heart, strengthen your
         spirit, and help you draw near to Him.
       </p>
-
-      {featured && featured.thumbnail && (
-        <section className="featured">
-          <h2>Featured Song</h2>
-          <div onClick={() => setCurrentIndex(0)} className="featured-song">
-            <img
-              src={featured.thumbnail}
-              alt={featured.title}
-              className="featured-song-thumbnail"
-            />
-            <div>
-              <h3 className="featured-song-title">{featured.title}</h3>
-              <p className="featured-song-description">
-                Click to play the latest track
-              </p>
-            </div>
-          </div>
-        </section>
-      )}
 
       <p>
         Whether you're weary or rejoicing, searching or sure — you're welcome

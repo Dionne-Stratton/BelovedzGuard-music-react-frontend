@@ -26,7 +26,7 @@ export default function App() {
 
       <Switch>
         <Route path="/home">
-          <Home setCurrentIndex={setCurrentIndex} />
+          <Home />
         </Route>
         <Route path="/about">
           <About />
