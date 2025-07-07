@@ -13,7 +13,7 @@ const LyricsViewer = ({ getCurrentSongLyrics, setDisplayLyrics }) => {
         top: 0,
         right: 0,
         width: "300px",
-        height: "650px",
+        height: "580px",
         backgroundColor: "#413b34",
         color: "white",
         padding: "1rem",
