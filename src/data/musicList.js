@@ -3,10 +3,12 @@ import outOfTheAshesImage from "../images/coverArt/outOfTheAshes.jpg";
 import wontYouLetMeInImage from "../images/coverArt/wontYouLetMeIn.jpg";
 import foreverIsntLongEnough from "../images/coverArt/foreverIsntLongEnough.jpg";
 import whereYouAreImage from "../images/coverArt/whereYouAre.jpg";
-import yourStoryOfLoveImage from "../images/coverArt/yourStoryOfLove.jpg";
+import yourStoryOfLoveImage from "../images/coverArt/yourStoryOfLove.png";
 import evenWhenImage from "../images/coverArt/evenWhen.jpg";
 import youRescueMeImage from "../images/coverArt/youRescueMe.png";
 import iBelongToYouImage from "../images/coverArt/iBelongtoYou.png";
+import comeToMeImage from "../images/coverArt/comeToMe.png";
+import chasingYouImage from "../images/coverArt/chasingYou.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -19,6 +21,15 @@ import youRescueMeVideoThumbnail from "../images/videoThumbnails/youRescueMe.jpg
 import iBelongToYouVideoThumbnail from "../images/videoThumbnails/iBelongToYou.jpg";
 
 const musicList = [
+  {
+    title: "Chasing You",
+    url: "https://cdn1.suno.ai/e0c64260-ff17-4074-a0a1-70b8875d5e7a.webm",
+    thumbnail: chasingYouImage,
+    videoThumbnail: null,
+    videoUrl: null,
+    theme: ["pursuit", "devotion", "longing"],
+    tone: ["passionate", "intense", "yearning"],
+  },
   {
     title: "I Belong to You",
     url: "https://cdn1.suno.ai/830b7b45-bc35-4e37-80c7-d5ddaa46253b.mp3",
@@ -87,6 +98,15 @@ const musicList = [
     videoThumbnail: yourStoryOfLoveVideoThumbnail,
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
+  },
+  {
+    title: "Come to Me",
+    url: "https://cdn1.suno.ai/e438c7b6-da84-4f1e-87c5-b19cdc1230cb.webm",
+    thumbnail: comeToMeImage,
+    videoThumbnail: null,
+    videoUrl: null,
+    theme: ["invitation", "comfort", "rest"],
+    tone: ["reassuring", "calming", "supportive"],
   },
 ];
 
