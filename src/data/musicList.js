@@ -32,7 +32,7 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/XD3r501H-KQ?si=vPIadpZv3AvnsdRP",
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
-    lyrics: `Verse 1:
+    lyrics: `[Verse 1]
 Lost in the melody
 Of you and me
 Every heartbeat
@@ -42,7 +42,7 @@ Are You longing too
 All I am
 Is Yours to claim
 
-Chorus:
+[Chorus]
 God, come for me
 You're where I belong
 You’re my symphony
@@ -53,7 +53,7 @@ And my home is
 Found in Your arms
 God, come for me
 
-Verse 2:
+[Verse 2]
 Forever with You
 Can't come too soon
 My heart aching
@@ -63,7 +63,7 @@ Every now and then
 Am I wrong for
 Wanting this so much
 
-Chorus:
+[Chorus]
 God, come for me
 You're where I belong
 You’re my symphony
@@ -74,7 +74,7 @@ And my home is
 Found in Your arms
 God, come for me
 
-Bridge:
+[Bridge]
 I wait in the stillness
 To hear You calling me
 I ache for Your presence
@@ -83,7 +83,7 @@ The fullness of Your grace
 The glory of Your face
 Oh, Jesus
 
-Chorus:
+[Chorus]
 God, come for me
 You're where I belong
 You’re my symphony
@@ -93,7 +93,7 @@ The rhythm of my heart
 And my home is
 Found in Your arms
 
-Chorus:
+[Chorus]
 God, come for me
 You're where I belong
 You’re my symphony
@@ -104,7 +104,7 @@ And my home is
 Found in Your arms
 God, come for me
 
-Outro:
+[Outro]
 Want to be with You
 God come for me
 I want to be with You
@@ -118,8 +118,83 @@ God come for me`,
     videoUrl: "https://www.youtube.com/embed/JQP2j5_x19c?si=X21geQlUYagyHPeg",
     theme: ["pursuit", "devotion", "longing"],
     tone: ["passionate", "intense", "yearning"],
-    lyrics:
-      "Chasing you, Lord, with all my heart, in every moment, never apart. Your love is the fire that fuels my soul, in your presence, I am made whole.",
+    lyrics: `[Verse 1]
+ You whispered to me
+ Said You longed to be mine
+ With grace unending
+ What greater love could I find
+ You gave Your life
+ So that You could rescue me
+ Now I live my life
+ Only for Your glory
+
+[Chorus]
+ I’m chasing You
+ I am seeking Your heart
+ I cry to You
+ Lord, show me who You are
+ I want to live in Your presence
+ Forever in Your arms
+ And I know You’re drawing me...
+ As I’m chasing You
+
+[Verse 2]
+ You reached out to me
+ When I was lost and alone
+ Through scars of mercy
+ You called me Your own
+ Now I am Yours
+ Lord, I give You everything
+ Take it all, Lord—
+ My holy offering
+
+[Chorus]
+ I’m chasing You
+ I am seeking Your heart
+ I cry to You
+ Lord, show me who You are
+ I want to live in Your presence
+ Forever in Your arms
+ And I know You’re drawing me
+ As I’m chasing You
+
+[Bridge]
+ Oh, I want more than this
+ Sweet surrender
+ So I abandon all
+ Without measure
+ God, You are the one desire of my soul
+ To see You face to face is my living hope
+
+[Chorus]
+ I’m chasing You
+ I am seeking Your heart
+ I cry to You
+ Lord, show me who You are
+ I want to live in Your presence
+ Forever in Your arms
+ And I know You’re drawing me…
+
+[Chorus]
+ I’m chasing You
+ I am seeking Your heart
+ I cry to You
+ Lord, show me who You are
+ I want to live in Your presence
+ Forever in Your arms
+ And I know You’re drawing me
+ As I’m chasing You
+
+[Outro]
+Lead me closer
+Take me deeper
+I’m Yours forever
+I’m chasing You
+Lead me closer
+Take me deeper
+I’m Yours forever
+I’m chasing You…
+I’m Chasing You`,
   },
   {
     title: "I Belong to You",
@@ -129,8 +204,68 @@ God come for me`,
     videoUrl: "https://www.youtube.com/embed/MAXa1gRkQvY?si=EeJ0w8SP-Wh3lEeR",
     theme: ["belonging", "identity", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
-    lyrics:
-      "I belong to you, Lord, I am yours. In your arms, I find my home, in your love, I am never alone.",
+    lyrics: `[Verse 1]
+Sovereign Lord, God Almighty
+ The One desire of my heart,
+ Nothing on earth or in heaven
+ Can compare to who You are.
+ You fill my soul with wonder,
+ On my lips a song of praise.
+ You lead me by Your Spirit
+ And You guide me in Your ways.
+
+[Chorus]
+I belong to You
+ And in Your hands You keep me.
+ I am home to You,
+ Your Spirit will not leave me.
+ How I long for Yo
+ And my heartbeat sings Your name.
+ I will worship You,
+ So let all my life proclaim:
+ I belong to You…
+ And You belong to me too.
+
+[Verse 2]
+I lay my life before You
+ So that You might have Your way.
+ God, I ache for more of You,
+ So come near to me, I pray.
+ Let me be a melody,
+Rising up before Your throne
+ All I am an offering
+ To the One who reigns alone
+
+[Chorus]
+I belong to You
+ And in Your hands You keep me.
+ I am home to You,
+ Your Spirit will not leave me.
+ How I long for You
+ And my heartbeat sings Your name.
+ I will worship You,
+ So let all my life proclaim:
+ I belong to You…
+ And You belong to me too.
+
+[Bridge]
+So take me and transform me.
+ Oh, Lord, make everything new.
+ God, here I am, conform me.
+ Help me live a life that’s true,
+ To bring You glory in everything I do.
+
+[Chorus]
+I belong to You
+ And in Your hands You keep me.
+ I am home to You,
+ Your Spirit will not leave me.
+ How I long for You
+ And my heartbeat sings Your name.
+ I will worship You,
+ So let all my life proclaim:
+ I belong to You…
+ And You belong to me too`,
   },
   {
     title: "You Rescue Me",
@@ -140,8 +275,79 @@ God come for me`,
     videoUrl: "https://www.youtube.com/embed/Y-a9eE0qGP4?si=G8HivV5FDUpIZE2s",
     theme: ["rescue", "redemption", "salvation"],
     tone: ["uplifting", "hopeful", "joyful"],
-    lyrics:
-      "You rescue me from the depths of despair, you lift me up and show me you care. In your arms, I find my peace, in your love, my soul's release.",
+    lyrics: `[Verse 1]
+I was tired of looking
+Hope was nowhere to be found
+Then You met me on my knees
+Lifeless dust now holy ground
+You pulled me from the ashes
+With the grace of nail scarred hands
+Poured a joy into my heart
+I'll never truly understand
+
+[Chorus]
+You rescue me
+And I will never be alone
+You rescue me
+I'm so in awe of the love You've shown...
+Lord, you catch me when I fall
+And you answer me when I call....
+Lord Jesus.,  you rescue me
+
+[Verse 2]
+Now our hearts meet
+And time stands still
+This love has only grown
+And I know it always will
+For you stand here
+Forever by my side
+Lord, you guard my heart
+Now I am Yours and You are mine
+
+[Chorus]
+You rescue me
+And I will never be alone
+You rescue me
+I'm so in awe of the love You've shown...
+Lord, you catch me when I fall
+And you answer me when I call....
+Lord Jesus.,  you rescue me
+
+[Bridge]
+My heart was empty
+Without you here
+But you’re with me
+What have I to fear
+My heart was empty
+Without you here
+But you’re with me
+What have I to fear.
+
+[Chorus]
+You rescue me
+And I will never be alone
+You rescue me
+I'm so in awe of the love You've shown...
+Lord, you catch me when I fall
+And you answer me when I call....
+
+[Chorus]
+You rescue me
+And I will never be alone
+You rescue me
+I'm so in awe of the love You've shown...
+Lord, you catch me when I fall
+And you answer me when I call....
+Lord Jesus.,  you rescue me
+
+[Outro]
+You rescue me...
+Lord Jesus, You are all I need...
+You rescue me...
+Lord Jesus, You are all I need...
+You rescue me...
+Lord Jesus, You are all I need...
+'Cause You rescue me`,
   },
   {
     title: "Even When",
@@ -151,8 +357,79 @@ God come for me`,
     videoUrl: "https://www.youtube.com/embed/kEEOsiRXzSM?si=Rmbvfz4tGyOXu5am",
     theme: ["faith", "trust", "perseverance"],
     tone: ["hopeful", "encouraging", "uplifting"],
-    lyrics:
-      "Even when the world is shaking, even when my heart is breaking, I will trust in you, I will trust in you.",
+    lyrics: `[Verse 1]
+Even when the silence lingers
+And I’ve prayed a thousand times
+Even when my faith feels hindered
+And doubt preys on my mind
+Through the pain 
+and the wondering why
+You remain 
+the God who hears my cry
+
+[Chorus]
+I trust in You
+God of mercy and grace
+I wait on You
+And I will seek Your face
+For I know that You are good
+No matter what I see
+In Your infinite wisdom
+You are mindful of me
+So I will choose...
+ to trust in You
+
+[Verse 2]
+Even when the wait feels endless
+And the long nights take their toll
+Even when things look so hopeless
+And fear clings to my soul
+Through the tears,
+I know You’re in control
+Through the years
+You’ve always been faithful
+
+[Chorus]
+I trust in You
+God of mercy and grace
+I wait on You
+And I will seek Your face
+For I know that You are good
+No matter what I see
+In Your infinite wisdom
+You are mindful of me
+So I will choose...
+ to trust in You
+
+[Bridge]
+So I will keep on asking
+Though the breakthrough’s yet unseen
+Lord, I will keep believing
+That You will answer me
+Because this is who You are
+And You’ve proved it by Your scars
+
+[Chorus]
+I trust in You
+God of mercy and grace
+I wait on You
+And I will seek Your face
+For I know that You are good
+No matter what I see
+In Your infinite wisdom
+You are mindful of me....
+
+[Chorus]
+I trust in You
+God of mercy and grace
+I wait on You
+And I will seek Your face
+For I know that You are good
+No matter what I see
+In Your infinite wisdom
+You are mindful of me
+So I will choose...
+ to trust in You`,
   },
   {
     title: "Where You Are",
@@ -162,8 +439,79 @@ God come for me`,
     videoUrl: "https://www.youtube.com/embed/rCpcz70h1Kk?si=l-iPJEXUrzDVaJQ4",
     theme: ["presence", "guidance", "comfort"],
     tone: ["reassuring", "calming", "supportive"],
-    lyrics:
-      "Where you are, I want to be, in your presence, Lord, that's where I'm free. In your arms, I find my peace, in your love, my soul's release.",
+    lyrics: `[Verse 1]
+Every morning I rise and lift my eyes
+Still longing for the day You’ll call me higher
+You’ve placed a purpose deep within my life
+But it’s Your presence I most deeply desire
+Even in those moments when I feel You near
+I know it can’t compare to seeing Your face
+Even though I know for now You've placed me here
+My heart still longs to be in Your embrace
+
+[Chorus]
+Let me be where You are
+It’s the only place I want to be
+Let me know Your heart
+It’s the only home for me
+And I pray come with everything I have
+Establish Your kingdom in this land
+Make everything new, like You said You would do
+Come, Lord Jesus, I’m waiting on You
+
+[Verse 2]
+With every breath this longing grows stronger
+And every moment that I spend with You
+Makes me want to know You so much better
+And serve You in everything that I do
+There’s a veil that covers my eyes
+I know You’ll tear it away
+When I leave this life behind
+I can’t wait for that day
+
+[Chorus]
+Let me be where You are
+It’s the only place I want to be
+Let me know Your heart
+It’s the only home for me
+And I pray come with everything I have
+Establish Your kingdom in this land
+Make everything new, like You said You would do
+Come, Lord Jesus, I’m waiting on You
+
+[Bridge]
+There is nothing in this world that satisfies me
+I’m longing for the day when I finally can see
+You've never left me, no matter how I feel
+One day my faith will give way to what's real
+Words cannot express this cry of my heart
+Let there be nothing to keep us apart
+
+[Chorus]
+Let me be where You are
+It’s the only place I want to be
+Let me know Your heart
+It’s the only home for me
+And I pray come with everything I have
+Establish Your kingdom in this land
+Make everything new, like You said You would do
+Come, Lord Jesus
+
+[Chorus]
+Let me be where You are
+It’s the only place I want to be
+Let me know Your heart
+It’s the only home for me
+And I pray come with everything I have
+Establish Your kingdom in this land
+Make everything new, like You said You would do
+Come, Lord Jesus, I’m waiting on You
+
+[Outro]
+Come Lord Jesus
+I'm waiting on You
+Come Lord Jesus
+I'm waiting on You`,
   },
   {
     title: "Forever Isn't Long Enough",
@@ -172,8 +520,74 @@ God come for me`,
     videoThumbnail: foreverIsntLongEnoughVideoThumbnail,
     theme: ["eternity", "love", "commitment"],
     tone: ["romantic", "nostalgic", "hopeful"],
-    lyrics:
-      "Forever isn't long enough to show you all my love, to prove that I am yours.",
+    lyrics: `[Verse 1]
+From eternity past
+I was on Your mind
+And You loved me even then
+Your unfailing love
+What power can confine
+Who could ever comprehend
+You made all that was,
+All that is, and will be
+You made me to know You
+A reflection of  Your glory
+
+[Chorus]
+Forever isn’t long enough to love You
+I could never give what You deserve
+Forever isn’t long enough to worship You
+Your grace is too amazing for words
+And forever isn’t long enough
+For the depths of Your love
+
+[Verse 2]
+Out of Your great mercy
+You endured the cross
+And You despised all its shame
+With Your own blood, O God
+You ransomed the lost
+And claimed those You came to save
+You gave me life in You
+Like the new life of spring
+You filled me with Your joy
+My heart can’t help but sing
+
+[Chorus]
+Forever isn’t long enough to love You
+I could never give what You deserve
+Forever isn’t long enough to worship You
+Your grace is too amazing for words
+And forever isn’t long enough
+For the depths of Your love
+
+[Bridge]
+You turn darkness into light
+Open the eyes of the blind
+And just to be where You are
+I leave all the world behind
+You are the beat of my heart
+And eternity is just the start
+
+[Chorus]
+Forever isn’t long enough to love You
+I could never give what You deserve
+Forever isn’t long enough to worship You
+Your grace is too amazing for words
+And forever isn’t long enough
+
+[Chorus]
+Forever isn’t long enough to love You
+I could never give what You deserve
+Forever isn’t long enough to worship You
+Your grace is too amazing for words
+And forever isn’t long enough
+For the depths of Your love
+
+And when my days on earth are through,
+I’ll still be praising only You.
+'Cause forever isn't long enough
+Oh, Jesus
+For the depths of Your love`,
   },
   {
     title: "Won't You Let Me In",
@@ -183,8 +597,74 @@ God come for me`,
     videoUrl: "https://www.youtube.com/embed/CPwrL0QSVOY?si=5osufl-Yhz_St7kn",
     theme: ["repentant", "calling", "returning"],
     tone: ["prophetic", "longing", "invitation"],
-    lyrics:
-      "Won't you let me in, into your heart, into your life? I am here, waiting with open arms, ready to embrace you.",
+    lyrics: `[Verse 1]
+You’ve wandered in silence,
+Trying to make it on your own
+You hide in the darkness
+‘Cause it’s all that you’ve known
+But there’s a voice that calls to your soul
+There’s a freedom that can make you whole
+ 
+[Chorus]
+Won’t you let Me in
+I came to give you life
+I’ll say it again
+All for love I chose to die
+To make you Mine
+So let me wash away all your sin
+All you have to do
+Is let Me in
+ 
+[Verse 2]
+You’ve been down every road
+And you know where they all lead
+So many voices calling out
+You don’t know which one to heed
+But in My arms is everything you need
+Open your heart and hear my only plea
+ 
+[Chorus]
+Won’t you let Me in
+I came to give you life
+I’ll say it again
+All for love I chose to die
+To make you Mine
+So let me wash away all your sin
+All you have to do
+Is let Me in
+ 
+[Bridge]
+I am the light
+To pull you out of darkness
+I am the life
+To mend all your brokenness
+I’ll make you right
+Wrapped in My unfailing love and forgiveness
+ 
+[Chorus]
+Won’t you let Me in
+I came to give you life
+I’ll say it again
+All for love I chose to die
+To make you Mine
+So let me wash away all your sin
+All you have to do
+Is let Me in
+
+[Chorus]
+Won’t you let Me in
+I came to give you life
+I’ll say it again
+All for love I chose to die
+To make you Mine
+So let me wash away all your sin
+All you have to do
+Is let Me in
+
+[Outro]
+I’m still here
+Right where I’ve always been
+Won’t you let Me in`,
   },
   {
     title: "Out of the Ashes",
@@ -193,8 +673,83 @@ God come for me`,
     videoThumbnail: outOfTheAshesVideoThumbnail,
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
-    lyrics:
-      "Out of the ashes, we rise again, with hope in our hearts and strength within. Your love has restored us, made us new, in the light of your grace, we stand renewed.",
+    lyrics: `[Verse 1]
+I’ve been through the valley
+Where all dreams go to die
+I’ve watched every plan fail
+Though I strove with all my might
+On Your throne, O God,
+You have heard my plea
+And by Your mercy
+You have rescued me
+
+[Chorus]
+Out of the ashes
+You have lifted me up
+You mend my heart
+With Your unfailing love
+Through all the years
+You’re still making me new
+You fill my mouth
+With songs of praise to You
+Out of the ashes
+
+[Verse 2]
+I trust in You alone
+My sin now crucified
+And here in Your presence
+My soul is satisfied
+You've made me Your own
+And called me by name
+Clothed me with Your grace
+Lord, hear my life proclaim
+ 
+
+[Chorus]
+Out of the ashes
+You have lifted me up
+You mend my heart
+With Your unfailing love
+Through all the years
+You’re still making me new
+You fill my mouth
+With songs of praise to You
+
+[Bridge]
+You give beauty for ashes
+Glory for pain
+Gladness for mourning
+And joy for shame
+Let me be a holy offering
+For You make me soar on eagle’s wings
+
+[Chorus]
+Out of the ashes
+You have lifted me up
+You mend my heart
+With Your unfailing love
+Through all the years
+You’re still making me new
+You fill my mouth
+With songs of praise to You
+
+[Chorus]
+Out of the ashes
+You have lifted me up
+You mend my heart
+With Your unfailing love
+Through all the years
+You’re still making me new
+You fill my mouth
+With songs of praise to You
+Out of the ashes
+Out of the ashes
+
+[Tag]
+I’m amazed by who You are
+I sing praise for all You do
+You make all things new…
+Out of the ashes`,
   },
   {
     title: "Your Story of Love",
@@ -203,8 +758,99 @@ God come for me`,
     videoThumbnail: yourStoryOfLoveVideoThumbnail,
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
-    lyrics:
-      "Your story of love, it never ends, it never fades. Through every trial, through every storm, your love remains.",
+    lyrics: `[Verse 1]
+Before You made anything
+Your Spirit knew mine
+Called me Yours and set Your love on me
+Then by Your perfect plan
+In the fullness of time
+You came down and died to rescue me
+Jesus, my heart You’ve won
+And You’ve only just begun
+ 
+[Chorus]
+You wrote the story of love 
+By Your scars
+One act of grace, 
+so full of glory
+You wrote the song of love 
+In my heart
+And now I’ll sing, 
+For all eternity
+I’m clothed in You,
+and You live in me
+In Your presence, 
+only joy and peace
+In Your story of love
+ 
+[Verse 2]
+Even from the beginning,
+You knew what it would cost
+Somehow You said I was worth the pain
+You took all of my sin
+And nailed it to the cross
+The perfect Lamb of God now slain
+Your justice and mercy
+Satisfied and fully free
+ 
+[Chorus]
+You wrote the story of love 
+By Your scars
+One act of grace, 
+so full of glory
+You wrote the song of love 
+In my heart
+And now I’ll sing, 
+For all eternity
+I’m clothed in You,
+and You live in me
+In Your presence, 
+only joy and peace
+In Your story of love
+ 
+[Bridge]
+No greater love I know
+Than the love You show
+A love that does not fade
+No greater love exists
+Than a love like this
+That Your own life You gave
+And with passion untamed
+ 
+[Chorus]
+You wrote the story of love 
+By Your scars
+One act of grace, 
+so full of glory
+You wrote the song of love 
+In my heart
+And now I’ll sing, 
+For all eternity
+I’m clothed in You,
+and You live in me
+In Your presence, 
+only joy and peace
+
+[Chorus]
+You wrote the story of love 
+By Your scars
+One act of grace, 
+so full of glory
+You wrote the song of love 
+In my heart
+And now I’ll sing, 
+For all eternity
+I’m clothed in You,
+and You live in me
+In Your presence, 
+only joy and peace
+In Your story of love
+
+[Tag]
+You've claimed my heart
+For all eternity
+So now I sing
+Your story of love`,
   },
   {
     title: "Come to Me",
@@ -214,8 +860,82 @@ God come for me`,
     videoUrl: null,
     theme: ["invitation", "comfort", "rest"],
     tone: ["reassuring", "calming", "supportive"],
-    lyrics:
-      "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
+    lyrics: `[Verse 1]
+“Who am I? Is there purpose for my life?”
+These are the questions, that every heart cries
+All alone, you’ve been striving on your own
+You’re lost in the darkness, afraid of the light
+You’re not hidden from My eyes
+Let My truth silence the lies
+
+[Chorus]
+Come to Me
+I know you’re weary
+So let Me give rest to your soul
+Come to Me
+Call on My mercy
+Let My sacrifice make you whole
+You don’t have to be afraid
+The price is already paid
+And I’m longing to set you free
+So come to Me
+
+[Verse 2]
+Dead in sin, that’s where your story begins
+But I had a plan, for you even then
+Crucified, I died to give you new life
+And I would do it, all over again
+For My blood will wash you clean
+Hear My call and just believe
+
+[Chorus]
+Come to Me
+I know you’re weary
+So let Me give rest to your soul
+Come to Me
+Call on My mercy
+Let My sacrifice make you whole
+You don’t have to be afraid
+The price is already paid
+And I’m longing to set you free
+So come to Me
+
+[Bridge]
+My arms are open wide
+See the nail scars in My hands
+All for love I died
+So that you could understand
+I have borne all your shame
+And I call you by name
+
+[Chorus]
+Come to Me
+I know you’re weary
+So let Me give rest to your soul
+Come to Me
+Call on My mercy
+Let My sacrifice make you whole
+You don’t have to be afraid
+The price is already paid
+And I’m longing to set you free...
+
+[Chorus]
+Come to Me
+I know you’re weary
+So let Me give rest to your soul
+Come to Me
+Call on My mercy
+Let My sacrifice make you whole
+You don’t have to be afraid
+The price is already paid
+And I’m longing to set you free
+So come to Me
+
+[Tag]
+Don’t you see
+You can lay those burdens down
+I’m where true life is found
+So come to Me`,
   },
 ];
 
