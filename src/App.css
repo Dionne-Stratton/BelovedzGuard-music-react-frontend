@@ -28,15 +28,24 @@ body {
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
 }
 
-/********************************************** HEADER and NAVIGATION ********************************************/
-
-/* Center the Header */
-#main,
-#logo,
-.site_content,
-.site_content_index #footer {
-  margin-left: 3%;
+/* Base layout setup */
+.App {
+  display: flex;
+  flex-direction: column;
+  transition: margin-right 0.3s ease;
 }
+
+.content {
+  transition: margin-right 0.3s ease;
+}
+
+/* Shift everything when lyrics are open */
+.App.lyrics-open .main-content,
+.App.lyrics-open .SongPlayer {
+  margin-right: 300px; /* adjust if sidebar width changes */
+}
+
+/* Lyrics sidebar */
 
 /* Sets the header background and height */
 header {
@@ -252,6 +261,17 @@ input[type="range"]::-moz-range-track {
   height: 100%;
   background: #fff; /* Fill color */
   transition: width 0.2s ease;
+}
+
+.song-player-lyrics-button {
+  background-color: #52504e;
+  color: #ebe7e2;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .add-pointer {

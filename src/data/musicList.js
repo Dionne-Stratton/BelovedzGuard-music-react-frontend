@@ -32,6 +32,83 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/XD3r501H-KQ?si=vPIadpZv3AvnsdRP",
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
+    lyrics: `Verse 1:
+Lost in the melody
+Of you and me
+Every heartbeat
+Echoes Your name
+I wait for You
+Are You longing too
+All I am
+Is Yours to claim
+
+Chorus:
+God, come for me
+You're where I belong
+You’re my symphony
+That one perfect song
+Lord, Your voice is
+The rhythm of my heart
+And my home is
+Found in Your arms
+God, come for me
+
+Verse 2:
+Forever with You
+Can't come too soon
+My heart aching
+For the warmth of Your touch
+Tears fall again
+Every now and then
+Am I wrong for
+Wanting this so much
+
+Chorus:
+God, come for me
+You're where I belong
+You’re my symphony
+That one perfect song
+Lord, Your voice is
+The rhythm of my heart
+And my home is
+Found in Your arms
+God, come for me
+
+Bridge:
+I wait in the stillness
+To hear You calling me
+I ache for Your presence
+And the day my eyes will see
+The fullness of Your grace
+The glory of Your face
+Oh, Jesus
+
+Chorus:
+God, come for me
+You're where I belong
+You’re my symphony
+That one perfect song
+Lord, Your voice is
+The rhythm of my heart
+And my home is
+Found in Your arms
+
+Chorus:
+God, come for me
+You're where I belong
+You’re my symphony
+That one perfect song
+Lord, Your voice is
+The rhythm of my heart
+And my home is
+Found in Your arms
+God, come for me
+
+Outro:
+Want to be with You
+God come for me
+I want to be with You
+God come for me`,
   },
   {
     title: "Chasing You",
@@ -41,6 +118,8 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/JQP2j5_x19c?si=X21geQlUYagyHPeg",
     theme: ["pursuit", "devotion", "longing"],
     tone: ["passionate", "intense", "yearning"],
+    lyrics:
+      "Chasing you, Lord, with all my heart, in every moment, never apart. Your love is the fire that fuels my soul, in your presence, I am made whole.",
   },
   {
     title: "I Belong to You",
@@ -50,6 +129,8 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/MAXa1gRkQvY?si=EeJ0w8SP-Wh3lEeR",
     theme: ["belonging", "identity", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
+    lyrics:
+      "I belong to you, Lord, I am yours. In your arms, I find my home, in your love, I am never alone.",
   },
   {
     title: "You Rescue Me",
@@ -59,6 +140,8 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/Y-a9eE0qGP4?si=G8HivV5FDUpIZE2s",
     theme: ["rescue", "redemption", "salvation"],
     tone: ["uplifting", "hopeful", "joyful"],
+    lyrics:
+      "You rescue me from the depths of despair, you lift me up and show me you care. In your arms, I find my peace, in your love, my soul's release.",
   },
   {
     title: "Even When",
@@ -68,6 +151,8 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/kEEOsiRXzSM?si=Rmbvfz4tGyOXu5am",
     theme: ["faith", "trust", "perseverance"],
     tone: ["hopeful", "encouraging", "uplifting"],
+    lyrics:
+      "Even when the world is shaking, even when my heart is breaking, I will trust in you, I will trust in you.",
   },
   {
     title: "Where You Are",
@@ -77,6 +162,8 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/rCpcz70h1Kk?si=l-iPJEXUrzDVaJQ4",
     theme: ["presence", "guidance", "comfort"],
     tone: ["reassuring", "calming", "supportive"],
+    lyrics:
+      "Where you are, I want to be, in your presence, Lord, that's where I'm free. In your arms, I find my peace, in your love, my soul's release.",
   },
   {
     title: "Forever Isn't Long Enough",
@@ -85,6 +172,8 @@ const musicList = [
     videoThumbnail: foreverIsntLongEnoughVideoThumbnail,
     theme: ["eternity", "love", "commitment"],
     tone: ["romantic", "nostalgic", "hopeful"],
+    lyrics:
+      "Forever isn't long enough to show you all my love, to prove that I am yours.",
   },
   {
     title: "Won't You Let Me In",
@@ -94,6 +183,8 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/CPwrL0QSVOY?si=5osufl-Yhz_St7kn",
     theme: ["repentant", "calling", "returning"],
     tone: ["prophetic", "longing", "invitation"],
+    lyrics:
+      "Won't you let me in, into your heart, into your life? I am here, waiting with open arms, ready to embrace you.",
   },
   {
     title: "Out of the Ashes",
@@ -102,6 +193,8 @@ const musicList = [
     videoThumbnail: outOfTheAshesVideoThumbnail,
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
+    lyrics:
+      "Out of the ashes, we rise again, with hope in our hearts and strength within. Your love has restored us, made us new, in the light of your grace, we stand renewed.",
   },
   {
     title: "Your Story of Love",
@@ -110,6 +203,8 @@ const musicList = [
     videoThumbnail: yourStoryOfLoveVideoThumbnail,
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
+    lyrics:
+      "Your story of love, it never ends, it never fades. Through every trial, through every storm, your love remains.",
   },
   {
     title: "Come to Me",
@@ -119,6 +214,8 @@ const musicList = [
     videoUrl: null,
     theme: ["invitation", "comfort", "rest"],
     tone: ["reassuring", "calming", "supportive"],
+    lyrics:
+      "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
   },
 ];
 

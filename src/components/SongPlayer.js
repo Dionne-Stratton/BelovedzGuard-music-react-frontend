@@ -9,7 +9,13 @@ import {
 } from "react-icons/fa";
 import { FiShuffle, FiRepeat } from "react-icons/fi";
 
-export default function SongPlayer({ currentIndex, setCurrentIndex, songs }) {
+export default function SongPlayer({
+  currentIndex,
+  setCurrentIndex,
+  songs,
+  setDisplayLyrics,
+  displayLyrics,
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
@@ -88,6 +94,12 @@ export default function SongPlayer({ currentIndex, setCurrentIndex, songs }) {
             />
           )}
           <div className="song-player-title">{currentSong.title}</div>
+          <button
+            className="song-player-lyrics-button"
+            onClick={() => setDisplayLyrics(!displayLyrics)}
+          >
+            Lyrics
+          </button>
         </div>
 
         {/* Center: Controls */}

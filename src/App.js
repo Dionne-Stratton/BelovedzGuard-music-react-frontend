@@ -8,44 +8,82 @@ import Videos from "./views/Videos";
 import Music from "./views/Music";
 import SongPlayer from "./components/SongPlayer";
 import musicList from "./data/musicList";
+import LyricsViewer from "./components/LyricsViewer";
 
 export default function App() {
-  const reversedList = [...musicList].reverse(); // Reverse the musicList to show newest first
-  const [songs, setSongs] = useState(reversedList);
-  const [currentIndex, setCurrentIndex] = useState(null); //currentIndex
+  const reversedList = [...musicList].reverse();
+  const [songs] = useState(reversedList);
+  const [currentIndex, setCurrentIndex] = useState(null);
+  const [displayLyrics, setDisplayLyrics] = useState(false);
 
-  console.log("songs", setSongs);
+  const getCurrentSongLyrics = () => {
+    if (currentIndex !== null && currentIndex < songs.length) {
+      const song = songs[currentIndex];
+      return {
+        title: song.title,
+        body: song.lyrics,
+      };
+    }
+    return null;
+  };
+
   return (
-    <div className="App">
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lemonada&family=Lobster&family=Satisfy&display=swap');
-      </style>
+    <div
+      className="App"
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <div
+        className="content"
+        style={{
+          flex: "1",
+          transition: "all 0.3s ease",
+          marginRight: displayLyrics ? "300px" : "0",
+        }}
+      >
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lemonada&family=Lobster&family=Satisfy&display=swap');
+        </style>
 
-      <HeaderNav />
+        <HeaderNav />
 
-      <Switch>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/music">
-          <Music setCurrentIndex={setCurrentIndex} />
-        </Route>
-        <Route path="/videos">
-          <Videos />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-      <SongPlayer
-        currentIndex={currentIndex}
-        setCurrentIndex={setCurrentIndex}
-        songs={songs}
-      />
+        <Switch>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/music">
+            <Music setCurrentIndex={setCurrentIndex} />
+          </Route>
+          <Route path="/videos">
+            <Videos />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+
+        <SongPlayer
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          songs={songs}
+          setDisplayLyrics={setDisplayLyrics}
+          displayLyrics={displayLyrics}
+        />
+      </div>
+
+      {displayLyrics && (
+        <LyricsViewer
+          getCurrentSongLyrics={getCurrentSongLyrics}
+          setDisplayLyrics={setDisplayLyrics}
+        />
+      )}
     </div>
   );
 }
