@@ -1,7 +1,7 @@
 //music thumbnails
 import outOfTheAshesImage from "../images/coverArt/outOfTheAshes.jpg";
-import wontYouLetMeInImage from "../images/coverArt/wontYouLetMeIn.jpg";
-import foreverIsntLongEnough from "../images/coverArt/foreverIsntLongEnough.jpg";
+import wontYouLetMeInImage from "../images/coverArt/wontYouLetMeIn.png";
+import foreverIsntLongEnough from "../images/coverArt/foreverIsntLongEnough.png";
 import whereYouAreImage from "../images/coverArt/whereYouAre.jpg";
 import yourStoryOfLoveImage from "../images/coverArt/yourStoryOfLove.png";
 import evenWhenImage from "../images/coverArt/evenWhen.jpg";
@@ -10,6 +10,7 @@ import iBelongToYouImage from "../images/coverArt/iBelongtoYou.png";
 import comeToMeImage from "../images/coverArt/comeToMe.png";
 import chasingYouImage from "../images/coverArt/chasingYou.png";
 import holySymphonyImage from "../images/coverArt/holySymphony.png";
+import bowDownImage from "../images/coverArt/bowDown.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -22,8 +23,87 @@ import youRescueMeVideoThumbnail from "../images/videoThumbnails/youRescueMe.jpg
 import iBelongToYouVideoThumbnail from "../images/videoThumbnails/iBelongToYou.jpg";
 import holySymphonyVideoThumbnail from "../images/videoThumbnails/holySymphony.jpg";
 import chasingYouVideoThumbnail from "../images/videoThumbnails/chasingYou.jpg";
+import bowDownVideoThumbnail from "../images/videoThumbnails/bowDown.jpg";
 
 const musicList = [
+  {
+    title: "Bow Down",
+    url: "https://cdn1.suno.ai/a50f0829-6c98-440c-98ac-58fd5f36d90b.webm",
+    thumbnail: bowDownImage,
+    videoThumbnail: bowDownVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/htu-CXpDCk8?si=LqHhwfdxWSfjexD5",
+    theme: ["worship", "reverence", "adoration"],
+    tone: ["reverent", "humble", "devotional"],
+    lyrics: `[Verse 1]
+He sits enthroned in the highest heaven
+ He makes His home in the humbled heart
+ He reigns with justice and never grows weary
+ He mends the broken, gathers near those once far
+This is God Almighty
+ This is God most holy
+
+[Chorus]
+So bow down
+ Come and give Him glory
+ Worship Him
+ Who alone is worthy
+ Lift your hands
+ Come and give a shout of praise
+ To the Lamb
+ He who covers you with grace
+ Receive the mercy
+ Of the King of kings
+
+[Verse 2]
+He came to us and walked upon the earth
+ So great His love, it drove Him to the cross
+ He gave His life to redeem every sinner
+ Claimed for His own those who once were lost
+This is God Almighty
+ This is God most holy
+
+[Chorus]
+So bow down
+ Come and give Him glory
+ Worship Him
+ Who alone is worthy
+ Lift your hands
+ Come and give a shout of praise
+ To the Lamb
+ He who covers you with grace
+ Receive the mercy
+ Of the King of kings
+
+[Bridge]
+One day every knee will bow
+ And every tongue shall confess
+ So come, call upon Him now
+ And trust in His faithfulness
+ He will make you new
+ He has come to rescue
+
+[Chorus]
+So bow down
+ Come and give Him glory
+ Worship Him
+ Who alone is worthy
+ Lift your hands
+ Come and give a shout of praise
+ To the Lamb
+ He who covers you with grace…
+
+[Chorus]
+So bow down
+Come and give Him glory
+Worship Him
+Who alone is worthy
+Lift your hands
+ Come and give a shout of praise
+ To the Lamb
+ He who covers you with grace
+ Receive the mercy
+ Of the King of kings`,
+  },
   {
     title: "Holy Symphony",
     url: "https://cdn1.suno.ai/ae14922f-e1f4-4f8a-94ae-eb4fb730c641.webm",
