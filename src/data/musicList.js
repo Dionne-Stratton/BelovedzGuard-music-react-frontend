@@ -11,6 +11,7 @@ import comeToMeImage from "../images/coverArt/comeToMe.png";
 import chasingYouImage from "../images/coverArt/chasingYou.png";
 import holySymphonyImage from "../images/coverArt/holySymphony.png";
 import bowDownImage from "../images/coverArt/bowDown.png";
+import iAmYoursImage from "../images/coverArt/iAmYours.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -26,6 +27,93 @@ import chasingYouVideoThumbnail from "../images/videoThumbnails/chasingYou.jpg";
 import bowDownVideoThumbnail from "../images/videoThumbnails/bowDown.jpg";
 
 const musicList = [
+  {
+    title: "I Am Yours",
+    url: "https://cdn1.suno.ai/ddbf143b-26c8-4173-a2e8-90fcf0af4873.mp3",
+    thumbnail: iAmYoursImage,
+    videoThumbnail: null,
+    videoUrl: null,
+    theme: ["identity", "belonging", "faith"],
+    tone: ["uplifting", "hopeful", "joyful"],
+    lyrics: `[Verse 1]
+I don’t know why
+Sometimes I drift away
+And there are times
+It hurts too much to pray
+But You reach out Your hand
+And You call me by name
+You wrap me in Your arms
+And You love me just the same
+
+[Chorus]
+‘Cause I am Yours
+And even when I fall
+You call me Yours
+And hold me through it all
+You lift my head
+Said I'm worth dying for
+You tell me who I am
+That I am Yours
+
+[Verse 2]
+I don’t know why
+I listen to the noise
+And there are times
+When I can’t hear Your voice
+But I know You won’t leave
+You have called me by name
+Your love has rescued me
+I’ll never be the same
+
+[Chorus]
+‘Cause I am Yours
+And even when I fall
+You call me Yours
+And hold me through it all
+You lift my head
+Said I'm worth dying for
+You tell me who I am
+That I am Yours
+
+[Bridge]
+So when all I do
+Feels like it’s not enough
+Take me to the cross
+Where You poured out Your love
+When I doubt myself
+Remind me of this truth
+That all that matters
+Is that I’m found in You
+
+[Chorus]
+‘Cause I am Yours
+And even when I fall
+You call me Yours
+And hold me through it all
+You lift my head
+Said I'm worth dying for
+You tell me who I am…
+
+[Chorus]
+‘Cause I am Yours
+And even when I fall
+You call me Yours
+And hold me through it all
+You lift my head
+Said I'm worth dying for
+You tell me who I am
+
+[Outro]
+Remind me, Oh God
+That I am Yours
+Forever Yours
+My Jesus
+Remind me, Oh God
+That I am Yours
+Forever Yours
+My Jesus
+Oh, I am Yours`,
+  },
   {
     title: "Bow Down",
     url: "https://cdn1.suno.ai/a50f0829-6c98-440c-98ac-58fd5f36d90b.webm",
