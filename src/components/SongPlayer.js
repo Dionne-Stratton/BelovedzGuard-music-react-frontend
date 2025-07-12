@@ -101,67 +101,68 @@ export default function SongPlayer({
             Lyrics
           </button>
         </div>
-
-        {/* Center: Controls */}
-        <div className="song-player-controls">
-          <FiShuffle
-            size={15}
-            color="#dedad9"
-            className="add-drop-shadow-thick add-pointer"
-          />
-          <FaStepBackward
-            size={18}
-            color="#dedad9"
-            onClick={prevSong}
-            className="add-drop-shadow-thick add-pointer"
-          />
-          {isPlaying ? (
-            <FaPause
-              size={20}
+        <div className="controls-container">
+          {/* Center: Controls */}
+          <div className="song-player-controls">
+            <FiShuffle
+              size={15}
               color="#dedad9"
-              onClick={togglePlay}
               className="add-drop-shadow-thick add-pointer"
             />
-          ) : (
-            <FaPlay
-              size={20}
+            <FaStepBackward
+              size={18}
               color="#dedad9"
-              onClick={togglePlay}
+              onClick={prevSong}
               className="add-drop-shadow-thick add-pointer"
             />
-          )}
-          <FaStepForward
-            size={18}
-            color="#dedad9"
-            onClick={nextSong}
-            className="add-drop-shadow-thick add-pointer"
-          />
-          <FiRepeat
-            size={15}
-            color="#dedad9"
-            className="add-drop-shadow-thick add-pointer"
-          />
-        </div>
+            {isPlaying ? (
+              <FaPause
+                size={20}
+                color="#dedad9"
+                onClick={togglePlay}
+                className="add-drop-shadow-thick add-pointer"
+              />
+            ) : (
+              <FaPlay
+                size={20}
+                color="#dedad9"
+                onClick={togglePlay}
+                className="add-drop-shadow-thick add-pointer"
+              />
+            )}
+            <FaStepForward
+              size={18}
+              color="#dedad9"
+              onClick={nextSong}
+              className="add-drop-shadow-thick add-pointer"
+            />
+            <FiRepeat
+              size={15}
+              color="#dedad9"
+              className="add-drop-shadow-thick add-pointer"
+            />
+          </div>
 
-        {/* Right: Volume */}
-        <div className="song-player-volume add-drop-shadow-thick">
-          {volume > 0 ? (
-            <FaVolumeUp color="#dedad9" />
-          ) : (
-            <FaVolumeMute color="#dedad9" />
-          )}
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={volume}
-            onChange={(e) => {
-              const vol = parseFloat(e.target.value);
-              setVolume(vol);
-              if (audioRef.current) audioRef.current.volume = vol;
-            }}
-          />
+          {/* Right: Volume */}
+          <div className="song-player-volume add-drop-shadow-thick">
+            {volume > 0 ? (
+              <FaVolumeUp color="#dedad9" />
+            ) : (
+              <FaVolumeMute color="#dedad9" />
+            )}
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={(e) => {
+                const vol = parseFloat(e.target.value);
+                setVolume(vol);
+                if (audioRef.current) audioRef.current.volume = vol;
+              }}
+            />
+          </div>
         </div>
       </div>
 
