@@ -12,6 +12,7 @@ import chasingYouImage from "../images/coverArt/chasingYou.png";
 import holySymphonyImage from "../images/coverArt/holySymphony.png";
 import bowDownImage from "../images/coverArt/bowDown.png";
 import iAmYoursImage from "../images/coverArt/iAmYours.png";
+import unSeenImage from "../images/coverArt/unseen.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -1104,6 +1105,98 @@ Don’t you see
 You can lay those burdens down
 I’m where true life is found
 So come to Me`,
+  },
+  {
+    title: "Unseen | The God Who Sees",
+    url: "https://cdn1.suno.ai/488d7b78-06fc-4c8a-bb52-1681e4abba83.webm",
+    thumbnail: unSeenImage,
+    videoThumbnail: null,
+    videoUrl: null,
+    theme: ["faithfulness", "identity", "purpose"],
+    tone: ["reassuring", "encouraging", "uplifting"],
+    lyrics: `[Verse 1]
+When there's no one who's watching
+And my purpose feels empty
+God, I know
+You're still here with me
+When my impact seems so small,
+And I doubt the point of it all
+God, You alone
+give me faith to believe
+You are the strength of my heart
+Because I know who You are
+
+[Chorus]
+The God who sees
+The God who hears
+Who holds me close
+And bottles my tears
+The God who breathes
+The God who knows
+Who counts the cost
+And calls me faithful
+No matter how things seem
+I am never unseen
+
+[Verse 2]
+When it takes all that I have
+And I'm left with empty hands
+God, I know.
+You are still working
+When everything I have done
+Feels like a song left unsung
+God, You alone
+hear my heart's melody
+And so nothing is in vain
+Because I know that You remain
+
+[Chorus]
+The God who sees
+The God who hears
+Who holds me close
+And bottles my tears
+The God who breathes
+The God who knows
+Who counts the cost
+And calls me faithful
+No matter how things seem
+I am never unseen
+
+[Bridge]
+Even the darkness is as light to Your eyes
+I know Your ears are attentive to my cries
+You search my heart and know all of my ways
+With understanding, You have numbered my days
+Oh, let me see
+Your thoughts of me
+
+[Chorus]
+You're the The God who sees
+The God who hears
+Who holds me close
+And bottles my tears
+The God who breathes
+The God who knows
+Who counts the cost
+And calls me faithful
+No matter how things seem
+
+[Chorus]
+You're the The God who sees
+The God who hears
+Who holds me close
+And bottles my tears
+The God who breathes
+The God who knows
+Who counts the cost
+And calls me faithful
+No matter how things seem
+I am never unseen
+
+[Outro]
+Oh, El Roi
+You are the God who sees
+I am never unseen`,
   },
 ];
 
