@@ -879,7 +879,7 @@ I'm waiting on You
 Come Lord Jesus
 I'm waiting on You`;
 
-export const foeverIsntLongEnough = `[Verse 1]
+export const foreverIsntLongEnough = `[Verse 1]
 From eternity past
 I was on Your mind
 And You loved me even then
