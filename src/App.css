@@ -138,6 +138,27 @@ nav {
   color: #ebe7e2;
 }
 
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.thumbnail-wrapper:hover .play-overlay {
+  opacity: 0.7;
+}
+
 /********************************************** SongPlayer *********************************************/
 
 /* player volume styles */

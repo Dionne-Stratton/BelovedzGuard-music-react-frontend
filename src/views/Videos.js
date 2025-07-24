@@ -16,11 +16,14 @@ export default function Videos() {
             className="video-card"
             onClick={() => setSelectedVideo(song.videoUrl)}
           >
-            <img
-              src={song.videoThumbnail}
-              alt={song.title}
-              className="video-thumbnail"
-            />
+            <div className="thumbnail-wrapper">
+              <img
+                src={song.videoThumbnail}
+                alt={song.title}
+                className="video-thumbnail"
+              />
+              <div className="play-overlay">▶</div>
+            </div>
             <div className="video-title">{song.title}</div>
           </div>
         ))}
