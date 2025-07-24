@@ -89,6 +89,7 @@ export default function SongPlayer({
 
   const closePlayer = () => {
     setCurrentIndex(null);
+    setDisplayLyrics(false);
   };
 
   if (currentIndex === null) return null;
