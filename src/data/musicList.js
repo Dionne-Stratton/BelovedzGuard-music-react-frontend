@@ -14,6 +14,18 @@ import bowDownImage from "../images/coverArt/bowDown.png";
 import iAmYoursImage from "../images/coverArt/iAmYours.png";
 import unSeenImage from "../images/coverArt/unseen.png";
 import ariseImage from "../images/coverArt/Arise.png";
+import allConsumingDesireImage from "../images/coverArt/allConsumingDesire.png";
+// import allToKnowYouImage from "../images/coverArt/allToKnowYou.png";
+// import inAMomentImage from "../images/coverArt/inAMoment.png";
+// import inTheSilenceImage from "../images/coverArt/inTheSilence.png";
+// import iRejoiceInYouImage from "../images/coverArt/iRejoiceInYou.png";
+import lostInYourLoveImage from "../images/coverArt/lostInYourLove.png";
+// import loveHasFoundYouImage from "../images/coverArt/loveHasFoundYou.png";
+// import radianceImage from "../images/coverArt/radiance.png";
+// import theDeclarationImage from "../images/coverArt/theDeclaration.png";
+// import untamedLoveImage from "../images/coverArt/untamedLove.png";
+import worshipWithMyLifeImage from "../images/coverArt/worshipWithMyLife.png";
+// import songOfTheBrideImage from "../images/coverArt/songOfTheBride.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -27,14 +39,265 @@ import iBelongToYouVideoThumbnail from "../images/videoThumbnails/iBelongToYou.j
 import holySymphonyVideoThumbnail from "../images/videoThumbnails/holySymphony.jpg";
 import chasingYouVideoThumbnail from "../images/videoThumbnails/chasingYou.jpg";
 import bowDownVideoThumbnail from "../images/videoThumbnails/bowDown.jpg";
+import allConsumingDesireVideoThumbnail from "../images/videoThumbnails/allConsumingDesire.jpg";
+// import allToKnowYouVideoThumbnail from "../images/videoThumbnails/allToKnowYou.jpg";
+// import comeToMeVideoThumbnail from "../images/videoThumbnails/comeToMe.jpg";
+import iAmYoursVideoThumbnail from "../images/videoThumbnails/iAmYours.jpg";
+// import ariseVideoThumbnail from "../images/videoThumbnails/Arise.jpg";
+// import inAMomentVideoThumbnail from "../images/videoThumbnails/inAMoment.jpg";
+// import inTheSilenceVideoThumbnail from "../images/videoThumbnails/inTheSilence.jpg";
+// import iRejoiceInYouVideoThumbnail from "../images/videoThumbnails/iRejoiceInYou.jpg";
+import lostInYourLoveVideoThumbnail from "../images/videoThumbnails/lostInYourLove.jpg";
+// import loveHasFoundYouVideoThumbnail from "../images/videoThumbnails/loveHasFoundYou.jpg";
+// import radianceVideoThumbnail from "../images/videoThumbnails/radiance.jpg";
+// import theDeclarationVideoThumbnail from "../images/videoThumbnails/theDeclaration.jpg";
+// import untamedLoveVideoThumbnail from "../images/videoThumbnails/untamedLove.jpg";
+import worshipWithMyLifeVideoThumbnail from "../images/videoThumbnails/worshipWithMyLife.jpg";
+// import songOfTheBrideVideoThumbnail from "../images/videoThumbnails/songOfTheBride.jpg";
 
 const musicList = [
+  {
+    title: "Worship With My Life",
+    url: "https://cdn1.suno.ai/81c5a88e-aa63-4ae1-8167-1953d0e409c8.mp3",
+    thumbnail: worshipWithMyLifeImage,
+    videoThumbnail: worshipWithMyLifeVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/vxQ2f_8ZXfQ?si=xTgbf2VgWwiT8C0v",
+    theme: ["worship", "devotion", "surrender"],
+    tone: ["uplifting", "joyful", "intimate"],
+    lyrics: `[Verse 1]
+The more I know You,
+The more I’m in love with You
+As I stand in awe
+The more You’ve given,
+The more I pour out to You
+I surrender all
+And everything You are
+Overwhelms my heart
+
+[Chorus]
+I want to love You
+With all the affection inside
+With every thought that fills my mind
+For You alone are worthy
+I want to know You
+Deepest desire of my soul
+So let me leave all else behind
+And count it all as loss
+To worship with my life
+
+[Verse 2]
+Lord, Your great mercy
+Withholds wrath that we deserved
+And I stand in awe
+Lord, Your grace gives us
+Your righteousness so unearned
+To all those You call
+For everything You do
+I fall down before You
+
+[Chorus]
+I want to love You
+With all the affection inside
+With every thought that fills my mind
+For You alone are worthy
+I want to know You
+Deepest desire of my soul
+So let me leave all else behind
+And count it all as loss
+To worship with my life
+
+[Bridge]
+Oh, Faithful God
+Relentless Love
+You’ve been so good to me
+Come and claim Your throne
+Come make my heart Your home
+Won't You show me Your glory
+
+[Chorus]
+I want to love You
+With all the affection inside
+With every thought that fills my mind
+For You alone are worthy
+I want to know You
+Deepest desire of my soul
+So let me leave all else behind
+And count it all as loss...
+
+[Chorus]
+I want to love You
+With all the affection inside
+With every thought that fills my mind
+For You alone are worthy
+I want to know You
+Deepest desire of my soul
+So let me leave all else behind
+And count it all as loss
+To worship with my life
+
+[Outro]
+I want to worship with my life
+For You alone are worthy, Jesus
+I want to serve You with my life
+For You alone are holy, Jesus`,
+  },
+  {
+    title: "Lost in Your Love",
+    url: "https://cdn1.suno.ai/162909c0-773f-47da-9847-ed5e46816f47.mp3",
+    thumbnail: lostInYourLoveImage,
+    videoThumbnail: lostInYourLoveVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/yr7lO05yxfE?si=QrSyBoUp_d1IfKga",
+    theme: ["love", "devotion", "intimacy"],
+    tone: ["romantic", "intimate", "yearning"],
+    lyrics: `[Verse 1]
+You are the God who answers me
+And from Your throne You hear my cries
+You are the God who comforts me
+And wipes every tear from my eyes
+In the midst of Your presence
+Lord, I ache for more of You
+Oh, can I ever be close enough
+ 
+[Chorus]
+I get lost in Your love
+And all my doubts and fears
+All just fade away
+Lost in Your love
+The dark of the night hides
+In the light of glorious day
+And the sorrows that I carry
+Slowly start to fade
+When I call Your name
+And get lost in Your love
+ 
+[Verse 2]
+You are the God who strengthens me
+Your Word the rock on which I stand
+You are the God who searches me
+And all my heart is in Your hands
+This desire consumes me
+Lord, I am starving for You
+Oh, could I ever know You enough
+ 
+[Chorus]
+I get lost in Your love
+And all my doubts and fears
+All just fade away
+Lost in Your love
+The dark of the night hides
+In the light of glorious day
+And the sorrows that I carry
+Slowly start to fade
+When I call Your name
+And get lost in Your love
+ 
+[Bridge]
+Thank You, God, for loving me
+And drawing me to Your side
+Help me, God, to prove my love
+With every moment of my life
+Oh, I am Yours
+For long past the end of time
+ 
+[Chorus]
+I get lost in Your love
+And all my doubts and fears 
+All just fade away
+Lost in Your love
+The dark of the night hides 
+In the light of glorious day
+And the sorrows that I carry
+Slowly start to fade
+When I call Your name...
+
+[Chorus]
+I get lost in Your love
+And all my doubts and fears 
+All just fade away
+Lost in Your love
+The dark of the night hides 
+In the light of glorious day
+And the sorrows that I carry
+Slowly start to fade
+When I call Your name
+And get lost in Your love`,
+  },
+  {
+    title: "All Consuming Desire",
+    url: "https://cdn1.suno.ai/b294b37f-56c7-4c15-bd25-b4bfb33fec5c.mp3",
+    thumbnail: allConsumingDesireImage,
+    videoThumbnail: allConsumingDesireVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/G6CP4_cqJPk?si=ury-4SHpb9tvR6br",
+    theme: ["desire", "longing", "worship"],
+    tone: ["passionate", "intense", "devotional"],
+    lyrics: `[Verse 1]
+I can hear You in the quiet
+I can’t explain it
+The feeling that stirs my heart
+There’s nothing else quite like it
+I can’t contain it
+Feels like it’s tearing me apart
+There’s a part of me that wants to run away
+But I find myself on my knees as I pray
+ 
+[Chorus]
+Take me up in Your arms
+Your presence all I seek
+Take me up in Your love
+Let the pull of the world grow weak
+And with the weight of light
+Fill my soul with fire
+Oh, God of glory
+All consuming desire
+ 
+[Verse 2]
+I can feel You so near me
+I don’t understand it
+But it’s all I want somehow
+Your call comes through so clearly
+I can’t deny it
+I’ll follow You anywhere right now
+And the closer I get I find that I’m wanting more
+Oh, this feels like all that I was made for
+ 
+[Chorus]
+Take me up in Your arms
+Your presence all I seek
+Take me up in Your love
+Let the pull of the world grow weak
+And with the weight of light
+Fill my soul with fire
+Oh, God of glory
+All consuming desire
+
+[Bridge]
+Can a heart break from endless longing
+Could I explode with this love
+I’d rain down showers of light
+But would that even be enough
+Oh God, You overwhelm me
+You're everything I need
+ 
+[Chorus]
+Take me up in Your arms
+Your presence all I seek
+Take me up in Your love
+Let the pull of the world grow weak
+And with the weight of light
+Fill my soul with fire
+Oh, God of glory
+All consuming desire
+
+[Outro]
+Oh, Jesus
+You are my desire`,
+  },
   {
     title: "I Am Yours",
     url: "https://cdn1.suno.ai/ddbf143b-26c8-4173-a2e8-90fcf0af4873.mp3",
     thumbnail: iAmYoursImage,
-    videoThumbnail: null,
-    videoUrl: null,
+    videoThumbnail: iAmYoursVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/mvlc3_OhkQw?si=8Jmz_-5O28vLr8Ru",
     theme: ["identity", "belonging", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
     lyrics: `[Verse 1]
@@ -926,6 +1189,7 @@ Out of the ashes`,
     url: "https://cdn1.suno.ai/774c53cb-35ee-4249-84e8-462bb3e0143d.webm",
     thumbnail: yourStoryOfLoveImage,
     videoThumbnail: yourStoryOfLoveVideoThumbnail,
+    videoUrl: "https://www.youtube.com/embed/Z1MnCVr3Pn0?si=KmsXyj0BtlauXRa8",
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
     lyrics: `[Verse 1]

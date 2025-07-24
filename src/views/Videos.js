@@ -4,7 +4,7 @@ import musicList from "../data/musicList";
 export default function Videos() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const videoSongs = musicList.filter((song) => song.videoUrl); // Only include songs with videoUrl
+  const videoSongs = musicList.filter((song) => song.videoUrl).reverse(); // Only include songs with videoUrl
 
   return (
     <div className="videos">
