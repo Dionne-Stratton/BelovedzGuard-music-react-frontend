@@ -149,10 +149,15 @@ nav {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
-  color: white;
+  color: rgb(255, 255, 255);
+  /* text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); */
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
+}
+
+#shadow {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .thumbnail-wrapper:hover .play-overlay {

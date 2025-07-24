@@ -22,7 +22,9 @@ export default function Videos() {
                 alt={song.title}
                 className="video-thumbnail"
               />
-              <div className="play-overlay">▶</div>
+              <div id="shadow" className="play-overlay">
+                ▶
+              </div>
             </div>
             <div className="video-title">{song.title}</div>
           </div>
