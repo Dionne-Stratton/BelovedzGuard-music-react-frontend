@@ -21,6 +21,7 @@ export default function SongPlayer({
   const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
   const currentSong = songs[currentIndex];
+  const [repeatOne, setRepeatOne] = useState(false);
 
   const nextSong = () => {
     setCurrentIndex((prev) => (prev + 1) % songs.length);
@@ -77,6 +78,13 @@ export default function SongPlayer({
         audioRef.current.play();
       }
     }, 0);
+  };
+
+  const handleRepeatOne = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
   };
 
   if (currentIndex === null) return null;
@@ -136,11 +144,29 @@ export default function SongPlayer({
               onClick={nextSong}
               className="add-drop-shadow-thick add-pointer"
             />
-            <FiRepeat
-              size={15}
-              color="#dedad9"
-              className="add-drop-shadow-thick add-pointer"
-            />
+            <div style={{ position: "relative", display: "inline-block" }}>
+              <FiRepeat
+                size={15}
+                onClick={() => setRepeatOne(!repeatOne)}
+                title={repeatOne ? "Repeat One" : "Repeat All"}
+                className={`add-drop-shadow-thick add-pointer ${
+                  repeatOne ? "active" : ""
+                }`}
+              />
+              {repeatOne && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "-0.4em",
+                    right: "-0.4em",
+                    fontSize: "0.6em",
+                    pointerEvents: "none", // so it doesn’t block clicks
+                  }}
+                >
+                  1
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Right: Volume */}
@@ -197,7 +223,7 @@ export default function SongPlayer({
         ref={audioRef}
         src={currentSong.url}
         onTimeUpdate={handleTimeUpdate}
-        onEnded={handleEnded}
+        onEnded={repeatOne ? handleRepeatOne : handleEnded}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />

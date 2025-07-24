@@ -13,6 +13,7 @@ import holySymphonyImage from "../images/coverArt/holySymphony.png";
 import bowDownImage from "../images/coverArt/bowDown.png";
 import iAmYoursImage from "../images/coverArt/iAmYours.png";
 import unSeenImage from "../images/coverArt/unseen.png";
+import ariseImage from "../images/coverArt/Arise.png";
 
 //video thumbnails
 import evenWhenVideoThumbnail from "../images/videoThumbnails/evenWhen.jpg";
@@ -1197,6 +1198,94 @@ I am never unseen
 Oh, El Roi
 You are the God who sees
 I am never unseen`,
+  },
+  {
+    title: "Arise | Song of the Groom",
+    url: "https://cdn1.suno.ai/460859f6-3944-4f3d-9bdd-3740fbbca11d.webm",
+    thumbnail: ariseImage,
+    videoThumbnail: null,
+    videoUrl: null,
+    theme: ["love", "devotion", "calling"],
+    tone: ["passionate", "intimate", "worshipful"],
+    lyrics: `[Verse 1]
+My beloved is a dove
+In the clefts of the rock
+There she finds her refuge
+In the shadow of the cross
+I hold her by the hand
+And draw her ever near
+My grace is where she stands
+As I call for all to hear
+
+[Chorus]
+Arise now, my love
+My lovely one, come
+Come away with Me
+Let Me set you free
+Open your eyes now
+See your past undone
+And here in My arms
+Find who you’ve become
+My beloved bride…
+Arise
+
+[Verse 2]
+My beloved is a fountain
+A never ending spring
+Drawn from the waters of life
+She is washed and made clean
+I claim her as My own
+I have set her apart
+She’s purchased by My blood
+This is the cry of My heart
+
+[Chorus]
+Arise now, my love
+My lovely one, come
+Come away with Me
+Let Me set you free
+Open your eyes now
+See your past undone
+And here in My arms
+Find who you’ve become
+My beloved bride…
+Arise
+
+[Bridge]
+Let me hear your voice
+Let me see your face
+You are my delight
+My chosen dwelling place
+You have captured me
+I am yours eternally
+
+[Chorus]
+Arise now, my love
+My lovely one, come
+Come away with Me
+Let Me set you free
+Open your eyes now
+See your past undone
+And here in My arms
+Find who you’ve become
+My beloved bride…
+
+[Chorus]
+Arise now, my love
+My lovely one, come
+Come away with Me
+Let Me set you free
+Open your eyes now
+See your past undone
+And here in My arms
+Find who you’ve become
+My beloved bride…
+Arise
+
+[Tag]
+I am yours and you are Mine
+My beloved, My bride
+So arise…`,
   },
 ];
 

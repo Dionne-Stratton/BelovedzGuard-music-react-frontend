@@ -280,6 +280,10 @@ input[type="range"]::-moz-range-track {
   transition: color 0.2s ease;
 }
 
+.song-player-controls .active {
+  background-color: #41321f;
+}
+
 /********************************************** Home page *********************************************/
 .home {
   padding: 3vh;
