@@ -87,9 +87,17 @@ export default function SongPlayer({
     }
   };
 
+  const closePlayer = () => {
+    setCurrentIndex(null);
+  };
+
   if (currentIndex === null) return null;
   return (
     <div className="song-player">
+      {/* //add a close button for entire player */}
+      <button onClick={closePlayer} className="close-player-button">
+        ✖
+      </button>
       {/* Main control bar */}
       <div className="song-player-control-bar">
         {/* Left: Thumbnail + Title */}
