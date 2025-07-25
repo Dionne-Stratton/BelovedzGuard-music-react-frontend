@@ -285,7 +285,7 @@ const musicList = [
     lyrics: comeToMe,
   },
   {
-    title: "Unseen | The God Who Sees",
+    title: "Unseen",
     url: "https://cdn1.suno.ai/488d7b78-06fc-4c8a-bb52-1681e4abba83.webm",
     thumbnail: songThumbnails["unseen"],
     videoThumbnail: videoThumbnails["unseen"],
@@ -295,7 +295,7 @@ const musicList = [
     lyrics: unSeen,
   },
   {
-    title: "Arise | Song of the Groom",
+    title: "Arise",
     url: "https://cdn1.suno.ai/460859f6-3944-4f3d-9bdd-3740fbbca11d.webm",
     thumbnail: songThumbnails["Arise"],
     videoThumbnail: videoThumbnails["Arise"],
