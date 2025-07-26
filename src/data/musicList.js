@@ -299,7 +299,7 @@ const musicList = [
     url: "https://cdn1.suno.ai/460859f6-3944-4f3d-9bdd-3740fbbca11d.webm",
     thumbnail: songThumbnails["Arise"],
     videoThumbnail: videoThumbnails["Arise"],
-    videoUrl: null,
+    videoUrl: "https://www.youtube.com/embed/4r0g_xjdFp4?si=2n_Wr3lMVnHlB_9g",
     theme: ["love", "devotion", "calling"],
     tone: ["passionate", "intimate", "worshipful"],
     lyrics: arise,
