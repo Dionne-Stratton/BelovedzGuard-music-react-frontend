@@ -447,6 +447,179 @@ You can lay those burdens down
 I’m where true life is found
 So come to Me`;
 
+export const comeWorshipTheKing = `[Verse 1]
+See the Lord, God Almighty
+With justice and truth He reigns
+See the Lord, righteous and holy
+His glory all the earth proclaims
+See Him high and lifted up
+He who has made all things
+Robed in splendor and majesty
+Of Him, all the angels sing
+
+[Chorus]
+Oh, come, let us bow down
+And worship at His feet
+Oh, come, lay your life down
+As a holy offering
+For our God is great
+And greatly to be praised
+For He is worthy
+And in Him, we are raised
+So now and forever, let us sing
+And worship the King
+
+[Verse 2]
+See the Lamb, pure and holy
+Slain to cover all our sin
+See the Lamb, nailed to a tree
+In triumph, He rose again
+See the wonder of His love
+For those He has redeemed
+A throne of mercy and grace
+Salvation to those who believe
+
+[Chorus]
+Oh, come, let us bow down
+And worship at His feet
+Oh, come, lay your life down
+As a holy offering
+For our God is great
+And greatly to be praised
+For He is worthy
+And in Him, we are raised
+So now and forever, let us sing
+And worship the King
+
+[Bridge]
+All of heaven cries out
+Holy! holy! holy!
+Let all God’s people shout
+You alone are worthy!
+King of kings, Lord of lords
+Our God reigns forevermore
+One day we’ll hear that
+ heavenly sound
+Yet let Your voice be heard 
+even now
+
+[Chorus]
+Oh, come, let us bow down
+And worship at His feet
+Oh, come, lay your life down
+As a holy offering
+For our God is great
+And greatly to be praised
+For He is worthy
+And in Him, we are raised
+So now and forever, let us sing…
+
+[Chorus]
+Oh, come, let us bow down
+And worship at His feet
+Oh, come, lay your life down
+As a holy offering
+For our God is great
+And greatly to be praised
+For He is worthy
+And in Him, we are raised
+So now and forever, let us sing
+And worship the King
+
+[Outro]
+Oh, come, let us adore Him
+Oh, come, on your knees before Him
+Oh, come, let us adore Him
+Christ the Lord
+
+Oh, come, let us adore Him
+Oh, come, on your knees before Him
+Oh, come, let us adore Him
+Christ the Lord
+
+Oh, come, let us adore Him
+Oh, come, on your knees before Him
+Oh, come, let us adore Him
+Christ the Lord
+
+Come, worship the King!`;
+
+export const diveIntoYourLove = `[Verse 1]
+Lord, You are my heart’s desire
+Draw me closer to You
+That I may stand in Your presence
+Holy and made new
+It’s You who makes me blameless
+By Your mercy and Your grace
+It’s You who gives this longing
+Oh, just to see Your face
+ 
+[Chorus]
+I want to dive into Your love
+Let Your Spirit flow through me
+I want to be so lost in You
+That I find myself complete
+I want to know Your word
+To take hold of this truth
+But more than all the world
+Oh God, I want You
+ 
+[Verse 2]
+Lord, You are my soul’s passion
+Consuming all of me
+So my life is all about You
+Each thought, and word, and deed
+It’s You alone who called me
+Poured Your love into my heart
+It’s You who gives this longing
+Oh, just to know who You are
+ 
+[Chorus]
+I want to dive into Your love
+Let Your Spirit flow through me
+I want to be so lost in You
+That I find myself complete
+I want to know Your word
+To take hold of this truth
+But more than all the world
+Oh God, I want You
+
+[Bridge]
+Fill my soul with Your fire
+And keep it burning bright
+Help me to hold on to You
+Even through the darkest night
+Fill my soul with Your fire
+And keep it burning bright
+Help me to hold on to You
+Even through the darkest night
+And draw me to Your side
+
+[Chorus]
+I want to dive into Your love
+Let Your Spirit flow through me
+I want to be so lost in You
+That I find myself complete
+I want to know Your word
+To take hold of this truth
+But more than all the world...
+
+[Chorus]
+I want to dive into Your love
+Let Your Spirit flow through me
+I want to be so lost in You
+That I find myself complete
+I want to know Your word
+To take hold of this truth
+But more than all the world
+Oh God, I want You
+
+[Outro]
+Fill me with Your love
+Oh God, I want You
+Show me who You are
+Oh, God, I want You`;
+
 export const evenWhen = `[Verse 1]
 Even when the silence lingers
 And I’ve prayed a thousand times
@@ -590,6 +763,171 @@ I’ll still be praising only You.
 Oh, Jesus
 For the depths of Your love`;
 
+export const giveMeMoreOfYou = `[Verse 1]
+Lord, here I come before You
+Seeking Your face and Your will
+For the more I come to know You
+The deeper I long for You still
+So fill me with Your power
+To change the world somehow
+And fill me with Your presence
+I am calling to You now
+
+[Chorus]
+I want more of You, Lord
+More of Your Spirit in me
+So make me more like You
+And who You want me to be
+I want to know You more
+And live a life that’s holy
+I offer all I am
+To belong to You only
+You’re all I’m living for
+So give me more of You
+
+[Verse 2]
+Lord, here I come to follow
+Help me to take up my cross
+To live completely for You
+Knowing Your love is worth the cost
+So keep me focused on You
+And surrendered every day
+I want all You want for me
+And this is what I pray
+
+[Chorus]
+I want more of You, Lord
+More of Your Spirit in me
+So make me more like You
+And who You want me to be
+I want to know You more
+And live a life that’s holy
+I offer all I am
+To belong to You only
+You’re all I’m living for
+So give me more of You
+
+[Bridge]
+Fill me with Your peace and joy
+Your love, Lord, and Your grace
+Make me be a light for You
+Reflected from Your face
+Fill me with Your peace and joy
+Your love, Lord, and Your grace
+Make me be a light for You
+Reflected from Your face
+My Jesus
+
+[Chorus]
+I want more of You, Lord
+More of Your Spirit in me
+So make me more like You
+And who You want me to be
+I want to know You more
+And live a life that’s holy
+I offer all I am
+To belong to You only
+
+[Chorus]
+I want more of You, Lord
+More of Your Spirit in me
+So make me more like You
+And who You want me to be
+I want to know You more
+And live a life that’s holy
+I offer all I am
+To belong to You only
+You’re all I’m living for
+So give me more of You
+
+[Tag]
+Oh, my God
+Give me more of You
+Lord Jesus
+Give me more of You`;
+
+export const heavenIsYou = `[Verse 1]
+Lord, Your promise is the peace of my soul
+Lord, Your voice is my sanity
+Lord, Your presence is the joy of my heart
+Lord, Your sacrifice has set me free
+And all I want is to be wholly Yours
+With all my heart, You are the one I adore
+
+[Chorus]
+You are the Lord, 
+God Almighty
+You are the King, 
+just and holy
+You are my hope
+And I’m trusting in You
+In Your love, 
+You have sought me
+By Your blood, 
+You have bought me
+You’re all I know
+And Lord, heaven is You
+
+[Verse 2]
+Lord, it’s by Your grace that You make me new
+Lord, Your word is light to my feet
+Lord, in wonder, I sing praises to You
+Lord, I worship You with all of me
+And all I want is to be wholly Yours
+With all my heart, You are the one I adore
+
+[Chorus]
+You are the Lord, 
+God Almighty
+You are the King, 
+just and holy
+You are my hope
+And I’m trusting in You
+In Your love, 
+You have sought me
+By Your blood, 
+You have bought me
+You’re all I know
+And Lord, heaven is You
+
+[Bridge]
+All the fullness of Your presence
+This is what heaven means
+To stand before You holy
+Because we have been redeemed
+And one day, I will bow before Your throne
+To worship You, for You are God alone
+
+[Chorus]
+You are the Lord, 
+God Almighty
+You are the King, 
+just and holy
+You are my hope
+And I’m trusting in You
+In Your love, 
+You have sought me
+By Your blood, 
+You have bought me
+You’re all I know
+And Lord, heaven is You
+
+[Chorus]
+You are the Lord, 
+God Almighty
+You are the King, 
+just and holy
+You are my hope
+And I’m trusting in You
+In Your love, 
+You have sought me
+By Your blood, 
+You have bought me
+You’re all I know
+And Lord, heaven is You..
+
+Lord, heaven is You`;
+
 export const holySymphony = `[Verse 1]
 Lost in the melody
 Of you and me
@@ -667,6 +1005,84 @@ Want to be with You
 God come for me
 I want to be with You
 God come for me`;
+
+export const howYouLoveMe = `[Verse 1]
+ Life can seem so hard
+When I too often feel alone
+But I know that You are with me
+For You have made me Your own
+And this is the one thing
+That I always think about
+But this is the one thing
+That still escapes me somehow
+ 
+[Chorus]
+How You love me
+Like a fire in the soul
+How You see me
+Like I’ve always been whole
+How You want me
+And You have called me by name
+Oh, I can’t forget
+You’re like an all consuming flame
+ 
+[Verse 2]
+I discovered joy
+When You walked into my heart
+I knew it was love
+And that we’d never be apart
+So though the clouds come
+And all I can see is rain
+I know that You will show me
+In the midst of all my pain
+ 
+[Chorus]
+How You love me
+Like a fire in the soul
+How You see me
+Like I’ve always been whole
+How You want me
+And You have called me by name
+Oh, I can’t forget
+You’re like an all consuming flame
+ 
+ [Bridge]
+In every moment
+I know You are thinking of me
+Thoughts of love that are without end
+And every moment
+You passionately pursue me
+Every day, Lord, remind me again
+ 
+[Chorus]
+How You love me
+Like a fire in the soul
+How You see me
+Like I’ve always been whole
+How You want me
+And You have called me by name
+Oh, I can’t forget
+You’re like an all consuming flame
+
+[Chorus]
+How You love me
+Like a fire in the soul
+How You see me
+Like I’ve always been whole
+How You want me
+And You have called me by name
+Oh, I can’t forget
+You’re like an all consuming flame
+
+[Chorus]
+How You love me
+Like a fire in the soul
+How You see me
+Like I’ve always been whole
+How You want me
+And You have called me by name
+Oh, I can’t forget
+You’re like an all consuming flame`;
 
 export const iAmYours = `[Verse 1]
 I don’t know why
@@ -883,6 +1299,167 @@ It will happen in a moment
 And sooner than you realize...
 
 oh, My beloved bride`;
+
+export const inJesusName = `[Verse 1]
+God, You are almighty
+And You can do all things
+You are my righteousness
+With healing in Your wings
+So I call out to You
+I know You hear my cries
+Lord, I will cling to You
+And I will lift my eyes
+
+[Chorus]
+I come before You
+Lifting up holy hands
+Lord, I adore You
+On Your Word, I will stand
+God, You are faithful
+So help me to believe
+Willing and able
+By faith, now I receive
+Your goodness I proclaim
+In Jesus’ name
+
+[Verse 2]
+Lord, You bore my sin
+And made me right with You
+You promise healing
+By every stripe and wound
+And there on the cross
+You made a living way
+Now I come boldly
+With confidence, I pray
+
+[Chorus]
+I come before You
+Lifting up holy hands
+Lord, I adore You
+On Your Word, I will stand
+God, You are faithful
+So help me to believe
+Willing and able
+By faith, now I receive
+Your goodness I proclaim…
+In Jesus’ name
+
+[Bridge]
+I thank You that You hear me
+And the answer’s on its way
+You’re revealing Your glory
+So I lift my voice in praise
+And strengthen my faith as I wait
+
+[Chorus]
+I come before You
+Lifting up holy hands
+Lord, I adore You
+On Your Word, I will stand
+God, You are faithful
+So help me to believe
+Willing and able
+By faith, now I receive
+Your goodness I proclaim
+In Jesus’ name
+
+[Chorus]
+I come before You
+Lifting up holy hands
+Lord, I adore You
+On Your Word, I will stand
+God, You are faithful
+So help me to believe
+Willing and able
+By faith, now I receive
+Your goodness I proclaim
+In Jesus’ name
+
+[Outro]
+You have saved me
+You have healed
+I receive it now by faith
+You have heard me
+You have answered me
+All in Jesus’ name`;
+
+export const iMissYou = `[Verse 1]
+You’re so busy doing
+When will you just simply be
+oh...
+I’m waiting to hold you
+You’re so busy thinking
+When will you just learn to see
+oh...
+I’m aching to show you
+
+Close your eyes, 
+If you try
+You can hear Me, 
+singing
+ 
+[Chorus]
+I miss you
+the place I held in your heart
+I miss you
+the way we couldn’t be apart
+I used to be 
+all that you could think about
+I miss you,
+turn your heart back to Me now
+ 
+[Verse 2]
+You’re so busy talking
+When will you just stop to hear
+oh...
+And listen with your heart
+You’re so busy searching
+But you know I’m always near
+oh...
+We are never apart
+
+Close your eyes,
+If you try
+You can hear Me 
+singing
+ 
+[Chorus]
+I miss you
+the place I held in your heart
+I miss you
+the way we couldn’t be apart
+I used to be 
+all that you could think about
+I miss you,
+turn your heart back to Me now
+ 
+[Bridge]
+Don’t forget that I’m right here, always
+Don’t forget that I’m closer than your next breath
+Oh, You know My love for you will never end
+Here I’m asking for your love again
+ 
+[Chorus]
+I miss you
+the place I held in your heart
+I miss you
+the way we couldn’t be apart
+I used to be 
+all that you could think about
+I miss you,
+turn your heart back to Me now
+
+[Chorus]
+I miss you
+the place I held in your heart
+I miss you
+the way we couldn’t be apart
+I used to be 
+all that you could think about
+I miss you,
+turn your heart back to Me now
+
+I miss you`;
 
 export const inTheSilence = `[Verse 1]
 When I don’t know where I’m headed
