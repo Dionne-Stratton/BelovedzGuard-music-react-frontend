@@ -92,7 +92,7 @@ const musicList = [
     lyrics: howYouLoveMe,
   },
   {
-    itle: "Dive into Your Love",
+    title: "Dive into Your Love",
     url: "https://cdn1.suno.ai/98dcb92b-13ef-4b4d-9412-b6b1e0f4211c.mp3",
     thumbnail: songThumbnails["diveIntoYourLove"],
     videoThumbnail: videoThumbnails["diveIntoYourLove"],
