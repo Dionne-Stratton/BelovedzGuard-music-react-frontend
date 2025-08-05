@@ -377,6 +377,11 @@ input[type="range"]::-moz-range-track {
 
 /********************************************** Music page ********************************************/
 
+.perspective-dropdown {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+}
 .song-card {
   margin: 2rem;
   height: 15rem;

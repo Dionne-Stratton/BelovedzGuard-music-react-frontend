@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
@@ -12,17 +12,24 @@ import LyricsViewer from "./components/LyricsViewer";
 
 export default function App() {
   const reversedList = [...musicList].reverse();
-  const [songs] = useState(reversedList);
-  const [currentIndex, setCurrentIndex] = useState(null);
+  const [songs, setSongs] = useState(reversedList);
+  const [currentSongId, setCurrentSongId] = useState(null);
   const [displayLyrics, setDisplayLyrics] = useState(false);
 
+  useEffect(() => {
+    console.log("Current Song ID:", currentSongId);
+    console.log("Songs:", songs);
+  }, [currentSongId, songs]);
+
   const getCurrentSongLyrics = () => {
-    if (currentIndex !== null && currentIndex < songs.length) {
-      const song = songs[currentIndex];
-      return {
-        title: song.title,
-        body: song.lyrics,
-      };
+    if (currentSongId) {
+      const song = songs.find((s) => s.id === currentSongId);
+      if (song) {
+        return {
+          title: song.title,
+          body: song.lyrics,
+        };
+      }
     }
     return null;
   };
@@ -59,7 +66,11 @@ export default function App() {
             <About />
           </Route>
           <Route path="/music">
-            <Music setCurrentIndex={setCurrentIndex} />
+            <Music
+              setCurrentSongId={setCurrentSongId}
+              setSongs={setSongs}
+              songs={songs}
+            />
           </Route>
           <Route path="/videos">
             <Videos />
@@ -70,8 +81,8 @@ export default function App() {
         </Switch>
 
         <SongPlayer
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
+          currentSongId={currentSongId}
+          setCurrentSongId={setCurrentSongId}
           songs={songs}
           setDisplayLyrics={setDisplayLyrics}
           displayLyrics={displayLyrics}

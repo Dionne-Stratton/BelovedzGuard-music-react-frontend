@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import songs from "../data/musicList";
 
-export default function SongList({ setCurrentIndex }) {
+export default function SongList({ setCurrentSongId, setSongs }) {
+  const reversedList = [...songs].reverse();
+  const [filteredSongs, setFilteredSongs] = useState(reversedList);
+  const changePerspective = (perspective) => {
+    const filteredSongs = reversedList.filter(
+      (song) => song.perspective === perspective || perspective === "all"
+    );
+    setFilteredSongs(filteredSongs);
+  };
+
+  console.log("reversedList:", reversedList);
+  console.log("filteredSongs:", filteredSongs);
+  const onClick = (id) => {
+    setCurrentSongId(id);
+    setSongs(filteredSongs);
+  };
+
   return (
-    <div className="song-list">
-      {songs
-        .slice() // create a copy
-        .reverse() // newest first
-        .map((song, index) => (
+    <>
+      <div className="perspective-dropdown">
+        <select onChange={(e) => changePerspective(e.target.value)}>
+          <option value="all">All Songs</option>
+          <option value="to Jesus">To Jesus</option>
+          <option value="from Jesus">From Jesus</option>
+          <option value="about Jesus">About Jesus</option>
+        </select>
+      </div>
+      <div className="song-list">
+        {filteredSongs?.map((song) => (
           <div
-            key={index}
+            key={song.id}
             className="song-card"
-            onClick={() => setCurrentIndex(index)} // Set the current index when clicked
+            onClick={() => onClick(song.id)}
           >
             <div className="thumbnail-wrapper">
               <img
@@ -24,6 +46,7 @@ export default function SongList({ setCurrentIndex }) {
             <caption className="song-title">{song.title}</caption>
           </div>
         ))}
-    </div>
+      </div>
+    </>
   );
 }

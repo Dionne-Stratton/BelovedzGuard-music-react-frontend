@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import {
   FaStepBackward,
   FaStepForward,
@@ -10,8 +10,8 @@ import {
 import { FiShuffle, FiRepeat } from "react-icons/fi";
 
 export default function SongPlayer({
-  currentIndex,
-  setCurrentIndex,
+  currentSongId,
+  setCurrentSongId,
   songs,
   setDisplayLyrics,
   displayLyrics,
@@ -19,16 +19,25 @@ export default function SongPlayer({
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
-  const audioRef = useRef(null);
-  const currentSong = songs[currentIndex];
   const [repeatOne, setRepeatOne] = useState(false);
 
+  const audioRef = useRef(null);
+  const currentSong = songs.find((song) => song.id === currentSongId);
+  const currentIndex = useMemo(
+    () => songs.findIndex((song) => song.id === currentSongId),
+    [songs, currentSongId]
+  );
+
   const nextSong = () => {
-    setCurrentIndex((prev) => (prev + 1) % songs.length);
+    if (songs.length === 0 || currentIndex === -1) return;
+    const nextIndex = (currentIndex + 1) % songs.length;
+    setCurrentSongId(songs[nextIndex].id);
   };
 
   const prevSong = () => {
-    setCurrentIndex((prev) => (prev - 1 + songs.length) % songs.length);
+    if (songs.length === 0 || currentIndex === -1) return;
+    const prevIndex = (currentIndex - 1 + songs.length) % songs.length;
+    setCurrentSongId(songs[prevIndex].id);
   };
 
   const togglePlay = () => {
@@ -53,16 +62,15 @@ export default function SongPlayer({
   };
 
   useEffect(() => {
-    if (audioRef.current && currentIndex !== null) {
+    if (audioRef.current && currentSongId !== null) {
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
           console.log("Autoplay blocked:", error);
-          // You could optionally setIsPlaying(false) here
         });
       }
     }
-  }, [currentIndex]);
+  }, [currentSongId]);
 
   const handleTimeUpdate = () => {
     const audio = audioRef.current;
@@ -71,13 +79,9 @@ export default function SongPlayer({
   };
 
   const handleEnded = () => {
+    if (songs.length === 0 || currentIndex === -1) return;
     const nextIndex = (currentIndex + 1) % songs.length;
-    setCurrentIndex(nextIndex);
-    setTimeout(() => {
-      if (audioRef.current) {
-        audioRef.current.play();
-      }
-    }, 0);
+    setCurrentSongId(songs[nextIndex].id);
   };
 
   const handleRepeatOne = () => {
@@ -88,20 +92,19 @@ export default function SongPlayer({
   };
 
   const closePlayer = () => {
-    setCurrentIndex(null);
+    setCurrentSongId(null);
     setDisplayLyrics(false);
   };
 
-  if (currentIndex === null) return null;
+  if (currentSongId === null || !currentSong) return null;
+
   return (
     <div className="song-player">
-      {/* //add a close button for entire player */}
       <button onClick={closePlayer} className="close-player-button">
         ✖
       </button>
-      {/* Main control bar */}
+
       <div className="song-player-control-bar">
-        {/* Left: Thumbnail + Title */}
         <div className="song-player-thumbnail-title">
           {currentSong.thumbnail && (
             <img
@@ -118,8 +121,8 @@ export default function SongPlayer({
             Lyrics
           </button>
         </div>
+
         <div className="controls-container">
-          {/* Center: Controls */}
           <div className="song-player-controls">
             <FiShuffle
               size={15}
@@ -169,7 +172,7 @@ export default function SongPlayer({
                     top: "-0.4em",
                     right: "-0.4em",
                     fontSize: "0.6em",
-                    pointerEvents: "none", // so it doesn’t block clicks
+                    pointerEvents: "none",
                   }}
                 >
                   1
@@ -178,7 +181,6 @@ export default function SongPlayer({
             </div>
           </div>
 
-          {/* Right: Volume */}
           <div className="song-player-volume add-drop-shadow-thick">
             {volume > 0 ? (
               <FaVolumeUp color="#dedad9" />
@@ -201,7 +203,6 @@ export default function SongPlayer({
         </div>
       </div>
 
-      {/* Progress bar */}
       <div className="song-player-progress-bar">
         <span className="song-player-progress-time">
           {formatTime(audioRef.current?.currentTime || 0)}
@@ -222,7 +223,6 @@ export default function SongPlayer({
             style={{ width: `${progress}%` }}
           />
         </div>
-
         <span className="song-player-progress-time">
           {formatTime(audioRef.current?.duration || 0)}
         </span>
