@@ -11,8 +11,6 @@ export default function SongList({ setCurrentSongId, setSongs }) {
     setFilteredSongs(filteredSongs);
   };
 
-  console.log("reversedList:", reversedList);
-  console.log("filteredSongs:", filteredSongs);
   const onClick = (id) => {
     setCurrentSongId(id);
     setSongs(filteredSongs);
