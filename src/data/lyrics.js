@@ -1016,6 +1016,76 @@ And Lord, heaven is You..
 
 Lord, heaven is You`;
 
+export const hideAndSeek = `[Verse 1]
+Oh, my God, give me the strength
+To search with all my heart
+Help me leave all else behind
+All the world is worth nothing
+In light of this passion
+There's so much more of You to find
+Here I am, Lord, open my eyes
+
+[Chorus]
+I am desperate to know You
+Though You are past finding out
+I long to be close to You
+Though You are here with me now
+I’m chasing You
+And all the while You’re chasing me
+In this wild game of hide and seek
+
+[Verse 2]
+God, reveal Yourself to me
+I hide Your word in my heart
+And think about You all the time
+Be my preoccupation
+Your presence my distraction
+Your love is always on my mind
+Here I am, Lord, open my eyes
+
+[Chorus]
+I am desperate to know You
+Though You are past finding out
+I long to be close to You
+Though You are here with me now
+I’m chasing Youuuu
+And all the while You’re chasing me
+In this wild game of hide and seek
+
+[Bridge]
+God, I’m running after You
+As You’re calling to me
+And I won’t stop until
+I know You completely
+This is all I’m wanting
+This is what I desire
+To ever grow in You
+And be filled with Your fire
+
+[Chorus]
+I am desperate to know You
+Though You are past finding out
+I long to be close to You
+Though You are here with me now
+I’m chasing You
+And all the while You’re chasing me
+In this wild game of hide and seek
+
+[Chorus]
+I am desperate to know You
+Though You are past finding out
+I long to be close to You
+Though You are here with me now
+I’m chasing You
+And all the while You’re chasing me
+In this wild game of hide and seek
+
+[Outro]
+And when I find You, Lord, I see
+You were always holding me
+In this endless love, I’ll rest complete
+In You I will find what I seek`;
+
 export const holySymphony = `[Verse 1]
 Lost in the melody
 Of you and me

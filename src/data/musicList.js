@@ -5,6 +5,7 @@ import { songThumbnails, videoThumbnails } from "./thumbnailImports";
 //import lyrics
 import {
   chasingYou,
+  hideAndSeek,
   inTheSilence,
   iRejoiceInYou,
   loveHasFoundYou,
@@ -352,7 +353,7 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/kEEOsiRXzSM?si=Rmbvfz4tGyOXu5am",
     theme: ["faith", "trust", "perseverance"],
     tone: ["hopeful", "encouraging", "uplifting"],
-
+    perspective: "to Jesus",
     lyrics: evenWhen,
   },
   {
@@ -448,7 +449,7 @@ const musicList = [
     videoUrl: "https://www.youtube.com/embed/Wwt0v4Fsq48?si=qA8YiC54IwX058UC",
     theme: ["worship", "praise", "adoration"],
     tone: ["uplifting", "joyful", "reverent"],
-    perspective: "about God",
+    perspective: "about Jesus",
     lyrics: gloryToGod,
   },
   {
@@ -469,11 +470,23 @@ const musicList = [
     url: "https://cdn1.suno.ai/81332d5e-43e4-4885-ae62-2a7eac60ef3b.webm",
     thumbnail: songThumbnails["whenYouCallMeHome"],
     videoThumbnail: videoThumbnails["whenYouCallMeHome"],
-    videoUrl: "https://youtu.be/BrHTdKR0oNQ",
+    videoUrl: "https://www.youtube.com/embed/BrHTdKR0oNQ?si=b1ZtF4Ry4LLd9Ndz",
     theme: ["hope", "eternity", "longing"],
     tone: ["reflective", "anticipatory", "worshipful"],
     perspective: "to Jesus",
     lyrics: whenYouCallMeHome,
+  },
+  {
+    id: "hide-and-seek",
+    title: "Hide & Seek",
+    url: "https://cdn1.suno.ai/e480d248-5fdf-4e75-9b72-2872b4bce075.m4a",
+    thumbnail: songThumbnails["hideAndSeek"],
+    videoThumbnail: videoThumbnails["hideAndSeek"],
+    videoUrl: null,
+    theme: ["seeking", "devotion", "joy"],
+    tone: ["epic", "devoted", "joyful"],
+    perspective: "to Jesus",
+    lyrics: hideAndSeek,
   },
 ];
 
