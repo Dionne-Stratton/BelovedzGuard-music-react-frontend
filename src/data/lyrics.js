@@ -846,6 +846,94 @@ Give me more of You
 Lord Jesus
 Give me more of You`;
 
+export const gloryToGod = `[Verse 1]
+See the Maker, the Creator of all
+All the earth is filled with His glory
+Hear the Savior and answer His call
+Repent, oh sinner, and give Him glory
+
+For He is good, 
+and He’s mighty to save
+For He is life, 
+lifting up from the grave
+
+[Chorus][Powerful]
+All glory to God for His mercy...
+All glory to God for His unfailing love...
+All glory to God, for He’s worthy...
+All glory to God in the heavens above...
+
+Let His praises rise in all the earth
+Let His people proclaim His great worth...
+
+Give glory to God!
+
+[Verse 2]
+See the Shepherd, who cares for His own
+And through them, He will shine His glory
+See the King, exalted on His throne
+And the heavens declare His glory
+
+For He is faithful; 
+with justice, He reigns
+For He is holy 
+and cleanses our stains
+
+[Chorus]
+All glory to God for His mercy...
+All glory to God for His unfailing love...
+All glory to God, for He’s worthy...
+All glory to God in the heavens above...
+
+Let His praises rise in all the earth
+Let His people proclaim His great worth...
+
+Give glory to God!
+
+[Bridge][Strong][Powerful][Loud]
+Holy! Holy! Holy!
+Is the Lord, God Almighty
+Worthy! Worthy! Worthy!
+Is the Lamb that was slain
+To receive all the glory
+Lift your voice and praise His name....
+Jesus...!!!!
+
+[Chorus]
+All glory to God for His mercy...
+All glory to God for His unfailing love...
+All glory to God, for He’s worthy...
+All glory to God in the heavens above...
+
+Let His praises rise in all the earth
+Let His people proclaim His great worth...
+
+[Chorus]
+All glory to God for His mercy...
+All glory to God for His unfailing love...
+All glory to God, for He’s worthy...
+All glory to God in the heavens above...
+
+Let His praises rise in all the earth
+Let His people proclaim His great worth...
+
+Give glory to God!
+
+[Outro]
+Glory to God in the highest
+Grace and peace to those in Christ...
+
+Glory to God in the highest
+Who has given us new life...
+
+Glory to God in the highest
+Grace and peace to those in Christ...
+
+Glory to God in the highest
+Who has given us new life...
+All glory to God…
+In Jesus Christ`;
+
 export const heavenIsYou = `[Verse 1]
 Lord, Your promise is the peace of my soul
 Lord, Your voice is my sanity
@@ -2238,6 +2326,94 @@ Of My untamed love
 Let all you are
 Be consumed by the fire
 Of My untamed love`;
+
+export const whenYouCallMeHome = `[Verse 1]
+Sometimes, I feel so far away
+Sometimes, I find no words to pray
+Still I know that You'll come for me soon
+And until then, I live only for You
+
+[climb]
+So come quickly Lord 
+This is my heart's cry
+My eyes looking for
+The day You split the sky
+
+[Chorus]
+When You call me home
+I will see You face to face
+There before Your throne
+I'll declare Your wondrous grace
+The day is drawing near
+When Your voice I hear
+You'll wipe away my tears
+With Your unfailing love
+When You call me home
+
+[Verse 2]
+Sometimes, the world can seem so dark
+Sometimes, I wonder where You are
+But I know that You're still in control
+Your promise is the anchor of my soul
+
+
+[climb]
+So come quickly Lord 
+This is my heart's cry
+My eyes looking for
+The day You split the sky
+
+[Chorus]
+When You call me home
+I will see You face to face
+There before Your throne
+I'll declare Your wondrous grace
+The day is drawing near
+When Your voice I hear
+You'll wipe away my tears
+With Your unfailing love
+When You call me home
+
+[Bridge][Powerful]
+Though the night surrounds, 
+Lord, Your light breaks through
+All the hope I've found
+Has been placed in You
+All my chains are gone
+You have set me free
+You have made me Yours
+For all eternity
+
+[Chorus]
+When You call me home
+I will see You face to face
+There before Your throne
+I'll declare Your wondrous grace
+The day is drawing near
+When Your voice I hear
+You'll wipe away my tears
+With Your unfailing love...
+
+[Chorus]
+When You call me home
+I will see You face to face
+There before Your throne
+I'll declare Your wondrous grace
+The day is drawing near
+When Your voice I hear
+You'll wipe away my tears
+With Your unfailing love
+When You call me home
+
+[tag]
+I can't wait to see You
+When You call me home
+I'm ready to meet You
+When You call me home
+I can't wait to see You
+When You call me home
+I'm ready to meet You
+When You call me home`;
 
 export const whereYouAre = `[Verse 1]
 Every morning I rise and lift my eyes
