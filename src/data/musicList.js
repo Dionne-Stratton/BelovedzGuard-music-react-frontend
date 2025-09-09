@@ -479,8 +479,9 @@ const musicList = [
   {
     id: "hide-and-seek",
     title: "Hide & Seek",
-    url: "https://cdn1.suno.ai/e480d248-5fdf-4e75-9b72-2872b4bce075.m4a",
-    thumbnail: songThumbnails["hideAndSeek"],
+    url: "https://pub-0ec6e521be9b44788c1f2295c8eba02d.r2.dev/hide-and-seek.mp3",
+    thumbnail:
+      "https://pub-d498a31e15f64c64b26f58b5ac1f4aac.r2.dev/hide-and-seek.png",
     videoThumbnail: videoThumbnails["hideAndSeek"],
     videoUrl: null,
     theme: ["seeking", "devotion", "joy"],
