@@ -231,7 +231,7 @@ export default function SongPlayer({
       <audio
         ref={audioRef}
         src={currentSong.url}
-        type="audio/mp4"
+        type="audio/mpeg"
         onTimeUpdate={handleTimeUpdate}
         onEnded={repeatOne ? handleRepeatOne : handleEnded}
         onPlay={() => setIsPlaying(true)}

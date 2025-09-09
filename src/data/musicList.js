@@ -1,7 +1,3 @@
-//import thumbnails
-
-import { songThumbnails, videoThumbnails } from "./thumbnailImports";
-
 //import lyrics
 import {
   chasingYou,
@@ -47,9 +43,11 @@ const musicList = [
   {
     id: "in-jesus-name",
     title: "In Jesus Name",
-    url: "https://cdn1.suno.ai/23c94591-36f5-4f9e-a7e4-c949aac68d41.mp3",
-    thumbnail: songThumbnails["inJesusName"],
-    videoThumbnail: videoThumbnails["inJesusName"],
+    url: "https://media.belovedzguard.com/music-files/in-jesus-name.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/in-jesus-name.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/in-jesus-name.jpg",
     videoUrl: "https://www.youtube.com/embed/3sLJ-loyKz4?si=4cGrBvxrRFx3ZnLU",
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
@@ -59,9 +57,11 @@ const musicList = [
   {
     id: "come-worship-the-king",
     title: "Come Worship the King",
-    url: "https://cdn1.suno.ai/fb12c991-e278-45a9-be94-7b0be5bc1976.mp3",
-    thumbnail: songThumbnails["comeWorshipTheKing"],
-    videoThumbnail: videoThumbnails["comeWorshipTheKing"],
+    url: "https://media.belovedzguard.com/music-files/come-worship-the-king.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/come-worship-the-king.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/come-worship-the-king.jpg",
     videoUrl: "https://www.youtube.com/embed/eZakqc_xNA8?si=jEwxd5Y6bZey9PWz",
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
@@ -71,9 +71,10 @@ const musicList = [
   {
     id: "i-miss-you",
     title: "I Miss You",
-    url: "https://cdn1.suno.ai/3bc7709e-fe29-4dbc-b302-469cbc1e3efe.mp3",
-    thumbnail: songThumbnails["iMissYou"],
-    videoThumbnail: videoThumbnails["iMissYou"],
+    url: "https://media.belovedzguard.com/music-files/i-miss-you.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/i-miss-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/i-miss-you.jpg",
     videoUrl: "https://www.youtube.com/embed/5CU66Ilfzao?si=v8lpaEadXJmDdt2T",
     theme: ["longing", "devotion", "worship"],
     tone: ["intimate", "yearning", "worshipful"],
@@ -83,9 +84,11 @@ const musicList = [
   {
     id: "all-to-know-you",
     title: "All to Know You",
-    url: "https://cdn1.suno.ai/2d557e10-1e4b-4b87-8791-78dd1b86482d.mp3",
-    thumbnail: songThumbnails["allToKnowYou"],
-    videoThumbnail: videoThumbnails["allToKnowYou"],
+    url: "https://media.belovedzguard.com/music-files/all-to-know-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/all-to-know-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/all-to-know-you.jpg",
     videoUrl: "https://www.youtube.com/embed/WOTjdYs65Pw?si=M7HX_RiBBcHi1Wxh",
     theme: ["devotion", "intimacy", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -95,9 +98,11 @@ const musicList = [
   {
     id: "how-you-love-me",
     title: "How You Love Me",
-    url: "https://cdn1.suno.ai/25b895b5-9abf-425c-b5e4-0ce32fdd6acc.mp3",
-    thumbnail: songThumbnails["howYouLoveMe"],
-    videoThumbnail: videoThumbnails["howYouLoveMe"],
+    url: "https://media.belovedzguard.com/music-files/how-you-love-me.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/how-you-love-me.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/how-you-love-me.jpg",
     videoUrl: "https://www.youtube.com/embed/aTD9tfyxN-E?si=KJmx9aMQXqLf5BnN",
     theme: ["love", "devotion", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -107,9 +112,11 @@ const musicList = [
   {
     id: "dive-into-your-love",
     title: "Dive into Your Love",
-    url: "https://cdn1.suno.ai/98dcb92b-13ef-4b4d-9412-b6b1e0f4211c.mp3",
-    thumbnail: songThumbnails["diveIntoYourLove"],
-    videoThumbnail: videoThumbnails["diveIntoYourLove"],
+    url: "https://media.belovedzguard.com/music-files/dive-into-your-love.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/dive-into-your-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/dive-into-your-love.jpg",
     videoUrl: "https://www.youtube.com/embed/kWJryt_OBt0?si=oLtY_wWHXkuD88uB",
     theme: ["love", "devotion", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -119,9 +126,11 @@ const musicList = [
   {
     id: "in-a-moment",
     title: "In a Moment",
-    url: "https://cdn1.suno.ai/103129c4-5896-41f1-b4e9-992080063cb1.mp3",
-    thumbnail: songThumbnails["inAMoment"],
-    videoThumbnail: videoThumbnails["inAMoment"],
+    url: "https://media.belovedzguard.com/music-files/in-a-moment.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/in-a-moment.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/in-a-moment.jpg",
     videoUrl: "https://www.youtube.com/embed/GWgKoO6vZpU?si=eV3kK3w661BJwHqK",
     theme: ["reflection", "worship", "devotion"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -131,9 +140,11 @@ const musicList = [
   {
     id: "heaven-is-you",
     title: "Heaven is You",
-    url: "https://cdn1.suno.ai/2ca33987-b0bb-4a59-bc45-cd26e51f615c.mp3",
-    thumbnail: songThumbnails["heavenIsYou"],
-    videoThumbnail: videoThumbnails["heavenIsYou"],
+    url: "https://media.belovedzguard.com/music-files/heaven-is-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/heaven-is-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/heaven-is-you.jpg",
     videoUrl: "https://www.youtube.com/embed/fLBnZssze34?si=vN9OwOg1wEJAhWNu",
     theme: ["worship", "devotion", "intimacy"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -143,9 +154,11 @@ const musicList = [
   {
     id: "in-the-silence",
     title: "In the Silence",
-    url: "https://cdn1.suno.ai/c4fa3b10-a047-4338-9f3b-7737bd9249d1.mp3",
-    thumbnail: songThumbnails["inTheSilence"],
-    videoThumbnail: videoThumbnails["inTheSilence"],
+    url: "https://media.belovedzguard.com/music-files/in-the-silence.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/in-the-silence.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/in-the-silence.jpg",
     videoUrl: "https://www.youtube.com/embed/9G57CKTAhzI?si=w2qHqfreNAXMYu_Y",
     theme: ["reflection", "worship", "devotion"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -155,9 +168,11 @@ const musicList = [
   {
     id: "give-me-more-of-you",
     title: "Give Me More of You",
-    url: "https://cdn1.suno.ai/e5c86aec-a95a-43a7-be68-e7efbb76eb3b.mp3",
-    thumbnail: songThumbnails["giveMeMoreOfYou"],
-    videoThumbnail: videoThumbnails["giveMeMoreOfYou"],
+    url: "https://media.belovedzguard.com/music-files/give-me-more-of-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/give-me-more-of-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/give-me-more-of-you.jpg",
     videoUrl: "https://www.youtube.com/embed/LZ-t7nkugm0?si=CmRaO3Lld13s0jnj",
     theme: ["devotion", "worship", "intimacy"],
     tone: ["intimate", "passionate", "worshipful"],
@@ -167,9 +182,11 @@ const musicList = [
   {
     id: "i-rejoice-in-you",
     title: "I Rejoice in You",
-    url: "https://cdn1.suno.ai/564db0a7-08e9-43ee-9da0-bca9c1960fa8.mp3",
-    thumbnail: songThumbnails["iRejoiceInYou"],
-    videoThumbnail: videoThumbnails["iRejoiceInYou"],
+    url: "https://media.belovedzguard.com/music-files/i-rejoice-in-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/i-rejoice-in-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/i-rejoice-in-you.jpg",
     videoUrl: "https://www.youtube.com/embed/KWga-NvYLG4?si=pOZGf13CMpalhstJ",
     theme: ["joy", "worship", "devotion"],
     tone: ["uplifting", "joyful", "worshipful"],
@@ -179,9 +196,11 @@ const musicList = [
   {
     id: "love-has-found-you",
     title: "Love Has Found You",
-    url: "https://cdn1.suno.ai/745163a2-1c63-476f-8852-44e4e39cd511.mp3",
-    thumbnail: songThumbnails["loveHasFoundYou"],
-    videoThumbnail: videoThumbnails["loveHasFoundYou"],
+    url: "https://media.belovedzguard.com/music-files/love-has-found-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/love-has-found-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/love-has-found-you.jpg",
     videoUrl: "https://www.youtube.com/embed/PsZHo3igfQo?si=-p7i1AiU4YxibOSw",
     theme: ["love", "uplifting", "hopeful"],
     tone: ["powerful", "intimate", "worshipful"],
@@ -191,9 +210,10 @@ const musicList = [
   {
     id: "radiance",
     title: "Radiance",
-    url: "https://cdn1.suno.ai/cc8a5eac-e578-4761-acf2-996069a7a374.mp3",
-    thumbnail: songThumbnails["radiance"],
-    videoThumbnail: videoThumbnails["radiance"],
+    url: "https://media.belovedzguard.com/music-files/radiance.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/radiance.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/radiance.jpg",
     videoUrl: "https://www.youtube.com/embed/T-b9jLoKC78?si=P8EUB0egu0Tni0ye",
     theme: ["light", "hope", "worship"],
     tone: ["uplifting", "joyful", "worshipful"],
@@ -203,9 +223,11 @@ const musicList = [
   {
     id: "the-declaration",
     title: "The Declaration",
-    url: "https://cdn1.suno.ai/51d4d9f6-a326-448b-b188-61d246cc865c.mp3",
-    thumbnail: songThumbnails["theDeclaration"],
-    videoThumbnail: videoThumbnails["theDeclaration"],
+    url: "https://media.belovedzguard.com/music-files/the-declaration.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/the-declaration.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/the-declaration.jpg",
     videoUrl: "https://www.youtube.com/embed/HsvS_NmiWFI?si=bHtL-an7Q26QvUIY",
     theme: ["declaration", "worship", "faith"],
     tone: ["powerful", "intimate", "worshipful"],
@@ -215,9 +237,11 @@ const musicList = [
   {
     id: "untamed-love",
     title: "Untamed Love",
-    url: "https://cdn1.suno.ai/f7f93bac-8889-4e9c-b656-643c0f45633c.mp3",
-    thumbnail: songThumbnails["untamedLove"],
-    videoThumbnail: videoThumbnails["untamedLove"],
+    url: "https://media.belovedzguard.com/music-files/untamed-love.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/untamed-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/untamed-love.jpg",
     videoUrl: "https://www.youtube.com/embed/7uya8H9M-FI?si=9XO9_84pZcTouWFi",
     theme: ["love", "devotion", "worship"],
     tone: ["passionate", "intimate", "worshipful"],
@@ -227,21 +251,25 @@ const musicList = [
   {
     id: "worship-with-my-life",
     title: "Worship With My Life",
-    url: "https://cdn1.suno.ai/81c5a88e-aa63-4ae1-8167-1953d0e409c8.mp3",
-    thumbnail: songThumbnails["worshipWithMyLife"],
-    videoThumbnail: videoThumbnails["worshipWithMyLife"],
+    url: "https://media.belovedzguard.com/music-files/worship-with-my-life.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/worship-with-my-life.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/worship-with-my-life.jpg",
     videoUrl: "https://www.youtube.com/embed/vxQ2f_8ZXfQ?si=xTgbf2VgWwiT8C0v",
     theme: ["worship", "devotion", "surrender"],
     tone: ["uplifting", "joyful", "intimate"],
     perspective: "to Jesus",
-    lyrics: worshipWithMyLife, // lyrics for Worship With My Life
+    lyrics: worshipWithMyLife,
   },
   {
     id: "lost-in-your-love",
     title: "Lost in Your Love",
-    url: "https://cdn1.suno.ai/162909c0-773f-47da-9847-ed5e46816f47.mp3",
-    thumbnail: songThumbnails["lostInYourLove"],
-    videoThumbnail: videoThumbnails["lostInYourLove"],
+    url: "https://media.belovedzguard.com/music-files/lost-in-your-love.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/lost-in-your-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/lost-in-your-love.jpg",
     videoUrl: "https://www.youtube.com/embed/yr7lO05yxfE?si=QrSyBoUp_d1IfKga",
     theme: ["love", "devotion", "intimacy"],
     tone: ["romantic", "intimate", "yearning"],
@@ -251,9 +279,11 @@ const musicList = [
   {
     id: "all-consuming-desire",
     title: "All Consuming Desire",
-    url: "https://cdn1.suno.ai/b294b37f-56c7-4c15-bd25-b4bfb33fec5c.mp3",
-    thumbnail: songThumbnails["allConsumingDesire"],
-    videoThumbnail: videoThumbnails["allConsumingDesire"],
+    url: "https://media.belovedzguard.com/music-files/all-consuming-desire.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/all-consuming-desire.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/all-consuming-desire.jpg",
     videoUrl: "https://www.youtube.com/embed/G6CP4_cqJPk?si=ury-4SHpb9tvR6br",
     theme: ["desire", "longing", "worship"],
     tone: ["passionate", "intense", "devotional"],
@@ -263,9 +293,11 @@ const musicList = [
   {
     id: "song-of-the-bride",
     title: "Song of the Bride",
-    url: "https://cdn1.suno.ai/0edb428b-104b-44a3-bc92-699532e23829.mp3",
-    thumbnail: songThumbnails["songOfTheBride"],
-    videoThumbnail: videoThumbnails["songOfTheBride"],
+    url: "https://media.belovedzguard.com/music-files/song-of-the-bride.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/song-of-the-bride.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/song-of-the-bride.jpg",
     videoUrl: "https://www.youtube.com/embed/bTcwy55E47o?si=icWx6Gr7Oj7juQeO",
     theme: ["love", "commitment", "worship"],
     tone: ["romantic", "devotional", "intimate"],
@@ -275,9 +307,10 @@ const musicList = [
   {
     id: "i-am-yours",
     title: "I Am Yours",
-    url: "https://cdn1.suno.ai/ddbf143b-26c8-4173-a2e8-90fcf0af4873.mp3",
-    thumbnail: songThumbnails["iAmYours"],
-    videoThumbnail: videoThumbnails["iAmYours"],
+    url: "https://media.belovedzguard.com/music-files/i-am-yours.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/i-am-yours.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/i-am-yours.jpg",
     videoUrl: "https://www.youtube.com/embed/mvlc3_OhkQw?si=8Jmz_-5O28vLr8Ru",
     theme: ["identity", "belonging", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
@@ -287,9 +320,10 @@ const musicList = [
   {
     id: "bow-down",
     title: "Bow Down",
-    url: "https://cdn1.suno.ai/a50f0829-6c98-440c-98ac-58fd5f36d90b.webm",
-    thumbnail: songThumbnails["bowDown"],
-    videoThumbnail: videoThumbnails["bowDown"],
+    url: "https://media.belovedzguard.com/music-files/bow-down.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/bow-down.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/bow-down.jpg",
     videoUrl: "https://www.youtube.com/embed/htu-CXpDCk8?si=LqHhwfdxWSfjexD5",
     theme: ["worship", "reverence", "adoration"],
     tone: ["reverent", "humble", "devotional"],
@@ -299,9 +333,11 @@ const musicList = [
   {
     id: "holy-symphony",
     title: "Holy Symphony",
-    url: "https://cdn1.suno.ai/ae14922f-e1f4-4f8a-94ae-eb4fb730c641.webm",
-    thumbnail: songThumbnails["holySymphony"],
-    videoThumbnail: videoThumbnails["holySymphony"],
+    url: "https://media.belovedzguard.com/music-files/holy-symphony.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/holy-symphony.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/holy-symphony.jpg",
     videoUrl: "https://www.youtube.com/embed/XD3r501H-KQ?si=vPIadpZv3AvnsdRP",
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
@@ -311,9 +347,11 @@ const musicList = [
   {
     id: "chasing-you",
     title: "Chasing You",
-    url: "https://cdn1.suno.ai/e0c64260-ff17-4074-a0a1-70b8875d5e7a.webm",
-    thumbnail: songThumbnails["chasingYou"],
-    videoThumbnail: videoThumbnails["chasingYou"],
+    url: "https://media.belovedzguard.com/music-files/chasing-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/chasing-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/chasing-you.jpg",
     videoUrl: "https://www.youtube.com/embed/JQP2j5_x19c?si=X21geQlUYagyHPeg",
     theme: ["pursuit", "devotion", "longing"],
     tone: ["passionate", "intense", "yearning"],
@@ -323,9 +361,11 @@ const musicList = [
   {
     id: "i-belong-to-you",
     title: "I Belong to You",
-    url: "https://cdn1.suno.ai/830b7b45-bc35-4e37-80c7-d5ddaa46253b.mp3",
-    thumbnail: songThumbnails["iBelongToYou"],
-    videoThumbnail: videoThumbnails["iBelongToYou"],
+    url: "https://media.belovedzguard.com/music-files/i-belong-to-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/i-belong-to-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/i-belong-to-you.jpg",
     videoUrl: "https://www.youtube.com/embed/MAXa1gRkQvY?si=EeJ0w8SP-Wh3lEeR",
     theme: ["belonging", "identity", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
@@ -335,9 +375,11 @@ const musicList = [
   {
     id: "you-rescue-me",
     title: "You Rescue Me",
-    url: "https://cdn1.suno.ai/6e4daecf-21eb-4c5f-960c-fe23f1ae9716.webm",
-    thumbnail: songThumbnails["youRescueMe"],
-    videoThumbnail: videoThumbnails["youRescueMe"],
+    url: "https://media.belovedzguard.com/music-files/you-rescue-me.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/you-rescue-me.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/you-rescue-me.jpg",
     videoUrl: "https://www.youtube.com/embed/Y-a9eE0qGP4?si=G8HivV5FDUpIZE2s",
     theme: ["rescue", "redemption", "salvation"],
     tone: ["uplifting", "hopeful", "joyful"],
@@ -347,9 +389,10 @@ const musicList = [
   {
     id: "even-when",
     title: "Even When",
-    url: "https://cdn1.suno.ai/cd98ab10-06c9-4a4c-8efe-d7a82f5dd1d3.webm",
-    thumbnail: songThumbnails["evenWhen"],
-    videoThumbnail: videoThumbnails["evenWhen"],
+    url: "https://media.belovedzguard.com/music-files/even-when.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/even-when.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/even-when.jpg",
     videoUrl: "https://www.youtube.com/embed/kEEOsiRXzSM?si=Rmbvfz4tGyOXu5am",
     theme: ["faith", "trust", "perseverance"],
     tone: ["hopeful", "encouraging", "uplifting"],
@@ -359,9 +402,11 @@ const musicList = [
   {
     id: "where-you-are",
     title: "Where You Are",
-    url: "https://cdn1.suno.ai/0db8aa63-4441-4ac5-869f-8408826bb619.webm",
-    thumbnail: songThumbnails["whereYouAre"],
-    videoThumbnail: videoThumbnails["whereYouAre"],
+    url: "https://media.belovedzguard.com/music-files/where-you-are.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/where-you-are.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/where-you-are.jpg",
     videoUrl: "https://www.youtube.com/embed/rCpcz70h1Kk?si=l-iPJEXUrzDVaJQ4",
     theme: ["presence", "guidance", "comfort"],
     tone: ["reassuring", "calming", "supportive"],
@@ -371,9 +416,10 @@ const musicList = [
   {
     id: "unseen",
     title: "Unseen",
-    url: "https://cdn1.suno.ai/488d7b78-06fc-4c8a-bb52-1681e4abba83.webm",
-    thumbnail: songThumbnails["unseen"],
-    videoThumbnail: videoThumbnails["unseen"],
+    url: "https://media.belovedzguard.com/music-files/unseen.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/unseen.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/unseen.jpg",
     videoUrl: "https://www.youtube.com/embed/h5KL7zzVgxU?si=WsotZHuS_t1zKADE",
     theme: ["faithfulness", "identity", "purpose"],
     tone: ["reassuring", "encouraging", "uplifting"],
@@ -383,9 +429,11 @@ const musicList = [
   {
     id: "forever-isnt-long-enough",
     title: "Forever Isn't Long Enough",
-    url: "https://cdn1.suno.ai/eb59e18a-6cef-41db-8109-ffcd9c69fd19.webm",
-    thumbnail: songThumbnails["foreverIsntLongEnough"],
-    videoThumbnail: videoThumbnails["foreverIsntLongEnough"],
+    url: "https://media.belovedzguard.com/music-files/forever-isnt-long-enough.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/forever-isnt-long-enough.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/forever-isnt-long-enough.jpg",
     videoUrl: "https://www.youtube.com/embed/gfoPwgWL9dI?si=cy7vg2fnSXQonDse",
     theme: ["eternity", "love", "commitment"],
     tone: ["romantic", "nostalgic", "hopeful"],
@@ -395,9 +443,11 @@ const musicList = [
   {
     id: "wont-you-let-me-in",
     title: "Won't You Let Me In",
-    url: "https://cdn1.suno.ai/be1974ec-ae7a-45ea-8f55-edef4a0d1c33.webm",
-    thumbnail: songThumbnails["wontYouLetMeIn"],
-    videoThumbnail: videoThumbnails["wontYouLetMeIn"],
+    url: "https://media.belovedzguard.com/music-files/wont-you-let-me-in.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/wont-you-let-me-in.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/wont-you-let-me-in.jpg",
     videoUrl: "https://www.youtube.com/embed/CPwrL0QSVOY?si=5osufl-Yhz_St7kn",
     theme: ["repentant", "calling", "returning"],
     tone: ["prophetic", "longing", "invitation"],
@@ -407,9 +457,11 @@ const musicList = [
   {
     id: "out-of-the-ashes",
     title: "Out of the Ashes",
-    url: "https://cdn1.suno.ai/a087a4b4-a66c-4476-8990-2eaba483be44.webm",
-    thumbnail: songThumbnails["outOfTheAshes"],
-    videoThumbnail: videoThumbnails["outOfTheAshes"],
+    url: "https://media.belovedzguard.com/music-files/out-of-the-ashes.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/out-of-the-ashes.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/out-of-the-ashes.jpg",
     videoUrl: "https://www.youtube.com/embed/QCO4GW10j9k?si=JDpXJe7LES5HBP4_",
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
@@ -419,9 +471,11 @@ const musicList = [
   {
     id: "your-story-of-love",
     title: "Your Story of Love",
-    url: "https://cdn1.suno.ai/774c53cb-35ee-4249-84e8-462bb3e0143d.webm",
-    thumbnail: songThumbnails["yourStoryOfLove"],
-    videoThumbnail: videoThumbnails["yourStoryOfLove"],
+    url: "https://media.belovedzguard.com/music-files/your-story-of-love.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/your-story-of-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/your-story-of-love.jpg",
     videoUrl: "https://www.youtube.com/embed/Z1MnCVr3Pn0?si=KmsXyj0BtlauXRa8",
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
@@ -431,9 +485,10 @@ const musicList = [
   {
     id: "come-to-me",
     title: "Come to Me",
-    url: "https://cdn1.suno.ai/e438c7b6-da84-4f1e-87c5-b19cdc1230cb.webm",
-    thumbnail: songThumbnails["comeToMe"],
-    videoThumbnail: videoThumbnails["comeToMe"],
+    url: "https://media.belovedzguard.com/music-files/come-to-me.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/come-to-me.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/come-to-me.jpg",
     videoUrl: "https://www.youtube.com/embed/2KwmsIDxClM?si=UVHIatdKeuXz-lFd",
     theme: ["invitation", "comfort", "rest"],
     tone: ["reassuring", "calming", "supportive"],
@@ -443,9 +498,11 @@ const musicList = [
   {
     id: "glory-to-god",
     title: "Glory to God",
-    url: "https://cdn1.suno.ai/5125ed70-bf34-4f42-bd4b-8a9072d48c70.webm",
-    thumbnail: songThumbnails["gloryToGod"],
-    videoThumbnail: videoThumbnails["gloryToGod"],
+    url: "https://media.belovedzguard.com/music-files/glory-to-god.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/glory-to-god.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/glory-to-god.jpg",
     videoUrl: "https://www.youtube.com/embed/Wwt0v4Fsq48?si=qA8YiC54IwX058UC",
     theme: ["worship", "praise", "adoration"],
     tone: ["uplifting", "joyful", "reverent"],
@@ -455,9 +512,10 @@ const musicList = [
   {
     id: "arise",
     title: "Arise",
-    url: "https://cdn1.suno.ai/460859f6-3944-4f3d-9bdd-3740fbbca11d.webm",
-    thumbnail: songThumbnails["Arise"],
-    videoThumbnail: videoThumbnails["Arise"],
+    url: "https://media.belovedzguard.com/music-files/arise.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/arise.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/arise.jpg",
     videoUrl: "https://www.youtube.com/embed/4r0g_xjdFp4?si=2n_Wr3lMVnHlB_9g",
     theme: ["love", "devotion", "calling"],
     tone: ["passionate", "intimate", "worshipful"],
@@ -467,9 +525,11 @@ const musicList = [
   {
     id: "when-you-call-me-home",
     title: "When You Call Me Home",
-    url: "https://cdn1.suno.ai/81332d5e-43e4-4885-ae62-2a7eac60ef3b.webm",
-    thumbnail: songThumbnails["whenYouCallMeHome"],
-    videoThumbnail: videoThumbnails["whenYouCallMeHome"],
+    url: "https://media.belovedzguard.com/music-files/when-you-call-me-home.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/when-you-call-me-home.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/when-you-call-me-home.jpg",
     videoUrl: "https://www.youtube.com/embed/BrHTdKR0oNQ?si=b1ZtF4Ry4LLd9Ndz",
     theme: ["hope", "eternity", "longing"],
     tone: ["reflective", "anticipatory", "worshipful"],
@@ -479,10 +539,11 @@ const musicList = [
   {
     id: "hide-and-seek",
     title: "Hide & Seek",
-    url: "https://pub-0ec6e521be9b44788c1f2295c8eba02d.r2.dev/hide-and-seek.mp3",
+    url: "https://media.belovedzguard.com/music-files/hide-and-seek.mp3",
     thumbnail:
-      "https://pub-d498a31e15f64c64b26f58b5ac1f4aac.r2.dev/hide-and-seek.png",
-    videoThumbnail: videoThumbnails["hideAndSeek"],
+      "https://media.belovedzguard.com/song-thumbnails/hide-and-seek.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/hide-and-seek.jpg",
     videoUrl: null,
     theme: ["seeking", "devotion", "joy"],
     tone: ["epic", "devoted", "joyful"],
