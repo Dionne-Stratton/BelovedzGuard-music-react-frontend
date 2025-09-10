@@ -549,6 +549,7 @@ const musicList = [
     tone: ["epic", "devoted", "joyful"],
     perspective: "to Jesus",
     lyrics: hideAndSeek,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/hide-and-seek.md",
   },
 ];
 

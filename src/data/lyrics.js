@@ -1016,7 +1016,10 @@ And Lord, heaven is You..
 
 Lord, heaven is You`;
 
-export const hideAndSeek = `[Verse 1]
+export const hideAndSeek = `
+TESTING
+
+[Verse 1]
 Oh, my God, give me the strength
 To search with all my heart
 Help me leave all else behind

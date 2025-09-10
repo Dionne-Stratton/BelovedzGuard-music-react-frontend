@@ -15,19 +15,62 @@ export default function App() {
   const [songs, setSongs] = useState(reversedList);
   const [currentSongId, setCurrentSongId] = useState(null);
   const [displayLyrics, setDisplayLyrics] = useState(false);
+  const [lyrics, setLyrics] = useState("loading...");
 
   useEffect(() => {
     console.log("Current Song ID:", currentSongId);
     console.log("Songs:", songs);
   }, [currentSongId, songs]);
 
+  // const getCurrentSongLyrics = () => {
+  //   if (currentSongId) {
+  //     const song = songs.find((s) => s.id === currentSongId);
+  //     if (song) {
+  //       //fetch lyrics from song.lyricsUrl if available, else from song.lyrics
+  //       if (song.lyricsUrl) {
+  //         fetch(song.lyricsUrl)
+  //           .then((response) => response.text())
+  //           .then((data) => {
+  //             setLyrics(data);
+  //           });
+  //       } else {
+  //         setLyrics(song.lyrics);
+  //       }
+  //       return {
+  //         title: song.title,
+  //         body: lyrics,
+  //       };
+  //     }
+  //   }
+  //   return null;
+  // };
+
   const getCurrentSongLyrics = () => {
     if (currentSongId) {
       const song = songs.find((s) => s.id === currentSongId);
       if (song) {
+        if (song.lyricsUrl) {
+          // ✅ match property name
+          fetch(song.lyricsUrl)
+            .then((response) => {
+              if (!response.ok) throw new Error("Network response was not ok");
+              return response.text();
+            })
+            .then((data) => {
+              setLyrics(data);
+            })
+            .catch((error) => {
+              console.error("Error fetching lyrics:", error);
+              setLyrics("Failed to load lyrics.");
+            });
+        } else {
+          setLyrics(song.lyrics || "");
+        }
+
+        // ✅ still return something so your card has a title
         return {
           title: song.title,
-          body: song.lyrics,
+          body: lyrics, // may be stale until fetch completes, but won’t break your UI
         };
       }
     }
