@@ -1,44 +1,3 @@
-//import lyrics
-import {
-  chasingYou,
-  hideAndSeek,
-  inTheSilence,
-  iRejoiceInYou,
-  loveHasFoundYou,
-  radiance,
-  theDeclaration,
-  untamedLove,
-  allToKnowYou,
-  inAMoment,
-  holySymphony,
-  bowDown,
-  iAmYours,
-  lostInYourLove,
-  songOfTheBride,
-  allConsumingDesire,
-  worshipWithMyLife,
-  iBelongToYou,
-  youRescueMe,
-  evenWhen,
-  whereYouAre,
-  wontYouLetMeIn,
-  outOfTheAshes,
-  yourStoryOfLove,
-  comeToMe,
-  unSeen,
-  arise,
-  iMissYou,
-  foreverIsntLongEnough,
-  comeWorshipTheKing,
-  diveIntoYourLove,
-  giveMeMoreOfYou,
-  heavenIsYou,
-  howYouLoveMe,
-  inJesusName,
-  gloryToGod,
-  whenYouCallMeHome,
-} from "./lyrics";
-
 const musicList = [
   {
     id: "in-jesus-name",
@@ -52,7 +11,7 @@ const musicList = [
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
     perspective: "to Jesus",
-    lyrics: inJesusName,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/in-jesus-name.md",
   },
   {
     id: "come-worship-the-king",
@@ -66,7 +25,8 @@ const musicList = [
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
     perspective: "about Jesus",
-    lyrics: comeWorshipTheKing,
+    lyricsUrl:
+      "https://media.belovedzguard.com/lyrics/come-worship-the-king.md",
   },
   {
     id: "i-miss-you",
@@ -79,7 +39,7 @@ const musicList = [
     theme: ["longing", "devotion", "worship"],
     tone: ["intimate", "yearning", "worshipful"],
     perspective: "from Jesus",
-    lyrics: iMissYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/i-miss-you.md",
   },
   {
     id: "all-to-know-you",
@@ -93,7 +53,7 @@ const musicList = [
     theme: ["devotion", "intimacy", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: allToKnowYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/all-to-know-you.md",
   },
   {
     id: "how-you-love-me",
@@ -107,7 +67,7 @@ const musicList = [
     theme: ["love", "devotion", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: howYouLoveMe,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/how-you-love-me.md",
   },
   {
     id: "dive-into-your-love",
@@ -121,7 +81,7 @@ const musicList = [
     theme: ["love", "devotion", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: diveIntoYourLove,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/dive-into-your-love.md",
   },
   {
     id: "in-a-moment",
@@ -135,7 +95,7 @@ const musicList = [
     theme: ["reflection", "worship", "devotion"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "from Jesus",
-    lyrics: inAMoment,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/in-a-moment.md",
   },
   {
     id: "heaven-is-you",
@@ -149,7 +109,7 @@ const musicList = [
     theme: ["worship", "devotion", "intimacy"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: heavenIsYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/heaven-is-you.md",
   },
   {
     id: "in-the-silence",
@@ -163,7 +123,7 @@ const musicList = [
     theme: ["reflection", "worship", "devotion"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: inTheSilence,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/in-the-silence.md",
   },
   {
     id: "give-me-more-of-you",
@@ -177,7 +137,7 @@ const musicList = [
     theme: ["devotion", "worship", "intimacy"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: giveMeMoreOfYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/give-me-more-of-you.md",
   },
   {
     id: "i-rejoice-in-you",
@@ -191,7 +151,7 @@ const musicList = [
     theme: ["joy", "worship", "devotion"],
     tone: ["uplifting", "joyful", "worshipful"],
     perspective: "to Jesus",
-    lyrics: iRejoiceInYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/i-rejoice-in-you.md",
   },
   {
     id: "love-has-found-you",
@@ -205,7 +165,7 @@ const musicList = [
     theme: ["love", "uplifting", "hopeful"],
     tone: ["powerful", "intimate", "worshipful"],
     perspective: "about Jesus",
-    lyrics: loveHasFoundYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/love-has-found-you.md",
   },
   {
     id: "radiance",
@@ -218,7 +178,7 @@ const musicList = [
     theme: ["light", "hope", "worship"],
     tone: ["uplifting", "joyful", "worshipful"],
     perspective: "to Jesus",
-    lyrics: radiance,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/radiance.md",
   },
   {
     id: "the-declaration",
@@ -232,7 +192,7 @@ const musicList = [
     theme: ["declaration", "worship", "faith"],
     tone: ["powerful", "intimate", "worshipful"],
     perspective: "to Jesus",
-    lyrics: theDeclaration,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/the-declaration.md",
   },
   {
     id: "untamed-love",
@@ -246,7 +206,7 @@ const musicList = [
     theme: ["love", "devotion", "worship"],
     tone: ["passionate", "intimate", "worshipful"],
     perspective: "from Jesus",
-    lyrics: untamedLove,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/untamed-love.md",
   },
   {
     id: "worship-with-my-life",
@@ -260,7 +220,7 @@ const musicList = [
     theme: ["worship", "devotion", "surrender"],
     tone: ["uplifting", "joyful", "intimate"],
     perspective: "to Jesus",
-    lyrics: worshipWithMyLife,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/worship-with-my-life.md",
   },
   {
     id: "lost-in-your-love",
@@ -274,7 +234,7 @@ const musicList = [
     theme: ["love", "devotion", "intimacy"],
     tone: ["romantic", "intimate", "yearning"],
     perspective: "to Jesus",
-    lyrics: lostInYourLove,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/lost-in-your-love.md",
   },
   {
     id: "all-consuming-desire",
@@ -288,7 +248,7 @@ const musicList = [
     theme: ["desire", "longing", "worship"],
     tone: ["passionate", "intense", "devotional"],
     perspective: "to Jesus",
-    lyrics: allConsumingDesire,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/all-consuming-desire.md",
   },
   {
     id: "song-of-the-bride",
@@ -302,7 +262,7 @@ const musicList = [
     theme: ["love", "commitment", "worship"],
     tone: ["romantic", "devotional", "intimate"],
     perspective: "to Jesus",
-    lyrics: songOfTheBride,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/song-of-the-bride.md",
   },
   {
     id: "i-am-yours",
@@ -315,7 +275,7 @@ const musicList = [
     theme: ["identity", "belonging", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
     perspective: "to Jesus",
-    lyrics: iAmYours,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/i-am-yours.md",
   },
   {
     id: "bow-down",
@@ -328,7 +288,7 @@ const musicList = [
     theme: ["worship", "reverence", "adoration"],
     tone: ["reverent", "humble", "devotional"],
     perspective: "about Jesus",
-    lyrics: bowDown,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/bow-down.md",
   },
   {
     id: "holy-symphony",
@@ -342,7 +302,7 @@ const musicList = [
     theme: ["worship", "praise", "devotion"],
     tone: ["uplifting", "joyful", "reverent"],
     perspective: "to Jesus",
-    lyrics: holySymphony,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/holy-symphony.md",
   },
   {
     id: "chasing-you",
@@ -356,7 +316,7 @@ const musicList = [
     theme: ["pursuit", "devotion", "longing"],
     tone: ["passionate", "intense", "yearning"],
     perspective: "to Jesus",
-    lyrics: chasingYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/chasing-you.md",
   },
   {
     id: "i-belong-to-you",
@@ -370,7 +330,7 @@ const musicList = [
     theme: ["belonging", "identity", "faith"],
     tone: ["uplifting", "hopeful", "joyful"],
     perspective: "to Jesus",
-    lyrics: iBelongToYou,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/i-belong-to-you.md",
   },
   {
     id: "you-rescue-me",
@@ -384,7 +344,7 @@ const musicList = [
     theme: ["rescue", "redemption", "salvation"],
     tone: ["uplifting", "hopeful", "joyful"],
     perspective: "to Jesus",
-    lyrics: youRescueMe,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/you-rescue-me.md",
   },
   {
     id: "even-when",
@@ -397,7 +357,7 @@ const musicList = [
     theme: ["faith", "trust", "perseverance"],
     tone: ["hopeful", "encouraging", "uplifting"],
     perspective: "to Jesus",
-    lyrics: evenWhen,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/even-when.md",
   },
   {
     id: "where-you-are",
@@ -411,7 +371,7 @@ const musicList = [
     theme: ["presence", "guidance", "comfort"],
     tone: ["reassuring", "calming", "supportive"],
     perspective: "to Jesus",
-    lyrics: whereYouAre,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/where-you-are.md",
   },
   {
     id: "unseen",
@@ -424,7 +384,7 @@ const musicList = [
     theme: ["faithfulness", "identity", "purpose"],
     tone: ["reassuring", "encouraging", "uplifting"],
     perspective: "to Jesus",
-    lyrics: unSeen,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/unseen.md",
   },
   {
     id: "forever-isnt-long-enough",
@@ -438,7 +398,8 @@ const musicList = [
     theme: ["eternity", "love", "commitment"],
     tone: ["romantic", "nostalgic", "hopeful"],
     perspective: "to Jesus",
-    lyrics: foreverIsntLongEnough,
+    lyricsUrl:
+      "https://media.belovedzguard.com/lyrics/forever-isnt-long-enough.md",
   },
   {
     id: "wont-you-let-me-in",
@@ -452,7 +413,7 @@ const musicList = [
     theme: ["repentant", "calling", "returning"],
     tone: ["prophetic", "longing", "invitation"],
     perspective: "from Jesus",
-    lyrics: wontYouLetMeIn,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/wont-you-let-me-in.md",
   },
   {
     id: "out-of-the-ashes",
@@ -466,7 +427,7 @@ const musicList = [
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
     perspective: "to Jesus",
-    lyrics: outOfTheAshes,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/out-of-the-ashes.md",
   },
   {
     id: "your-story-of-love",
@@ -480,7 +441,7 @@ const musicList = [
     theme: ["restoration", "hope", "rebirth"],
     tone: ["uplifting", "encouraging", "renewal"],
     perspective: "to Jesus",
-    lyrics: yourStoryOfLove,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/your-story-of-love.md",
   },
   {
     id: "come-to-me",
@@ -493,7 +454,7 @@ const musicList = [
     theme: ["invitation", "comfort", "rest"],
     tone: ["reassuring", "calming", "supportive"],
     perspective: "from Jesus",
-    lyrics: comeToMe,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/come-to-me.md",
   },
   {
     id: "glory-to-god",
@@ -507,7 +468,7 @@ const musicList = [
     theme: ["worship", "praise", "adoration"],
     tone: ["uplifting", "joyful", "reverent"],
     perspective: "about Jesus",
-    lyrics: gloryToGod,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/glory-to-god.md",
   },
   {
     id: "arise",
@@ -520,7 +481,7 @@ const musicList = [
     theme: ["love", "devotion", "calling"],
     tone: ["passionate", "intimate", "worshipful"],
     perspective: "from Jesus",
-    lyrics: arise,
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/arise.md",
   },
   {
     id: "when-you-call-me-home",
@@ -534,7 +495,8 @@ const musicList = [
     theme: ["hope", "eternity", "longing"],
     tone: ["reflective", "anticipatory", "worshipful"],
     perspective: "to Jesus",
-    lyrics: whenYouCallMeHome,
+    lyricsUrl:
+      "https://media.belovedzguard.com/lyrics/when-you-call-me-home.md",
   },
   {
     id: "hide-and-seek",
@@ -548,7 +510,6 @@ const musicList = [
     theme: ["seeking", "devotion", "joy"],
     tone: ["epic", "devoted", "joyful"],
     perspective: "to Jesus",
-    lyrics: hideAndSeek,
     lyricsUrl: "https://media.belovedzguard.com/lyrics/hide-and-seek.md",
   },
 ];
