@@ -99,7 +99,10 @@ export default function SongPlayer({
   if (currentSongId === null || !currentSong) return null;
 
   return (
-    <div className="song-player">
+    <div
+      className="song-player"
+      style={displayLyrics ? { marginRight: "300px" } : {}}
+    >
       <button onClick={closePlayer} className="close-player-button">
         ✖
       </button>
