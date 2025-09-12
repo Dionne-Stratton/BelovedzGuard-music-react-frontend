@@ -101,13 +101,17 @@ export default function SongPlayer({
   return (
     <div
       className="song-player"
-      style={displayLyrics ? { marginRight: "300px" } : {}}
+      style={displayLyrics ? { width: "calc(100% - 300px)" } : {}}
     >
       <button onClick={closePlayer} className="close-player-button">
         ✖
       </button>
 
-      <div className="song-player-control-bar">
+      <div
+        className={`song-player-control-bar ${
+          displayLyrics ? "with-lyrics" : ""
+        }`}
+      >
         <div className="song-player-thumbnail-title">
           {currentSong.thumbnail && (
             <img

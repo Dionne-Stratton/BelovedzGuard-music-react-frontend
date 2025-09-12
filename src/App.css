@@ -242,6 +242,18 @@ input[type="range"]::-moz-range-track {
   position: relative;
 }
 
+@media screen and (max-width: 1068px) {
+  .song-player-control-bar.with-lyrics {
+    flex-direction: column;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .song-player-control-bar.with-lyrics .song-player-volume {
+    display: none;
+  }
+}
+
 .song-player-thumbnail-title {
   display: flex;
   align-items: center;
@@ -261,6 +273,7 @@ input[type="range"]::-moz-range-track {
   font-weight: bold;
   color: #ebe7e2;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+  max-width: 130px;
 }
 
 .song-player-controls {
