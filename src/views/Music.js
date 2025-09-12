@@ -4,11 +4,32 @@ import songs from "../data/musicList";
 export default function SongList({ setCurrentSongId, setSongs }) {
   const reversedList = [...songs].reverse();
   const [filteredSongs, setFilteredSongs] = useState(reversedList);
-  const changePerspective = (perspective) => {
-    const filteredSongs = reversedList.filter(
-      (song) => song.perspective === perspective || perspective === "all"
+  const [searchQuery, setSearchQuery] = useState("");
+  const [perspectiveFilter, setPerspectiveFilter] = useState("all");
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(e.target.value); // keep box synced
+
+    // reset perspective when searching
+    setPerspectiveFilter("all");
+
+    const filtered = reversedList.filter((song) =>
+      song.title.toLowerCase().includes(query)
     );
-    setFilteredSongs(filteredSongs);
+    setFilteredSongs(filtered);
+  };
+
+  const handlePerspectiveChange = (value) => {
+    setPerspectiveFilter(value);
+
+    // clear search box when perspective changes
+    setSearchQuery("");
+
+    const filtered = reversedList.filter(
+      (song) => song.perspective === value || value === "all"
+    );
+    setFilteredSongs(filtered);
   };
 
   const onClick = (id) => {
@@ -35,19 +56,15 @@ export default function SongList({ setCurrentSongId, setSongs }) {
               backgroundColor: "#e7e5e5",
             }}
             type="text"
-            placeholder="Search songs..."
-            onChange={(e) => {
-              const query = e.target.value.toLowerCase();
-              const filtered = reversedList.filter((song) =>
-                song.title.toLowerCase().includes(query)
-              );
-              setFilteredSongs(filtered);
-            }}
+            placeholder="Search by title"
+            value={searchQuery}
+            onChange={handleSearchChange}
           />
         </div>
         <div style={{ marginLeft: "20px" }}>
           <select
-            onChange={(e) => changePerspective(e.target.value)}
+            value={perspectiveFilter}
+            onChange={(e) => handlePerspectiveChange(e.target.value)}
             style={{
               padding: "5px",
               fontSize: "16px",
