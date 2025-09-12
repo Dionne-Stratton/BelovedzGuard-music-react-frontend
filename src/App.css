@@ -85,6 +85,12 @@ nav {
   transition: width 0.3s ease;
 }
 
+.search-bar input:focus {
+  outline: none; /* remove browser default */
+  border: 2px solid #635f5f; /* replace with your brand color */
+  box-shadow: 0 0 5px rgba(29, 24, 21, 0.6); /* optional glow */
+}
+
 /* Expand underline from center */
 .main-nav.active::after {
   width: 100%;

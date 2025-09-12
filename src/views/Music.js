@@ -9,7 +9,7 @@ export default function SongList({ setCurrentSongId, setSongs }) {
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
-    setSearchQuery(e.target.value); // keep box synced
+    setSearchQuery(e.target.value);
 
     // reset perspective when searching
     setPerspectiveFilter("all");
@@ -56,9 +56,10 @@ export default function SongList({ setCurrentSongId, setSongs }) {
               backgroundColor: "#e7e5e5",
             }}
             type="text"
-            placeholder="Search by title"
+            placeholder="Search songs..."
             value={searchQuery}
             onChange={handleSearchChange}
+            disabled={perspectiveFilter !== "all"} // disable when perspective is active
           />
         </div>
         <div style={{ marginLeft: "20px" }}>
@@ -70,6 +71,7 @@ export default function SongList({ setCurrentSongId, setSongs }) {
               fontSize: "16px",
               backgroundColor: "#e7e5e5",
             }}
+            disabled={searchQuery.length > 0} // disable when search is active
           >
             <option value="all">All Songs</option>
             <option value="to Jesus">To Jesus</option>
