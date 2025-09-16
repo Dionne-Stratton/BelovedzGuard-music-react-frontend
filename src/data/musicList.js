@@ -512,6 +512,18 @@ const musicList = [
     perspective: "to Jesus",
     lyricsUrl: "https://media.belovedzguard.com/lyrics/hide-and-seek.md",
   },
+  {
+    id: "for-you",
+    title: "For You",
+    url: "https://media.belovedzguard.com/music-files/for-you.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/for-you.jpg",
+    videoThumbnail: null,
+    videoUrl: null,
+    theme: ["devotion", "love", "worship"],
+    tone: ["intimate", "passionate", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/for-you.md",
+  },
 ];
 
 export default musicList;
