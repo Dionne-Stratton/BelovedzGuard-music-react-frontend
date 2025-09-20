@@ -209,6 +209,215 @@ const musicList = [
     lyricsUrl: "https://media.belovedzguard.com/lyrics/untamed-love.md",
   },
   {
+    id: "as-i-wait-for-home",
+    title: "As I Wait for Home",
+    url: "https://media.belovedzguard.com/music-files/as-i-wait-for-home.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/as-i-wait-for-home.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/as-i-wait-for-home.jpg",
+    videoUrl: "https://www.youtube.com/embed/1rmSVmP6yl0?si=02mRe4mq8cQIa7kr",
+    theme: ["hope", "heaven", "longing"],
+    tone: ["reflective", "yearning", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/as-i-wait-for-home.md",
+  },
+  {
+    id: "complete-in-you",
+    title: "Complete in You",
+    url: "https://media.belovedzguard.com/music-files/complete-in-you.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/complete-in-you.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/complete-in-you.jpg",
+    videoUrl: "https://www.youtube.com/embed/F0WhXjdRXBg?si=XKqlEHPjPstLxEg_",
+    theme: ["identity", "grace", "union"],
+    tone: ["thankful", "peaceful", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/complete-in-you.md",
+  },
+  {
+    id: "forever",
+    title: "Forever",
+    url: "https://media.belovedzguard.com/music-files/forever.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/forever.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/forever.jpg",
+    videoUrl: "https://www.youtube.com/embed/lQbbyV_EXis?si=792IeTb7TO3EmHHy",
+    theme: ["eternity", "worship", "praise"],
+    tone: ["joyful", "exalting", "devoted"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/forever.md",
+  },
+  // {
+  //   id: "holy-god",
+  //   title: "Holy God",
+  //   url: "https://media.belovedzguard.com/music-files/holy-god.mp3",
+  //   thumbnail: "https://media.belovedzguard.com/song-thumbnails/holy-god.jpg",
+  //   videoThumbnail:
+  //     "https://media.belovedzguard.com/video-thumbnails/holy-god.jpg",
+  //   videoUrl: null,
+  //   theme: ["holiness", "awe", "praise"],
+  //   tone: ["reverent", "powerful", "worshipful"],
+  //   perspective: "to Jesus",
+  //   lyricsUrl: "https://media.belovedzguard.com/lyrics/holy-god.md",
+  // },
+  {
+    id: "in-your-arms",
+    title: "In Your Arms",
+    url: "https://media.belovedzguard.com/music-files/in-your-arms.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/in-your-arms.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/in-your-arms.jpg",
+    videoUrl: null,
+    theme: ["comfort", "love", "security"],
+    tone: ["intimate", "gentle", "devoted"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/in-your-arms.md",
+  },
+  {
+    id: "i-press-on",
+    title: "I Press On",
+    url: "https://media.belovedzguard.com/music-files/i-press-on.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/i-press-on.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/i-press-on.jpg",
+    videoUrl: "https://www.youtube.com/embed/l5UapzJtjYc?si=z02I6hn0UWsmFwlu",
+    theme: ["perseverance", "faith", "strength"],
+    tone: ["determined", "hopeful", "encouraging"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/i-press-on.md",
+  },
+  {
+    id: "keep-me-here",
+    title: "Keep Me Here",
+    url: "https://media.belovedzguard.com/music-files/keep-me-here.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/keep-me-here.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/keep-me-here.jpg",
+    videoUrl: "https://www.youtube.com/embed/vSBmXlOS9nk?si=ZzqIiG2wj-XLx0dn",
+    theme: ["surrender", "devotion", "presence"],
+    tone: ["yearning", "intimate", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/keep-me-here.md",
+  },
+  {
+    id: "let-your-praises-rise",
+    title: "Let Your Praises Rise",
+    url: "https://media.belovedzguard.com/music-files/let-your-praises-rise.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/let-your-praises-rise.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/let-your-praises-rise.jpg",
+    videoUrl: "https://www.youtube.com/embed/a7oGr3cLrEI?si=ZaCT3kxAPFgsL7rx",
+    theme: ["worship", "praise", "joy"],
+    tone: ["celebratory", "uplifting", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl:
+      "https://media.belovedzguard.com/lyrics/let-your-praises-rise.md",
+  },
+  {
+    id: "my-next-breath",
+    title: "My Next Breath",
+    url: "https://media.belovedzguard.com/music-files/my-next-breath.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/my-next-breath.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/my-next-breath.jpg",
+    videoUrl: "https://www.youtube.com/embed/jrv20zTySZQ?si=Q_8SycGiUehzglOK",
+    theme: ["dependence", "life", "faith"],
+    tone: ["intimate", "devoted", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/my-next-breath.md",
+  },
+  {
+    id: "nothing-like-your-love",
+    title: "Nothing Like Your Love",
+    url: "https://media.belovedzguard.com/music-files/nothing-like-your-love.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/nothing-like-your-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/nothing-like-your-love.jpg",
+    videoUrl: "https://www.youtube.com/embed/uj_zA1Zp0qw?si=2BFLS-dJwTVLmbOS",
+    theme: ["love", "devotion", "worship"],
+    tone: ["intimate", "joyful", "thankful"],
+    perspective: "to Jesus",
+    lyricsUrl:
+      "https://media.belovedzguard.com/lyrics/nothing-like-your-love.md",
+  },
+  {
+    id: "sacred-surrender",
+    title: "Sacred Surrender",
+    url: "https://media.belovedzguard.com/music-files/sacred-surrender.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/sacred-surrender.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/sacred-surrender.jpg",
+    videoUrl: "https://www.youtube.com/embed/HG9zGk9zU4A?si=h16F242TJA9lvDLs",
+    theme: ["surrender", "devotion", "holiness"],
+    tone: ["reverent", "humble", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/sacred-surrender.md",
+  },
+  {
+    id: "take-all-of-me",
+    title: "Take All of Me",
+    url: "https://media.belovedzguard.com/music-files/take-all-of-me.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/take-all-of-me.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/take-all-of-me.jpg",
+    videoUrl: "https://www.youtube.com/embed/1P5-HHKh-l8?si=hZOJs8JBQ9KTrhU7",
+    theme: ["surrender", "devotion", "offering"],
+    tone: ["intimate", "worshipful", "humble"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/take-all-of-me.md",
+  },
+  {
+    id: "unexplainable-love",
+    title: "Unexplainable Love",
+    url: "https://media.belovedzguard.com/music-files/unexplainable-love.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/unexplainable-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/unexplainable-love.jpg",
+    videoUrl: "https://www.youtube.com/embed/oHMY__9RqzM?si=FsK2txxI5RrHtQe1",
+    theme: ["love", "wonder", "grace"],
+    tone: ["awe-filled", "intimate", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/unexplainable-love.md",
+  },
+  {
+    id: "when-love-was-crucified",
+    title: "When Love Was Crucified",
+    url: "https://media.belovedzguard.com/music-files/when-love-was-crucified.mp3",
+    thumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/when-love-was-crucified.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/when-love-was-crucified.jpg",
+    videoUrl: "https://www.youtube.com/embed/-tI0O1DB9n0?si=vNtkUE3t8suFSGz0",
+    theme: ["cross", "sacrifice", "love"],
+    tone: ["somber", "grateful", "worshipful"],
+    perspective: "about Jesus",
+    lyricsUrl:
+      "https://media.belovedzguard.com/lyrics/when-love-was-crucified.md",
+  },
+  {
+    id: "worthy-god",
+    title: "Worthy God",
+    url: "https://media.belovedzguard.com/music-files/worthy-god.mp3",
+    thumbnail: "https://media.belovedzguard.com/song-thumbnails/worthy-god.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/worthy-god.jpg",
+    videoUrl: "https://www.youtube.com/embed/JeIneBoQX9M?si=z_ae0CZ6DlYYRrxK",
+    theme: ["worship", "praise", "glory"],
+    tone: ["reverent", "powerful", "worshipful"],
+    perspective: "to Jesus",
+    lyricsUrl: "https://media.belovedzguard.com/lyrics/worthy-god.md",
+  },
+  {
     id: "worship-with-my-life",
     title: "Worship With My Life",
     url: "https://media.belovedzguard.com/music-files/worship-with-my-life.mp3",
@@ -506,7 +715,7 @@ const musicList = [
       "https://media.belovedzguard.com/song-thumbnails/hide-and-seek.jpg",
     videoThumbnail:
       "https://media.belovedzguard.com/video-thumbnails/hide-and-seek.jpg",
-    videoUrl: null,
+    videoUrl: "https://www.youtube.com/embed/NdtnkN0Tw8U?si=uFAJ-5Km3mCiYQul",
     theme: ["seeking", "devotion", "joy"],
     tone: ["epic", "devoted", "joyful"],
     perspective: "to Jesus",
@@ -517,8 +726,9 @@ const musicList = [
     title: "For You",
     url: "https://media.belovedzguard.com/music-files/for-you.mp3",
     thumbnail: "https://media.belovedzguard.com/song-thumbnails/for-you.jpg",
-    videoThumbnail: null,
-    videoUrl: null,
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/for-you.jpg",
+    videoUrl: "https://www.youtube.com/embed/_1in2fFDtQ8?si=quunxim4_-dmmFn0",
     theme: ["devotion", "love", "worship"],
     tone: ["intimate", "passionate", "worshipful"],
     perspective: "to Jesus",
