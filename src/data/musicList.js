@@ -222,20 +222,20 @@ const musicList = [
     perspective: "to Jesus",
     lyricsUrl: "https://media.belovedzguard.com/lyrics/as-i-wait-for-home.md",
   },
-  {
-    id: "complete-in-you",
-    title: "Complete in You",
-    url: "https://media.belovedzguard.com/music-files/complete-in-you.mp3",
-    thumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/complete-in-you.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/complete-in-you.jpg",
-    videoUrl: "https://www.youtube.com/embed/F0WhXjdRXBg?si=XKqlEHPjPstLxEg_",
-    theme: ["identity", "grace", "union"],
-    tone: ["thankful", "peaceful", "worshipful"],
-    perspective: "to Jesus",
-    lyricsUrl: "https://media.belovedzguard.com/lyrics/complete-in-you.md",
-  },
+  // {
+  //   id: "complete-in-you",
+  //   title: "Complete in You",
+  //   url: "https://media.belovedzguard.com/music-files/complete-in-you.mp3",
+  //   thumbnail:
+  //     "https://media.belovedzguard.com/song-thumbnails/complete-in-you.jpg",
+  //   videoThumbnail:
+  //     "https://media.belovedzguard.com/video-thumbnails/complete-in-you.jpg",
+  //   videoUrl: "https://www.youtube.com/embed/F0WhXjdRXBg?si=XKqlEHPjPstLxEg_",
+  //   theme: ["identity", "grace", "union"],
+  //   tone: ["thankful", "peaceful", "worshipful"],
+  //   perspective: "to Jesus",
+  //   lyricsUrl: "https://media.belovedzguard.com/lyrics/complete-in-you.md",
+  // },
   {
     id: "forever",
     title: "Forever",
