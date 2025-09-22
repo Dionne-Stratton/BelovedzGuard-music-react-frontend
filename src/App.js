@@ -26,9 +26,9 @@ export default function App() {
   //   if (currentSongId) {
   //     const song = songs.find((s) => s.id === currentSongId);
   //     if (song) {
-  //       //fetch lyrics from song.lyricsUrl if available, else from song.lyrics
-  //       if (song.lyricsUrl) {
-  //         fetch(song.lyricsUrl)
+  //       //fetch lyrics from song.lyrics if available, else from song.lyrics
+  //       if (song.lyrics) {
+  //         fetch(song.lyrics)
   //           .then((response) => response.text())
   //           .then((data) => {
   //             setLyrics(data);
@@ -49,9 +49,9 @@ export default function App() {
     if (currentSongId) {
       const song = songs.find((s) => s.id === currentSongId);
       if (song) {
-        if (song.lyricsUrl) {
+        if (song.lyrics) {
           // ✅ match property name
-          fetch(song.lyricsUrl)
+          fetch(song.lyrics)
             .then((response) => {
               if (!response.ok) throw new Error("Network response was not ok");
               return response.text();

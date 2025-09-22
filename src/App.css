@@ -396,7 +396,7 @@ input[type="range"]::-moz-range-track {
 
 /********************************************** Music page ********************************************/
 
-.perspective-dropdown {
+.genre-dropdown {
   text-align: center;
   margin-top: 1rem;
   font-weight: bold;

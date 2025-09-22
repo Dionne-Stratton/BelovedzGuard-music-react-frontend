@@ -5,14 +5,14 @@ export default function SongList({ setCurrentSongId, setSongs }) {
   const reversedList = [...songs].reverse();
   const [filteredSongs, setFilteredSongs] = useState(reversedList);
   const [searchQuery, setSearchQuery] = useState("");
-  const [perspectiveFilter, setPerspectiveFilter] = useState("all");
+  const [genreFilter, setGenreFilter] = useState("all");
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(e.target.value);
 
-    // reset perspective when searching
-    setPerspectiveFilter("all");
+    // reset genre when searching
+    setGenreFilter("all");
 
     const filtered = reversedList.filter((song) =>
       song.title.toLowerCase().includes(query)
@@ -20,14 +20,14 @@ export default function SongList({ setCurrentSongId, setSongs }) {
     setFilteredSongs(filtered);
   };
 
-  const handlePerspectiveChange = (value) => {
-    setPerspectiveFilter(value);
+  const handleGenreChange = (value) => {
+    setGenreFilter(value);
 
-    // clear search box when perspective changes
+    // clear search box when genre changes
     setSearchQuery("");
 
     const filtered = reversedList.filter(
-      (song) => song.perspective === value || value === "all"
+      (song) => song.genre === value || value === "All"
     );
     setFilteredSongs(filtered);
   };
@@ -56,16 +56,16 @@ export default function SongList({ setCurrentSongId, setSongs }) {
               backgroundColor: "#e7e5e5",
             }}
             type="text"
-            placeholder="Search songs..."
+            placeholder="Search titles..."
             value={searchQuery}
             onChange={handleSearchChange}
-            disabled={perspectiveFilter !== "all"} // disable when perspective is active
+            disabled={genreFilter !== "All"} // disable when genre is active
           />
         </div>
         <div style={{ marginLeft: "20px" }}>
           <select
-            value={perspectiveFilter}
-            onChange={(e) => handlePerspectiveChange(e.target.value)}
+            value={genreFilter}
+            onChange={(e) => handleGenreChange(e.target.value)}
             style={{
               padding: "5px",
               fontSize: "16px",
@@ -73,10 +73,12 @@ export default function SongList({ setCurrentSongId, setSongs }) {
             }}
             disabled={searchQuery.length > 0} // disable when search is active
           >
-            <option value="all">All Songs</option>
-            <option value="to Jesus">To Jesus</option>
-            <option value="from Jesus">From Jesus</option>
-            <option value="about Jesus">About Jesus</option>
+            <option value="All">All Songs</option>
+            <option value="Rock">Rock</option>
+            <option value="Pop">Pop</option>
+            <option value="Ballad">Ballad</option>
+            <option value="Theatrical">Theatrical</option>
+            <option value="Praise">Praise</option>
           </select>
         </div>
       </div>
@@ -89,7 +91,7 @@ export default function SongList({ setCurrentSongId, setSongs }) {
           >
             <div className="thumbnail-wrapper">
               <img
-                src={song.thumbnail}
+                src={song.songThumbnail}
                 alt={song.title}
                 className="song-thumbnail"
               />

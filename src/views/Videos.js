@@ -4,7 +4,7 @@ import musicList from "../data/musicList";
 export default function Videos() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const videoSongs = musicList.filter((song) => song.videoUrl).reverse(); // Only include songs with videoUrl
+  const videoSongs = musicList.filter((song) => song.youTube).reverse(); // Only include songs with youTube links
 
   return (
     <div className="videos">
@@ -14,7 +14,7 @@ export default function Videos() {
           <div
             key={index}
             className="video-card"
-            onClick={() => setSelectedVideo(song.videoUrl)}
+            onClick={() => setSelectedVideo(song.youTube)}
           >
             <div className="thumbnail-wrapper">
               <img

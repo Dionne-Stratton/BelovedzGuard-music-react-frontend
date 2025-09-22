@@ -113,9 +113,9 @@ export default function SongPlayer({
         }`}
       >
         <div className="song-player-thumbnail-title">
-          {currentSong.thumbnail && (
+          {currentSong.songThumbnail && (
             <img
-              src={currentSong.thumbnail}
+              src={currentSong.songThumbnail}
               alt={currentSong.title}
               className="song-player-thumbnail"
             />
@@ -237,7 +237,7 @@ export default function SongPlayer({
 
       <audio
         ref={audioRef}
-        src={currentSong.url}
+        src={currentSong.mp3}
         type="audio/mpeg"
         onTimeUpdate={handleTimeUpdate}
         onEnded={repeatOne ? handleRepeatOne : handleEnded}
