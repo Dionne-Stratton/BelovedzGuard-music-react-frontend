@@ -22,35 +22,11 @@ export default function App() {
     console.log("Songs:", songs);
   }, [currentSongId, songs]);
 
-  // const getCurrentSongLyrics = () => {
-  //   if (currentSongId) {
-  //     const song = songs.find((s) => s.id === currentSongId);
-  //     if (song) {
-  //       //fetch lyrics from song.lyrics if available, else from song.lyrics
-  //       if (song.lyrics) {
-  //         fetch(song.lyrics)
-  //           .then((response) => response.text())
-  //           .then((data) => {
-  //             setLyrics(data);
-  //           });
-  //       } else {
-  //         setLyrics(song.lyrics);
-  //       }
-  //       return {
-  //         title: song.title,
-  //         body: lyrics,
-  //       };
-  //     }
-  //   }
-  //   return null;
-  // };
-
   const getCurrentSongLyrics = () => {
     if (currentSongId) {
       const song = songs.find((s) => s.id === currentSongId);
       if (song) {
         if (song.lyrics) {
-          // ✅ match property name
           fetch(song.lyrics)
             .then((response) => {
               if (!response.ok) throw new Error("Network response was not ok");
@@ -67,10 +43,9 @@ export default function App() {
           setLyrics(song.lyrics || "");
         }
 
-        // ✅ still return something so your card has a title
         return {
           title: song.title,
-          body: lyrics, // may be stale until fetch completes, but won’t break your UI
+          body: lyrics,
         };
       }
     }

@@ -16,10 +16,6 @@ body {
 
 /********************************************** Full App ********************************************/
 
-.App {
-  padding-bottom: 17vh;
-}
-
 .add-drop-shadow-thick {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 1));
 }
@@ -30,6 +26,7 @@ body {
 
 /* Base layout setup */
 .App {
+  padding-bottom: 17vh;
   display: flex;
   flex-direction: column;
   transition: margin-right 0.3s ease;
@@ -151,6 +148,7 @@ nav {
 
 .play-overlay {
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -395,12 +393,43 @@ input[type="range"]::-moz-range-track {
 }
 
 /********************************************** Music page ********************************************/
-
+.genre-icon {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  font-size: 18px;
+  filter: grayscale(30%) opacity(90%);
+  z-index: 5;
+  cursor: default;
+  text-shadow: 0 0 3px #232121ff;
+}
 .genre-dropdown {
   text-align: center;
   margin-top: 1rem;
   font-weight: bold;
 }
+
+.genre-icon .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 10;
+  top: 22px; /* show below icon */
+  left: 0;
+  white-space: nowrap;
+  font-size: 12px;
+  transition: opacity 0.2s;
+}
+.genre-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
 .song-card {
   margin: 2rem;
   height: 15rem;
@@ -411,6 +440,7 @@ input[type="range"]::-moz-range-track {
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .song-card:hover {

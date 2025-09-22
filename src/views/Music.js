@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 import songs from "../data/musicList";
 
+// map genre → {icon, label}
+const GENRE_META = {
+  Rock: { icon: "🎸", label: "Rock" },
+  Pop: { icon: "⭐", label: "Pop" },
+  Ballad: { icon: "💖", label: "Ballad" },
+  Theatrical: { icon: "🎭", label: "Theatrical" },
+  Praise: { icon: "❤️‍🔥", label: "Praise" },
+};
+const DEFAULT_META = { icon: "🎶", label: "Other" };
+
 export default function SongList({ setCurrentSongId, setSongs }) {
   const reversedList = [...songs].reverse();
   const [filteredSongs, setFilteredSongs] = useState(reversedList);
   const [searchQuery, setSearchQuery] = useState("");
-  const [genreFilter, setGenreFilter] = useState("all");
+  const [genreFilter, setGenreFilter] = useState("All");
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(e.target.value);
 
     // reset genre when searching
-    setGenreFilter("all");
+    setGenreFilter("All");
 
     const filtered = reversedList.filter((song) =>
       song.title.toLowerCase().includes(query)
@@ -27,7 +37,7 @@ export default function SongList({ setCurrentSongId, setSongs }) {
     setSearchQuery("");
 
     const filtered = reversedList.filter(
-      (song) => song.genre === value || value === "All"
+      (song) => value === "All" || song.genre === value
     );
     setFilteredSongs(filtered);
   };
@@ -59,7 +69,7 @@ export default function SongList({ setCurrentSongId, setSongs }) {
             placeholder="Search titles..."
             value={searchQuery}
             onChange={handleSearchChange}
-            disabled={genreFilter !== "All"} // disable when genre is active
+            disabled={genreFilter !== "All"}
           />
         </div>
         <div style={{ marginLeft: "20px" }}>
@@ -71,7 +81,7 @@ export default function SongList({ setCurrentSongId, setSongs }) {
               fontSize: "16px",
               backgroundColor: "#e7e5e5",
             }}
-            disabled={searchQuery.length > 0} // disable when search is active
+            disabled={searchQuery.length > 0}
           >
             <option value="All">All Songs</option>
             <option value="Rock">Rock</option>
@@ -83,23 +93,33 @@ export default function SongList({ setCurrentSongId, setSongs }) {
         </div>
       </div>
       <div className="song-list">
-        {filteredSongs?.map((song) => (
-          <div
-            key={song.id}
-            className="song-card"
-            onClick={() => onClick(song.id)}
-          >
-            <div className="thumbnail-wrapper">
-              <img
-                src={song.songThumbnail}
-                alt={song.title}
-                className="song-thumbnail"
-              />
-              <div className="play-overlay">🎧</div>
+        {filteredSongs?.map((song) => {
+          const meta = GENRE_META[song.genre] || DEFAULT_META;
+
+          return (
+            <div
+              key={song.id}
+              className="song-card"
+              onClick={() => onClick(song.id)}
+            >
+              {/* genre icon pinned in corner with tooltip */}
+              <div className="genre-icon">
+                {meta.icon}
+                <div className="tooltip">{meta.label}</div>
+              </div>
+
+              <div className="thumbnail-wrapper">
+                <img
+                  src={song.songThumbnail}
+                  alt={song.title}
+                  className="song-thumbnail"
+                />
+                <div className="play-overlay">🎧</div>
+              </div>
+              <caption className="song-title">{song.title}</caption>
             </div>
-            <caption className="song-title">{song.title}</caption>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </>
   );
