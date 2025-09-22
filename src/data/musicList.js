@@ -8,6 +8,138 @@ export const genres = {
 
 const musicList = [
   {
+    id: "as-i-wait-for-home",
+    title: "As I Wait for Home",
+    genre: genres.POP,
+    mp3: "https://media.belovedzguard.com/music-files/as-i-wait-for-home.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/as-i-wait-for-home.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/as-i-wait-for-home.jpg",
+    youTube: "https://www.youtube.com/embed/1rmSVmP6yl0?si=02mRe4mq8cQIa7kr",
+    lyrics: "https://media.belovedzguard.com/lyrics/as-i-wait-for-home.md",
+  },
+  {
+    id: "forever",
+    title: "Forever",
+    genre: genres.ROCK,
+    mp3: "https://media.belovedzguard.com/music-files/forever.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/forever.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/forever.jpg",
+    youTube: "https://www.youtube.com/embed/lQbbyV_EXis?si=792IeTb7TO3EmHHy",
+    lyrics: "https://media.belovedzguard.com/lyrics/forever.md",
+  },
+  {
+    id: "in-your-arms",
+    title: "In Your Arms",
+    genre: genres.BALLAD,
+    mp3: "https://media.belovedzguard.com/music-files/in-your-arms.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/in-your-arms.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/in-your-arms.jpg",
+    youTube: null,
+    lyrics: "https://media.belovedzguard.com/lyrics/in-your-arms.md",
+  },
+  {
+    id: "i-press-on",
+    title: "I Press On",
+    genre: genres.POP,
+    mp3: "https://media.belovedzguard.com/music-files/i-press-on.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/i-press-on.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/i-press-on.jpg",
+    youTube: "https://www.youtube.com/embed/l5UapzJtjYc?si=z02I6hn0UWsmFwlu",
+    lyrics: "https://media.belovedzguard.com/lyrics/i-press-on.md",
+  },
+  {
+    id: "keep-me-here",
+    title: "Keep Me Here",
+    genre: genres.BALLAD,
+    mp3: "https://media.belovedzguard.com/music-files/keep-me-here.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/keep-me-here.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/keep-me-here.jpg",
+    youTube: "https://www.youtube.com/embed/vSBmXlOS9nk?si=ZzqIiG2wj-XLx0dn",
+    lyrics: "https://media.belovedzguard.com/lyrics/keep-me-here.md",
+  },
+  {
+    id: "let-your-praises-rise",
+    title: "Let Your Praises Rise",
+    genre: genres.PRAISE,
+    mp3: "https://media.belovedzguard.com/music-files/let-your-praises-rise.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/let-your-praises-rise.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/let-your-praises-rise.jpg",
+    youTube: "https://www.youtube.com/embed/a7oGr3cLrEI?si=ZaCT3kxAPFgsL7rx",
+    lyrics: "https://media.belovedzguard.com/lyrics/let-your-praises-rise.md",
+  },
+  {
+    id: "my-next-breath",
+    title: "My Next Breath",
+    genre: genres.POP,
+    mp3: "https://media.belovedzguard.com/music-files/my-next-breath.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/my-next-breath.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/my-next-breath.jpg",
+    youTube: "https://www.youtube.com/embed/jrv20zTySZQ?si=Q_8SycGiUehzglOK",
+    lyrics: "https://media.belovedzguard.com/lyrics/my-next-breath.md",
+  },
+  {
+    id: "sacred-surrender",
+    title: "Sacred Surrender",
+    genre: genres.POP,
+    mp3: "https://media.belovedzguard.com/music-files/sacred-surrender.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/sacred-surrender.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/sacred-surrender.jpg",
+    youTube: "https://www.youtube.com/embed/HG9zGk9zU4A?si=h16F242TJA9lvDLs",
+    lyrics: "https://media.belovedzguard.com/lyrics/sacred-surrender.md",
+  },
+  {
+    id: "take-all-of-me",
+    title: "Take All of Me",
+    genre: genres.BALLAD,
+    mp3: "https://media.belovedzguard.com/music-files/take-all-of-me.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/take-all-of-me.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/take-all-of-me.jpg",
+    youTube: "https://www.youtube.com/embed/1P5-HHKh-l8?si=hZOJs8JBQ9KTrhU7",
+    lyrics: "https://media.belovedzguard.com/lyrics/take-all-of-me.md",
+  },
+  {
+    id: "unexplainable-love",
+    title: "Unexplainable Love",
+    genre: genres.POP,
+    mp3: "https://media.belovedzguard.com/music-files/unexplainable-love.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/unexplainable-love.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/unexplainable-love.jpg",
+    youTube: "https://www.youtube.com/embed/oHMY__9RqzM?si=FsK2txxI5RrHtQe1",
+    lyrics: "https://media.belovedzguard.com/lyrics/unexplainable-love.md",
+  },
+  {
+    id: "when-love-was-crucified",
+    title: "When Love Was Crucified",
+    genre: genres.POP,
+    mp3: "https://media.belovedzguard.com/music-files/when-love-was-crucified.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/when-love-was-crucified.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/when-love-was-crucified.jpg",
+    youTube: "https://www.youtube.com/embed/-tI0O1DB9n0?si=vNtkUE3t8suFSGz0",
+    lyrics: "https://media.belovedzguard.com/lyrics/when-love-was-crucified.md",
+  },
+  {
     id: "in-jesus-name",
     title: "In Jesus Name",
     genre: genres.BALLAD,
@@ -187,18 +319,7 @@ const musicList = [
     youTube: "https://www.youtube.com/embed/7uya8H9M-FI?si=9XO9_84pZcTouWFi",
     lyrics: "https://media.belovedzguard.com/lyrics/untamed-love.md",
   },
-  {
-    id: "as-i-wait-for-home",
-    title: "As I Wait for Home",
-    genre: genres.POP,
-    mp3: "https://media.belovedzguard.com/music-files/as-i-wait-for-home.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/as-i-wait-for-home.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/as-i-wait-for-home.jpg",
-    youTube: "https://www.youtube.com/embed/1rmSVmP6yl0?si=02mRe4mq8cQIa7kr",
-    lyrics: "https://media.belovedzguard.com/lyrics/as-i-wait-for-home.md",
-  },
+
   // {
   //   id: "complete-in-you",
   //   title: "Complete in You",
@@ -211,18 +332,7 @@ const musicList = [
   //   youTube: "https://www.youtube.com/embed/F0WhXjdRXBg?si=XKqlEHPjPstLxEg_",
   //   lyrics: "https://media.belovedzguard.com/lyrics/complete-in-you.md",
   // },
-  {
-    id: "forever",
-    title: "Forever",
-    genre: genres.ROCK,
-    mp3: "https://media.belovedzguard.com/music-files/forever.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/forever.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/forever.jpg",
-    youTube: "https://www.youtube.com/embed/lQbbyV_EXis?si=792IeTb7TO3EmHHy",
-    lyrics: "https://media.belovedzguard.com/lyrics/forever.md",
-  },
+
   // {
   //   id: "holy-god",
   //   title: "Holy God",
@@ -235,66 +345,6 @@ const musicList = [
   //   lyrics: "https://media.belovedzguard.com/lyrics/holy-god.md",
   // },
   {
-    id: "in-your-arms",
-    title: "In Your Arms",
-    genre: genres.BALLAD,
-    mp3: "https://media.belovedzguard.com/music-files/in-your-arms.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/in-your-arms.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/in-your-arms.jpg",
-    youTube: null,
-    lyrics: "https://media.belovedzguard.com/lyrics/in-your-arms.md",
-  },
-  {
-    id: "i-press-on",
-    title: "I Press On",
-    genre: genres.POP,
-    mp3: "https://media.belovedzguard.com/music-files/i-press-on.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/i-press-on.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/i-press-on.jpg",
-    youTube: "https://www.youtube.com/embed/l5UapzJtjYc?si=z02I6hn0UWsmFwlu",
-    lyrics: "https://media.belovedzguard.com/lyrics/i-press-on.md",
-  },
-  {
-    id: "keep-me-here",
-    title: "Keep Me Here",
-    genre: genres.BALLAD,
-    mp3: "https://media.belovedzguard.com/music-files/keep-me-here.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/keep-me-here.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/keep-me-here.jpg",
-    youTube: "https://www.youtube.com/embed/vSBmXlOS9nk?si=ZzqIiG2wj-XLx0dn",
-    lyrics: "https://media.belovedzguard.com/lyrics/keep-me-here.md",
-  },
-  {
-    id: "let-your-praises-rise",
-    title: "Let Your Praises Rise",
-    genre: genres.PRAISE,
-    mp3: "https://media.belovedzguard.com/music-files/let-your-praises-rise.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/let-your-praises-rise.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/let-your-praises-rise.jpg",
-    youTube: "https://www.youtube.com/embed/a7oGr3cLrEI?si=ZaCT3kxAPFgsL7rx",
-    lyrics: "https://media.belovedzguard.com/lyrics/let-your-praises-rise.md",
-  },
-  {
-    id: "my-next-breath",
-    title: "My Next Breath",
-    genre: genres.POP,
-    mp3: "https://media.belovedzguard.com/music-files/my-next-breath.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/my-next-breath.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/my-next-breath.jpg",
-    youTube: "https://www.youtube.com/embed/jrv20zTySZQ?si=Q_8SycGiUehzglOK",
-    lyrics: "https://media.belovedzguard.com/lyrics/my-next-breath.md",
-  },
-  {
     id: "nothing-like-your-love",
     title: "Nothing Like Your Love",
     genre: genres.PRAISE,
@@ -305,54 +355,6 @@ const musicList = [
       "https://media.belovedzguard.com/video-thumbnails/nothing-like-your-love.jpg",
     youTube: "https://www.youtube.com/embed/uj_zA1Zp0qw?si=2BFLS-dJwTVLmbOS",
     lyrics: "https://media.belovedzguard.com/lyrics/nothing-like-your-love.md",
-  },
-  {
-    id: "sacred-surrender",
-    title: "Sacred Surrender",
-    genre: genres.POP,
-    mp3: "https://media.belovedzguard.com/music-files/sacred-surrender.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/sacred-surrender.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/sacred-surrender.jpg",
-    youTube: "https://www.youtube.com/embed/HG9zGk9zU4A?si=h16F242TJA9lvDLs",
-    lyrics: "https://media.belovedzguard.com/lyrics/sacred-surrender.md",
-  },
-  {
-    id: "take-all-of-me",
-    title: "Take All of Me",
-    genre: genres.BALLAD,
-    mp3: "https://media.belovedzguard.com/music-files/take-all-of-me.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/take-all-of-me.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/take-all-of-me.jpg",
-    youTube: "https://www.youtube.com/embed/1P5-HHKh-l8?si=hZOJs8JBQ9KTrhU7",
-    lyrics: "https://media.belovedzguard.com/lyrics/take-all-of-me.md",
-  },
-  {
-    id: "unexplainable-love",
-    title: "Unexplainable Love",
-    genre: genres.POP,
-    mp3: "https://media.belovedzguard.com/music-files/unexplainable-love.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/unexplainable-love.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/unexplainable-love.jpg",
-    youTube: "https://www.youtube.com/embed/oHMY__9RqzM?si=FsK2txxI5RrHtQe1",
-    lyrics: "https://media.belovedzguard.com/lyrics/unexplainable-love.md",
-  },
-  {
-    id: "when-love-was-crucified",
-    title: "When Love Was Crucified",
-    genre: genres.POP,
-    mp3: "https://media.belovedzguard.com/music-files/when-love-was-crucified.mp3",
-    songThumbnail:
-      "https://media.belovedzguard.com/song-thumbnails/when-love-was-crucified.jpg",
-    videoThumbnail:
-      "https://media.belovedzguard.com/video-thumbnails/when-love-was-crucified.jpg",
-    youTube: "https://www.youtube.com/embed/-tI0O1DB9n0?si=vNtkUE3t8suFSGz0",
-    lyrics: "https://media.belovedzguard.com/lyrics/when-love-was-crucified.md",
   },
   {
     id: "worthy-god",
@@ -640,6 +642,18 @@ const musicList = [
       "https://media.belovedzguard.com/video-thumbnails/for-you.jpg",
     youTube: "https://www.youtube.com/embed/_1in2fFDtQ8?si=quunxim4_-dmmFn0",
     lyrics: "https://media.belovedzguard.com/lyrics/for-you.md",
+  },
+  {
+    id: "great-god",
+    title: "Great God",
+    genre: genres.ROCK,
+    mp3: "https://media.belovedzguard.com/music-files/great-god.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/great-god.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/great-god.jpg",
+    youTube: null,
+    lyrics: "https://media.belovedzguard.com/lyrics/great-god.md",
   },
 ];
 
