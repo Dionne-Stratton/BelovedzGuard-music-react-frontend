@@ -83,12 +83,12 @@ export default function SongList({ setCurrentSongId, setSongs }) {
             }}
             disabled={searchQuery.length > 0}
           >
-            <option value="All">All Songs</option>
-            <option value="Rock">Rock</option>
-            <option value="Pop">Pop</option>
-            <option value="Ballad">Ballad</option>
-            <option value="Theatrical">Theatrical</option>
-            <option value="Praise">Praise</option>
+            <option value="All">🎶 All Songs</option>
+            <option value="Rock">🎸 Rock</option>
+            <option value="Pop">⭐ Pop</option>
+            <option value="Ballad">💖 Ballad</option>
+            <option value="Theatrical">🎭 Theatrical</option>
+            <option value="Praise">❤️‍🔥 Praise</option>
           </select>
         </div>
       </div>
