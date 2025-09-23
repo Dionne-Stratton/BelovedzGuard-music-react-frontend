@@ -3,32 +3,71 @@ import musicList from "../data/musicList";
 
 export default function Videos() {
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const videoSongs = musicList.filter((song) => song.youTube).reverse(); // Only include songs with youTube links
+  // Only include songs with youTube links
+  const videoSongs = musicList.filter((song) => song.youTube).reverse();
+
+  // Filter by title
+  const filteredVideos = videoSongs.filter((song) =>
+    song.title.toLowerCase().includes(searchQuery.trim().toLowerCase())
+  );
 
   return (
     <div className="videos">
+      {/* Search */}
+      <div
+        className="video-search"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "16px 0 20px",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Search videos by title..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{
+            width: "min(320px, 45%)", // ~half the previous width
+            padding: "6px 8px", // slightly smaller
+            fontSize: "14px", // slightly smaller
+            backgroundColor: "#e7e5e5",
+            borderRadius: "6px",
+            border: "1px solid #bdbcbc",
+            textAlign: "left",
+          }}
+        />
+      </div>
+
       {/* Video Grid */}
       <div className="video-grid">
-        {videoSongs.map((song, index) => (
-          <div
-            key={index}
-            className="video-card"
-            onClick={() => setSelectedVideo(song.youTube)}
-          >
-            <div className="thumbnail-wrapper">
-              <img
-                src={song.videoThumbnail}
-                alt={song.title}
-                className="video-thumbnail"
-              />
-              <div id="shadow" className="play-overlay">
-                ▶
-              </div>
-            </div>
-            <div className="video-title">{song.title}</div>
+        {filteredVideos.length === 0 ? (
+          <div style={{ padding: "20px", opacity: 0.8 }}>
+            No videos match “{searchQuery}”.
           </div>
-        ))}
+        ) : (
+          filteredVideos.map((song, index) => (
+            <div
+              key={index}
+              className="video-card"
+              onClick={() => setSelectedVideo(song.youTube)}
+            >
+              <div className="thumbnail-wrapper">
+                <img
+                  src={song.videoThumbnail}
+                  alt={song.title}
+                  className="video-thumbnail"
+                />
+                <div id="shadow" className="play-overlay">
+                  ▶
+                </div>
+              </div>
+              <div className="video-title">{song.title}</div>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Modal */}
