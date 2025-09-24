@@ -655,6 +655,18 @@ const musicList = [
     youTube: null,
     lyrics: "https://media.belovedzguard.com/lyrics/great-god.md",
   },
+  {
+    id: "at-the-midnight-cry",
+    title: "At the Midnight Cry",
+    genre: genres.ROCK,
+    mp3: "https://media.belovedzguard.com/music-files/at-the-midnight-cry.mp3",
+    songThumbnail:
+      "https://media.belovedzguard.com/song-thumbnails/at-the-midnight-cry.jpg",
+    videoThumbnail:
+      "https://media.belovedzguard.com/video-thumbnails/at-the-midnight-cry.jpg",
+    youTube: null,
+    lyrics: "https://media.belovedzguard.com/lyrics/at-the-midnight-cry.md",
+  },
 ];
 
 export default musicList;
