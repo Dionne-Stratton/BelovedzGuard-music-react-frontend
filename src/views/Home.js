@@ -5,6 +5,9 @@ export default function Home({ setCurrentIndex }) {
   return (
     <div className="home">
       <h1>Welcome to BelovedzGuard</h1>
+
+      <h3>A Ministry of Worship Through Music</h3>
+      <h4>New Updates Weekly</h4>
       <p>
         This is a space devoted to uplifting, Christ-centered music — songs
         birthed in worship, grounded in Scripture, and overflowing with love for
