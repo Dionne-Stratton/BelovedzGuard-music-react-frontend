@@ -26,7 +26,7 @@ const About = () => {
         identity as His beloved and the calling He’s given me to guard and
         strengthen others who are also His beloved. That’s why my logo is a
         female knight: I stand as a guard through the work He’s given me,
-        protecting hearts through truth, beauty, and worship — with His help,
+        protecting hearts through truth, beauty, and worship - with His help,
         always.
       </p>
 
@@ -47,9 +47,9 @@ const About = () => {
       </p>
 
       <p>
-        I’m not here to perform. I’m here to <strong>guard</strong> — to pour
-        out what He gives me so others can stand, rise, worship, and burn for
-        Him. For His beloved, as His beloved. Forever.
+        I’m not here to perform. I’m here to <strong>guard</strong>. to pour out
+        what He gives me so others can stand, rise, worship, and burn for Him.
+        For His beloved, as His beloved. Forever.
       </p>
     </div>
   );

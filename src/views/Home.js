@@ -9,22 +9,22 @@ export default function Home({ setCurrentIndex }) {
       <h3>A Ministry of Worship Through Music</h3>
       <h4>New Updates Weekly</h4>
       <p>
-        This is a space devoted to uplifting, Christ-centered music — songs
+        This is a space devoted to uplifting, Christ-centered music - songs
         birthed in worship, grounded in Scripture, and overflowing with love for
         Jesus. Everything here was created to stir your heart, strengthen your
         spirit, and help you draw near to Him.
       </p>
 
       <p>
-        Whether you're weary or rejoicing, searching or sure — you're welcome
+        Whether you're weary or rejoicing, searching or sure - you're welcome
         here. Come listen, rest, and be refreshed in the presence of the One who
         loves you most.
       </p>
 
       <p>
-        If you have yet to come to know Jesus, I invite you to explore the music
-        and let it lead you to Him. He is waiting with open arms, ready to fill
-        your heart with His love and grace.
+        If you have yet to fall in love with Jesus, I invite you to explore the
+        music and let it lead you to Him. He is waiting with open arms, ready to
+        fill your heart with His love and grace.
       </p>
 
       <h3>The Gospel Message:</h3>
