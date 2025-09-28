@@ -33,7 +33,7 @@ export default function App() {
       .catch((error) => {
         console.error("Error fetching songs:", error);
       });
-  });
+  }, [localApi]);
 
   // Centralized filtering (UI calls this)
   const filterSongs = (type, value) => {
