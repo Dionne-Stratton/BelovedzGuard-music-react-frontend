@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import songs from "../data/musicList";
 
 // map genre → {icon, label}
 const GENRE_META = {
@@ -11,40 +10,21 @@ const GENRE_META = {
 };
 const DEFAULT_META = { icon: "🎶", label: "Other" };
 
-export default function SongList({ setCurrentSongId, setSongs }) {
-  const reversedList = [...songs].reverse();
-  const [filteredSongs, setFilteredSongs] = useState(reversedList);
+export default function Music({ filteredSongs, filterSongs, onSongClick }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [genreFilter, setGenreFilter] = useState("All");
 
   const handleSearchChange = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(e.target.value);
-
-    // reset genre when searching
-    setGenreFilter("All");
-
-    const filtered = reversedList.filter((song) =>
-      song.title.toLowerCase().includes(query)
-    );
-    setFilteredSongs(filtered);
+    const value = e.target.value;
+    setSearchQuery(value);
+    setGenreFilter("All"); // mutually exclusive with genre
+    filterSongs("search", value);
   };
 
   const handleGenreChange = (value) => {
     setGenreFilter(value);
-
-    // clear search box when genre changes
-    setSearchQuery("");
-
-    const filtered = reversedList.filter(
-      (song) => value === "All" || song.genre === value
-    );
-    setFilteredSongs(filtered);
-  };
-
-  const onClick = (id) => {
-    setCurrentSongId(id);
-    setSongs(filteredSongs);
+    setSearchQuery(""); // mutually exclusive with search
+    filterSongs("genre", value);
   };
 
   return (
@@ -55,16 +35,12 @@ export default function SongList({ setCurrentSongId, setSongs }) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "20px",
+          marginTop: 20,
         }}
       >
         <div className="search-bar" style={{ justifyContent: "center" }}>
           <input
-            style={{
-              padding: "5px",
-              fontSize: "16px",
-              backgroundColor: "#e7e5e5",
-            }}
+            style={{ padding: 5, fontSize: 16, backgroundColor: "#e7e5e5" }}
             type="text"
             placeholder="Search titles..."
             value={searchQuery}
@@ -72,15 +48,11 @@ export default function SongList({ setCurrentSongId, setSongs }) {
             disabled={genreFilter !== "All"}
           />
         </div>
-        <div style={{ marginLeft: "20px" }}>
+        <div style={{ marginLeft: 20 }}>
           <select
             value={genreFilter}
             onChange={(e) => handleGenreChange(e.target.value)}
-            style={{
-              padding: "5px",
-              fontSize: "16px",
-              backgroundColor: "#e7e5e5",
-            }}
+            style={{ padding: 5, fontSize: 16, backgroundColor: "#e7e5e5" }}
             disabled={searchQuery.length > 0}
           >
             <option value="All">🎶 All Songs</option>
@@ -92,17 +64,16 @@ export default function SongList({ setCurrentSongId, setSongs }) {
           </select>
         </div>
       </div>
+
       <div className="song-list">
         {filteredSongs?.map((song) => {
           const meta = GENRE_META[song.genre] || DEFAULT_META;
-
           return (
             <div
-              key={song.id}
+              key={song._id}
               className="song-card"
-              onClick={() => onClick(song.id)}
+              onClick={() => onSongClick(song._id)}
             >
-              {/* genre icon pinned in corner with tooltip */}
               <div className="genre-icon">
                 {meta.icon}
                 <div className="tooltip">{meta.label}</div>

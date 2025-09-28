@@ -22,22 +22,24 @@ export default function SongPlayer({
   const [repeatOne, setRepeatOne] = useState(false);
 
   const audioRef = useRef(null);
-  const currentSong = songs.find((song) => song.id === currentSongId);
+  const currentSong = songs.find((song) => song._id === currentSongId);
   const currentIndex = useMemo(
-    () => songs.findIndex((song) => song.id === currentSongId),
+    () => songs.findIndex((song) => song._id === currentSongId),
     [songs, currentSongId]
   );
 
   const nextSong = () => {
     if (songs.length === 0 || currentIndex === -1) return;
     const nextIndex = (currentIndex + 1) % songs.length;
-    setCurrentSongId(songs[nextIndex].id);
+    setCurrentSongId(songs[nextIndex]._id);
+    console.log("Next song index:", nextIndex);
+    console.log("Next song ID:", songs[nextIndex]._id);
   };
 
   const prevSong = () => {
     if (songs.length === 0 || currentIndex === -1) return;
     const prevIndex = (currentIndex - 1 + songs.length) % songs.length;
-    setCurrentSongId(songs[prevIndex].id);
+    setCurrentSongId(songs[prevIndex]._id);
   };
 
   const togglePlay = () => {
@@ -81,7 +83,7 @@ export default function SongPlayer({
   const handleEnded = () => {
     if (songs.length === 0 || currentIndex === -1) return;
     const nextIndex = (currentIndex + 1) % songs.length;
-    setCurrentSongId(songs[nextIndex].id);
+    setCurrentSongId(songs[nextIndex]._id);
   };
 
   const handleRepeatOne = () => {
