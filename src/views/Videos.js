@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import musicList from "../data/musicList";
 
-export default function Videos() {
+export default function Videos({ songs }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Only include songs with youTube links
-  const videoSongs = musicList.filter((song) => song.youTube).reverse();
+  const videoSongs = songs.filter((song) => song.youTube);
 
   // Filter by title
   const filteredVideos = videoSongs.filter((song) =>

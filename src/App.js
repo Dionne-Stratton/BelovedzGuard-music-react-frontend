@@ -25,9 +25,9 @@ export default function App() {
     axios
       .get(localApi)
       .then((response) => {
-        const fetched = [...response.data].reverse(); // newest first
+        const fetched = [...response.data];
         setSongs(fetched);
-        setFilteredSongs(fetched); // shown in the grid
+        setFilteredSongs(fetched);
         setPlayerQueue(fetched); // initial player queue = all songs
       })
       .catch((error) => {
@@ -105,7 +105,9 @@ export default function App() {
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/videos" component={Videos} />
+          <Route path="/videos">
+            <Videos songs={songs} />
+          </Route>
           <Route path="/music">
             <Music
               filteredSongs={filteredSongs}
