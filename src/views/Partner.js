@@ -25,48 +25,34 @@ const Partner = () => {
         get exclusive early access to alternate mixes of my songs — different
         versions I create and love but don’t publicly share. I release 2–5
         private versions per month just for patrons.{" "}
+      </p>
+      <div style={{ display: "flex", marginBottom: "20px" }}>
         <a
           href="https://www.patreon.com/BelovedzGuard"
           target="_blank"
           rel="noopener noreferrer"
-          //text decoration none changes link color to normal text color style as a button
-
-          style={{
-            textDecoration: "none",
-            color: "#ebe7e2",
-            backgroundColor: "#41321f",
-            padding: "10px 15px",
-            borderRadius: "45px",
-            marginLeft: "10px",
-            fontSize: "14px",
-          }}
+          className="add-drop-shadow-thick partner-button"
         >
           Become a Patron
         </a>
-      </p>
+      </div>
 
       <h2>♫ Bandcamp – Music Downloads</h2>
       <p>
         Purchase songs directly through Bandcamp, a platform that gives artists
         a much larger share of each sale than other sites. It’s a great way to
         own the music, support my work, and enjoy high-quality downloads.
+      </p>
+      <div style={{ display: "flex", marginBottom: "20px" }}>
         <a
           href="https://belovedzguard.bandcamp.com"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            textDecoration: "none",
-            color: "#ebe7e2",
-            backgroundColor: "#41321f",
-            padding: "10px 15px",
-            borderRadius: "45px",
-            marginLeft: "10px",
-            fontSize: "14px",
-          }}
+          className="add-drop-shadow-thick partner-button"
         >
           Purchase Music
         </a>
-      </p>
+      </div>
 
       <h2>💌 One-Time Donations</h2>
       <p>
@@ -82,13 +68,7 @@ const Partner = () => {
           href="https://www.paypal.com/donate/?hosted_button_id=2VSS3CEY7QUPE"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            textDecoration: "none",
-            color: "#ebe7e2",
-            backgroundColor: "#41321f",
-            padding: "10px 15px",
-            borderRadius: "45px",
-          }}
+          className="partner-button add-drop-shadow-thick"
         >
           Donate via PayPal
         </a>
@@ -96,14 +76,7 @@ const Partner = () => {
           href="https://ko-fi.com/belovedzguard"
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            textDecoration: "none",
-            color: "#ebe7e2",
-            backgroundColor: "#41321f",
-            padding: "10px 15px",
-            borderRadius: "45px",
-            marginLeft: "10px",
-          }}
+          className="add-drop-shadow-thick partner-button"
         >
           Support me on Ko-fi
         </a>
