@@ -392,6 +392,13 @@ input[type="range"]::-moz-range-track {
   color: #ebe7e2;
 }
 
+/********************************************** Partner page ********************************************/
+
+.partner {
+  padding: 3vh;
+  color: #ebe7e2;
+}
+
 /********************************************** Music page ********************************************/
 .genre-icon {
   position: absolute;

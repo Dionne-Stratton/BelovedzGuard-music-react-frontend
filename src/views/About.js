@@ -45,12 +45,6 @@ const About = () => {
         are meant to call others into the same kind of closeness with Him: to
         see His glory, feel His love, and respond with all they are.
       </p>
-
-      <p>
-        I’m not here to perform. I’m here to <strong>guard</strong>. to pour out
-        what He gives me so others can stand, rise, worship, and burn for Him.
-        For His beloved, as His beloved. Forever.
-      </p>
     </div>
   );
 };

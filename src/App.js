@@ -6,6 +6,7 @@ import HeaderNav from "./components/HeaderNav";
 import Home from "./views/Home";
 import About from "./views/About";
 import Videos from "./views/Videos";
+import Partner from "./views/Partner";
 import Music from "./views/Music";
 import SongPlayer from "./components/SongPlayer";
 import LyricsViewer from "./components/LyricsViewer";
@@ -115,6 +116,7 @@ export default function App() {
               onSongClick={handleSongClick}
             />
           </Route>
+          <Route path="/partner" component={Partner} />
           <Route path="/" component={Home} />
         </Switch>
 

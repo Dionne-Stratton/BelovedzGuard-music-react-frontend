@@ -27,7 +27,7 @@ const HeaderNav = () => {
         <ul class="clearfix" id="cfix">
           <li>
             <ul class="scroll" id="scroll">
-              <li>
+              {/* <li>
                 <NavLink
                   className="main-nav add-drop-shadow-thin"
                   activeClassName="active"
@@ -35,7 +35,7 @@ const HeaderNav = () => {
                 >
                   Home
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   className="main-nav add-drop-shadow-thin"
@@ -62,6 +62,15 @@ const HeaderNav = () => {
                   to="/videos"
                 >
                   Videos
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="main-nav add-drop-shadow-thin"
+                  activeClassName="active"
+                  to="/partner"
+                >
+                  Partner
                 </NavLink>
               </li>
             </ul>
