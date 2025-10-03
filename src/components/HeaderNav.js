@@ -27,48 +27,54 @@ const HeaderNav = () => {
         <ul>
           <li>
             <ul>
-              {/* <li>
+              {/* Example if you want Home back later
+              <li>
                 <NavLink
-                  className="main-nav add-drop-shadow-thin"
-                  activeClassName="active"
                   to="/home"
+                  className={({ isActive }) =>
+                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                  }
                 >
                   Home
                 </NavLink>
-              </li> */}
+              </li>
+              */}
               <li>
                 <NavLink
-                  className="main-nav add-drop-shadow-thin"
-                  activeClassName="active"
                   to="/about"
+                  className={({ isActive }) =>
+                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                  }
                 >
                   About
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  className="main-nav add-drop-shadow-thin"
-                  activeClassName="active"
                   to="/music"
+                  className={({ isActive }) =>
+                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                  }
                 >
                   Music
                 </NavLink>
               </li>
-
               <li>
                 <NavLink
-                  className="main-nav add-drop-shadow-thin"
-                  activeClassName="active"
                   to="/videos"
+                  className={({ isActive }) =>
+                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                  }
                 >
                   Videos
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  className="main-nav add-drop-shadow-thin"
-                  activeClassName="active"
                   to="/partner"
+                  className={({ isActive }) =>
+                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                  }
                 >
                   Partner
                 </NavLink>

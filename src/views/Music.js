@@ -98,7 +98,7 @@ export default function Music() {
                 />
                 <div className="play-overlay">🎧</div>
               </div>
-              <caption className="song-title">{song.title}</caption>
+              <span className="song-title">{song.title}</span>
             </div>
           );
         })}
