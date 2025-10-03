@@ -82,12 +82,6 @@ nav {
   transition: width 0.3s ease;
 }
 
-.search-bar input:focus {
-  outline: none; /* remove browser default */
-  border: 2px solid #635f5f; /* replace with your brand color */
-  box-shadow: 0 0 5px rgba(29, 24, 21, 0.6); /* optional glow */
-}
-
 /* Expand underline from center */
 .main-nav.active::after {
   width: 100%;
@@ -141,30 +135,8 @@ nav {
   color: #ebe7e2;
 }
 
-.thumbnail-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.play-overlay {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
-  color: rgb(255, 255, 255);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
-
 #shadow {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.thumbnail-wrapper:hover .play-overlay {
-  opacity: 0.7;
 }
 
 /* layout for App.js root */
@@ -184,6 +156,35 @@ nav {
 /* when lyrics viewer is open */
 .content.with-lyrics {
   margin-right: 300px;
+}
+
+/********************************************** Shared *********************************************/
+.search-bar input:focus {
+  outline: none; /* remove browser default */
+  border: 2px solid #635f5f; /* replace with your brand color */
+  box-shadow: 0 0 5px rgba(29, 24, 21, 0.6); /* optional glow */
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.play-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.thumbnail-wrapper:hover .play-overlay {
+  opacity: 0.7;
 }
 
 /********************************************** SongPlayer *********************************************/
@@ -466,93 +467,6 @@ input[type="range"]::-moz-range-track {
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/********************************************** Music page ********************************************/
-.genre-icon {
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  font-size: 1.3rem;
-  filter: grayscale(30%) opacity(90%);
-  z-index: 5;
-  cursor: default;
-  text-shadow: 0 0 3px #232121ff;
-}
-.genre-dropdown {
-  text-align: center;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-.genre-icon .tooltip {
-  visibility: hidden;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  /* text-align: center; */
-  padding: 2px 6px;
-  border-radius: 4px;
-  position: absolute;
-  z-index: 10;
-  top: 5px;
-  left: 22px;
-  white-space: nowrap;
-  font-size: 1rem;
-  transition: opacity 0.2s;
-}
-.genre-icon:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-.song-card {
-  margin: 2rem;
-  height: 15rem;
-  width: 12rem;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-}
-
-.song-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-  background-color: rgba(255, 255, 255, 0.05); /* faint glow */
-}
-
-.song-list {
-  padding: 2rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.song-thumbnail {
-  width: 100%;
-  height: 10rem;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
-}
-
-.song-title {
-  display: flex;
-  flex-wrap: wrap;
-  /* width: 8rem; */
-  margin: 0 auto;
-  text-align: center;
-  justify-content: center;
-  margin-top: 0.5rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #ebe7e2;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-}
 /********************************************** Videos page ********************************************/
 
 .videos {
