@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { setQueue, setCurrentSong } from "../state/playerSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 // map genre → {icon, label}
 const GENRE_META = {
@@ -10,21 +12,38 @@ const GENRE_META = {
 };
 const DEFAULT_META = { icon: "🎶", label: "Other" };
 
-export default function Music({ filteredSongs, filterSongs, onSongClick }) {
+export default function Music() {
+  const dispatch = useDispatch();
+  const songs = useSelector((state) => state.songs);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [genreFilter, setGenreFilter] = useState("All");
 
+  // derive filteredSongs each render
+  const filteredSongs = songs.filter((song) => {
+    if (searchQuery) {
+      return song.title.toLowerCase().includes(searchQuery.toLowerCase());
+    }
+    if (genreFilter && genreFilter !== "All") {
+      return song.genre === genreFilter;
+    }
+    return true; // no filters → show all
+  });
+
+  // When a card is clicked: snapshot the current filtered list into the queue
+  const handleSongClick = (clickedId) => {
+    dispatch(setQueue(filteredSongs));
+    dispatch(setCurrentSong(clickedId));
+  };
+
   const handleSearchChange = (e) => {
-    const value = e.target.value;
-    setSearchQuery(value);
+    setSearchQuery(e.target.value);
     setGenreFilter("All"); // mutually exclusive with genre
-    filterSongs("search", value);
   };
 
   const handleGenreChange = (value) => {
     setGenreFilter(value);
     setSearchQuery(""); // mutually exclusive with search
-    filterSongs("genre", value);
   };
 
   return (
@@ -66,13 +85,13 @@ export default function Music({ filteredSongs, filterSongs, onSongClick }) {
       </div>
 
       <div className="song-list">
-        {filteredSongs?.map((song) => {
+        {filteredSongs.map((song) => {
           const meta = GENRE_META[song.genre] || DEFAULT_META;
           return (
             <div
               key={song._id}
               className="song-card"
-              onClick={() => onSongClick(song._id)}
+              onClick={() => handleSongClick(song._id)}
             >
               <div className="genre-icon">
                 {meta.icon}

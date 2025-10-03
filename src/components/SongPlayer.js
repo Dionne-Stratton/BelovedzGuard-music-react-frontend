@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentSong } from "../state/playerSlice";
 import {
   FaStepBackward,
   FaStepForward,
@@ -9,37 +11,35 @@ import {
 } from "react-icons/fa";
 import { FiShuffle, FiRepeat } from "react-icons/fi";
 
-export default function SongPlayer({
-  currentSongId,
-  setCurrentSongId,
-  songs,
-  setDisplayLyrics,
-  displayLyrics,
-}) {
+export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
+  const dispatch = useDispatch();
+  const queue = useSelector((state) => state.player.queue);
+  const currentSongId = useSelector((state) => state.player.currentSongId);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [repeatOne, setRepeatOne] = useState(false);
 
   const audioRef = useRef(null);
-  const currentSong = songs.find((song) => song._id === currentSongId);
+  const currentSong = queue.find((song) => song._id === currentSongId);
   const currentIndex = useMemo(
-    () => songs.findIndex((song) => song._id === currentSongId),
-    [songs, currentSongId]
+    () => queue.findIndex((song) => song._id === currentSongId),
+    [queue, currentSongId]
   );
 
   const nextSong = () => {
-    if (songs.length === 0 || currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % songs.length;
-    setCurrentSongId(songs[nextIndex]._id);
+    if (queue.length === 0 || currentIndex === -1) return;
+    const nextIndex = (currentIndex + 1) % queue.length;
+    dispatch(setCurrentSong(queue[nextIndex]._id));
     console.log("Next song index:", nextIndex);
-    console.log("Next song ID:", songs[nextIndex]._id);
+    console.log("Next song ID:", queue[nextIndex]._id);
   };
 
   const prevSong = () => {
-    if (songs.length === 0 || currentIndex === -1) return;
-    const prevIndex = (currentIndex - 1 + songs.length) % songs.length;
-    setCurrentSongId(songs[prevIndex]._id);
+    if (queue.length === 0 || currentIndex === -1) return;
+    const prevIndex = (currentIndex - 1 + queue.length) % queue.length;
+    dispatch(setCurrentSong(queue[prevIndex]._id));
   };
 
   const togglePlay = () => {
@@ -81,9 +81,9 @@ export default function SongPlayer({
   };
 
   const handleEnded = () => {
-    if (songs.length === 0 || currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % songs.length;
-    setCurrentSongId(songs[nextIndex]._id);
+    if (queue.length === 0 || currentIndex === -1) return;
+    const nextIndex = (currentIndex + 1) % queue.length;
+    dispatch(setCurrentSong(queue[nextIndex]._id));
   };
 
   const handleRepeatOne = () => {
@@ -94,7 +94,7 @@ export default function SongPlayer({
   };
 
   const closePlayer = () => {
-    setCurrentSongId(null);
+    dispatch(setCurrentSong(null));
     setDisplayLyrics(false);
   };
 

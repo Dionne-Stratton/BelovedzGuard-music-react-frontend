@@ -1,8 +1,10 @@
 {
-  "name": "belovedzGuard",
+  "name": "belovedzguard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.1",
+    "react-redux": "^9.1.0",
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "@fortawesome/fontawesome-svg-core": "^6.5.0",
     "@testing-library/jest-dom": "^5.17.0",

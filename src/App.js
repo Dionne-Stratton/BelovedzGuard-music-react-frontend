@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "./App.css";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setSongs } from "./state/songsSlice";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import { Route, Switch } from "react-router-dom";
+// Components and views
 import HeaderNav from "./components/HeaderNav";
 import Home from "./views/Home";
 import About from "./views/About";
@@ -12,54 +16,24 @@ import SongPlayer from "./components/SongPlayer";
 import LyricsViewer from "./components/LyricsViewer";
 
 export default function App() {
-  const [songs, setSongs] = useState([]);
-  const [filteredSongs, setFilteredSongs] = useState([]);
-  const [playerQueue, setPlayerQueue] = useState([]); // <- queue the player uses
-  const [currentSongId, setCurrentSongId] = useState(null);
+  const dispatch = useDispatch();
+  const songs = useSelector((state) => state.songs);
+  const currentSongId = useSelector((state) => state.player.currentSongId);
   const [displayLyrics, setDisplayLyrics] = useState(false);
   const [lyrics, setLyrics] = useState("loading...");
 
-  const apiBase = process.env.REACT_APP_API_URL || "http://localhost:9000";
-  const localApi = `${apiBase}/songs`;
+  const API_URL = "https://belovedzguard-ebf890192e0e.herokuapp.com/songs";
 
   useEffect(() => {
     axios
-      .get(localApi)
-      .then((response) => {
-        const fetched = [...response.data];
-        setSongs(fetched);
-        setFilteredSongs(fetched);
-        setPlayerQueue(fetched); // initial player queue = all songs
-      })
-      .catch((error) => {
-        console.error("Error fetching songs:", error);
-      });
-  }, [localApi]);
-
-  // Centralized filtering (UI calls this)
-  const filterSongs = (type, value) => {
-    if (!value || value === "All") {
-      setFilteredSongs(songs);
-      return;
-    }
-    if (type === "genre") {
-      setFilteredSongs(songs.filter((s) => s.genre === value));
-    } else if (type === "search") {
-      const q = value.toLowerCase();
-      setFilteredSongs(songs.filter((s) => s.title.toLowerCase().includes(q)));
-    }
-  };
-
-  // When a card is clicked: snapshot the current filtered list into the queue
-  const handleSongClick = (clickedId) => {
-    const snapshot = [...filteredSongs]; // <- spread copy (not a reference)
-    setPlayerQueue(snapshot);
-    setCurrentSongId(clickedId);
-  };
+      .get(API_URL)
+      .then((res) => dispatch(setSongs(res.data)))
+      .catch((err) => console.error("Error fetching songs:", err));
+  }, [dispatch]);
 
   const getCurrentSongLyrics = () => {
     if (!currentSongId) return null;
-    const song = songs.find((s) => s._id === currentSongId);
+    const song = songs.find((song) => song._id === currentSongId);
     if (!song) return null;
 
     if (song.lyrics) {
@@ -107,23 +81,16 @@ export default function App() {
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/videos">
-            <Videos songs={songs} />
+            <Videos />
           </Route>
           <Route path="/music">
-            <Music
-              filteredSongs={filteredSongs}
-              filterSongs={filterSongs}
-              onSongClick={handleSongClick}
-            />
+            <Music />
           </Route>
           <Route path="/partner" component={Partner} />
           <Route path="/" component={Home} />
         </Switch>
 
         <SongPlayer
-          currentSongId={currentSongId}
-          setCurrentSongId={setCurrentSongId}
-          songs={playerQueue}
           setDisplayLyrics={setDisplayLyrics}
           displayLyrics={displayLyrics}
         />
