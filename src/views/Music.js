@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { setQueue, setCurrentSong } from "../state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
+import "../styles/Music.css";
 
 // map genre → {icon, label}
 const GENRE_META = {

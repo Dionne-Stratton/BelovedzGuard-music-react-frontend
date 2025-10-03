@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setSongs } from "./state/songsSlice";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { Route, Switch } from "react-router-dom";
 // Components and views
@@ -17,11 +16,7 @@ import LyricsViewer from "./components/LyricsViewer";
 
 export default function App() {
   const dispatch = useDispatch();
-  const songs = useSelector((state) => state.songs);
-  const currentSongId = useSelector((state) => state.player.currentSongId);
   const [displayLyrics, setDisplayLyrics] = useState(false);
-  const [lyrics, setLyrics] = useState("loading...");
-
   const API_URL = "https://belovedzguard-ebf890192e0e.herokuapp.com/songs";
 
   useEffect(() => {
@@ -32,37 +27,15 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div
-      className="App"
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        transition: "all 0.3s ease",
-      }}
-    >
-      <div
-        className="content"
-        style={{
-          flex: "1",
-          transition: "all 0.3s ease",
-          marginRight: displayLyrics ? "300px" : "0",
-        }}
-      >
-        <style>
-          {`@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lemonada&family=Lobster&family=Satisfy&display=swap');`}
-        </style>
-
+    <div className="App layout">
+      <div className={`content ${displayLyrics ? "with-lyrics" : ""}`}>
         <HeaderNav />
 
         <Switch>
           <Route path="/home" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/videos">
-            <Videos />
-          </Route>
-          <Route path="/music">
-            <Music />
-          </Route>
+          <Route path="/videos" component={Videos} />
+          <Route path="/music" component={Music} />
           <Route path="/partner" component={Partner} />
           <Route path="/" component={Home} />
         </Switch>
