@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import "../styles/Videos.css";
 //get songs from redux
 
 export default function Videos() {
@@ -18,37 +19,19 @@ export default function Videos() {
   return (
     <div className="videos">
       {/* Search */}
-      <div
-        className="video-search"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          margin: "16px 0 20px",
-        }}
-      >
+      <div className="video-search">
         <input
           type="text"
           placeholder="Search videos by title..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          style={{
-            width: "min(320px, 45%)", // ~half the previous width
-            padding: "6px 8px", // slightly smaller
-            fontSize: "14px", // slightly smaller
-            backgroundColor: "#e7e5e5",
-            borderRadius: "6px",
-            border: "1px solid #bdbcbc",
-            textAlign: "left",
-          }}
         />
       </div>
 
       {/* Video Grid */}
       <div className="video-grid">
         {filteredVideos.length === 0 ? (
-          <div style={{ padding: "20px", opacity: 0.8 }}>
-            No videos match “{searchQuery}”.
-          </div>
+          <div>No videos match “{searchQuery}”.</div>
         ) : (
           filteredVideos.map((song, index) => (
             <div

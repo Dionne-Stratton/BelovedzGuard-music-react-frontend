@@ -311,62 +311,6 @@ nav {
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/********************************************** Videos page ********************************************/
-
-.videos {
-  padding: 3vh;
-  color: #ebe7e2;
-}
-
-.video-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
-}
-.video-card {
-  width: 300px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-.video-thumbnail {
-  width: 100%;
-  object-fit: cover;
-}
-.video-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-}
-.video-title {
-  background-color: #413b34;
-  color: #fff;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 1.2rem;
-  margin-top: -1px; /* to align with the bottom of the thumbnail */
-}
-.video-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* higher than header */
-}
-
-.video-modal-content {
-  width: 80%;
-  max-width: 800px;
-  aspect-ratio: 16/9;
-}
-
 /********************************************** Media Queries ********************************************/
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
