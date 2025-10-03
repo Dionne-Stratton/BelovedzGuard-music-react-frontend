@@ -1,0 +1,27 @@
+/********************************************** Partner page ********************************************/
+
+.partner {
+  padding: 3vh;
+  color: #ebe7e2;
+}
+
+.partner-button {
+  text-decoration: none;
+  color: #ebe7e2;
+  background-color: #413b34;
+  padding: 10px 15px;
+  border-radius: 45px;
+  margin-right: 10px;
+}
+
+.partner-button:hover {
+  background-color: #5a524a;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.partner-button-container {
+  display: flex;
+  margin-bottom: 40px;
+}

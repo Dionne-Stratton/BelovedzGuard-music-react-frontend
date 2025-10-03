@@ -1,5 +1,5 @@
-//https://belovedzguard.bandcamp.com
 import React from "react";
+import "../styles/Partner.css";
 
 const Partner = () => {
   return (
@@ -26,7 +26,7 @@ const Partner = () => {
         versions I create and love but don’t publicly share. I release 2–5
         private versions per month just for patrons.{" "}
       </p>
-      <div style={{ display: "flex", marginBottom: "20px" }}>
+      <div className="partner-button-container">
         <a
           href="https://www.patreon.com/BelovedzGuard"
           target="_blank"
@@ -43,7 +43,7 @@ const Partner = () => {
         a much larger share of each sale than other sites. It’s a great way to
         own the music, support my work, and enjoy high-quality downloads.
       </p>
-      <div style={{ display: "flex", marginBottom: "20px" }}>
+      <div className="partner-button-container">
         <a
           href="https://belovedzguard.bandcamp.com"
           target="_blank"
@@ -61,9 +61,7 @@ const Partner = () => {
         recurring gifts, you can use PayPal. Every bit of support helps me keep
         creating new songs for God’s glory.
       </p>
-      <div
-        style={{ display: "flex", flexDirection: "row", marginBottom: "20px" }}
-      >
+      <div className="partner-button-container">
         <a
           href="https://www.paypal.com/donate/?hosted_button_id=2VSS3CEY7QUPE"
           target="_blank"

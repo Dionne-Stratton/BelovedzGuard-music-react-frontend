@@ -23,10 +23,10 @@ const HeaderNav = () => {
         </div>
       </header>
 
-      <nav class="container">
-        <ul class="clearfix" id="cfix">
+      <nav className="container">
+        <ul>
           <li>
-            <ul class="scroll" id="scroll">
+            <ul>
               {/* <li>
                 <NavLink
                   className="main-nav add-drop-shadow-thin"

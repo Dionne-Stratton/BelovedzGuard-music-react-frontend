@@ -201,82 +201,9 @@ nav {
   transition: color 0.2s ease;
 }
 
-/********************************************** Home page *********************************************/
-.home {
+.page-container {
   padding: 3vh;
   color: #ebe7e2;
-}
-
-.home h1 {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-}
-
-.featured {
-  margin: 2rem 0;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.featured-song {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  padding: 1rem 0;
-}
-
-.featured-song-thumbnail {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.featured-song-title {
-  margin: 0;
-}
-
-.featured-song-description {
-  margin: 0.25rem 0;
-  font-style: italic;
-}
-.home-verse {
-  font-style: italic;
-  margin-top: 2rem;
-  text-align: center;
-}
-
-/********************************************** About page ********************************************/
-
-.about {
-  padding: 3vh;
-  color: #ebe7e2;
-}
-
-/********************************************** Partner page ********************************************/
-
-.partner {
-  padding: 3vh;
-  color: #ebe7e2;
-}
-
-.partner-button {
-  text-decoration: none;
-  color: #ebe7e2;
-  background-color: #413b34;
-  padding: 10px 15px;
-  border-radius: 45px;
-  margin-right: 10px;
-}
-
-.partner-button:hover {
-  background-color: #5a524a;
-  text-decoration: none;
-  color: #fff;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 /********************************************** Media Queries ********************************************/

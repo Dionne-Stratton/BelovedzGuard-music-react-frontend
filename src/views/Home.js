@@ -1,9 +1,10 @@
 import React from "react";
+import "../styles/Home.css";
 import { NavLink } from "react-router-dom";
 
 export default function Home({ setCurrentIndex }) {
   return (
-    <div className="home">
+    <div className="page-container home">
       <h1>Welcome to BelovedzGuard</h1>
 
       <h3>A Ministry of Worship Through Music</h3>

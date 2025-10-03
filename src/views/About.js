@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="about">
+    <div className="page-container">
       <h2>About Me</h2>
       <p>
         I started writing and sharing songs as a teenager, and over the years it
