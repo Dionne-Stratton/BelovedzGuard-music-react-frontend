@@ -49,18 +49,9 @@ export default function Music() {
 
   return (
     <>
-      <div
-        className="filters"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: 20,
-        }}
-      >
-        <div className="search-bar" style={{ justifyContent: "center" }}>
+      <div className="filters song-filters">
+        <div className="search-bar add-drop-shadow-thin">
           <input
-            style={{ padding: 5, fontSize: 16, backgroundColor: "#e7e5e5" }}
             type="text"
             placeholder="Search titles..."
             value={searchQuery}
@@ -68,11 +59,11 @@ export default function Music() {
             disabled={genreFilter !== "All"}
           />
         </div>
-        <div style={{ marginLeft: 20 }}>
+        <div>
           <select
             value={genreFilter}
             onChange={(e) => handleGenreChange(e.target.value)}
-            style={{ padding: 5, fontSize: 16, backgroundColor: "#e7e5e5" }}
+            className="genre-dropdown-menu"
             disabled={searchQuery.length > 0}
           >
             <option value="All">🎶 All Songs</option>

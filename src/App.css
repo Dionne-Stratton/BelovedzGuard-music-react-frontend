@@ -165,6 +165,14 @@ nav {
   box-shadow: 0 0 5px rgba(29, 24, 21, 0.6); /* optional glow */
 }
 
+.search-bar input {
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #e7e5e5;
+}
+
 .thumbnail-wrapper {
   position: relative;
   display: inline-block;
