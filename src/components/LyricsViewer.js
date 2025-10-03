@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
-const LyricsViewer = ({ getCurrentSongLyrics, setDisplayLyrics }) => {
-  const lyrics = getCurrentSongLyrics();
+const LyricsViewer = ({ setDisplayLyrics }) => {
+  const songs = useSelector((state) => state.songs);
+  const currentSongId = useSelector((state) => state.player.currentSongId);
 
-  if (!lyrics) return null;
-  const { title, body } = lyrics;
+  const [lyrics, setLyrics] = useState("loading...");
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    if (!currentSongId) return;
+
+    const song = songs.find((song) => song._id === currentSongId);
+    if (!song) return;
+
+    setTitle(song.title);
+
+    if (song.lyrics) {
+      axios
+        .get(song.lyrics) // expects a text file URL
+        .then((res) => {
+          setLyrics(res.data);
+        })
+        .catch((err) => {
+          console.error("Error fetching lyrics:", err);
+          setLyrics("Failed to load lyrics.");
+        });
+    } else {
+      setLyrics("");
+    }
+  }, [currentSongId, songs]);
+
+  if (!currentSongId) return null;
 
   return (
     <div
@@ -38,10 +66,9 @@ const LyricsViewer = ({ getCurrentSongLyrics, setDisplayLyrics }) => {
         ×
       </button>
 
-      {/* Format stanzas and lines */}
       <div style={{ marginTop: "2rem", fontSize: "1rem", lineHeight: "1.6" }}>
         <h1>{title}</h1>
-        {body.split("\n\n").map((stanza, idx) => (
+        {lyrics.split("\n\n").map((stanza, idx) => (
           <p key={idx} style={{ marginBottom: "1rem" }}>
             {stanza.split("\n").map((line, i) => (
               <span key={i}>

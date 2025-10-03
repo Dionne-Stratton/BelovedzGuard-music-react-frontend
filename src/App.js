@@ -31,29 +31,6 @@ export default function App() {
       .catch((err) => console.error("Error fetching songs:", err));
   }, [dispatch]);
 
-  const getCurrentSongLyrics = () => {
-    if (!currentSongId) return null;
-    const song = songs.find((song) => song._id === currentSongId);
-    if (!song) return null;
-
-    if (song.lyrics) {
-      fetch(song.lyrics)
-        .then((res) => {
-          if (!res.ok) throw new Error("Network response was not ok");
-          return res.text();
-        })
-        .then((data) => setLyrics(data))
-        .catch((err) => {
-          console.error("Error fetching lyrics:", err);
-          setLyrics("Failed to load lyrics.");
-        });
-    } else {
-      setLyrics(song.lyrics || "");
-    }
-
-    return { title: song.title, body: lyrics };
-  };
-
   return (
     <div
       className="App"
@@ -96,12 +73,7 @@ export default function App() {
         />
       </div>
 
-      {displayLyrics && (
-        <LyricsViewer
-          getCurrentSongLyrics={getCurrentSongLyrics}
-          setDisplayLyrics={setDisplayLyrics}
-        />
-      )}
+      {displayLyrics && <LyricsViewer setDisplayLyrics={setDisplayLyrics} />}
     </div>
   );
 }
