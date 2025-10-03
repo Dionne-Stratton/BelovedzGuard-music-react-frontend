@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import "../styles/SongPlayer.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSong } from "../state/playerSlice";
 import {
@@ -165,7 +166,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
               onClick={nextSong}
               className="add-drop-shadow-thick add-pointer"
             />
-            <div style={{ position: "relative", display: "inline-block" }}>
+            <div className="repeat-button-wrapper">
               <FiRepeat
                 size={15}
                 onClick={() => setRepeatOne(!repeatOne)}
@@ -174,19 +175,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
                   repeatOne ? "active" : ""
                 }`}
               />
-              {repeatOne && (
-                <span
-                  style={{
-                    position: "absolute",
-                    top: "-0.4em",
-                    right: "-0.4em",
-                    fontSize: "0.6em",
-                    pointerEvents: "none",
-                  }}
-                >
-                  1
-                </span>
-              )}
+              {repeatOne && <span className="repeat-indicator">1</span>}
             </div>
           </div>
 
