@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-// import "./LyricsViewer.css"; // new stylesheet
+import "../styles/LyricsViewer.css";
 
 const LyricsViewer = ({ setDisplayLyrics }) => {
   const songs = useSelector((state) => state.songs);

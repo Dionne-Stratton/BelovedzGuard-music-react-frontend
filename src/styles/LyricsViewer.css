@@ -1,0 +1,31 @@
+/******************** Lyrics Viewer *******************/
+.lyrics-viewer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #413b34;
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(18, 17, 17, 0.88);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.lyrics-viewer .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.lyrics-viewer .lyrics-body {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
