@@ -37,22 +37,22 @@ const HeaderNav = () => {
           </li>
           <li>
             <NavLink
-              to="/listen/music"
+              to="/listen/songs"
               className={({ isActive }) =>
                 `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
               }
             >
-              Music
+              Listen
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/videos"
+              to="/watch"
               className={({ isActive }) =>
                 `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
               }
             >
-              Videos
+              Watch
             </NavLink>
           </li>
           <li>

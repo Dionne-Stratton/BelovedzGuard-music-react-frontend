@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/ListenNav.css";
 
 const ListenNav = () => {
-  const [collapsed, setCollapsed] = useState(false);
-
   return (
     <div className="listen-nav-wrapper">
       {/* Sidebar */}
-      <nav className={`listen-nav ${collapsed ? "collapsed" : ""}`}>
+      <nav className="listen-nav">
         <ul>
           <li>
-            <NavLink to="/listen/music">Songs</NavLink>
+            <NavLink to="/listen/songs">Songs</NavLink>
           </li>
           <li>
             <NavLink to="/listen/albums">Albums</NavLink>
@@ -21,11 +19,6 @@ const ListenNav = () => {
           </li>
         </ul>
       </nav>
-
-      {/* Toggle button stays visible */}
-      <button className="nav-toggle" onClick={() => setCollapsed(!collapsed)}>
-        {collapsed ? "▶" : "◀"}
-      </button>
     </div>
   );
 };

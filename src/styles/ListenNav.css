@@ -1,19 +1,26 @@
 /* ===== Floating placement (doesn't affect page layout) ===== */
 .listen-nav-wrapper {
   position: fixed;
-  top: 180px; /* move DOWN by increasing this number; UP by decreasing it */
+  top: 180px; /* tweak to sit under your header */
+  left: 0px; /* keep it on the left edge */
   z-index: 1000;
-  display: flex;
-  align-items: flex-start;
+  display: block; /* overlay wrapper; we don't need flex here */
+}
+
+/* Let clicks pass through the floating wrapper except on links & toggle */
+.listen-nav-wrapper {
+  pointer-events: none;
+}
+.listen-nav,
+.nav-toggle {
+  pointer-events: auto;
 }
 
 /* --- Your sidebar --- */
 .listen-nav {
-  flex: 0 0 auto;
-  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  /* border-right: 1px solid rgba(0, 0, 0, 0.25); */
   background: transparent;
-  transition: width 0.3s ease, padding 0.3s ease;
-  overflow: hidden; /* hide content when collapsing */
+  padding-right: 0.5rem; /* a little breathing room next to the toggle */
 }
 
 /* Collapsed state: hide the panel but KEEP the toggle visible */
@@ -21,18 +28,6 @@
   width: 0;
   padding: 0;
   border-right: none;
-}
-
-/* --- Toggle button to the RIGHT of the sidebar (always visible) --- */
-.nav-toggle {
-  margin-left: 0.5rem;
-  background: #444;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  line-height: 1;
 }
 
 /* --- Nav links (keep your existing look) --- */
@@ -51,13 +46,15 @@
   display: inline-block;
   text-decoration: none;
   color: inherit;
-  padding: 0 0.3rem;
+  padding: 0 0.2rem;
   font-size: 1rem;
   border-radius: 6px;
+  /* line-height: 2rem; */
 }
 
 .listen-nav a:hover {
   background: rgba(255, 255, 255, 0.06);
+  color: #978080;
 }
 
 .listen-nav a.active {
@@ -65,25 +62,15 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Let clicks pass through the floating nav except on links & toggle */
-.listen-nav-wrapper {
-  pointer-events: none;
-}
-
-.listen-nav a,
-.nav-toggle {
-  pointer-events: auto;
-}
-
-/* Turn the floating side nav into a top bar on small screens */
-@media (max-width: 650px) {
+/* ---------- Small screens: turn into a top bar ---------- */
+@media (max-width: 660px) {
   /* Stop floating; become part of normal flow */
   .listen-nav-wrapper {
     position: static;
     top: auto;
     left: auto;
     z-index: auto;
-    pointer-events: auto; /* re-enable normal clicks since it's not overlapping */
+    pointer-events: auto; /* re-enable normal clicks */
     width: 100%;
     display: block;
     margin-bottom: 8px;
@@ -112,18 +99,8 @@
     overflow: visible;
   }
 
-  .listen-nav {
-    transition: none;
-  }
   /* Hide the toggle in top-bar mode */
   .nav-toggle {
     display: none;
-  }
-}
-
-@media (max-width: 660px) {
-  /* disable transition on resize to avoid issues */
-  .listen-nav {
-    transition: none;
   }
 }
