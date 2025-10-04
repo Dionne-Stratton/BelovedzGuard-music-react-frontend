@@ -1,0 +1,133 @@
+/* ===== Floating placement (doesn't affect page layout) ===== */
+.listen-nav-wrapper {
+  position: fixed;
+  top: 180px; /* move DOWN by increasing this number; UP by decreasing it */
+  /* left: 12px; */
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* --- Your sidebar --- */
+.listen-nav {
+  flex: 0 0 auto;
+  /* width: 9rem; */
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+  /* padding: 1rem 0; */
+  transition: width 0.3s ease, padding 0.3s ease;
+  overflow: hidden; /* hide content when collapsing */
+}
+
+/* Collapsed state: hide the panel but KEEP the toggle visible */
+.listen-nav.collapsed {
+  width: 0;
+  padding: 0;
+  border-right: none;
+}
+
+/* --- Toggle button to the RIGHT of the sidebar (always visible) --- */
+.nav-toggle {
+  margin-left: 0.5rem; /* sits to the right of the nav */
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* --- Nav links (keep your existing look) --- */
+.listen-nav ul {
+  /* list-style: none; */
+  /* margin: 0; */
+  padding: 0 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listen-nav li {
+  margin: 0;
+}
+
+.listen-nav a {
+  display: inline-block; /* shrink to text */
+  text-decoration: none;
+  color: inherit;
+  padding: 0 0.3rem;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.listen-nav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.listen-nav a.active {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Let clicks pass through the floating nav except on links & toggle */
+.listen-nav-wrapper {
+  pointer-events: none;
+}
+.listen-nav a,
+.nav-toggle {
+  pointer-events: auto;
+}
+
+/* Turn the floating side nav into a top bar on small screens */
+@media (max-width: 650px) {
+  /* Stop floating; become part of normal flow */
+  .listen-nav-wrapper {
+    position: static;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    pointer-events: auto; /* re-enable normal clicks since it's not overlapping */
+    width: 100%;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .listen-nav {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    overflow: visible;
+  }
+
+  .listen-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 0.75rem;
+  }
+
+  .listen-nav.collapsed {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-right: 0;
+    overflow: visible;
+  }
+
+  .listen-nav {
+    transition: none;
+  }
+  /* Hide the toggle in top-bar mode */
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 660px) {
+  /* disable transition on resize to avoid issues */
+  .listen-nav {
+    transition: none;
+  }
+}

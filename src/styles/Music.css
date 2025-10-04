@@ -78,6 +78,8 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  /* margin-left: -45px;
+  margin-top: 10px; */
 }
 
 .song-thumbnail {

@@ -1,0 +1,17 @@
+/* Layout only — no colors/padding so child pages keep their own styles */
+.listen-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.listen-content {
+  flex: 1;
+  min-width: 0; /* prevents overflow on narrow screens */
+}
+
+/* Optional: stack nav on small screens */
+@media (max-width: 900px) {
+  .listen-layout {
+    flex-direction: column;
+  }
+}

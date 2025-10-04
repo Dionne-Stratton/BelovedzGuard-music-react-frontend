@@ -26,60 +26,44 @@ const HeaderNav = () => {
       <nav className="container">
         <ul>
           <li>
-            <ul>
-              {/* Example if you want Home back later
-              <li>
-                <NavLink
-                  to="/home"
-                  className={({ isActive }) =>
-                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              */}
-              <li>
-                <NavLink
-                  to="/about"
-                  className={({ isActive }) =>
-                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/music"
-                  className={({ isActive }) =>
-                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
-                  }
-                >
-                  Music
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/videos"
-                  className={({ isActive }) =>
-                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
-                  }
-                >
-                  Videos
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/partner"
-                  className={({ isActive }) =>
-                    `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
-                  }
-                >
-                  Partner
-                </NavLink>
-              </li>
-            </ul>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+              }
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/listen/music"
+              className={({ isActive }) =>
+                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+              }
+            >
+              Music
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/videos"
+              className={({ isActive }) =>
+                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+              }
+            >
+              Videos
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/partner"
+              className={({ isActive }) =>
+                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+              }
+            >
+              Partner
+            </NavLink>
           </li>
         </ul>
       </nav>
