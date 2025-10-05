@@ -1,4 +1,4 @@
-/********************************************** Music page ********************************************/
+/********************************************** Songs page ********************************************/
 .song-filters {
   display: flex;
   justify-content: center;
@@ -35,7 +35,6 @@
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
-  /* text-align: center; */
   padding: 2px 6px;
   border-radius: 4px;
   position: absolute;
@@ -91,7 +90,6 @@
 .song-title {
   display: flex;
   flex-wrap: wrap;
-  /* width: 8rem; */
   margin: 0 auto;
   text-align: center;
   justify-content: center;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import "../styles/Videos.css";
+import "../styles/Watch.css";
 //get songs from redux
 
-export default function Videos() {
+export default function Watch() {
   const songs = useSelector((state) => state.songs);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");

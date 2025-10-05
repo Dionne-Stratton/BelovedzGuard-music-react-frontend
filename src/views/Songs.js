@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { setQueue, setCurrentSong } from "../state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
-import "../styles/Music.css";
+import "../styles/Songs.css";
 
 // map genre → {icon, label}
 const GENRE_META = {
@@ -13,7 +13,7 @@ const GENRE_META = {
 };
 const DEFAULT_META = { icon: "🎶", label: "Other" };
 
-export default function Music() {
+export default function Songs() {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs);
 

@@ -78,7 +78,7 @@ export default function Home({ setCurrentIndex }) {
 
       <div className="home-links">
         <p>
-          <NavLink to="/music" className="main-nav">
+          <NavLink to="/listen/songs" className="main-nav">
             Start Listening
           </NavLink>{" "}
           |{" "}
