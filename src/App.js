@@ -8,9 +8,9 @@ import { Routes, Route } from "react-router-dom"; // ✅ v6 uses Routes instead 
 import HeaderNav from "./components/HeaderNav";
 import Home from "./views/Home";
 import About from "./views/About";
-import Videos from "./views/Videos";
+import Watch from "./views/Watch";
 import Partner from "./views/Partner";
-import Music from "./views/Music";
+import Listen from "./views/Listen";
 import SongPlayer from "./components/SongPlayer";
 import LyricsViewer from "./components/LyricsViewer";
 
@@ -35,8 +35,8 @@ export default function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/music" element={<Music />} />
+          <Route path="/watch" element={<Watch />} />
+          <Route path="/listen/*" element={<Listen />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/" element={<Home />} />
         </Routes>
