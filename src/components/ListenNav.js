@@ -14,9 +14,9 @@ const ListenNav = () => {
           <li>
             <NavLink to="/listen/albums">Albums</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/listen/playlists">Playlists</NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>
