@@ -78,7 +78,7 @@ export default function Albums() {
       <h1 className="albums-heading">Albums</h1>
 
       {albums.length === 0 ? (
-        <p className="muted">No albums configured yet.</p>
+        <p className="muted">Loading...</p>
       ) : (
         <div className="albums-list">
           {albums.map((a) => (
@@ -114,9 +114,7 @@ export default function Albums() {
               {expandedAlbums[a.slug] && (
                 <>
                   {a.tracks.length === 0 ? (
-                    <div className="album-empty">
-                      (No matching songs by ID yet)
-                    </div>
+                    <p>Loading...</p>
                   ) : (
                     <ul className="album-tracks">
                       {a.tracks.map((t) => (
