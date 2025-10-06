@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setQueue, setCurrentSong } from "../state/playerSlice";
 import "../styles/Albums.css";
 
-// ✅ Your actual album data
 const ALBUMS = [
   {
     slug: "jesus",
@@ -40,7 +39,12 @@ export default function Albums() {
   const songs = useSelector((state) => state.songs);
   const dispatch = useDispatch();
 
-  // Build albums-with-tracks (simple id lookup, keep config order)
+  // ✅ start every album expanded (open)
+  const [expandedAlbums, setExpandedAlbums] = useState(() =>
+    Object.fromEntries(ALBUMS.map((a) => [a.slug, true]))
+  );
+
+  // Build albums-with-tracks
   const albums = ALBUMS.map((a) => {
     const tracks = [];
     for (const id of a.tracksById) {
@@ -62,6 +66,13 @@ export default function Albums() {
     dispatch(setCurrentSong(songId));
   };
 
+  const toggleAlbum = (slug) => {
+    setExpandedAlbums((prev) => ({
+      ...prev,
+      [slug]: !prev[slug],
+    }));
+  };
+
   return (
     <div className="page-container">
       <h1 className="albums-heading">Albums</h1>
@@ -73,40 +84,62 @@ export default function Albums() {
           {albums.map((a) => (
             <div key={a.slug} className="album-card">
               <div className="album-header">
-                <div className="album-title">{a.title}</div>
-                <button
-                  className="album-play"
-                  onClick={() => playAlbum(a)}
-                  disabled={!a.tracks.length}
-                  title={a.tracks.length ? "Play album" : "No songs yet"}
-                >
-                  ▶ Play Album
-                </button>
+                <div className="album-left">
+                  <button
+                    className="album-toggle"
+                    onClick={() => toggleAlbum(a.slug)}
+                    title={
+                      expandedAlbums[a.slug]
+                        ? "Hide track list"
+                        : "Show track list"
+                    }
+                  >
+                    {expandedAlbums[a.slug] ? "▼" : "▲"}
+                  </button>
+                  <div className="album-title">{a.title}</div>
+                </div>
+
+                <div className="album-actions">
+                  <button
+                    className="album-play"
+                    onClick={() => playAlbum(a)}
+                    disabled={!a.tracks.length}
+                    title={a.tracks.length ? "Play album" : "No songs yet"}
+                  >
+                    ▶ Play Album
+                  </button>
+                </div>
               </div>
 
-              {a.tracks.length === 0 ? (
-                <div className="album-empty">(No matching songs by ID yet)</div>
-              ) : (
-                <ul className="album-tracks">
-                  {a.tracks.map((t) => (
-                    <li
-                      key={t._id}
-                      className="album-track"
-                      onClick={() => playFromSong(a, t._id)}
-                    >
-                      <img
-                        className="track-thumb"
-                        src={t.songThumbnail}
-                        alt={t.title}
-                        onError={(e) =>
-                          (e.currentTarget.style.visibility = "hidden")
-                        }
-                      />
-                      <span className="track-title">{t.title}</span>
-                      <span>{t.genre}</span>
-                    </li>
-                  ))}
-                </ul>
+              {expandedAlbums[a.slug] && (
+                <>
+                  {a.tracks.length === 0 ? (
+                    <div className="album-empty">
+                      (No matching songs by ID yet)
+                    </div>
+                  ) : (
+                    <ul className="album-tracks">
+                      {a.tracks.map((t) => (
+                        <li
+                          key={t._id}
+                          className="album-track"
+                          onClick={() => playFromSong(a, t._id)}
+                        >
+                          <img
+                            className="track-thumb"
+                            src={t.songThumbnail}
+                            alt={t.title}
+                            onError={(e) =>
+                              (e.currentTarget.style.visibility = "hidden")
+                            }
+                          />
+                          <span className="track-title">{t.title}</span>
+                          <span>{t.genre}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
               )}
             </div>
           ))}
