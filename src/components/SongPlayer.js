@@ -21,59 +21,114 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [repeatOne, setRepeatOne] = useState(false);
+  const [shuffle, setShuffle] = useState(false);
+
+  // History stacks for prev/next behavior
+  const [playedStack, setPlayedStack] = useState([]); // back stack
+  const [futureStack, setFutureStack] = useState([]); // forward stack (after going back)
 
   const audioRef = useRef(null);
+  const navRef = useRef(null); // "next" | "prev" | null (external change if null)
+  const prevIdRef = useRef(null); // detect external selection
+
   const currentSong = queue.find((song) => song._id === currentSongId);
   const currentIndex = useMemo(
     () => queue.findIndex((song) => song._id === currentSongId),
     [queue, currentSongId]
   );
 
-  const nextSong = () => {
-    if (queue.length === 0 || currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % queue.length;
-    dispatch(setCurrentSong(queue[nextIndex]._id));
-    console.log("Next song index:", nextIndex);
-    console.log("Next song ID:", queue[nextIndex]._id);
+  const formatTime = (time) => {
+    if (isNaN(time)) return "00:00";
+    const m = Math.floor(time / 60)
+      .toString()
+      .padStart(2, "0");
+    const s = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${m}:${s}`;
   };
 
+  const getRandomIndex = () => {
+    if (queue.length <= 1) return currentIndex;
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * queue.length);
+    } while (idx === currentIndex);
+    return idx;
+  };
+
+  // NEXT uses shuffle (if on) OR sequential; FIRST consume futureStack if present (when user had pressed Prev)
+  const nextSong = () => {
+    if (queue.length === 0 || currentIndex === -1) return;
+    navRef.current = "next";
+
+    if (futureStack.length > 0) {
+      const nextId = futureStack[futureStack.length - 1];
+      setFutureStack((f) => f.slice(0, -1));
+      setPlayedStack((p) => [...p, currentSongId]);
+      dispatch(setCurrentSong(nextId));
+      return;
+    }
+
+    const nextIndex = shuffle
+      ? getRandomIndex()
+      : (currentIndex + 1) % queue.length;
+    setPlayedStack((p) => [...p, currentSongId]);
+    dispatch(setCurrentSong(queue[nextIndex]._id));
+  };
+
+  // PREV always uses history if available; otherwise sequential back
   const prevSong = () => {
     if (queue.length === 0 || currentIndex === -1) return;
+
+    if (playedStack.length > 0) {
+      navRef.current = "prev";
+      const prevId = playedStack[playedStack.length - 1];
+      setPlayedStack((p) => p.slice(0, -1));
+      setFutureStack((f) => [...f, currentSongId]);
+      dispatch(setCurrentSong(prevId));
+      return;
+    }
+
+    navRef.current = "prev";
     const prevIndex = (currentIndex - 1 + queue.length) % queue.length;
+    setFutureStack((f) => [...f, currentSongId]);
     dispatch(setCurrentSong(queue[prevIndex]._id));
   };
 
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
-  };
-
-  const formatTime = (time) => {
-    if (isNaN(time)) return "00:00";
-    const minutes = Math.floor(time / 60)
-      .toString()
-      .padStart(2, "0");
-    const seconds = Math.floor(time % 60)
-      .toString()
-      .padStart(2, "0");
-    return `${minutes}:${seconds}`;
+    isPlaying ? audio.pause() : audio.play();
   };
 
   useEffect(() => {
     if (audioRef.current && currentSongId !== null) {
       const playPromise = audioRef.current.play();
       if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Autoplay blocked:", error);
-        });
+        playPromise.catch((e) => console.log("Autoplay blocked:", e));
       }
     }
   }, [currentSongId]);
+
+  // Detect external selection (user clicked a track elsewhere)
+  useEffect(() => {
+    if (prevIdRef.current !== null && navRef.current === null) {
+      // Fresh selection: clear future so Next doesn't walk a stale path
+      setFutureStack([]);
+      // Keep playedStack so Prev still goes back to what you just heard (optional policy)
+    }
+    prevIdRef.current = currentSongId;
+    navRef.current = null;
+  }, [currentSongId]);
+
+  // 🔧 KEY FIX: when shuffle is turned OFF, clear futureStack
+  // so Next resumes original queue order from the current song.
+  useEffect(() => {
+    if (!shuffle) {
+      setFutureStack([]);
+    }
+  }, [shuffle]);
 
   const handleTimeUpdate = () => {
     const audio = audioRef.current;
@@ -83,8 +138,11 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
 
   const handleEnded = () => {
     if (queue.length === 0 || currentIndex === -1) return;
-    const nextIndex = (currentIndex + 1) % queue.length;
-    dispatch(setCurrentSong(queue[nextIndex]._id));
+    if (repeatOne) {
+      handleRepeatOne();
+    } else {
+      nextSong();
+    }
   };
 
   const handleRepeatOne = () => {
@@ -136,9 +194,14 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
           <div className="song-player-controls">
             <FiShuffle
               size={15}
-              color="#dedad9"
-              className="add-drop-shadow-thick add-pointer"
+              color={shuffle ? "#ffffff" : "#dedad9"}
+              title={shuffle ? "Shuffle On" : "Shuffle Off"}
+              onClick={() => setShuffle((s) => !s)}
+              className={`add-drop-shadow-thick add-pointer ${
+                shuffle ? "active" : ""
+              }`}
             />
+
             <FaStepBackward
               size={18}
               color="#dedad9"
@@ -166,10 +229,11 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
               onClick={nextSong}
               className="add-drop-shadow-thick add-pointer"
             />
+
             <div className="repeat-button-wrapper">
               <FiRepeat
                 size={15}
-                onClick={() => setRepeatOne(!repeatOne)}
+                onClick={() => setRepeatOne((r) => !r)}
                 title={repeatOne ? "Repeat One" : "Repeat All"}
                 className={`add-drop-shadow-thick add-pointer ${
                   repeatOne ? "active" : ""
@@ -209,10 +273,9 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
           onClick={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
-            const width = rect.width;
-            const percent = clickX / width;
-            const newTime = audioRef.current.duration * percent;
-            audioRef.current.currentTime = newTime;
+            const percent = clickX / rect.width;
+            audioRef.current.currentTime =
+              (audioRef.current.duration || 0) * percent;
           }}
           className="song-player-progress"
         >
@@ -231,7 +294,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
         src={currentSong.mp3}
         type="audio/mpeg"
         onTimeUpdate={handleTimeUpdate}
-        onEnded={repeatOne ? handleRepeatOne : handleEnded}
+        onEnded={handleEnded}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
