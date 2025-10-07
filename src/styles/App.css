@@ -26,7 +26,7 @@ body {
 
 /* Base layout setup */
 .App {
-  padding-bottom: 17vh;
+  /* padding-bottom: 17vh; */
   display: flex;
   flex-direction: column;
   transition: margin-right 0.3s ease;
@@ -156,6 +156,10 @@ nav {
 /* when lyrics viewer is open */
 .content.with-lyrics {
   margin-right: 300px;
+}
+
+.content.with-player {
+  padding-bottom: 130px; /* adjust to your player’s height if needed */
 }
 
 /********************************************** Shared *********************************************/

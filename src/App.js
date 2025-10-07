@@ -1,11 +1,11 @@
 import "./styles/App.css";
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; // ✅ added useSelector
 import { setSongs } from "./state/songsSlice";
 import axios from "axios";
-import { Routes, Route, useLocation } from "react-router-dom"; // added useLocation
-// Components and views
+import { Routes, Route, useLocation } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
+import Footer from "./components/Footer";
 import Home from "./views/Home";
 import About from "./views/About";
 import Watch from "./views/Watch";
@@ -13,8 +13,6 @@ import Partner from "./views/Partner";
 import Listen from "./views/Listen";
 import SongPlayer from "./components/SongPlayer";
 import LyricsViewer from "./components/LyricsViewer";
-
-// ✅ import analytics helpers
 import { initAnalytics, trackPageView } from "./utils/analytics";
 
 export default function App() {
@@ -22,6 +20,9 @@ export default function App() {
   const [displayLyrics, setDisplayLyrics] = useState(false);
   const API_URL = "https://belovedzguard-ebf890192e0e.herokuapp.com/songs";
   const location = useLocation();
+
+  // ✅ Pull player state from Redux (assuming your song player stores this)
+  const currentSongId = useSelector((state) => state.player?.currentSongId);
 
   // initialize GA once
   useEffect(() => {
@@ -42,10 +43,14 @@ export default function App() {
 
   return (
     <div className="App layout">
-      <div className={`content ${displayLyrics ? "with-lyrics" : ""}`}>
+      {/* ✅ Add both conditional classes */}
+      <div
+        className={`content ${displayLyrics ? "with-lyrics" : ""} ${
+          currentSongId ? "with-player" : ""
+        }`}
+      >
         <HeaderNav />
 
-        {/* ✅ React Router v6 syntax */}
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -54,6 +59,8 @@ export default function App() {
           <Route path="/partner" element={<Partner />} />
           <Route path="/" element={<Home />} />
         </Routes>
+
+        <Footer />
 
         <SongPlayer
           setDisplayLyrics={setDisplayLyrics}
