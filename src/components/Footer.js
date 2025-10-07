@@ -3,8 +3,8 @@ import {
   FaFacebook,
   FaYoutube,
   FaInstagram,
-  FaSpotify,
-  FaItunes,
+  //   FaSpotify,
+  //   FaItunes,
   FaBandcamp,
 } from "react-icons/fa";
 import colors from "../styles/colors";
