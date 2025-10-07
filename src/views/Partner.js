@@ -19,7 +19,7 @@ const Partner = () => {
         these songs with a wider audience. It also allows me to dedicate more
         time to creating new music and worship experiences.
       </p>
-
+      <p className="border-below"></p>
       <h2>🎧 Patreon – Studio Access</h2>
       <p>
         By joining my Patreon at the <strong>Studio Access</strong> tier, you'll
@@ -84,7 +84,7 @@ const Partner = () => {
           Support me on Ko-fi
         </a>
       </div>
-
+      <p className="border-below"></p>
       <h4>
         Thank you for helping me share these songs with the world. It means more
         than I can say.

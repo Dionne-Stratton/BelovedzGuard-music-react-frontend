@@ -173,6 +173,11 @@ nav {
   background-color: #e7e5e5;
 }
 
+.border-below {
+  border-bottom: 2px solid #635e57;
+  margin-top: 1.5rem;
+}
+
 .thumbnail-wrapper {
   position: relative;
   display: inline-block;

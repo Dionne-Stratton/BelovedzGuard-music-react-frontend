@@ -46,7 +46,7 @@ export default function Home({ setCurrentIndex }) {
         works—and brings us into a new, eternal relationship with God (John
         1:12).
       </p>
-
+      <p className="border-below"></p>
       <h4>
         If you’re ready to receive this gift, you can pray this simple prayer:
       </h4>
@@ -58,7 +58,7 @@ export default function Home({ setCurrentIndex }) {
         me to follow You all my days. Thank You for Your love and for making me
         a child of God. Amen.”
       </p>
-
+      <p className="border-below"></p>
       <p>
         If you just prayed that prayer, or you are already following Jesus, this
         is my prayer for you:
@@ -73,7 +73,7 @@ export default function Home({ setCurrentIndex }) {
         those around them, and may they walk in the fullness of Your purpose for
         their lives. Thank You, Lord, for Your unending love. Amen.”
       </p>
-
+      <p className="border-below"></p>
       <p>Seek Him today!</p>
 
       <div className="home-links">

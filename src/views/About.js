@@ -16,7 +16,7 @@ const About = () => {
         would deepen your love for Him and inspire you to worship Him more
         fully.
       </p>
-
+      <p className="border-below"></p>
       <h2>
         What does <em>BelovedzGuard</em> mean?
       </h2>
@@ -29,7 +29,7 @@ const About = () => {
         protecting hearts through truth, beauty, and worship - with His help,
         always.
       </p>
-
+      <p className="border-below"></p>
       <h2>Artist Statement</h2>
 
       <p>
@@ -45,7 +45,7 @@ const About = () => {
         are meant to call others into the same kind of closeness with Him: to
         see His glory, feel His love, and respond with all they are.
       </p>
-
+      <p className="border-below"></p>
       <p>
         <strong>Disclaimer:</strong> I am not a professional musician or part of
         the music industry. All lyrics, concepts, and creative direction are my
