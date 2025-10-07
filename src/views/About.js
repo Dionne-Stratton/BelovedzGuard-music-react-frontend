@@ -45,6 +45,21 @@ const About = () => {
         are meant to call others into the same kind of closeness with Him: to
         see His glory, feel His love, and respond with all they are.
       </p>
+
+      <p>
+        <strong>Disclaimer:</strong> I am not a professional musician or part of
+        the music industry. All lyrics, concepts, and creative direction are my
+        own. The accompanying music and vocal performances are produced using
+        various software and AI-based composition tools, including but not
+        limited to generative AI platforms. These tools are used to bring my
+        original lyrics and vision to life.
+      </p>
+      <p>
+        By engaging with or supporting my work or content, you acknowledge that
+        AI-assisted technology was used in the creation of the musical
+        components and some images, and that I have made this disclosure openly
+        and in good faith.
+      </p>
     </div>
   );
 };

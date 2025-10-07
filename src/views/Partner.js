@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Partner.css";
+import { trackLinkClick } from "../utils/analytics"; // ✅ use your existing function
 
 const Partner = () => {
   return (
@@ -14,17 +15,17 @@ const Partner = () => {
       </p>
 
       <p>
-        {" "}
         Your support helps cover the costs of production, equipment, and sharing
         these songs with a wider audience. It also allows me to dedicate more
         time to creating new music and worship experiences.
       </p>
+
       <h2>🎧 Patreon – Studio Access</h2>
       <p>
         By joining my Patreon at the <strong>Studio Access</strong> tier, you'll
         get exclusive early access to alternate mixes of my songs — different
         versions I create and love but don’t publicly share. I release 2–5
-        private versions per month just for patrons.{" "}
+        private versions per month just for patrons.
       </p>
       <div className="partner-button-container">
         <a
@@ -32,6 +33,7 @@ const Partner = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="add-drop-shadow-thick partner-button"
+          onClick={() => trackLinkClick("Patreon")}
         >
           Become a Patron
         </a>
@@ -49,6 +51,7 @@ const Partner = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="add-drop-shadow-thick partner-button"
+          onClick={() => trackLinkClick("Bandcamp")}
         >
           Purchase Music
         </a>
@@ -67,6 +70,7 @@ const Partner = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="partner-button add-drop-shadow-thick"
+          onClick={() => trackLinkClick("PayPal")}
         >
           Donate via PayPal
         </a>
@@ -75,6 +79,7 @@ const Partner = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="add-drop-shadow-thick partner-button"
+          onClick={() => trackLinkClick("Ko-fi")}
         >
           Support me on Ko-fi
         </a>

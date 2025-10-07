@@ -12,6 +12,10 @@ import {
 } from "react-icons/fa";
 import { FiShuffle, FiRepeat } from "react-icons/fi";
 
+// ✅ import analytics
+import { trackSongPlay } from "../utils/analytics";
+import { trackUIEvent } from "../utils/analytics";
+
 export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const dispatch = useDispatch();
   const queue = useSelector((state) => state.player.queue);
@@ -23,13 +27,12 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const [repeatOne, setRepeatOne] = useState(false);
   const [shuffle, setShuffle] = useState(false);
 
-  // History stacks for prev/next behavior
-  const [playedStack, setPlayedStack] = useState([]); // back stack
-  const [futureStack, setFutureStack] = useState([]); // forward stack (after going back)
+  const [playedStack, setPlayedStack] = useState([]);
+  const [futureStack, setFutureStack] = useState([]);
 
   const audioRef = useRef(null);
-  const navRef = useRef(null); // "next" | "prev" | null (external change if null)
-  const prevIdRef = useRef(null); // detect external selection
+  const navRef = useRef(null);
+  const prevIdRef = useRef(null);
 
   const currentSong = queue.find((song) => song._id === currentSongId);
   const currentIndex = useMemo(
@@ -57,7 +60,6 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     return idx;
   };
 
-  // NEXT uses shuffle (if on) OR sequential; FIRST consume futureStack if present (when user had pressed Prev)
   const nextSong = () => {
     if (queue.length === 0 || currentIndex === -1) return;
     navRef.current = "next";
@@ -77,7 +79,6 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     dispatch(setCurrentSong(queue[nextIndex]._id));
   };
 
-  // PREV always uses history if available; otherwise sequential back
   const prevSong = () => {
     if (queue.length === 0 || currentIndex === -1) return;
 
@@ -111,19 +112,14 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     }
   }, [currentSongId]);
 
-  // Detect external selection (user clicked a track elsewhere)
   useEffect(() => {
     if (prevIdRef.current !== null && navRef.current === null) {
-      // Fresh selection: clear future so Next doesn't walk a stale path
       setFutureStack([]);
-      // Keep playedStack so Prev still goes back to what you just heard (optional policy)
     }
     prevIdRef.current = currentSongId;
     navRef.current = null;
   }, [currentSongId]);
 
-  // 🔧 KEY FIX: when shuffle is turned OFF, clear futureStack
-  // so Next resumes original queue order from the current song.
   useEffect(() => {
     if (!shuffle) {
       setFutureStack([]);
@@ -157,6 +153,14 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     setDisplayLyrics(false);
   };
 
+  // ✅ NEW: Track song plays when playback actually starts
+  const handlePlay = () => {
+    setIsPlaying(true);
+    if (currentSong?.title) {
+      trackSongPlay(currentSong.title);
+    }
+  };
+
   if (currentSongId === null || !currentSong) return null;
 
   return (
@@ -184,7 +188,11 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
           <div className="song-player-title">{currentSong.title}</div>
           <button
             className="song-player-lyrics-button"
-            onClick={() => setDisplayLyrics(!displayLyrics)}
+            onClick={() => {
+              const newState = !displayLyrics;
+              setDisplayLyrics(newState);
+              trackUIEvent("Lyrics Toggle", newState ? "Opened" : "Closed");
+            }}
           >
             Lyrics
           </button>
@@ -295,7 +303,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
         type="audio/mpeg"
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
-        onPlay={() => setIsPlaying(true)}
+        onPlay={handlePlay}
         onPause={() => setIsPlaying(false)}
       />
     </div>
