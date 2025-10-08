@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../images/logo/BelovedzGaurd.png";
+// import logo from "../images/logo/BelovedzGaurd.png";
+import Logo from "./Logo";
 
 const HeaderNav = () => {
   const [listenOpen, setListenOpen] = useState(false);
@@ -11,8 +12,8 @@ const HeaderNav = () => {
   return (
     <div className="headernav">
       <header>
-        <NavLink to="/">
-          <img src={logo} alt="BelovedzGuard Logo" id="logo-img" />
+        <NavLink to="/" className="logo-link">
+          <Logo />
         </NavLink>
         <div id="logo">
           <h1>
