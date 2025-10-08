@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { setQueue, setCurrentSong } from "../state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/Songs.css";
+import SongThumbnail from "../components/SongThumbnail";
 
 // map genre → {icon, label}
 const GENRE_META = {
@@ -91,12 +92,12 @@ export default function Songs() {
               </div>
 
               <div className="thumbnail-wrapper">
-                <img
-                  src={song.songThumbnail}
-                  alt={song.title}
-                  className="song-thumbnail"
+                <SongThumbnail
+                  title={song.title}
+                  thumbnail={song.songThumbnail}
+                  animatedThumbnail={song.animatedThumbnail}
                 />
-                <div className="play-overlay">🎧</div>
+                {/* <div className="play-overlay">🎧</div> */}
               </div>
               <span className="song-title">{song.title}</span>
             </div>
