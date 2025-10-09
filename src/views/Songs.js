@@ -1,6 +1,8 @@
+// src/pages/Songs.js
 import React, { useState } from "react";
 import { setQueue, setCurrentSong } from "../state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useInView } from "react-intersection-observer"; // 👈 NEW
 import "../styles/Songs.css";
 import SongThumbnail from "../components/SongThumbnail";
 
@@ -81,29 +83,58 @@ export default function Songs() {
         {filteredSongs.map((song) => {
           const meta = GENRE_META[song.genre] || DEFAULT_META;
           return (
-            <div
+            <LazySongCard
               key={song._id}
-              className="song-card"
+              song={song}
+              meta={meta}
               onClick={() => handleSongClick(song._id)}
-            >
-              <div className="genre-icon">
-                {meta.icon}
-                <div className="tooltip">{meta.label}</div>
-              </div>
-
-              <div className="thumbnail-wrapper">
-                <SongThumbnail
-                  title={song.title}
-                  thumbnail={song.songThumbnail}
-                  animatedThumbnail={song.animatedThumbnail}
-                />
-                {/* <div className="play-overlay">🎧</div> */}
-              </div>
-              <span className="song-title">{song.title}</span>
-            </div>
+            />
           );
         })}
       </div>
     </>
+  );
+}
+
+/* ---------- Helper Subcomponent ---------- */
+function LazySongCard({ song, meta, onClick }) {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // only load once
+    rootMargin: "200px", // preload just before it becomes visible
+  });
+
+  return (
+    <div ref={ref} style={{ minHeight: "320px" }}>
+      {inView ? (
+        <div className="song-card" onClick={onClick}>
+          <div className="genre-icon">
+            {meta.icon}
+            <div className="tooltip">{meta.label}</div>
+          </div>
+
+          <div className="thumbnail-wrapper">
+            <div className="play-overlay">🎧</div>
+            <SongThumbnail
+              title={song.title}
+              thumbnail={song.songThumbnail}
+              animatedThumbnail={song.animatedSongThumbnail}
+            />
+          </div>
+          <span className="song-title">{song.title}</span>
+        </div>
+      ) : (
+        // lightweight placeholder while offscreen
+        <div
+          className="song-card placeholder"
+          style={{
+            width: "100%",
+            aspectRatio: "1 / 1",
+            borderRadius: "16px",
+            backgroundColor: "#222",
+            opacity: 0.3,
+          }}
+        ></div>
+      )}
+    </div>
   );
 }

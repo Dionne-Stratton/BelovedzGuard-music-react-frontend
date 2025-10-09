@@ -1,5 +1,5 @@
 // components/SongThumbnail.js
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export default function SongThumbnail({ title, thumbnail, animatedThumbnail }) {
   const videoRef = useRef(null);
