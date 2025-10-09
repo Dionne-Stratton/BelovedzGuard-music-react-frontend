@@ -88,10 +88,9 @@ nav {
 }
 
 #logo {
-  max-width: 80%;
-  width: 80%;
+  max-width: 100%;
+  width: 85%;
   margin-bottom: 1em;
-  margin-left: 35px;
 }
 
 #logo h1 {
@@ -164,9 +163,9 @@ nav {
 
 .headernav {
   width: 100%;
-  padding-top: 10px;
-  /* margin-bottom: 1%; */
+  margin-top: 1px;
 }
+
 /********************************************** Shared *********************************************/
 .search-bar input:focus {
   outline: none; /* remove browser default */
@@ -405,6 +404,14 @@ nav ul ul a {
 
 nav ul li.icon {
   display: none;
+}
+
+.logo-link-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -10px;
 }
 
 /********************************************** BODY ***********************************************/

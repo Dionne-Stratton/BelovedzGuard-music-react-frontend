@@ -1,16 +1,13 @@
 /* ===== Floating placement (doesn't affect page layout) ===== */
 .listen-nav-wrapper {
   position: fixed;
-  top: 200px; /* tweak to sit under your header */
+  top: 180px; /* tweak to sit under your header */
   left: 0px; /* keep it on the left edge */
   z-index: 1000;
   display: block; /* overlay wrapper; we don't need flex here */
+  pointer-events: none; /* Let clicks pass through the floating wrapper except on links & toggle */
 }
 
-/* Let clicks pass through the floating wrapper except on links & toggle */
-.listen-nav-wrapper {
-  pointer-events: none;
-}
 .listen-nav,
 .nav-toggle {
   pointer-events: auto;
@@ -18,9 +15,7 @@
 
 /* --- Your sidebar --- */
 .listen-nav {
-  /* border-right: 1px solid rgba(0, 0, 0, 0.25); */
   background: transparent;
-  padding-right: 0.5rem; /* a little breathing room next to the toggle */
 }
 
 /* Collapsed state: hide the panel but KEEP the toggle visible */
