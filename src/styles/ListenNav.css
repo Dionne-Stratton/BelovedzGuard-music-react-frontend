@@ -1,7 +1,7 @@
 /* ===== Floating placement (doesn't affect page layout) ===== */
 .listen-nav-wrapper {
   position: fixed;
-  top: 180px; /* tweak to sit under your header */
+  top: 200px; /* tweak to sit under your header */
   left: 0px; /* keep it on the left edge */
   z-index: 1000;
   display: block; /* overlay wrapper; we don't need flex here */

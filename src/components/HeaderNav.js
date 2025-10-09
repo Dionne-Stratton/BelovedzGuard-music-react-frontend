@@ -12,7 +12,7 @@ const HeaderNav = () => {
   return (
     <div className="headernav">
       <header>
-        <NavLink to="/">
+        <NavLink to="/" className="logo-link">
           <Logo />
         </NavLink>
         <div id="logo">
