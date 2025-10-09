@@ -17,12 +17,12 @@ const HeaderNav = () => {
         </NavLink>
         <div id="logo">
           <h1>
-            <NavLink to="/" className="add-drop-shadow-thick">
+            <NavLink to="/" className="drop-shadow-thick">
               BelovedzGuard
             </NavLink>
           </h1>
           <h2>
-            <NavLink to="/" className="add-drop-shadow-thick">
+            <NavLink to="/" className="drop-shadow-thick">
               Uplifting Christian Music
             </NavLink>
           </h2>
@@ -35,7 +35,7 @@ const HeaderNav = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                `main-nav drop-shadow-thin ${isActive ? "active" : ""}`
               }
             >
               About
@@ -51,7 +51,7 @@ const HeaderNav = () => {
             <NavLink
               to="/listen/songs"
               className={({ isActive }) =>
-                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                `main-nav drop-shadow-thin ${isActive ? "active" : ""}`
               }
             >
               Listen
@@ -83,7 +83,7 @@ const HeaderNav = () => {
               >
                 <NavLink
                   to="/listen/songs"
-                  className="add-drop-shadow-thin"
+                  className="drop-shadow-thin"
                   style={{
                     display: "inline-block",
                     // padding: "0.35rem 0.7rem",
@@ -98,7 +98,7 @@ const HeaderNav = () => {
               <li style={{ whiteSpace: "nowrap" }}>
                 <NavLink
                   to="/listen/albums"
-                  className="add-drop-shadow-thin"
+                  className="drop-shadow-thin"
                   style={{
                     display: "inline-block",
                     // padding: "0 0.7rem",
@@ -117,7 +117,7 @@ const HeaderNav = () => {
             <NavLink
               to="/watch"
               className={({ isActive }) =>
-                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                `main-nav drop-shadow-thin ${isActive ? "active" : ""}`
               }
             >
               Watch
@@ -127,7 +127,7 @@ const HeaderNav = () => {
             <NavLink
               to="/partner"
               className={({ isActive }) =>
-                `main-nav add-drop-shadow-thin ${isActive ? "active" : ""}`
+                `main-nav drop-shadow-thin ${isActive ? "active" : ""}`
               }
             >
               Partner

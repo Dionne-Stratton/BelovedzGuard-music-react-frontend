@@ -53,7 +53,7 @@ export default function Songs() {
   return (
     <>
       <div className="filters song-filters">
-        <div className="search-bar add-drop-shadow-thin">
+        <div className="search-bar drop-shadow-thin">
           <input
             type="text"
             placeholder="Search titles..."

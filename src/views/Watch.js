@@ -45,9 +45,7 @@ export default function Watch() {
                   alt={song.title}
                   className="video-thumbnail"
                 />
-                <div id="shadow" className="play-overlay">
-                  ▶
-                </div>
+                <div className="play-overlay drop-shadow-thick">▶</div>
               </div>
               <div className="video-title">{song.title}</div>
             </div>

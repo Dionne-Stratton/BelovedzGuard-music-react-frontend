@@ -205,7 +205,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
               color={shuffle ? "#ffffff" : "#dedad9"}
               title={shuffle ? "Shuffle On" : "Shuffle Off"}
               onClick={() => setShuffle((s) => !s)}
-              className={`add-drop-shadow-thick add-pointer ${
+              className={`drop-shadow-thick add-pointer ${
                 shuffle ? "active" : ""
               }`}
             />
@@ -214,28 +214,28 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
               size={18}
               color="#dedad9"
               onClick={prevSong}
-              className="add-drop-shadow-thick add-pointer"
+              className="drop-shadow-thick add-pointer"
             />
             {isPlaying ? (
               <FaPause
                 size={20}
                 color="#dedad9"
                 onClick={togglePlay}
-                className="add-drop-shadow-thick add-pointer"
+                className="drop-shadow-thick add-pointer"
               />
             ) : (
               <FaPlay
                 size={20}
                 color="#dedad9"
                 onClick={togglePlay}
-                className="add-drop-shadow-thick add-pointer"
+                className="drop-shadow-thick add-pointer"
               />
             )}
             <FaStepForward
               size={18}
               color="#dedad9"
               onClick={nextSong}
-              className="add-drop-shadow-thick add-pointer"
+              className="drop-shadow-thick add-pointer"
             />
 
             <div className="repeat-button-wrapper">
@@ -243,7 +243,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
                 size={15}
                 onClick={() => setRepeatOne((r) => !r)}
                 title={repeatOne ? "Repeat One" : "Repeat All"}
-                className={`add-drop-shadow-thick add-pointer ${
+                className={`drop-shadow-thick add-pointer ${
                   repeatOne ? "active" : ""
                 }`}
               />
@@ -251,7 +251,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
             </div>
           </div>
 
-          <div className="song-player-volume add-drop-shadow-thick">
+          <div className="song-player-volume drop-shadow-thick">
             {volume > 0 ? (
               <FaVolumeUp color="#dedad9" />
             ) : (

@@ -32,7 +32,7 @@ const Partner = () => {
           href="https://www.patreon.com/BelovedzGuard"
           target="_blank"
           rel="noopener noreferrer"
-          className="add-drop-shadow-thick partner-button"
+          className="drop-shadow-thick partner-button"
           onClick={() => trackLinkClick("Patreon")}
         >
           Become a Patron
@@ -50,7 +50,7 @@ const Partner = () => {
           href="https://belovedzguard.bandcamp.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="add-drop-shadow-thick partner-button"
+          className="drop-shadow-thick partner-button"
           onClick={() => trackLinkClick("Bandcamp")}
         >
           Purchase Music
@@ -69,7 +69,7 @@ const Partner = () => {
           href="https://www.paypal.com/donate/?hosted_button_id=2VSS3CEY7QUPE"
           target="_blank"
           rel="noopener noreferrer"
-          className="partner-button add-drop-shadow-thick"
+          className="partner-button drop-shadow-thick"
           onClick={() => trackLinkClick("PayPal")}
         >
           Donate via PayPal
@@ -78,7 +78,7 @@ const Partner = () => {
           href="https://ko-fi.com/belovedzguard"
           target="_blank"
           rel="noopener noreferrer"
-          className="add-drop-shadow-thick partner-button"
+          className="drop-shadow-thick partner-button"
           onClick={() => trackLinkClick("Ko-fi")}
         >
           Support me on Ko-fi
