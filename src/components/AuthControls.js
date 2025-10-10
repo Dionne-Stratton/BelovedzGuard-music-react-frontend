@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../state/authSlice";
+import profileIcon from "../images/profile.png";
+import "../styles/AuthControls.css";
 
 export default function AuthControls() {
   const dispatch = useDispatch();
@@ -19,9 +21,9 @@ export default function AuthControls() {
         </div>
       ) : (
         <div className="auth-logged-in">
-          <span className="welcome">Welcome</span>
-          <span className="username">
-            {user?.name || user?.email || "User"}
+          {/* <span className="welcome">Welcome</span> */}
+          <span>
+            <img className="profile-icon" src={profileIcon} alt="Profile" />
           </span>
           <button onClick={handleLogout}>Logout</button>
         </div>

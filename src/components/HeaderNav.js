@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import AuthControls from "./AuthControls";
 import Logo from "./Logo";
 
 const HeaderNav = () => {
   const [listenOpen, setListenOpen] = useState(false);
+  const location = useLocation();
 
   const showDropdown =
     typeof window !== "undefined" && window.innerWidth >= 900 && listenOpen;
+
+  // ✅ Check if user is on any /listen route (songs, albums, playlists, etc.)
+  const isListenActive = location.pathname.startsWith("/listen");
 
   return (
     <div className="headernav">
@@ -51,9 +55,9 @@ const HeaderNav = () => {
           >
             <NavLink
               to="/listen/songs"
-              className={({ isActive }) =>
-                `main-nav drop-shadow-thin ${isActive ? "active" : ""}`
-              }
+              className={`main-nav drop-shadow-thin ${
+                isListenActive ? "active" : ""
+              }`}
             >
               Listen
             </NavLink>
@@ -87,7 +91,6 @@ const HeaderNav = () => {
                   className="drop-shadow-thin"
                   style={{
                     display: "inline-block",
-                    // padding: "0.35rem 0.7rem",
                     textDecoration: "none",
                     textAlign: "left",
                     width: "100%",
@@ -102,7 +105,6 @@ const HeaderNav = () => {
                   className="drop-shadow-thin"
                   style={{
                     display: "inline-block",
-                    // padding: "0 0.7rem",
                     textDecoration: "none",
                     textAlign: "left",
                     width: "100%",

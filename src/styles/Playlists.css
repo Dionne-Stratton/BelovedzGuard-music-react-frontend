@@ -56,3 +56,61 @@
   align-items: center;
   gap: 1rem;
 }
+
+/* Icon-only buttons (for Play, Edit, Delete, Create) */
+.icon-button {
+  position: relative;
+  background-color: #4c4740;
+  color: #ebe7e2;
+  border: none;
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: #5c554c;
+}
+
+/* Tooltip styling */
+.icon-button .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 120%; /* position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.icon-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Slight offset arrow effect */
+.icon-button .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}

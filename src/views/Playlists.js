@@ -41,7 +41,13 @@ export default function Playlists() {
     <div className="playlists-page">
       <div className="playlist-header">
         <h2>Your Playlists</h2>
-        <button onClick={handleCreate}>+ Create Playlist</button>
+        <button
+          className="icon-button create-playlist-button"
+          onClick={handleCreate}
+        >
+          <span className="tooltip-text">Create new playlist</span>
+          <span className="icon">✚</span>
+        </button>
       </div>
 
       {(!playlists || playlists.length === 0) && (
@@ -53,7 +59,7 @@ export default function Playlists() {
           <div
             key={p._id}
             className="playlist-card"
-            onClick={() => handleView(p._id)} // click card to view
+            onClick={() => handleView(p._id)}
           >
             <h3>{p.name}</h3>
             <p>
@@ -62,22 +68,33 @@ export default function Playlists() {
 
             <div
               className="playlist-buttons"
-              onClick={(e) => e.stopPropagation()} // prevent card click
+              onClick={(e) => e.stopPropagation()}
             >
-              <button className="playlist-button" onClick={() => handlePlay(p)}>
-                Play
-              </button>
               <button
-                className="playlist-button"
+                className="icon-button"
+                onClick={() => handlePlay(p)}
+                aria-label="Play"
+              >
+                <span className="tooltip-text">Play</span>
+                <span className="icon">►</span>
+              </button>
+
+              <button
+                className="icon-button"
                 onClick={() => handleEdit(p._id)}
+                aria-label="Edit"
               >
-                Edit
+                <span className="tooltip-text">Edit</span>
+                <span className="icon">🖍</span>
               </button>
+
               <button
-                className="playlist-button"
+                className="icon-button"
                 onClick={() => handleDelete(p._id)}
+                aria-label="Delete"
               >
-                Delete
+                <span className="tooltip-text">Delete</span>
+                <span className="icon">🗑</span>
               </button>
             </div>
           </div>

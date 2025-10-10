@@ -49,6 +49,8 @@ header {
   background-color: #7d7771;
   display: flex;
   margin-left: 1%;
+  margin-right: 1%;
+  align-items: center;
 }
 
 nav {
@@ -307,7 +309,7 @@ header,
   text-align: center;
   left: 0;
   right: 0;
-  width: 100%;
+  /* width: 100%; */
   top: 0;
 }
 
