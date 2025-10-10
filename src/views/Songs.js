@@ -52,45 +52,47 @@ export default function Songs() {
 
   return (
     <>
-      <div className="filters song-filters">
-        <div className="search-bar drop-shadow-thin">
-          <input
-            type="text"
-            placeholder="Search titles..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            disabled={genreFilter !== "All"}
-          />
-        </div>
-        <div>
-          <select
-            value={genreFilter}
-            onChange={(e) => handleGenreChange(e.target.value)}
-            className="genre-dropdown-menu"
-            disabled={searchQuery.length > 0}
-          >
-            <option value="All">🎶 All Songs</option>
-            <option value="Rock">🎸 Rock</option>
-            <option value="Pop">⭐ Pop</option>
-            <option value="Ballad">💖 Ballad</option>
-            <option value="Theatrical">🎭 Theatrical</option>
-            <option value="Praise">❤️‍🔥 Praise</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="song-list">
-        {filteredSongs.map((song) => {
-          const meta = GENRE_META[song.genre] || DEFAULT_META;
-          return (
-            <LazySongCard
-              key={song._id}
-              song={song}
-              meta={meta}
-              onClick={() => handleSongClick(song._id)}
+      <div className="song-page">
+        <div className="filters song-filters">
+          <div className="search-bar drop-shadow-thin">
+            <input
+              type="text"
+              placeholder="Search titles..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              disabled={genreFilter !== "All"}
             />
-          );
-        })}
+          </div>
+          <div>
+            <select
+              value={genreFilter}
+              onChange={(e) => handleGenreChange(e.target.value)}
+              className="genre-dropdown-menu"
+              disabled={searchQuery.length > 0}
+            >
+              <option value="All">🎶 All Songs</option>
+              <option value="Rock">🎸 Rock</option>
+              <option value="Pop">⭐ Pop</option>
+              <option value="Ballad">💖 Ballad</option>
+              <option value="Theatrical">🎭 Theatrical</option>
+              <option value="Praise">❤️‍🔥 Praise</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="song-list">
+          {filteredSongs.map((song) => {
+            const meta = GENRE_META[song.genre] || DEFAULT_META;
+            return (
+              <LazySongCard
+                key={song._id}
+                song={song}
+                meta={meta}
+                onClick={() => handleSongClick(song._id)}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

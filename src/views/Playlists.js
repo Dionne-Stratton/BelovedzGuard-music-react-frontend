@@ -64,9 +64,21 @@ export default function Playlists() {
               className="playlist-buttons"
               onClick={(e) => e.stopPropagation()} // prevent card click
             >
-              <button onClick={() => handlePlay(p)}>Play</button>
-              <button onClick={() => handleEdit(p._id)}>Edit</button>
-              <button onClick={() => handleDelete(p._id)}>Delete</button>
+              <button className="playlist-button" onClick={() => handlePlay(p)}>
+                Play
+              </button>
+              <button
+                className="playlist-button"
+                onClick={() => handleEdit(p._id)}
+              >
+                Edit
+              </button>
+              <button
+                className="playlist-button"
+                onClick={() => handleDelete(p._id)}
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}

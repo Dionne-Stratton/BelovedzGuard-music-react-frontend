@@ -1,18 +1,35 @@
-/* Layout only — no colors/padding so child pages keep their own styles */
+/* Layout container */
 .listen-layout {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 
+/* Content area */
 .listen-content {
   flex: 1;
-  min-width: 0; /* prevents overflow on narrow screens */
+  min-width: 0;
+  padding: 0 6.5rem;
+  display: flex;
+  justify-content: ;
 }
 
-/* Optional: stack nav on small screens */
+/* Child page containers can now be centered naturally */
+.listen-content > * {
+  flex: 1;
+}
+
+/* Small screens: revert to normal stacked layout */
 @media (max-width: 660px) {
   .listen-layout {
     flex-direction: column;
-    align-items: stretch; /* full-width nav */
+    align-items: stretch;
+  }
+
+  .listen-content {
+    margin-left: 0;
+    max-width: 100%;
+    justify-content: flex-start; /* standard flow */
   }
 }
