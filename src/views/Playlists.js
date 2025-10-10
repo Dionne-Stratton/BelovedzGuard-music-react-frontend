@@ -57,7 +57,7 @@ export default function Playlists() {
           >
             <h3>{p.name}</h3>
             <p>
-              {p.songs.length} {p.songs.length === 1 ? "track" : "tracks"}
+              {p.songs.length} {p.songs.length === 1 ? "song" : "songs"}
             </p>
 
             <div

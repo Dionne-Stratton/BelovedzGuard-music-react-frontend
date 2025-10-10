@@ -1,7 +1,8 @@
 /* ===== Floating placement (doesn't affect page layout) ===== */
 .listen-nav-wrapper {
   position: fixed;
-  top: 180px;
+  margin-top: 5px;
+  top: 25vh;
   left: 0px;
   z-index: 1000;
   display: block;
