@@ -27,7 +27,7 @@ const HeaderNav = () => {
             </NavLink>
           </h2>
         </div>
-        {/* <AuthControls /> */}
+        <AuthControls />
       </header>
 
       <nav className="container">

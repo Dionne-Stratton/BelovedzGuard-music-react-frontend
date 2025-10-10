@@ -315,14 +315,12 @@ header,
 .container {
   margin: 0 auto;
   z-index: 150;
-  height: 60px;
 }
 
 /* Background-color to the nav container. */
 nav {
   padding: 0.5em 0 0.5em 0;
   background-color: #e8e8e8;
-  border-bottom: 0.2em solid #7d7771;
 }
 
 /* Since we'll have the "ul li" "float:left"

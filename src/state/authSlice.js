@@ -1,11 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+let userFromStorage = null;
+try {
+  const storedUser = localStorage.getItem("user");
+  userFromStorage = storedUser ? JSON.parse(storedUser) : null;
+} catch (err) {
+  console.warn("Corrupted user data in localStorage, clearing it.", err);
+  localStorage.removeItem("user");
+}
+
 const tokenFromStorage = localStorage.getItem("token");
-const userFromStorage = localStorage.getItem("user");
 
 const initialState = {
-  user: userFromStorage ? JSON.parse(userFromStorage) : null,
-  token: tokenFromStorage || null,
+  user: userFromStorage,
+  token: tokenFromStorage,
   isLoggedIn: !!tokenFromStorage,
 };
 
@@ -18,18 +26,15 @@ const authSlice = createSlice({
       state.user = user;
       state.token = token;
       state.isLoggedIn = true;
-
-      // optional persistence
-      localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
     },
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.isLoggedIn = false;
-
-      localStorage.removeItem("token");
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
     },
   },
 });
