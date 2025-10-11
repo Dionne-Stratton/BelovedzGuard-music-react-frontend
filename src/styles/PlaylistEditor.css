@@ -6,6 +6,8 @@
   color: #f6f6f6;
 }
 
+/* -------------------------------- */
+/* keep the header styles minimal; we now render controls under left column */
 .pe-header {
   display: flex;
   gap: 1rem;
@@ -14,6 +16,7 @@
   margin-bottom: 1rem;
 }
 
+/* input */
 .pe-name-input {
   flex: 1;
   background: transparent;
@@ -21,13 +24,24 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
+  text-align: center; /* center the title text */
+  font-size: 1rem;
 }
 
+.pe-name-input:focus {
+  outline: none; /* remove browser default */
+  border: 2px solid #635f5f;
+  box-shadow: 0 0 5px rgba(29, 24, 21, 0.6);
+}
+
+/* actions row */
 .pe-actions {
   display: flex;
   gap: 0.5rem;
+  justify-content: center; /* center buttons under the title */
 }
 
+/* buttons */
 .pe-btn {
   background: transparent;
   color: #ebe7e2;
@@ -38,11 +52,15 @@
 }
 .pe-btn.subtle {
   opacity: 0.9;
+  font-size: 1rem;
 }
 .pe-btn.primary {
   border-color: rgba(255, 255, 255, 0.35);
 }
 
+/* tooltips via native title attr – no pseudo content needed */
+
+/* columns */
 .pe-columns {
   display: grid;
   grid-template-columns: 1fr 10px 1fr;
@@ -53,6 +71,7 @@
 .pe-col-title {
   margin: 0 0 0.5rem 0;
   font-weight: 600;
+  text-align: center; /* align headers */
 }
 
 .pe-divider {
@@ -61,15 +80,24 @@
   background: rgba(255, 255, 255, 0.12);
 }
 
+/* the left controls block (name + buttons) centered & stacked */
+.pe-left-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+/* lists */
 .pe-list {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   padding: 0.5rem;
   min-height: 320px;
-  max-height: 70vh;
+  max-height: 170vh;
   overflow-y: auto;
 }
-
 .pe-list.drag-over {
   border-color: rgba(255, 255, 255, 0.35);
 }
@@ -80,9 +108,10 @@
   text-align: center;
 }
 
+/* rows */
 .pe-song-row {
   display: grid;
-  grid-template-columns: 46px 1fr 24px 28px;
+  grid-template-columns: 66px 1fr 24px 28px;
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem;
@@ -91,23 +120,21 @@
   margin-bottom: 0.4rem;
   background: rgba(255, 255, 255, 0.02);
 }
-
 .pe-song-row:hover {
   background: rgba(255, 255, 255, 0.06);
 }
 
 .pe-thumb {
-  width: 46px;
-  height: 46px;
+  width: 66px;
+  height: 66px;
   object-fit: cover;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .pe-title {
-  font-size: 0.95rem;
+  font-size: 1.2rem;
 }
-
 .pe-genre {
   text-align: center;
   opacity: 0.9;
@@ -121,11 +148,13 @@
   cursor: pointer;
 }
 
+/* right filters stacked & centered */
 .pe-filters {
   display: flex;
+  flex-direction: column; /* stack */
+  align-items: center; /* center horizontally */
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  align-items: center;
 }
 
 .pe-search input {
@@ -133,10 +162,63 @@
   color: #232121;
   border: none;
   border-radius: 6px;
-  padding: 0.35rem 0.5rem;
+  padding: 0.5rem 0.6rem; /* slightly taller */
+  text-align: center;
+  width: 80%;
+  font-size: 1rem;
 }
 
-@media (max-width: 760px) {
+.pe-genre-select {
+  background: #e7e5e5;
+  color: #232121;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.5rem; /* a bit smaller than search */
+  width: 60%;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Center the right controls and make the select fit its content */
+.pe-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Genre dropdown: width to content, centered */
+.pe-genre-select {
+  display: block;
+  width: auto; /* fit content */
+  max-width: 100%;
+  background: #e7e5e5;
+  color: #232121;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.5rem; /* a bit smaller than search */
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto; /* center */
+}
+
+/* Search input: centered, slightly shorter than before */
+.pe-search input {
+  display: block;
+  width: 80%;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #e7e5e5;
+  color: #232121;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem; /* slightly shorter */
+  text-align: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 815px) {
   .pe-columns {
     grid-template-columns: 1fr;
     gap: 1rem;

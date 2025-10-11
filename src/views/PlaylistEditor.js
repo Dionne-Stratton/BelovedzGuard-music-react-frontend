@@ -1,4 +1,3 @@
-// src/views/PlaylistEditor.js
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,12 +20,12 @@ const GENRE_META = {
 };
 const genreIcon = (g) => GENRE_META[g] || "🎶";
 
-/* ---------- Validation ---------- */
+/* ---- Validation ---- */
 const playlistSchema = Yup.object({
   name: Yup.string().trim().required("Title required"),
 });
 
-/* ---------- Helpers ---------- */
+/* ---- Helpers ---- */
 function arrayMove(list, from, to) {
   const copy = [...list];
   const [item] = copy.splice(from, 1);
@@ -61,6 +60,7 @@ export default function PlaylistEditor() {
   const [updatePlaylist, { isLoading: savingEdit }] =
     useUpdatePlaylistMutation();
 
+  /* hydrate edit */
   useEffect(() => {
     if (!isEdit || !existing) return;
     setName(existing.name || "");
@@ -68,7 +68,7 @@ export default function PlaylistEditor() {
     setIsDirty(false);
   }, [isEdit, existing]);
 
-  // Right list: same default order as Songs page (newest first)
+  /* available (right) list — newest-first like Songs page */
   const availableSongs = useMemo(() => {
     let list = [...allSongs];
     if (genreFilter !== "All")
@@ -80,7 +80,7 @@ export default function PlaylistEditor() {
     return list;
   }, [allSongs, genreFilter, searchQuery]);
 
-  // “Leave page” guard
+  /* leave-page guard */
   useEffect(() => {
     const beforeUnload = (e) => {
       if (!isDirty) return;
@@ -93,19 +93,19 @@ export default function PlaylistEditor() {
 
   const markDirty = useCallback(() => setIsDirty(true), []);
 
-  /* ============== DnD ============== */
+  /* ---- DnD ---- */
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination) return;
 
-    // same place
+    // same spot
     if (
       source.droppableId === destination.droppableId &&
       source.index === destination.index
     )
       return;
 
-    // reorder within playlist
+    // reorder in playlist
     if (
       source.droppableId === "playlist" &&
       destination.droppableId === "playlist"
@@ -117,7 +117,7 @@ export default function PlaylistEditor() {
       return;
     }
 
-    // library -> playlist (ALLOW duplicates)
+    // library -> playlist (allow duplicates)
     if (
       source.droppableId === "library" &&
       destination.droppableId === "playlist"
@@ -132,34 +132,16 @@ export default function PlaylistEditor() {
       markDirty();
       return;
     }
-
-    // playlist -> library is ignored
   };
 
-  const removeFromPlaylist = (atIndex) => {
-    setPlaylistSongs((prev) => prev.filter((_, i) => i !== atIndex));
-    markDirty();
-  };
-
+  /* actions */
   const reversePlaylist = () => {
     setPlaylistSongs((p) => [...p].reverse());
     markDirty();
   };
 
   const onCancel = () => {
-    if (!isDirty) return;
-    const ok = window.confirm("Discard changes?");
-    if (!ok) return;
-
-    if (isEdit && existing) {
-      setName(existing.name || "");
-      setPlaylistSongs(existing.songs || []);
-    } else {
-      setName("");
-      setPlaylistSongs([]);
-    }
-    setError("");
-    setIsDirty(false);
+    navigate("/listen/playlists");
   };
 
   const onSave = async () => {
@@ -173,12 +155,15 @@ export default function PlaylistEditor() {
 
     const payload = {
       name: name.trim(),
-      songs: playlistSongs.map((s) => s._id),
+      songs: playlistSongs.map((s) => s._id), // send IDs only
     };
 
     try {
-      if (isEdit) await updatePlaylist({ id, ...payload }).unwrap();
-      else await createPlaylist(payload).unwrap();
+      if (isEdit) {
+        await updatePlaylist({ id, ...payload }).unwrap();
+      } else {
+        await createPlaylist(payload).unwrap();
+      }
       setIsDirty(false);
       navigate("/listen/playlists");
     } catch (err) {
@@ -187,7 +172,7 @@ export default function PlaylistEditor() {
     }
   };
 
-  /* ---------- Rows (unique draggableIds so duplicates work) ---------- */
+  /* rows */
   const PlaylistRow = ({ song, index }) => (
     <Draggable draggableId={`playlist-${song._id}-${index}`} index={index}>
       {(provided) => (
@@ -208,7 +193,9 @@ export default function PlaylistEditor() {
           <button
             className="pe-remove"
             title="Remove from playlist"
-            onClick={() => removeFromPlaylist(index)}
+            onClick={() =>
+              setPlaylistSongs((prev) => prev.filter((_, i) => i !== index))
+            }
           >
             ✖
           </button>
@@ -239,74 +226,57 @@ export default function PlaylistEditor() {
     </Draggable>
   );
 
-  /* ---------- Filters ---------- */
-  const Filters = (
-    <div className="pe-filters">
-      <input
-        type="text"
-        placeholder="Search titles…"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <select
-        value={genreFilter}
-        onChange={(e) => setGenreFilter(e.target.value)}
-        className="genre-dropdown-menu"
-      >
-        <option value="All">🎶 All</option>
-        <option value="Rock">🎸 Rock</option>
-        <option value="Pop">⭐ Pop</option>
-        <option value="Ballad">💖 Ballad</option>
-        <option value="Theatrical">🎭 Theatrical</option>
-        <option value="Praise">❤️‍🔥 Praise</option>
-      </select>
-    </div>
-  );
-
   return (
     <div className="pe-page">
-      <div className="pe-header">
-        <div className="pe-name-area">
-          <input
-            type="text"
-            className={`pe-name-input ${error ? "invalid" : ""}`}
-            placeholder={isEdit ? "Playlist name" : "New playlist name"}
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-              setIsDirty(true);
-              if (error) setError("");
-            }}
-          />
-          {error && <div className="pe-error-text">{error}</div>}
-        </div>
-
-        <div className="pe-actions">
-          <button
-            className="pe-btn subtle"
-            title="Reverse order"
-            onClick={reversePlaylist}
-          >
-            ↕
-          </button>
-          <button className="pe-btn" onClick={onCancel}>
-            ✖ Cancel
-          </button>
-          <button
-            className="pe-btn primary"
-            onClick={onSave}
-            disabled={savingNew || savingEdit}
-          >
-            ✔ Save
-          </button>
-        </div>
-      </div>
-
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="pe-columns">
-          {/* LEFT COLUMN — header + list */}
-          <div className="pe-col">
+          {/* LEFT COLUMN — THIS PLAYLIST */}
+          <div>
             <h3 className="pe-col-title">This Playlist</h3>
+
+            {/* moved + centered controls for the left side */}
+            <div className="pe-left-controls">
+              <input
+                type="text"
+                className={`pe-name-input search-bar ${error ? "invalid" : ""}`}
+                placeholder={isEdit ? "Playlist name" : "New playlist name"}
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setIsDirty(true);
+                  if (error) setError("");
+                }}
+              />
+              {error && <div className="pe-error-text">{error}</div>}
+
+              <div className="pe-actions">
+                <button
+                  className="pe-btn subtle"
+                  title="Reverse playlist order"
+                  onClick={reversePlaylist}
+                >
+                  ↕ Reverse
+                </button>
+
+                <button
+                  className="pe-btn"
+                  title="Cancel changes"
+                  onClick={onCancel}
+                >
+                  ✖ Cancel
+                </button>
+
+                <button
+                  className="pe-btn primary"
+                  title="Save playlist"
+                  onClick={onSave}
+                  disabled={savingNew || savingEdit}
+                >
+                  ✔ Save
+                </button>
+              </div>
+            </div>
+
             <Droppable droppableId="playlist" type="SONG">
               {(provided, snapshot) => (
                 <div
@@ -336,12 +306,39 @@ export default function PlaylistEditor() {
 
           <div className="pe-divider" />
 
-          {/* RIGHT COLUMN — header/filters outside the Droppable; list only inside */}
-          <div className="pe-col">
+          {/* RIGHT COLUMN — ALL SONGS */}
+          <div>
             <h3 className="pe-col-title">All Songs</h3>
-            {Filters}
+
+            {/* SWAPPED ORDER: Genre first, then Search (both centered) */}
+            <div className="pe-filters">
+              <select
+                value={genreFilter}
+                onChange={(e) => setGenreFilter(e.target.value)}
+                className="pe-genre-select"
+                aria-label="Filter by genre"
+              >
+                <option value="All">🎶 All Songs</option>
+                <option value="Rock">🎸 Rock</option>
+                <option value="Pop">⭐ Pop</option>
+                <option value="Ballad">💖 Ballad</option>
+                <option value="Theatrical">🎭 Theatrical</option>
+                <option value="Praise">❤️‍🔥 Praise</option>
+              </select>
+
+              <div className="pe-search search-bar">
+                <input
+                  type="text"
+                  placeholder="Search songs…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search songs"
+                />
+              </div>
+            </div>
+
             <Droppable droppableId="library" type="SONG" isDropDisabled>
-              {(provided /*, snapshot */) => (
+              {(provided) => (
                 <div
                   className="pe-list"
                   ref={provided.innerRef}

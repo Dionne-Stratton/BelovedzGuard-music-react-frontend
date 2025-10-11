@@ -19,7 +19,7 @@ export default function Watch() {
   return (
     <div className="videos">
       {/* Search */}
-      <div className="video-search">
+      <div className="video-search search-bar">
         <input
           type="text"
           placeholder="Search videos by title..."
