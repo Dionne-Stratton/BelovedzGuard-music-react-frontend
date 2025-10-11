@@ -1,12 +1,366 @@
-// PlaylistEditor.js
-//scaffold basic page
-import React from "react";
+// src/views/PlaylistEditor.js
+import React, { useEffect, useMemo, useState, useCallback } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import * as Yup from "yup";
+import {
+  useCreatePlaylistMutation,
+  useUpdatePlaylistMutation,
+  useGetPlaylistsQuery,
+} from "../state/playlistApi";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import "../styles/PlaylistEditor.css";
+
+/* ---------- Genre emoji ---------- */
+const GENRE_META = {
+  Rock: "🎸",
+  Pop: "⭐",
+  Ballad: "💖",
+  Theatrical: "🎭",
+  Praise: "❤️‍🔥",
+};
+const genreIcon = (g) => GENRE_META[g] || "🎶";
+
+/* ---------- Validation ---------- */
+const playlistSchema = Yup.object({
+  name: Yup.string().trim().required("Title required"),
+});
+
+/* ---------- Helpers ---------- */
+function arrayMove(list, from, to) {
+  const copy = [...list];
+  const [item] = copy.splice(from, 1);
+  copy.splice(to, 0, item);
+  return copy;
+}
 
 export default function PlaylistEditor() {
+  const { id } = useParams();
+  const isEdit = Boolean(id);
+  const navigate = useNavigate();
+
+  const allSongs = useSelector((s) => s.songs) || [];
+  const { data: cached = [] } = useGetPlaylistsQuery();
+
+  const existing = useMemo(() => {
+    if (!isEdit || !Array.isArray(cached)) return null;
+    return cached.find((p) => p._id === id) || null;
+  }, [isEdit, id, cached]);
+
+  const [name, setName] = useState(isEdit ? existing?.name || "" : "");
+  const [playlistSongs, setPlaylistSongs] = useState(
+    isEdit ? existing?.songs || [] : []
+  );
+  const [searchQuery, setSearchQuery] = useState("");
+  const [genreFilter, setGenreFilter] = useState("All");
+  const [isDirty, setIsDirty] = useState(false);
+  const [error, setError] = useState("");
+
+  const [createPlaylist, { isLoading: savingNew }] =
+    useCreatePlaylistMutation();
+  const [updatePlaylist, { isLoading: savingEdit }] =
+    useUpdatePlaylistMutation();
+
+  useEffect(() => {
+    if (!isEdit || !existing) return;
+    setName(existing.name || "");
+    setPlaylistSongs(existing.songs || []);
+    setIsDirty(false);
+  }, [isEdit, existing]);
+
+  // Right list: same default order as Songs page (newest first)
+  const availableSongs = useMemo(() => {
+    let list = [...allSongs];
+    if (genreFilter !== "All")
+      list = list.filter((s) => s.genre === genreFilter);
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      list = list.filter((s) => s.title.toLowerCase().includes(q));
+    }
+    return list;
+  }, [allSongs, genreFilter, searchQuery]);
+
+  // “Leave page” guard
+  useEffect(() => {
+    const beforeUnload = (e) => {
+      if (!isDirty) return;
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", beforeUnload);
+    return () => window.removeEventListener("beforeunload", beforeUnload);
+  }, [isDirty]);
+
+  const markDirty = useCallback(() => setIsDirty(true), []);
+
+  /* ============== DnD ============== */
+  const onDragEnd = (result) => {
+    const { source, destination } = result;
+    if (!destination) return;
+
+    // same place
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    )
+      return;
+
+    // reorder within playlist
+    if (
+      source.droppableId === "playlist" &&
+      destination.droppableId === "playlist"
+    ) {
+      setPlaylistSongs((prev) =>
+        arrayMove(prev, source.index, destination.index)
+      );
+      markDirty();
+      return;
+    }
+
+    // library -> playlist (ALLOW duplicates)
+    if (
+      source.droppableId === "library" &&
+      destination.droppableId === "playlist"
+    ) {
+      const dragged = availableSongs[source.index];
+      if (!dragged) return;
+      setPlaylistSongs((prev) => {
+        const copy = [...prev];
+        copy.splice(destination.index, 0, dragged);
+        return copy;
+      });
+      markDirty();
+      return;
+    }
+
+    // playlist -> library is ignored
+  };
+
+  const removeFromPlaylist = (atIndex) => {
+    setPlaylistSongs((prev) => prev.filter((_, i) => i !== atIndex));
+    markDirty();
+  };
+
+  const reversePlaylist = () => {
+    setPlaylistSongs((p) => [...p].reverse());
+    markDirty();
+  };
+
+  const onCancel = () => {
+    if (!isDirty) return;
+    const ok = window.confirm("Discard changes?");
+    if (!ok) return;
+
+    if (isEdit && existing) {
+      setName(existing.name || "");
+      setPlaylistSongs(existing.songs || []);
+    } else {
+      setName("");
+      setPlaylistSongs([]);
+    }
+    setError("");
+    setIsDirty(false);
+  };
+
+  const onSave = async () => {
+    try {
+      await playlistSchema.validate({ name }, { abortEarly: false });
+      setError("");
+    } catch (e) {
+      setError(e.errors?.[0] || "Title required");
+      return;
+    }
+
+    const payload = {
+      name: name.trim(),
+      songs: playlistSongs.map((s) => s._id),
+    };
+
+    try {
+      if (isEdit) await updatePlaylist({ id, ...payload }).unwrap();
+      else await createPlaylist(payload).unwrap();
+      setIsDirty(false);
+      navigate("/listen/playlists");
+    } catch (err) {
+      console.error("Save failed:", err);
+      alert("Could not save playlist. Please try again.");
+    }
+  };
+
+  /* ---------- Rows (unique draggableIds so duplicates work) ---------- */
+  const PlaylistRow = ({ song, index }) => (
+    <Draggable draggableId={`playlist-${song._id}-${index}`} index={index}>
+      {(provided) => (
+        <div
+          className="pe-song-row"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <img
+            src={song.songThumbnail}
+            alt={song.title}
+            className="pe-thumb"
+            onError={(e) => (e.currentTarget.style.visibility = "hidden")}
+          />
+          <span className="pe-title">{song.title}</span>
+          <span className="pe-genre">{genreIcon(song.genre)}</span>
+          <button
+            className="pe-remove"
+            title="Remove from playlist"
+            onClick={() => removeFromPlaylist(index)}
+          >
+            ✖
+          </button>
+        </div>
+      )}
+    </Draggable>
+  );
+
+  const LibraryRow = ({ song, index }) => (
+    <Draggable draggableId={`library-${song._id}-${index}`} index={index}>
+      {(provided) => (
+        <div
+          className="pe-song-row"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <img
+            src={song.songThumbnail}
+            alt={song.title}
+            className="pe-thumb"
+            onError={(e) => (e.currentTarget.style.visibility = "hidden")}
+          />
+          <span className="pe-title">{song.title}</span>
+          <span className="pe-genre">{genreIcon(song.genre)}</span>
+        </div>
+      )}
+    </Draggable>
+  );
+
+  /* ---------- Filters ---------- */
+  const Filters = (
+    <div className="pe-filters">
+      <input
+        type="text"
+        placeholder="Search titles…"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <select
+        value={genreFilter}
+        onChange={(e) => setGenreFilter(e.target.value)}
+        className="genre-dropdown-menu"
+      >
+        <option value="All">🎶 All</option>
+        <option value="Rock">🎸 Rock</option>
+        <option value="Pop">⭐ Pop</option>
+        <option value="Ballad">💖 Ballad</option>
+        <option value="Theatrical">🎭 Theatrical</option>
+        <option value="Praise">❤️‍🔥 Praise</option>
+      </select>
+    </div>
+  );
+
   return (
-    <div>
-      <h2>Edit Playlist</h2>
-      {/* Add your form or playlist editing components here */}
+    <div className="pe-page">
+      <div className="pe-header">
+        <div className="pe-name-area">
+          <input
+            type="text"
+            className={`pe-name-input ${error ? "invalid" : ""}`}
+            placeholder={isEdit ? "Playlist name" : "New playlist name"}
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              setIsDirty(true);
+              if (error) setError("");
+            }}
+          />
+          {error && <div className="pe-error-text">{error}</div>}
+        </div>
+
+        <div className="pe-actions">
+          <button
+            className="pe-btn subtle"
+            title="Reverse order"
+            onClick={reversePlaylist}
+          >
+            ↕
+          </button>
+          <button className="pe-btn" onClick={onCancel}>
+            ✖ Cancel
+          </button>
+          <button
+            className="pe-btn primary"
+            onClick={onSave}
+            disabled={savingNew || savingEdit}
+          >
+            ✔ Save
+          </button>
+        </div>
+      </div>
+
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="pe-columns">
+          {/* LEFT COLUMN — header + list */}
+          <div className="pe-col">
+            <h3 className="pe-col-title">This Playlist</h3>
+            <Droppable droppableId="playlist" type="SONG">
+              {(provided, snapshot) => (
+                <div
+                  className={`pe-list ${
+                    snapshot.isDraggingOver ? "drag-over" : ""
+                  }`}
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  {playlistSongs.length === 0 && (
+                    <div className="pe-empty">
+                      Drag songs here to build your playlist
+                    </div>
+                  )}
+                  {playlistSongs.map((song, i) => (
+                    <PlaylistRow
+                      key={`playlist-key-${song._id}-${i}`}
+                      song={song}
+                      index={i}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+
+          <div className="pe-divider" />
+
+          {/* RIGHT COLUMN — header/filters outside the Droppable; list only inside */}
+          <div className="pe-col">
+            <h3 className="pe-col-title">All Songs</h3>
+            {Filters}
+            <Droppable droppableId="library" type="SONG" isDropDisabled>
+              {(provided /*, snapshot */) => (
+                <div
+                  className="pe-list"
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  {availableSongs.map((song, i) => (
+                    <LibraryRow
+                      key={`library-key-${song._id}-${i}`}
+                      song={song}
+                      index={i}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+        </div>
+      </DragDropContext>
     </div>
   );
 }

@@ -35,7 +35,7 @@ export const playlistApi = createApi({
     updatePlaylist: builder.mutation({
       query: ({ id, ...data }) => ({
         url: `/playlists/${id}`,
-        method: "PATCH",
+        method: "PUT",
         body: data,
       }),
       invalidatesTags: ["Playlist"],

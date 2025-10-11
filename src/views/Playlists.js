@@ -7,7 +7,7 @@ import {
   useGetPlaylistsQuery,
   useDeletePlaylistMutation,
 } from "../state/playlistApi";
-import { setQueue, setCurrentSong } from "../state/playerSlice";
+import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 
 export default function Playlists() {
   const dispatch = useDispatch();
@@ -18,8 +18,15 @@ export default function Playlists() {
 
   const handlePlay = (playlist) => {
     if (!playlist.songs?.length) return;
-    dispatch(setQueue(playlist.songs));
+    dispatch(
+      setQueue({
+        songs: playlist.songs,
+        source: "playlist",
+        sourceId: playlist._id,
+      })
+    );
     dispatch(setCurrentSong(playlist.songs[0]._id));
+    dispatch(setPlaying(true));
   };
 
   const handleView = (id) => navigate(`/listen/playlists/${id}`);

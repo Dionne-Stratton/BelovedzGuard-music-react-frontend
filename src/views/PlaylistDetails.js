@@ -1,16 +1,15 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useGetPlaylistByIdQuery } from "../state/playlistApi";
-import { useDispatch } from "react-redux";
-import { setQueue, setCurrentSong } from "../state/playerSlice";
+import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import "../styles/PlaylistDetails.css";
 
 export default function PlaylistDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  // try to find the playlist in redux state first
+  // Try to find playlist in RTK Query cache first
   const playlists = useSelector((state) => state.playlistApi?.queries);
   const existingPlaylist = useMemo(() => {
     if (!playlists) return null;
@@ -24,23 +23,46 @@ export default function PlaylistDetails() {
     return null;
   }, [playlists, id]);
 
-  // only fetch if we don’t already have it
+  // Fetch only if not cached
   const { data: fetchedPlaylist, isLoading } = useGetPlaylistByIdQuery(id, {
     skip: !!existingPlaylist,
   });
 
   const playlist = existingPlaylist || fetchedPlaylist;
 
+  // --- Handlers ---
+
   const handlePlayAll = () => {
     if (!playlist?.songs?.length) return;
-    dispatch(setQueue(playlist.songs));
+
+    dispatch(
+      setQueue({
+        songs: playlist.songs,
+        source: "playlist",
+        sourceId: playlist._id,
+      })
+    );
+
     dispatch(setCurrentSong(playlist.songs[0]._id));
+    dispatch(setPlaying(true));
   };
 
-  const handlePlaySong = (song) => {
-    dispatch(setQueue(playlist.songs));
-    dispatch(setCurrentSong(song._id));
+  const handlePlaySong = (songId) => {
+    if (!playlist?.songs?.length) return;
+
+    dispatch(
+      setQueue({
+        songs: playlist.songs,
+        source: "playlist",
+        sourceId: playlist._id,
+      })
+    );
+
+    dispatch(setCurrentSong(songId));
+    dispatch(setPlaying(true));
   };
+
+  // --- Render ---
 
   if (isLoading) return <p>Loading playlist...</p>;
   if (!playlist) return <p>Playlist not found.</p>;
@@ -66,7 +88,8 @@ export default function PlaylistDetails() {
             <span className="playlist-song-genre">{song.genre}</span>
             <button
               className="playlist-song-play"
-              onClick={() => handlePlaySong(song)}
+              onClick={() => handlePlaySong(song._id)}
+              title="Play this song"
             >
               ▶
             </button>

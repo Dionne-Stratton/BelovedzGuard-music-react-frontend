@@ -1,6 +1,7 @@
+// src/views/Albums.js
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setQueue, setCurrentSong } from "../state/playerSlice";
+import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import "../styles/Albums.css";
 
 const ALBUMS = [
@@ -37,40 +38,74 @@ const ALBUMS = [
 
 export default function Albums() {
   const songs = useSelector((state) => state.songs);
+  const player = useSelector((state) => state.player);
   const dispatch = useDispatch();
 
-  // ✅ start every album expanded (open)
   const [expandedAlbums, setExpandedAlbums] = useState(() =>
     Object.fromEntries(ALBUMS.map((a) => [a.slug, true]))
   );
 
-  // Build albums-with-tracks
   const albums = ALBUMS.map((a) => {
-    const tracks = [];
-    for (const id of a.tracksById) {
-      const song = songs.find((s) => s._id === id);
-      if (song) tracks.push(song);
-    }
+    const tracks = a.tracksById
+      .map((id) => songs.find((s) => s._id === id))
+      .filter(Boolean);
     return { ...a, tracks };
   });
 
+  const inSameAlbumContext = (albumSlug) =>
+    player.context.source === "album" && player.context.sourceId === albumSlug;
+
   const playAlbum = (album) => {
     if (!album.tracks.length) return;
-    dispatch(setQueue(album.tracks));
+
+    // Always replace queue to this album context
+    dispatch(
+      setQueue({
+        songs: album.tracks,
+        source: "album",
+        sourceId: album.slug,
+      })
+    );
+    // Start from the first track
     dispatch(setCurrentSong(album.tracks[0]._id));
+    dispatch(setPlaying(true));
   };
 
   const playFromSong = (album, songId) => {
     if (!album.tracks.length) return;
-    dispatch(setQueue(album.tracks));
+
+    const sameContext = inSameAlbumContext(album.slug);
+    const sameSong = player.currentSongId === songId;
+
+    if (!sameContext) {
+      // New album context: replace queue, start from requested song
+      dispatch(
+        setQueue({
+          songs: album.tracks,
+          source: "album",
+          sourceId: album.slug,
+        })
+      );
+      dispatch(setCurrentSong(songId));
+      dispatch(setPlaying(true));
+      return;
+    }
+
+    // Same album context
+    if (sameSong) {
+      // Resume (or restart) this song explicitly
+      dispatch(setCurrentSong(songId));
+      dispatch(setPlaying(true));
+      return;
+    }
+
+    // Same album, different track: just switch tracks
     dispatch(setCurrentSong(songId));
+    dispatch(setPlaying(true));
   };
 
   const toggleAlbum = (slug) => {
-    setExpandedAlbums((prev) => ({
-      ...prev,
-      [slug]: !prev[slug],
-    }));
+    setExpandedAlbums((prev) => ({ ...prev, [slug]: !prev[slug] }));
   };
 
   return (
@@ -111,34 +146,31 @@ export default function Albums() {
                 </div>
               </div>
 
-              {expandedAlbums[a.slug] && (
-                <>
-                  {a.tracks.length === 0 ? (
-                    <p>Loading...</p>
-                  ) : (
-                    <ul className="album-tracks">
-                      {a.tracks.map((t) => (
-                        <li
-                          key={t._id}
-                          className="album-track"
-                          onClick={() => playFromSong(a, t._id)}
-                        >
-                          <img
-                            className="track-thumb"
-                            src={t.songThumbnail}
-                            alt={t.title}
-                            onError={(e) =>
-                              (e.currentTarget.style.visibility = "hidden")
-                            }
-                          />
-                          <span className="track-title">{t.title}</span>
-                          <span>{t.genre}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              )}
+              {expandedAlbums[a.slug] &&
+                (a.tracks.length === 0 ? (
+                  <p>Loading...</p>
+                ) : (
+                  <ul className="album-tracks">
+                    {a.tracks.map((t) => (
+                      <li
+                        key={t._id}
+                        className="album-track"
+                        onClick={() => playFromSong(a, t._id)}
+                      >
+                        <img
+                          className="track-thumb"
+                          src={t.songThumbnail}
+                          alt={t.title}
+                          onError={(e) =>
+                            (e.currentTarget.style.visibility = "hidden")
+                          }
+                        />
+                        <span className="track-title">{t.title}</span>
+                        <span>{t.genre}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
             </div>
           ))}
         </div>
