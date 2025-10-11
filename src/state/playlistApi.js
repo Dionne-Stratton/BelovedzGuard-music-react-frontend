@@ -1,12 +1,20 @@
+// src/state/playlistApi.js
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const playlistApi = createApi({
   reducerPath: "playlistApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://belovedzguard-ebf890192e0e.herokuapp.com/users",
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth?.token;
-      if (token) headers.set("authorization", `Bearer ${token}`);
+    baseUrl: "http://localhost:9000/users",
+    prepareHeaders: (headers) => {
+      // ✅ Read the Auth0 token stored by AuthControls.js
+      const token = localStorage.getItem("api_token");
+      console.log(
+        "Preparing headers, token:",
+        token ? token.slice(0, 20) + "..." : "none"
+      );
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
       return headers;
     },
   }),
@@ -17,7 +25,7 @@ export const playlistApi = createApi({
       providesTags: ["Playlist"],
     }),
 
-    // 🔹 New: fetch a single playlist by ID
+    // 🔹 Fetch a single playlist by ID
     getPlaylistById: builder.query({
       query: (id) => `/playlists/${id}`,
       providesTags: (result, error, id) => [{ type: "Playlist", id }],
@@ -53,7 +61,7 @@ export const playlistApi = createApi({
 
 export const {
   useGetPlaylistsQuery,
-  useGetPlaylistByIdQuery, // ✅ added export
+  useGetPlaylistByIdQuery,
   useCreatePlaylistMutation,
   useUpdatePlaylistMutation,
   useDeletePlaylistMutation,

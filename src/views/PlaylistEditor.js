@@ -1,6 +1,8 @@
+// src/views/PlaylistEditor.js
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import * as Yup from "yup";
 import {
   useCreatePlaylistMutation,
@@ -38,13 +40,15 @@ export default function PlaylistEditor() {
   const isEdit = Boolean(id);
   const navigate = useNavigate();
 
-  // ✅ Guard: redirect if not logged in
-  const isLoggedIn = useSelector((s) => s.auth.isLoggedIn);
+  // ✅ Auth0 guard: fully protected page
+  const { isAuthenticated, isLoading } = useAuth0();
   useEffect(() => {
-    if (!isLoggedIn) navigate("/login");
-  }, [isLoggedIn, navigate]);
+    if (!isLoading && !isAuthenticated) {
+      navigate("/listen/playlists", { replace: true });
+    }
+  }, [isAuthenticated, isLoading, navigate]);
 
-  const allSongs = useSelector((s) => s.songs) || [];
+  const allSongs = useSelector((s) => s.songs);
   const { data: cached = [] } = useGetPlaylistsQuery();
 
   const existing = useMemo(() => {
@@ -76,7 +80,7 @@ export default function PlaylistEditor() {
 
   /* available (right) list — newest-first like Songs page */
   const availableSongs = useMemo(() => {
-    let list = [...allSongs];
+    let list = [...(allSongs || [])];
     if (genreFilter !== "All")
       list = list.filter((s) => s.genre === genreFilter);
     if (searchQuery) {
@@ -177,6 +181,9 @@ export default function PlaylistEditor() {
       alert("Could not save playlist. Please try again.");
     }
   };
+
+  // Prevent any UI from flashing while redirecting away
+  if (!isLoading && !isAuthenticated) return null;
 
   /* rows */
   const PlaylistRow = ({ song, index }) => (

@@ -1,20 +1,16 @@
+// src/components/HeaderNav.js
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react"; // ✅ added
 import Logo from "./Logo";
+import AuthControls from "./AuthControls"; // ✅ bring back AuthControls
 
 const HeaderNav = () => {
   const [listenOpen, setListenOpen] = useState(false);
   const location = useLocation();
+  const isListenActive = location.pathname.startsWith("/listen");
 
   const showDropdown =
     typeof window !== "undefined" && window.innerWidth >= 900 && listenOpen;
-
-  // ✅ Auth0 hooks
-  const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
-    useAuth0();
-
-  const isListenActive = location.pathname.startsWith("/listen");
 
   return (
     <div className="headernav">
@@ -36,43 +32,8 @@ const HeaderNav = () => {
           </h2>
         </div>
 
-        {/* ✅ Auth0 login/logout */}
-        <div className="auth-controls">
-          {isLoading ? (
-            <span className="drop-shadow-thin">Loading…</span>
-          ) : isAuthenticated ? (
-            <div className="auth-logged-in">
-              {user?.picture && (
-                <img
-                  src={user.picture}
-                  alt={user.name}
-                  className="auth-avatar"
-                  style={{
-                    width: "36px",
-                    height: "36px",
-                    borderRadius: "50%",
-                    marginRight: "0.5rem",
-                  }}
-                />
-              )}
-              <button
-                onClick={() =>
-                  logout({ logoutParams: { returnTo: window.location.origin } })
-                }
-                className="logout-btn drop-shadow-thin"
-              >
-                Logout
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={() => loginWithRedirect()}
-              className="login-btn drop-shadow-thin"
-            >
-              Login / Register
-            </button>
-          )}
-        </div>
+        {/* ✅ Use AuthControls here */}
+        <AuthControls />
       </header>
 
       <nav className="container">

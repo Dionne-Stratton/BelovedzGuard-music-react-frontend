@@ -13,12 +13,12 @@ import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 export default function Playlists() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading: authLoading } = useAuth0();
 
-  // only fetch playlists if logged in
+  // fetch playlists only when logged in and Auth0 finished loading
   const { data: playlists = [], isLoading: playlistsLoading } =
     useGetPlaylistsQuery(undefined, {
-      skip: !isAuthenticated,
+      skip: !isAuthenticated || authLoading,
     });
 
   const [deletePlaylist] = useDeletePlaylistMutation();
@@ -50,7 +50,7 @@ export default function Playlists() {
   };
 
   // 🚫 if not logged in
-  if (!isAuthenticated && !isLoading) {
+  if (!isAuthenticated && !authLoading) {
     return (
       <div className="playlists-page">
         <h2>Your Playlists</h2>
@@ -59,7 +59,7 @@ export default function Playlists() {
     );
   }
 
-  if (playlistsLoading || isLoading) return <p>Loading playlists...</p>;
+  if (authLoading || playlistsLoading) return <p>Loading playlists...</p>;
 
   return (
     <div className="playlists-page">
