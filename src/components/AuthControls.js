@@ -1,8 +1,10 @@
 // src/components/AuthControls.js
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from "react-router-dom";
 import profileIcon from "../images/profile.png";
+import { setCredentials } from "../state/authSlice";
 import "../styles/AuthControls.css";
 
 export default function AuthControls() {
@@ -16,6 +18,7 @@ export default function AuthControls() {
   } = useAuth0();
 
   const location = useLocation();
+  const dispatch = useDispatch();
   const currentPath = location.pathname;
 
   const audience = "https://belovedzguard-api"; // ✅ must match your API identifier
@@ -41,6 +44,7 @@ export default function AuthControls() {
             authorizationParams: { audience },
           });
           console.log("Token saved:", token.slice(0, 40) + "...");
+          dispatch(setCredentials({ user, token }));
           if (mounted) localStorage.setItem("api_token", token);
         } else {
           localStorage.removeItem("api_token");

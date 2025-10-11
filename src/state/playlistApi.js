@@ -5,16 +5,17 @@ export const playlistApi = createApi({
   reducerPath: "playlistApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:9000/users",
-    prepareHeaders: (headers) => {
-      // ✅ Read the Auth0 token stored by AuthControls.js
-      const token = localStorage.getItem("api_token");
-      console.log(
-        "Preparing headers, token:",
-        token ? token.slice(0, 20) + "..." : "none"
-      );
+    prepareHeaders: (headers, { getState }) => {
+      // ✅ Pull token directly from Redux, not localStorage
+      const token = getState().auth?.token;
+
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
+        console.log("🔐 Token attached to headers:", token.slice(0, 20) + "…");
+      } else {
+        console.warn("⚠️ No token found in Redux store yet");
       }
+
       return headers;
     },
   }),
