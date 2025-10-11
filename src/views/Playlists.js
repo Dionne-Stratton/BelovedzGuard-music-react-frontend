@@ -3,6 +3,7 @@ import React from "react";
 import "../styles/Playlists.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   useGetPlaylistsQuery,
   useDeletePlaylistMutation,
@@ -12,8 +13,14 @@ import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 export default function Playlists() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isAuthenticated, isLoading } = useAuth0();
 
-  const { data: playlists = [], isLoading } = useGetPlaylistsQuery();
+  // only fetch playlists if logged in
+  const { data: playlists = [], isLoading: playlistsLoading } =
+    useGetPlaylistsQuery(undefined, {
+      skip: !isAuthenticated,
+    });
+
   const [deletePlaylist] = useDeletePlaylistMutation();
 
   const handlePlay = (playlist) => {
@@ -42,19 +49,31 @@ export default function Playlists() {
     }
   };
 
-  if (isLoading) return <p>Loading playlists...</p>;
+  // 🚫 if not logged in
+  if (!isAuthenticated && !isLoading) {
+    return (
+      <div className="playlists-page">
+        <h2>Your Playlists</h2>
+        <p>You need to log in or register to create and manage playlists.</p>
+      </div>
+    );
+  }
+
+  if (playlistsLoading || isLoading) return <p>Loading playlists...</p>;
 
   return (
     <div className="playlists-page">
       <div className="playlist-header">
         <h2>Your Playlists</h2>
-        <button
-          className="icon-button create-playlist-button"
-          onClick={handleCreate}
-        >
-          <span className="tooltip-text">Create new playlist</span>
-          <span className="icon">✚</span>
-        </button>
+        {isAuthenticated && (
+          <button
+            className="icon-button create-playlist-button"
+            onClick={handleCreate}
+          >
+            <span className="tooltip-text">Create new playlist</span>
+            <span className="icon">✚</span>
+          </button>
+        )}
       </div>
 
       {(!playlists || playlists.length === 0) && (

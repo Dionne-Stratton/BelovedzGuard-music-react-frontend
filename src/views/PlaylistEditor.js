@@ -38,6 +38,12 @@ export default function PlaylistEditor() {
   const isEdit = Boolean(id);
   const navigate = useNavigate();
 
+  // ✅ Guard: redirect if not logged in
+  const isLoggedIn = useSelector((s) => s.auth.isLoggedIn);
+  useEffect(() => {
+    if (!isLoggedIn) navigate("/login");
+  }, [isLoggedIn, navigate]);
+
   const allSongs = useSelector((s) => s.songs) || [];
   const { data: cached = [] } = useGetPlaylistsQuery();
 

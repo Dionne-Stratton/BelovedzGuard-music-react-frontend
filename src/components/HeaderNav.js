@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import AuthControls from "./AuthControls";
+import { useAuth0 } from "@auth0/auth0-react"; // ✅ added
 import Logo from "./Logo";
 
 const HeaderNav = () => {
@@ -10,7 +10,10 @@ const HeaderNav = () => {
   const showDropdown =
     typeof window !== "undefined" && window.innerWidth >= 900 && listenOpen;
 
-  // ✅ Check if user is on any /listen route (songs, albums, playlists, etc.)
+  // ✅ Auth0 hooks
+  const { loginWithRedirect, logout, isAuthenticated, isLoading, user } =
+    useAuth0();
+
   const isListenActive = location.pathname.startsWith("/listen");
 
   return (
@@ -19,6 +22,7 @@ const HeaderNav = () => {
         <NavLink className="logo-link-header" to="/">
           <Logo />
         </NavLink>
+
         <div id="logo">
           <h1>
             <NavLink to="/" className="drop-shadow-thick">
@@ -31,7 +35,44 @@ const HeaderNav = () => {
             </NavLink>
           </h2>
         </div>
-        <AuthControls />
+
+        {/* ✅ Auth0 login/logout */}
+        <div className="auth-controls">
+          {isLoading ? (
+            <span className="drop-shadow-thin">Loading…</span>
+          ) : isAuthenticated ? (
+            <div className="auth-logged-in">
+              {user?.picture && (
+                <img
+                  src={user.picture}
+                  alt={user.name}
+                  className="auth-avatar"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "50%",
+                    marginRight: "0.5rem",
+                  }}
+                />
+              )}
+              <button
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+                className="logout-btn drop-shadow-thin"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => loginWithRedirect()}
+              className="login-btn drop-shadow-thin"
+            >
+              Login / Register
+            </button>
+          )}
+        </div>
       </header>
 
       <nav className="container">
@@ -47,7 +88,7 @@ const HeaderNav = () => {
             </NavLink>
           </li>
 
-          {/* Listen with hover dropdown (desktop only). Parent remains clickable. */}
+          {/* Listen dropdown */}
           <li
             onMouseEnter={() => setListenOpen(true)}
             onMouseLeave={() => setListenOpen(false)}
@@ -113,6 +154,20 @@ const HeaderNav = () => {
                   Albums
                 </NavLink>
               </li>
+              <li style={{ whiteSpace: "nowrap" }}>
+                <NavLink
+                  to="/listen/playlists"
+                  className="drop-shadow-thin"
+                  style={{
+                    display: "inline-block",
+                    textDecoration: "none",
+                    textAlign: "left",
+                    width: "100%",
+                  }}
+                >
+                  Playlists
+                </NavLink>
+              </li>
             </ul>
           </li>
 
@@ -126,6 +181,7 @@ const HeaderNav = () => {
               Watch
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/partner"
