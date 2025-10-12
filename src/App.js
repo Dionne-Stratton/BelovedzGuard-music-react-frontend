@@ -5,7 +5,6 @@ import { setSongs } from "./state/songsSlice";
 import axios from "axios";
 import { Routes, Route, useLocation } from "react-router-dom";
 import HeaderNav from "./components/HeaderNav";
-import AuthForm from "./views/AuthForm";
 import Footer from "./components/Footer";
 import Home from "./views/Home";
 import About from "./views/About";
@@ -54,8 +53,6 @@ export default function App() {
 
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<AuthForm mode="login" />} />
-          <Route path="/register" element={<AuthForm mode="register" />} />
           <Route path="/about" element={<About />} />
           <Route path="/watch" element={<Watch />} />
           <Route path="/listen/*" element={<Listen />} />
