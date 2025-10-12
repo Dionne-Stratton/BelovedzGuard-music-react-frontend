@@ -26,7 +26,6 @@ export default function Songs() {
     queue: currentQueue,
     currentSongId,
     context,
-    isPlaying,
   } = useSelector((state) => state.player);
   const currentSource = context?.source ?? null;
 
