@@ -37,13 +37,11 @@ export default function AuthControls() {
   useEffect(() => {
     let mounted = true;
     const stashToken = async () => {
-      console.log("Auth0 check starting");
       try {
         if (isAuthenticated) {
           const token = await getAccessTokenSilently({
             authorizationParams: { audience },
           });
-          console.log("Token saved:", token.slice(0, 40) + "...");
           dispatch(setCredentials({ user, token }));
           if (mounted) localStorage.setItem("api_token", token);
         } else {
@@ -57,6 +55,7 @@ export default function AuthControls() {
     return () => {
       mounted = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, getAccessTokenSilently]);
 
   if (isLoading) return null;

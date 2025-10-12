@@ -11,7 +11,6 @@ export const playlistApi = createApi({
 
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
-        console.log("🔐 Token attached to headers:", token.slice(0, 20) + "…");
       } else {
         console.warn("⚠️ No token found in Redux store yet");
       }
