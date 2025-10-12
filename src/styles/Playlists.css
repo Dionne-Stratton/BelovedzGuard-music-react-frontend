@@ -1,7 +1,145 @@
-.playlists-view {
+.playlists-page {
   /* center */
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   min-height: 100vh;
+  /* max-width: 1100px; */
+  margin: 2rem auto;
+  padding: 1rem;
+  color: #f6f6f6;
+}
+
+.playlist-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.playlists-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: clamp(680px, 95vw, 1400px);
+}
+
+.playlist-card {
+  flex: 1 1 200px; /* allows flexible resizing */
+  max-width: 220px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.playlist-card:hover {
+  transform: translateY(-3px);
+}
+
+.playlist-card:hover {
+  transform: translateY(-3px);
+}
+
+.playlist-buttons {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* .playlist-button {
+  text-decoration: none;
+  color: #ebe7e2;
+  background-color: #404c4488;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+} */
+
+.playlist-description {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Icon-only buttons (for Play, Edit, Delete, Create) */
+.icon-button {
+  position: relative;
+  background-color: #4c4740;
+  color: #ebe7e2;
+  border: none;
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: #5c554c;
+}
+
+/* Tooltip styling */
+.icon-button .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 120%; /* position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.icon-button:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Slight offset arrow effect */
+.icon-button .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+@media (max-width: 600px) {
+  .playlists-list {
+    max-width: 100%;
+    gap: 0.8rem;
+  }
+
+  .playlist-card {
+    flex: 1 1 140px;
+    padding: 0.8rem;
+  }
+
+  .icon-button {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
 }

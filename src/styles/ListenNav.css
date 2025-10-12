@@ -1,16 +1,18 @@
 /* ===== Floating placement (doesn't affect page layout) ===== */
 .listen-nav-wrapper {
   position: fixed;
-  top: 180px;
+  margin-top: 5px;
+  top: 200px;
   left: 0px;
   z-index: 1000;
   display: block;
-  pointer-events: none; /* Let clicks pass through the floating wrapper except on links & toggle */
+  /* Let clicks pass through the floating wrapper except on links & toggle */
 }
 
 /* --- sidebar --- */
 .listen-nav {
   background: transparent;
+  pointer-events: auto; /* re-enable normal clicks */
 }
 
 /* --- Nav links --- */
@@ -61,8 +63,7 @@
   .listen-nav {
     width: 100%;
     padding: 0.5rem 0;
-    border-right: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    /* border-right: 0; */
     overflow: visible;
   }
 

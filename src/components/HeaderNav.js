@@ -1,10 +1,13 @@
+// src/components/HeaderNav.js
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import AuthControls from "./AuthControls";
+import { NavLink, useLocation } from "react-router-dom";
 import Logo from "./Logo";
+import AuthControls from "./AuthControls"; // ✅ bring back AuthControls
 
 const HeaderNav = () => {
   const [listenOpen, setListenOpen] = useState(false);
+  const location = useLocation();
+  const isListenActive = location.pathname.startsWith("/listen");
 
   const showDropdown =
     typeof window !== "undefined" && window.innerWidth >= 900 && listenOpen;
@@ -15,6 +18,7 @@ const HeaderNav = () => {
         <NavLink className="logo-link-header" to="/">
           <Logo />
         </NavLink>
+
         <div id="logo">
           <h1>
             <NavLink to="/" className="drop-shadow-thick">
@@ -27,7 +31,9 @@ const HeaderNav = () => {
             </NavLink>
           </h2>
         </div>
-        {/* <AuthControls /> */}
+
+        {/* ✅ Use AuthControls here */}
+        <AuthControls />
       </header>
 
       <nav className="container">
@@ -43,7 +49,7 @@ const HeaderNav = () => {
             </NavLink>
           </li>
 
-          {/* Listen with hover dropdown (desktop only). Parent remains clickable. */}
+          {/* Listen dropdown */}
           <li
             onMouseEnter={() => setListenOpen(true)}
             onMouseLeave={() => setListenOpen(false)}
@@ -51,9 +57,9 @@ const HeaderNav = () => {
           >
             <NavLink
               to="/listen/songs"
-              className={({ isActive }) =>
-                `main-nav drop-shadow-thin ${isActive ? "active" : ""}`
-              }
+              className={`main-nav drop-shadow-thin ${
+                isListenActive ? "active" : ""
+              }`}
             >
               Listen
             </NavLink>
@@ -87,7 +93,6 @@ const HeaderNav = () => {
                   className="drop-shadow-thin"
                   style={{
                     display: "inline-block",
-                    // padding: "0.35rem 0.7rem",
                     textDecoration: "none",
                     textAlign: "left",
                     width: "100%",
@@ -102,13 +107,26 @@ const HeaderNav = () => {
                   className="drop-shadow-thin"
                   style={{
                     display: "inline-block",
-                    // padding: "0 0.7rem",
                     textDecoration: "none",
                     textAlign: "left",
                     width: "100%",
                   }}
                 >
                   Albums
+                </NavLink>
+              </li>
+              <li style={{ whiteSpace: "nowrap" }}>
+                <NavLink
+                  to="/listen/playlists"
+                  className="drop-shadow-thin"
+                  style={{
+                    display: "inline-block",
+                    textDecoration: "none",
+                    textAlign: "left",
+                    width: "100%",
+                  }}
+                >
+                  Playlists
                 </NavLink>
               </li>
             </ul>
@@ -124,6 +142,7 @@ const HeaderNav = () => {
               Watch
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/partner"

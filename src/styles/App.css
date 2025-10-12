@@ -49,6 +49,8 @@ header {
   background-color: #7d7771;
   display: flex;
   margin-left: 1%;
+  margin-right: 1%;
+  align-items: center;
 }
 
 nav {
@@ -89,7 +91,7 @@ nav {
 
 #logo {
   max-width: 100%;
-  width: 85%;
+  width: 100%;
   margin-bottom: 1em;
 }
 
@@ -223,8 +225,8 @@ nav {
 
 .add-pointer {
   cursor: pointer;
-  color: #dedad9;
-  transition: color 0.2s ease;
+  /* color: #dedad9; */
+  /* transition: color 0.2s ease; */
 }
 
 .page-container {
@@ -307,7 +309,7 @@ header,
   text-align: center;
   left: 0;
   right: 0;
-  width: 100%;
+  /* width: 100%; */
   top: 0;
 }
 
@@ -315,14 +317,12 @@ header,
 .container {
   margin: 0 auto;
   z-index: 150;
-  height: 60px;
 }
 
 /* Background-color to the nav container. */
 nav {
   padding: 0.5em 0 0.5em 0;
   background-color: #e8e8e8;
-  border-bottom: 0.2em solid #7d7771;
 }
 
 /* Since we'll have the "ul li" "float:left"

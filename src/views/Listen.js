@@ -5,6 +5,8 @@ import ListenNav from "../components/ListenNav";
 import Songs from "./Songs";
 import Albums from "./Albums";
 import Playlists from "./Playlists";
+import PlaylistEditor from "./PlaylistEditor";
+import PlaylistDetails from "./PlaylistDetails";
 
 export default function Listen() {
   return (
@@ -17,7 +19,12 @@ export default function Listen() {
         <Routes>
           <Route path="songs" element={<Songs />} />
           <Route path="albums" element={<Albums />} />
+
+          {/* Playlists */}
           <Route path="playlists" element={<Playlists />} />
+          <Route path="playlists/create" element={<PlaylistEditor />} />
+          <Route path="playlists/:id/edit" element={<PlaylistEditor />} />
+          <Route path="playlists/:id" element={<PlaylistDetails />} />
         </Routes>
       </div>
     </div>

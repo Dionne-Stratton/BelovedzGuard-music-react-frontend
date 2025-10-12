@@ -1,27 +1,81 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../state/authSlice";
+// src/components/AuthControls.js
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useLocation } from "react-router-dom";
+import profileIcon from "../images/profile.png";
+import { setCredentials } from "../state/authSlice";
+import "../styles/AuthControls.css";
 
 export default function AuthControls() {
-  const dispatch = useDispatch();
-  const { user, isLoggedIn } = useSelector((state) => state.auth);
+  const {
+    loginWithRedirect,
+    logout,
+    isAuthenticated,
+    user,
+    isLoading,
+    getAccessTokenSilently,
+  } = useAuth0();
 
-  const handleLogout = () => dispatch(logout());
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const currentPath = location.pathname;
+
+  const audience = "https://belovedzguard-api"; // ✅ must match your API identifier
+
+  const handleLogin = () => {
+    loginWithRedirect({
+      appState: { returnTo: currentPath },
+      authorizationParams: {
+        audience,
+      },
+    });
+  };
+
+  const handleLogout = () => logout({ localOnly: true });
+
+  useEffect(() => {
+    let mounted = true;
+    const stashToken = async () => {
+      try {
+        if (isAuthenticated) {
+          const token = await getAccessTokenSilently({
+            authorizationParams: { audience },
+          });
+          dispatch(setCredentials({ user, token }));
+          if (mounted) localStorage.setItem("api_token", token);
+        } else {
+          localStorage.removeItem("api_token");
+        }
+      } catch (err) {
+        console.error("Token fetch failed:", err);
+      }
+    };
+    stashToken();
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, getAccessTokenSilently]);
+
+  if (isLoading) return null;
 
   return (
     <div className="auth-controls">
-      {!isLoggedIn ? (
+      {!isAuthenticated ? (
         <div className="auth-buttons">
-          <button onClick={() => console.log("open login")}>Login</button>
-          <button onClick={() => console.log("open register")}>Register</button>
+          <button className="add-pointer" onClick={handleLogin}>
+            Login / Register
+          </button>
         </div>
       ) : (
         <div className="auth-logged-in">
-          <span className="welcome">Welcome</span>
-          <span className="username">
-            {user?.name || user?.email || "User"}
+          <span>
+            <img className="profile-icon" src={profileIcon} alt="Profile" />
           </span>
-          <button onClick={handleLogout}>Logout</button>
+          <button className="add-pointer" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       )}
     </div>

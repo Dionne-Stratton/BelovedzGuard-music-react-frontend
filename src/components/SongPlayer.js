@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import "../styles/SongPlayer.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentSong } from "../state/playerSlice";
+import { setCurrentSong, setPlaying } from "../state/playerSlice";
 import {
   FaStepBackward,
   FaStepForward,
@@ -11,22 +11,18 @@ import {
   FaVolumeMute,
 } from "react-icons/fa";
 import { FiShuffle, FiRepeat } from "react-icons/fi";
-
-// ✅ import analytics
-import { trackSongPlay } from "../utils/analytics";
-import { trackUIEvent } from "../utils/analytics";
+import { trackSongPlay, trackUIEvent } from "../utils/analytics";
 
 export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const dispatch = useDispatch();
   const queue = useSelector((state) => state.player.queue);
   const currentSongId = useSelector((state) => state.player.currentSongId);
+  const globalIsPlaying = useSelector((state) => state.player.isPlaying);
 
-  const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [repeatOne, setRepeatOne] = useState(false);
   const [shuffle, setShuffle] = useState(false);
-
   const [playedStack, setPlayedStack] = useState([]);
   const [futureStack, setFutureStack] = useState([]);
 
@@ -98,9 +94,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   };
 
   const togglePlay = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    isPlaying ? audio.pause() : audio.play();
+    dispatch(setPlaying(!globalIsPlaying));
   };
 
   useEffect(() => {
@@ -121,10 +115,24 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   }, [currentSongId]);
 
   useEffect(() => {
-    if (!shuffle) {
-      setFutureStack([]);
-    }
+    if (!shuffle) setFutureStack([]);
   }, [shuffle]);
+
+  // 🔄 reset playback history whenever the queue changes
+  useEffect(() => {
+    setPlayedStack([]);
+    setFutureStack([]);
+  }, [queue]);
+
+  // keep audio in sync with Redux playback
+  useEffect(() => {
+    if (!audioRef.current) return;
+    if (globalIsPlaying) {
+      audioRef.current.play().catch(() => {});
+    } else {
+      audioRef.current.pause();
+    }
+  }, [globalIsPlaying]);
 
   const handleTimeUpdate = () => {
     const audio = audioRef.current;
@@ -134,11 +142,8 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
 
   const handleEnded = () => {
     if (queue.length === 0 || currentIndex === -1) return;
-    if (repeatOne) {
-      handleRepeatOne();
-    } else {
-      nextSong();
-    }
+    if (repeatOne) handleRepeatOne();
+    else nextSong();
   };
 
   const handleRepeatOne = () => {
@@ -153,12 +158,13 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     setDisplayLyrics(false);
   };
 
-  // ✅ NEW: Track song plays when playback actually starts
   const handlePlay = () => {
-    setIsPlaying(true);
-    if (currentSong?.title) {
-      trackSongPlay(currentSong.title);
-    }
+    dispatch(setPlaying(true));
+    if (currentSong?.title) trackSongPlay(currentSong.title);
+  };
+
+  const handlePause = () => {
+    dispatch(setPlaying(false));
   };
 
   if (currentSongId === null || !currentSong) return null;
@@ -216,7 +222,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
               onClick={prevSong}
               className="drop-shadow-thick add-pointer"
             />
-            {isPlaying ? (
+            {globalIsPlaying ? (
               <FaPause
                 size={20}
                 color="#dedad9"
@@ -304,7 +310,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleEnded}
         onPlay={handlePlay}
-        onPause={() => setIsPlaying(false)}
+        onPause={handlePause}
       />
     </div>
   );
