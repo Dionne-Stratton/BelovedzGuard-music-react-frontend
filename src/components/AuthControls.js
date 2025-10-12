@@ -64,19 +64,18 @@ export default function AuthControls() {
     <div className="auth-controls">
       {!isAuthenticated ? (
         <div className="auth-buttons">
-          <button onClick={handleLogin}>Login / Register</button>
+          <button className="add-pointer" onClick={handleLogin}>
+            Login / Register
+          </button>
         </div>
       ) : (
         <div className="auth-logged-in">
           <span>
-            <img
-              className="profile-icon"
-              src={user?.picture || profileIcon}
-              alt={user?.name || "Profile"}
-              title={user?.name || "Profile"}
-            />
+            <img className="profile-icon" src={profileIcon} alt="Profile" />
           </span>
-          <button onClick={handleLogout}>Logout</button>
+          <button className="add-pointer" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       )}
     </div>

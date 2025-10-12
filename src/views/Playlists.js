@@ -59,7 +59,8 @@ export default function Playlists() {
     );
   }
 
-  if (authLoading || playlistsLoading) return <p>Loading playlists...</p>;
+  if (authLoading || playlistsLoading)
+    return <p className="playlists-page">Loading playlists...</p>;
 
   return (
     <div className="playlists-page">
@@ -80,11 +81,11 @@ export default function Playlists() {
         <p>You have no playlists yet. Create one to get started!</p>
       )}
 
-      <div className="playlist-grid">
+      <div className="playlists-list">
         {playlists.map((p) => (
           <div
             key={p._id}
-            className="playlist-card"
+            className="add-pointer playlist-card"
             onClick={() => handleView(p._id)}
           >
             <h3>{p.name}</h3>

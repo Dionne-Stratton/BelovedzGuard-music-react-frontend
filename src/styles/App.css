@@ -225,8 +225,8 @@ nav {
 
 .add-pointer {
   cursor: pointer;
-  color: #dedad9;
-  transition: color 0.2s ease;
+  /* color: #dedad9; */
+  /* transition: color 0.2s ease; */
 }
 
 .page-container {

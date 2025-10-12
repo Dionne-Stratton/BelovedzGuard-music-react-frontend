@@ -69,7 +69,7 @@ export default function PlaylistDetails() {
 
   return (
     <div className="playlist-details-container">
-      <div className="playlist-header">
+      <div className="playlist-details-header">
         <h2>{playlist.name}</h2>
         <button className="play-all-btn" onClick={handlePlayAll}>
           ▶ Play All
