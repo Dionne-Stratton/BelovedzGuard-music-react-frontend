@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const playlistApi = createApi({
   reducerPath: "playlistApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://belovedzguard-ebf890192e0e.herokuapp.com/users",
+    baseUrl: process.env.REACT_APP_PRODUCTION_SERVER_URL + "/users",
     prepareHeaders: (headers, { getState }) => {
       // ✅ Pull token directly from Redux, not localStorage
       const token = getState().auth?.token;

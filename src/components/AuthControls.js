@@ -21,7 +21,7 @@ export default function AuthControls() {
   const dispatch = useDispatch();
   const currentPath = location.pathname;
 
-  const audience = "https://belovedzguard-api"; // ✅ must match your API identifier
+  const audience = process.env.REACT_APP_AUDIENCE; // ✅ must match your API identifier
 
   const handleLogin = () => {
     loginWithRedirect({
