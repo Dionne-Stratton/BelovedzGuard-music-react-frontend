@@ -18,7 +18,7 @@ import { initAnalytics, trackPageView } from "./utils/analytics";
 export default function App() {
   const dispatch = useDispatch();
   const [displayLyrics, setDisplayLyrics] = useState(false);
-  const API_URL = "https://belovedzguard-ebf890192e0e.herokuapp.com/songs";
+  const API_URL = process.env.REACT_APP_PRODUCTION_SERVER_URL + "/public/songs";
   const location = useLocation();
 
   // ✅ Pull player state from Redux (assuming your song player stores this)
@@ -39,7 +39,7 @@ export default function App() {
       .get(API_URL)
       .then((res) => dispatch(setSongs(res.data)))
       .catch((err) => console.error("Error fetching songs:", err));
-  }, [dispatch]);
+  }, [dispatch, API_URL]);
 
   return (
     <div className="App layout">

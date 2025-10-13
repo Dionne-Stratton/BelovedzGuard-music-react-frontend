@@ -1,89 +1,69 @@
 // src/views/Albums.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import "../styles/Albums.css";
 
-const ALBUMS = [
-  {
-    slug: "jesus",
-    title: "Voice of the Groom",
-    coverUrl: "",
-    tracksById: [
-      "68daf89e2e7c477c8a972284",
-      "68d74547f3fcd04e78ab11f8",
-      "68d74547f3fcd04e78ab11f6",
-      "68d74547f3fcd04e78ab11f3",
-      "68d74547f3fcd04e78ab11e2",
-      "68d74547f3fcd04e78ab11da",
-      "68d74547f3fcd04e78ab11d6",
-    ],
-  },
-  {
-    slug: "face-to-face",
-    title: "Face to Face",
-    coverUrl: "",
-    tracksById: [
-      "68d74547f3fcd04e78ab11f9",
-      "68d74547f3fcd04e78ab11f0",
-      "68d74547f3fcd04e78ab11e8",
-      "68d74547f3fcd04e78ab11c9",
-      "68d74547f3fcd04e78ab11f8",
-      "68d74547f3fcd04e78ab11da",
-      "68d74547f3fcd04e78ab11d5",
-      "68d74547f3fcd04e78ab11fd",
-    ],
-  },
-];
-
 export default function Albums() {
-  const songs = useSelector((state) => state.songs);
   const player = useSelector((state) => state.player);
   const dispatch = useDispatch();
 
-  const [expandedAlbums, setExpandedAlbums] = useState(() =>
-    Object.fromEntries(ALBUMS.map((a) => [a.slug, true]))
-  );
+  const [albums, setAlbums] = useState([]);
+  const [expandedAlbums, setExpandedAlbums] = useState({});
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const albums = ALBUMS.map((a) => {
-    const tracks = a.tracksById
-      .map((id) => songs.find((s) => s._id === id))
-      .filter(Boolean);
-    return { ...a, tracks };
-  });
+  const baseUrl = process.env.REACT_APP_PRODUCTION_SERVER_URL;
 
-  const inSameAlbumContext = (albumSlug) =>
-    player.context.source === "album" && player.context.sourceId === albumSlug;
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        const res = await axios.get(`${baseUrl}/public/albums`);
+        setAlbums(res.data);
+        // Initialize all albums expanded
+        const expanded = Object.fromEntries(res.data.map((a) => [a._id, true]));
+        setExpandedAlbums(expanded);
+      } catch (err) {
+        console.error("Error fetching albums:", err);
+        setError("Failed to load albums");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAlbums();
+  }, [baseUrl]);
+
+  const inSameAlbumContext = (albumId) =>
+    player.context.source === "album" && player.context.sourceId === albumId;
 
   const playAlbum = (album) => {
-    if (!album.tracks.length) return;
+    if (!album.songs?.length) return;
 
-    // Always replace queue to this album context
     dispatch(
       setQueue({
-        songs: album.tracks,
+        songs: album.songs,
         source: "album",
-        sourceId: album.slug,
+        sourceId: album._id,
       })
     );
-    // Start from the first track
-    dispatch(setCurrentSong(album.tracks[0]._id));
+    dispatch(setCurrentSong(album.songs[0]._id));
     dispatch(setPlaying(true));
   };
 
   const playFromSong = (album, songId) => {
-    if (!album.tracks.length) return;
+    if (!album.songs?.length) return;
 
-    const sameContext = inSameAlbumContext(album.slug);
+    const sameContext = inSameAlbumContext(album._id);
     const sameSong = player.currentSongId === songId;
 
     if (!sameContext) {
-      // New album context: replace queue, start from requested song
       dispatch(
         setQueue({
-          songs: album.tracks,
+          songs: album.songs,
           source: "album",
-          sourceId: album.slug,
+          sourceId: album._id,
         })
       );
       dispatch(setCurrentSong(songId));
@@ -91,45 +71,46 @@ export default function Albums() {
       return;
     }
 
-    // Same album context
     if (sameSong) {
-      // Resume (or restart) this song explicitly
       dispatch(setCurrentSong(songId));
       dispatch(setPlaying(true));
       return;
     }
 
-    // Same album, different track: just switch tracks
     dispatch(setCurrentSong(songId));
     dispatch(setPlaying(true));
   };
 
-  const toggleAlbum = (slug) => {
-    setExpandedAlbums((prev) => ({ ...prev, [slug]: !prev[slug] }));
+  const toggleAlbum = (id) => {
+    setExpandedAlbums((prev) => ({ ...prev, [id]: !prev[id] }));
   };
+
+  // ---- RENDER ----
+  if (loading) return <p className="muted">Loading albums...</p>;
+  if (error) return <p className="error">{error}</p>;
 
   return (
     <div className="page-container">
       <h1 className="albums-heading">Albums</h1>
 
       {albums.length === 0 ? (
-        <p className="muted">Loading...</p>
+        <p className="muted">No albums found.</p>
       ) : (
         <div className="albums-list">
           {albums.map((a) => (
-            <div key={a.slug} className="album-card">
+            <div key={a._id} className="album-card">
               <div className="album-header">
                 <div className="album-left">
                   <button
                     className="album-toggle"
-                    onClick={() => toggleAlbum(a.slug)}
+                    onClick={() => toggleAlbum(a._id)}
                     title={
-                      expandedAlbums[a.slug]
+                      expandedAlbums[a._id]
                         ? "Hide track list"
                         : "Show track list"
                     }
                   >
-                    {expandedAlbums[a.slug] ? "▼" : "▲"}
+                    {expandedAlbums[a._id] ? "▼" : "▲"}
                   </button>
                   <div className="album-title">{a.title}</div>
                 </div>
@@ -138,20 +119,20 @@ export default function Albums() {
                   <button
                     className="album-play"
                     onClick={() => playAlbum(a)}
-                    disabled={!a.tracks.length}
-                    title={a.tracks.length ? "Play album" : "No songs yet"}
+                    disabled={!a.songs?.length}
+                    title={a.songs?.length ? "Play album" : "No songs yet"}
                   >
                     ▶ Play Album
                   </button>
                 </div>
               </div>
 
-              {expandedAlbums[a.slug] &&
-                (a.tracks.length === 0 ? (
+              {expandedAlbums[a._id] &&
+                (a.songs?.length === 0 ? (
                   <p>Loading...</p>
                 ) : (
                   <ul className="album-tracks">
-                    {a.tracks.map((t) => (
+                    {a.songs.map((t) => (
                       <li
                         key={t._id}
                         className="album-track"

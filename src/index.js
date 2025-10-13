@@ -24,7 +24,7 @@ function Auth0ProviderWithNavigate({ children }) {
       clientId="zHMt6hJQuOdeHhKzDh8aoOSwIk6Zfq9c"
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: "https://belovedzguard-api", // ✅ added audience for API access
+        audience: process.env.REACT_APP_AUDIENCE, // ✅ added audience for API access
       }}
       onRedirectCallback={onRedirectCallback}
     >
