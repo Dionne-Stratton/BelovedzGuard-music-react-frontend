@@ -27,7 +27,7 @@ const playlistSchema = Yup.object({
   name: Yup.string()
     .trim()
     .required("Title required")
-    .max(12, "Title too long"),
+    .max(12, "Title too long, max 12 characters"),
 });
 
 /* ---- Helpers ---- */
