@@ -24,7 +24,10 @@ const genreIcon = (g) => GENRE_META[g] || "🎶";
 
 /* ---- Validation ---- */
 const playlistSchema = Yup.object({
-  name: Yup.string().trim().required("Title required"),
+  name: Yup.string()
+    .trim()
+    .required("Title required")
+    .max(12, "Title too long, max 12 characters"),
 });
 
 /* ---- Helpers ---- */
