@@ -39,7 +39,7 @@ export default function App() {
       .get(API_URL)
       .then((res) => dispatch(setSongs(res.data)))
       .catch((err) => console.error("Error fetching songs:", err));
-  }, [dispatch]);
+  }, [dispatch, API_URL]);
 
   return (
     <div className="App layout">
