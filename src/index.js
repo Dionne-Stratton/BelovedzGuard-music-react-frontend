@@ -20,7 +20,7 @@ function Auth0ProviderWithNavigate({ children }) {
 
   return (
     <Auth0Provider
-      domain="dev-t2whljcmqk7brtx1.us.auth0.com"
+      domain="login.belovedzguard.com"
       clientId="zHMt6hJQuOdeHhKzDh8aoOSwIk6Zfq9c"
       authorizationParams={{
         redirect_uri: window.location.origin,
