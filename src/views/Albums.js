@@ -1,39 +1,23 @@
 // src/views/Albums.js
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
+import { useGetAlbumsQuery } from "../state/publicApi";
 import "../styles/Albums.css";
 
 export default function Albums() {
   const player = useSelector((state) => state.player);
   const dispatch = useDispatch();
 
-  const [albums, setAlbums] = useState([]);
   const [expandedAlbums, setExpandedAlbums] = useState({});
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  const baseUrl = process.env.REACT_APP_PRODUCTION_SERVER_URL;
+  const { data: albums = [], isLoading, error } = useGetAlbumsQuery();
 
   useEffect(() => {
-    const fetchAlbums = async () => {
-      try {
-        const res = await axios.get(`${baseUrl}/public/albums`);
-        setAlbums(res.data);
-        // Initialize all albums expanded
-        const expanded = Object.fromEntries(res.data.map((a) => [a._id, true]));
-        setExpandedAlbums(expanded);
-      } catch (err) {
-        console.error("Error fetching albums:", err);
-        setError("Failed to load albums");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAlbums();
-  }, [baseUrl]);
+    if (albums.length > 0) {
+      const expanded = Object.fromEntries(albums.map((a) => [a._id, true]));
+      setExpandedAlbums(expanded);
+    }
+  }, [albums]);
 
   const inSameAlbumContext = (albumId) =>
     player.context.source === "album" && player.context.sourceId === albumId;
@@ -86,7 +70,7 @@ export default function Albums() {
   };
 
   // ---- RENDER ----
-  if (loading) return <p className="muted">Loading albums...</p>;
+  if (isLoading) return <p className="muted">Loading albums...</p>;
   if (error) return <p className="error">{error}</p>;
 
   return (

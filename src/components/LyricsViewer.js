@@ -20,7 +20,7 @@ const LyricsViewer = ({ setDisplayLyrics }) => {
 
     if (song.lyrics) {
       axios
-        .get(song.lyrics) // expects a text file URL
+        .get(song.lyrics, { responseType: "text" })
         .then((res) => setLyrics(res.data))
         .catch((err) => {
           console.error("Error fetching lyrics:", err);
