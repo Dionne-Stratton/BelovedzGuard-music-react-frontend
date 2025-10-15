@@ -20,8 +20,8 @@ function Auth0ProviderWithNavigate({ children }) {
 
   return (
     <Auth0Provider
-      domain="dev-t2whljcmqk7brtx1.us.auth0.com"
-      clientId="zHMt6hJQuOdeHhKzDh8aoOSwIk6Zfq9c"
+      domain={process.env.REACT_APP_AUTH0_PROD_DOMAIN} // switch between dev and prod in .env
+      clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: process.env.REACT_APP_AUDIENCE, // ✅ added audience for API access
