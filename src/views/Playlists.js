@@ -67,12 +67,9 @@ export default function Playlists() {
       <div className="playlist-header">
         <h2>Your Playlists</h2>
         {isAuthenticated && (
-          <button
-            className="icon-button create-playlist-button"
-            onClick={handleCreate}
-          >
-            <span className="tooltip-text">Create new playlist</span>
-            <span className="icon">✚</span>
+          <button className="create-playlist-button" onClick={handleCreate}>
+            {/* <span className="tooltip-text">Create new playlist</span> */}
+            <span>✚ Create Playlist</span>
           </button>
         )}
       </div>

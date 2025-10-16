@@ -1,34 +1,41 @@
 .playlist-details-container {
-  background: var(--card-bg, #b7b1aca3);
+  /* background: #a38843; */
+  /* background color with gradient */
+  /* background: linear-gradient(135deg, #a38843 0%, #5c554c 100%); */
   border-radius: 10px;
   padding: 1rem 1.5rem;
   max-width: 900px;
   margin: 2rem auto;
-  color: #3d3838;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .playlist-details-header {
   display: flex;
-  /* flex-direction: column; */
+  /* background-image: url("/public/playlist-background-options/background-option07.jpg"); */
+  background-size: cover;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .playlist-details-header h2 {
   font-size: 1.5rem;
   font-weight: 600;
+  color: #f6f6f6;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+  padding: 15px;
+  margin: 0;
 }
 
 .play-all-btn {
-  background: rgba(38, 36, 36, 0.423);
+  background: rgba(38, 36, 36, 0.513);
   color: #f6f6f6;
   border: none;
   border-radius: 6px;
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   font-weight: 500;
-  margin-bottom: 0.8rem;
+  margin-right: 0.8rem;
 }
 
 .play-all-btn:hover {
