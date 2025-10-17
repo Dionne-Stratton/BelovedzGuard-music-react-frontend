@@ -5,6 +5,7 @@ import { useGetPlaylistByIdQuery } from "../state/playlistApi";
 import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/PlaylistDetails.css";
+import themes from "../styles/themes";
 
 export default function PlaylistDetails() {
   const { id } = useParams();
@@ -32,6 +33,7 @@ export default function PlaylistDetails() {
   });
 
   const playlist = existingPlaylist || fetchedPlaylist;
+  const theme = themes[playlist?.theme] || themes.Faith;
 
   // --- Handlers ---
 
@@ -87,8 +89,18 @@ export default function PlaylistDetails() {
         </div>
       )}
 
-      <div className="playlist-details-container">
-        <div className="playlist-details-header">
+      <div
+        className="playlist-details-container"
+        style={{
+          background: theme.gradient, // ← gradient for container
+        }}
+      >
+        <div
+          className="playlist-details-header"
+          style={{
+            backgroundImage: `url(${theme.image})`, // ← header image
+          }}
+        >
           <h2>{playlist.name}</h2>
           <button className="play-all-btn" onClick={handlePlayAll}>
             ▶ Play All
