@@ -39,14 +39,32 @@ export const playlistApi = createApi({
       }),
       invalidatesTags: ["Playlist"],
     }),
-
     updatePlaylist: builder.mutation({
-      query: ({ id, ...data }) => ({
+      query: ({ id, ...patch }) => ({
         url: `/playlists/${id}`,
         method: "PUT",
-        body: data,
+        body: patch,
       }),
-      invalidatesTags: ["Playlist"],
+      async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
+        // Optimistically update cached playlists so UI reflects instantly
+        const patchResult = dispatch(
+          playlistApi.util.updateQueryData(
+            "getPlaylists",
+            undefined,
+            (draft) => {
+              const item = draft.find((p) => p._id === id);
+              if (item) Object.assign(item, patch); // merge updates immediately
+            }
+          )
+        );
+
+        try {
+          await queryFulfilled; // wait for server confirmation
+        } catch {
+          patchResult.undo(); // revert if the server call fails
+        }
+      },
+      invalidatesTags: ["Playlist"], // keep your tagging in place
     }),
 
     deletePlaylist: builder.mutation({

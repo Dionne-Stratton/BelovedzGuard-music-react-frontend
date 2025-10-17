@@ -11,6 +11,7 @@ import {
 } from "../state/playlistApi";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import "../styles/PlaylistEditor.css";
+import ThemeDropdown from "../components/ThemeDropdown"; // ✅ new import
 
 /* ---------- Genre emoji ---------- */
 const GENRE_META = {
@@ -43,7 +44,6 @@ export default function PlaylistEditor() {
   const isEdit = Boolean(id);
   const navigate = useNavigate();
 
-  // ✅ Auth0 guard: fully protected page
   const { isAuthenticated, isLoading } = useAuth0();
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -68,20 +68,24 @@ export default function PlaylistEditor() {
   const [isDirty, setIsDirty] = useState(false);
   const [error, setError] = useState("");
 
+  // ✅ new state for theme selection
+  const [theme, setTheme] = useState(
+    isEdit ? existing?.theme || "Faith" : "Faith"
+  );
+
   const [createPlaylist, { isLoading: savingNew }] =
     useCreatePlaylistMutation();
   const [updatePlaylist, { isLoading: savingEdit }] =
     useUpdatePlaylistMutation();
 
-  /* hydrate edit */
   useEffect(() => {
     if (!isEdit || !existing) return;
     setName(existing.name || "");
     setPlaylistSongs(existing.songs || []);
+    setTheme(existing.theme || "Faith");
     setIsDirty(false);
   }, [isEdit, existing]);
 
-  /* available (right) list — newest-first like Songs page */
   const availableSongs = useMemo(() => {
     let list = [...(allSongs || [])];
     if (genreFilter !== "All")
@@ -93,7 +97,6 @@ export default function PlaylistEditor() {
     return list;
   }, [allSongs, genreFilter, searchQuery]);
 
-  /* leave-page guard */
   useEffect(() => {
     const beforeUnload = (e) => {
       if (!isDirty) return;
@@ -110,15 +113,12 @@ export default function PlaylistEditor() {
   const onDragEnd = (result) => {
     const { source, destination } = result;
     if (!destination) return;
-
-    // same spot
     if (
       source.droppableId === destination.droppableId &&
       source.index === destination.index
     )
       return;
 
-    // reorder in playlist
     if (
       source.droppableId === "playlist" &&
       destination.droppableId === "playlist"
@@ -130,7 +130,6 @@ export default function PlaylistEditor() {
       return;
     }
 
-    // library -> playlist (allow duplicates)
     if (
       source.droppableId === "library" &&
       destination.droppableId === "playlist"
@@ -143,19 +142,15 @@ export default function PlaylistEditor() {
         return copy;
       });
       markDirty();
-      return;
     }
   };
 
-  /* actions */
   const reversePlaylist = () => {
     setPlaylistSongs((p) => [...p].reverse());
     markDirty();
   };
 
-  const onCancel = () => {
-    navigate("/listen/playlists");
-  };
+  const onCancel = () => navigate("/listen/playlists");
 
   const onSave = async () => {
     try {
@@ -168,15 +163,14 @@ export default function PlaylistEditor() {
 
     const payload = {
       name: name.trim(),
-      songs: playlistSongs.map((s) => s._id), // send IDs only
+      songs: playlistSongs.map((s) => s._id),
+      theme, // ✅ include selected theme
     };
 
     try {
-      if (isEdit) {
-        await updatePlaylist({ id, ...payload }).unwrap();
-      } else {
-        await createPlaylist(payload).unwrap();
-      }
+      if (isEdit) await updatePlaylist({ id, ...payload }).unwrap();
+      else await createPlaylist(payload).unwrap();
+
       setIsDirty(false);
       navigate("/listen/playlists");
     } catch (err) {
@@ -185,10 +179,8 @@ export default function PlaylistEditor() {
     }
   };
 
-  // Prevent any UI from flashing while redirecting away
   if (!isLoading && !isAuthenticated) return null;
 
-  /* rows */
   const PlaylistRow = ({ song, index }) => (
     <Draggable draggableId={`playlist-${song._id}-${index}`} index={index}>
       {(provided) => (
@@ -248,14 +240,12 @@ export default function PlaylistEditor() {
         <div className="pe-columns">
           {/* LEFT COLUMN — THIS PLAYLIST */}
           <div>
-            <h3 className="pe-col-title">This Playlist</h3>
-
-            {/* moved + centered controls for the left side */}
             <div className="pe-left-controls">
+              {/* 🎵 Playlist name input */}
               <input
                 type="text"
                 className={`pe-name-input search-bar ${error ? "invalid" : ""}`}
-                placeholder={isEdit ? "Playlist name" : "New playlist name"}
+                placeholder="My Playlist"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -265,6 +255,16 @@ export default function PlaylistEditor() {
               />
               {error && <div className="pe-error-text">{error}</div>}
 
+              {/* 🎨 Theme selection */}
+              <ThemeDropdown
+                theme={theme}
+                onSelect={(value) => {
+                  setTheme(value);
+                  markDirty();
+                }}
+              />
+
+              {/* 💾 Action buttons */}
               <div className="pe-actions">
                 <button
                   className="pe-btn subtle"
@@ -273,7 +273,6 @@ export default function PlaylistEditor() {
                 >
                   ↕ Reverse
                 </button>
-
                 <button
                   className="pe-btn"
                   title="Cancel changes"
@@ -281,7 +280,6 @@ export default function PlaylistEditor() {
                 >
                   ✖ Cancel
                 </button>
-
                 <button
                   className="pe-btn primary"
                   title="Save playlist"
@@ -322,11 +320,10 @@ export default function PlaylistEditor() {
 
           <div className="pe-divider" />
 
-          {/* RIGHT COLUMN — ALL SONGS */}
+          {/* RIGHT COLUMN — LIBRARY */}
           <div>
-            <h3 className="pe-col-title">All Songs</h3>
+            <h3 className="pe-col-title">Library</h3>
 
-            {/* SWAPPED ORDER: Genre first, then Search (both centered) */}
             <div className="pe-filters">
               <select
                 value={genreFilter}
