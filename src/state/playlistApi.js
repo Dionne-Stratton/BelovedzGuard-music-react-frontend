@@ -74,6 +74,16 @@ export const playlistApi = createApi({
       }),
       invalidatesTags: ["Playlist"],
     }),
+
+    // 🔹 Add song to playlist
+    addSongToPlaylist: builder.mutation({
+      query: ({ playlistId, songId }) => ({
+        url: `/playlists/${playlistId}/addSong`,
+        method: "PATCH",
+        body: { songId },
+      }),
+      invalidatesTags: ["Playlist"],
+    }),
   }),
 });
 
@@ -83,4 +93,5 @@ export const {
   useCreatePlaylistMutation,
   useUpdatePlaylistMutation,
   useDeletePlaylistMutation,
+  useAddSongToPlaylistMutation,
 } = playlistApi;

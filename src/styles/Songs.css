@@ -53,7 +53,7 @@
 
 .song-card {
   margin: 1rem;
-  height: 15rem;
+  height: 17rem;
   width: 12rem;
   border: 1px solid #ccc;
   padding: 1rem;
@@ -87,13 +87,56 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
 }
 
+.song-card-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0.25rem 0;
+}
+
+.song-play-button {
+  background-color: #29262678;
+  color: #ebe7e2;
+  border: none;
+  border-radius: 5px;
+  width: 27px;
+  height: 27px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.song-add-to-playlist-button {
+  background-color: #29262678;
+  color: #ebe7e2;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  padding: 0.25rem 0.5rem;
+  height: 27px;
+  min-width: auto;
+}
+
+.song-play-button:hover,
+.song-add-to-playlist-button:hover {
+  background-color: #5c554c;
+}
+
 .song-title {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
   justify-content: center;
-  margin-top: 0.5rem;
   font-weight: bold;
   font-size: 1.2rem;
   color: #ebe7e2;

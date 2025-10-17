@@ -7,8 +7,10 @@ import {
 } from "../state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
+import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/Songs.css";
 import SongThumbnail from "../components/SongThumbnail";
+import AddToPlaylistModal from "../components/AddToPlaylistModal";
 
 const GENRE_META = {
   Rock: { icon: "🎸", label: "Rock" },
@@ -21,6 +23,7 @@ const DEFAULT_META = { icon: "🎶", label: "Other" };
 
 export default function Songs() {
   const dispatch = useDispatch();
+  const { isAuthenticated } = useAuth0();
   const songs = useSelector((state) => state.songs);
   const {
     queue: currentQueue,
@@ -31,6 +34,8 @@ export default function Songs() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [genreFilter, setGenreFilter] = useState("All");
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [showAddToPlaylistModal, setShowAddToPlaylistModal] = useState(false);
 
   const filteredSongs = songs.filter((song) => {
     if (searchQuery) {
@@ -83,6 +88,17 @@ export default function Songs() {
     setSearchQuery("");
   };
 
+  const handleAddToPlaylist = (song, e) => {
+    e.stopPropagation(); // Prevent song card click
+    setSelectedSong(song);
+    setShowAddToPlaylistModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowAddToPlaylistModal(false);
+    setSelectedSong(null);
+  };
+
   return (
     <div className="song-page">
       <div className="filters song-filters">
@@ -121,23 +137,37 @@ export default function Songs() {
               song={song}
               meta={meta}
               onClick={() => handleSongClick(song._id)}
+              onAddToPlaylist={handleAddToPlaylist}
+              isAuthenticated={isAuthenticated}
             />
           );
         })}
       </div>
+
+      <AddToPlaylistModal
+        isOpen={showAddToPlaylistModal}
+        onClose={handleCloseModal}
+        song={selectedSong}
+      />
     </div>
   );
 }
 
 /* ---------- Helper Subcomponent ---------- */
-function LazySongCard({ song, meta, onClick }) {
+function LazySongCard({
+  song,
+  meta,
+  onClick,
+  onAddToPlaylist,
+  isAuthenticated,
+}) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     rootMargin: "200px",
   });
 
   return (
-    <div ref={ref} style={{ minHeight: "320px" }}>
+    <div ref={ref} style={{ minHeight: "372px" }}>
       {inView ? (
         <div className="song-card" onClick={onClick}>
           <div className="genre-icon">
@@ -153,6 +183,29 @@ function LazySongCard({ song, meta, onClick }) {
               animatedThumbnail={song.animatedSongThumbnail}
             />
           </div>
+
+          <div className="song-card-buttons">
+            <button
+              className="song-play-button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onClick();
+              }}
+              title="Play"
+            >
+              ►
+            </button>
+            {isAuthenticated && (
+              <button
+                className="song-add-to-playlist-button"
+                onClick={(e) => onAddToPlaylist(song, e)}
+                title="Add to Playlist"
+              >
+                + Add to Playlist
+              </button>
+            )}
+          </div>
+
           <span className="song-title">{song.title}</span>
         </div>
       ) : (

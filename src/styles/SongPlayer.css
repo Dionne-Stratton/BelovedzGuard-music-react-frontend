@@ -112,6 +112,28 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.song-player-lyrics-button:hover {
+  background-color: #6b6966;
+  color: #fff;
+}
+
+.song-player-add-to-playlist-button {
+  background-color: #52504e;
+  color: #ebe7e2;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.song-player-add-to-playlist-button:hover {
+  background-color: #6b6966;
+  color: #fff;
+}
+
 .close-player-button {
   position: absolute;
   top: 0.5rem;
