@@ -240,8 +240,6 @@ export default function PlaylistEditor() {
         <div className="pe-columns">
           {/* LEFT COLUMN — THIS PLAYLIST */}
           <div>
-            <h3 className="pe-col-title">This Playlist</h3>
-
             <div className="pe-left-controls">
               {/* 🎵 Playlist name input */}
               <input

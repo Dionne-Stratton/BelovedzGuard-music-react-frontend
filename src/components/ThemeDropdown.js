@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import themes from "../styles/themes"; // ✅ default export object (keys: Faith, Joy, ...; fields: icon, gradient)
+import "../styles/ThemeDropdown.css";
 
 export default function ThemeDropdown({ theme, onSelect }) {
   const [open, setOpen] = useState(false);

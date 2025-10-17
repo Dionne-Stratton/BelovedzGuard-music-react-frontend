@@ -2,7 +2,7 @@
 .pe-theme-dropdown-wrapper {
   position: relative;
   display: inline-block;
-  width: 220px; /* ← adjust here */
+  width: 150px; /* ← adjust here */
   font-size: 1rem;
 }
 
@@ -13,7 +13,7 @@
   justify-content: space-between;
   border: none;
   border-radius: 8px;
-  padding: 0.45rem 1rem 0.45rem 0.6rem; /* extra right padding for chevron */
+  padding: 0.3rem 1rem 0.3rem 0.6rem; /* extra right padding for chevron */
   color: #fff;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   cursor: pointer;
