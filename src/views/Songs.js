@@ -154,13 +154,7 @@ export default function Songs() {
 }
 
 /* ---------- Helper Subcomponent ---------- */
-function LazySongCard({
-  song,
-  meta,
-  onClick,
-  onAddToPlaylist,
-  isAuthenticated,
-}) {
+function LazySongCard({ song, meta, onClick, onAddToPlaylist }) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     rootMargin: "200px",
@@ -195,15 +189,13 @@ function LazySongCard({
             >
               ►
             </button>
-            {isAuthenticated && (
-              <button
-                className="song-add-to-playlist-button"
-                onClick={(e) => onAddToPlaylist(song, e)}
-                title="Add to Playlist"
-              >
-                + Add to Playlist
-              </button>
-            )}
+            <button
+              className="song-add-to-playlist-button"
+              onClick={(e) => onAddToPlaylist(song, e)}
+              title="Add to Playlist"
+            >
+              + Add to Playlist
+            </button>
           </div>
 
           <span className="song-title">{song.title}</span>

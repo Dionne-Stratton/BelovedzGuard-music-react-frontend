@@ -6,16 +6,23 @@ import {
   useAddSongToPlaylistMutation,
 } from "../state/playlistApi";
 import { trackUIEvent } from "../utils/analytics";
+import themes from "../styles/themes";
 import "../styles/AddToPlaylistModal.css";
 
 export default function AddToPlaylistModal({ isOpen, onClose, song }) {
-  const { isAuthenticated } = useAuth0();
+  const {
+    isAuthenticated,
+    loginWithPopup,
+    isLoading: authLoading,
+  } = useAuth0();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState("");
+  const [showSavedMessage, setShowSavedMessage] = useState(false);
 
-  const { data: playlists = [], isLoading } = useGetPlaylistsQuery(undefined, {
-    skip: !isAuthenticated,
-  });
+  const { data: playlists = [], isLoading: playlistsLoading } =
+    useGetPlaylistsQuery(undefined, {
+      skip: !isAuthenticated,
+    });
 
   const [createPlaylist, { isLoading: creatingPlaylist }] =
     useCreatePlaylistMutation();
@@ -34,7 +41,12 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
         playlistId,
       });
 
-      onClose();
+      // Show saved message briefly
+      setShowSavedMessage(true);
+      setTimeout(() => {
+        setShowSavedMessage(false);
+        onClose();
+      }, 1500);
     } catch (error) {
       console.error("Failed to add song to playlist:", error);
       alert("Failed to add song to playlist. Please try again.");
@@ -60,9 +72,14 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
         playlistName: newPlaylistName,
       });
 
-      onClose();
-      setNewPlaylistName("");
-      setShowCreateForm(false);
+      // Show saved message briefly
+      setShowSavedMessage(true);
+      setTimeout(() => {
+        setShowSavedMessage(false);
+        onClose();
+        setNewPlaylistName("");
+        setShowCreateForm(false);
+      }, 1500);
     } catch (error) {
       console.error("Failed to create playlist:", error);
       alert("Failed to create playlist. Please try again.");
@@ -73,6 +90,19 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
     onClose();
     setShowCreateForm(false);
     setNewPlaylistName("");
+  };
+
+  const handleLogin = async () => {
+    try {
+      await loginWithPopup({
+        authorizationParams: {
+          audience: process.env.REACT_APP_AUDIENCE,
+        },
+      });
+      trackUIEvent("Add to Playlist", "Login via popup");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   if (!isOpen || !song) return null;
@@ -90,38 +120,59 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
           </button>
         </div>
 
+        {showSavedMessage && (
+          <div className="saved-message">
+            <span>Saved!</span>
+          </div>
+        )}
+
         <div className="modal-content">
           {!isAuthenticated ? (
             <div className="auth-required">
-              <p>Please log in to add songs to playlists.</p>
+              <div className="login-prompt">
+                <h4>Login Required</h4>
+                <p>Please log in to add "{song.title}" to your playlists.</p>
+                <button
+                  className="login-button"
+                  onClick={handleLogin}
+                  disabled={authLoading}
+                >
+                  {authLoading ? "Logging in..." : "Login"}
+                </button>
+              </div>
             </div>
           ) : (
             <>
               {!showCreateForm ? (
                 <div className="existing-playlists">
                   <div className="playlist-list">
-                    {isLoading ? (
+                    {playlistsLoading ? (
                       <p>Loading playlists...</p>
                     ) : playlists.length === 0 ? (
                       <p className="no-playlists">
                         You don't have any playlists yet.
                       </p>
                     ) : (
-                      playlists.map((playlist) => (
-                        <div
-                          key={playlist._id}
-                          className="playlist-item"
-                          onClick={() =>
-                            handleAddToExistingPlaylist(playlist._id)
-                          }
-                        >
-                          <div className="playlist-info">
-                            <h4>{playlist.name}</h4>
-                            <p>{playlist.songs?.length || 0} songs</p>
+                      playlists.map((playlist) => {
+                        const theme = themes[playlist.theme] || themes.Faith;
+                        return (
+                          <div
+                            key={playlist._id}
+                            className="playlist-item"
+                            onClick={() =>
+                              handleAddToExistingPlaylist(playlist._id)
+                            }
+                            style={{
+                              background: theme.gradient,
+                            }}
+                          >
+                            <div className="playlist-info">
+                              <h4>{playlist.name}</h4>
+                              <p>{playlist.songs?.length || 0} songs</p>
+                            </div>
                           </div>
-                          <div className="playlist-theme">{playlist.theme}</div>
-                        </div>
-                      ))
+                        );
+                      })
                     )}
                   </div>
 
@@ -179,4 +230,3 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
     </div>
   );
 }
-
