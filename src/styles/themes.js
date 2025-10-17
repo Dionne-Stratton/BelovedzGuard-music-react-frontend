@@ -2,64 +2,64 @@
 
 const themes = {
   Faith: {
-    icon: "🙏",
+    icon: "⛪",
     image: "/themes/faith.jpg",
-    gradient: "linear-gradient(160deg, #b3a995 0%, #6f685c 100%)",
+    gradient: "linear-gradient(160deg, #76716B 0%, #52483F 100%)",
   },
   Abide: {
-    icon: "🕊️",
+    icon: "🍇",
     image: "/themes/abide.jpg",
-    gradient: "linear-gradient(160deg, #9a8ca0 0%, #655d69 100%)",
+    gradient: "linear-gradient(160deg, #7C7771 0%, #44385E 100%)",
   },
   Devotion: {
-    icon: "📖",
+    icon: "🌸",
     image: "/themes/devotion.jpg",
-    gradient: "linear-gradient(160deg, #917699 0%, #5a495f 100%)",
+    gradient: "linear-gradient(160deg, #AE989A 0%, #624F51 100%)",
   },
   Adoration: {
-    icon: "🙏",
+    icon: "🥀",
     image: "/themes/adoration.jpg",
-    gradient: "linear-gradient(160deg, #ba8b8f 0%, #754b51 100%)",
+    gradient: "linear-gradient(160deg, #72201C 0%, #2E181B 100%)",
   },
   Blaze: {
-    icon: "🔥",
+    icon: "🐦‍🔥",
     image: "/themes/blaze.jpg",
-    gradient: "linear-gradient(160deg, #d25b2a 0%, #7a3520 100%)",
+    gradient: "linear-gradient(160deg, #AD5B21 0%, #60110C 100%)",
   },
   Ember: {
     icon: "🔥",
     image: "/themes/ember.jpg",
-    gradient: "linear-gradient(160deg, #d98a3d 0%, #915b24 100%)",
+    gradient: "linear-gradient(160deg, #A26610 0%, #5B280B 100%)",
   },
   Joy: {
-    icon: "😊",
+    icon: "🌻",
     image: "/themes/joy.jpg",
-    gradient: "linear-gradient(160deg, #a38843 0%, #5c554c 100%)",
+    gradient: "linear-gradient(160deg, #A39051 0%, #958055 100%)",
   },
   Radiance: {
-    icon: "🌟",
+    icon: "☀️",
     image: "/themes/radiance.jpg",
-    gradient: "linear-gradient(160deg, #eabf76 0%, #7e6133 100%)",
+    gradient: "linear-gradient(160deg, #DED77F 0%, #6E5C2E 100%)",
   },
   Renew: {
-    icon: "🔄",
+    icon: "🌼",
     image: "/themes/renew.jpg",
-    gradient: "linear-gradient(160deg, #9bb284 0%, #546940 100%)",
+    gradient: "linear-gradient(160deg, #C2BDAA 0%, #5D5D37 100%)",
   },
   Rooted: {
-    icon: "🌳",
+    icon: "🌿",
     image: "/themes/rooted.jpg",
-    gradient: "linear-gradient(160deg, #6e7b58 0%, #3d472b 100%)",
+    gradient: "linear-gradient(160deg, #928857 0%, #3d472b 100%)",
   },
   Haven: {
-    icon: "🏡",
+    icon: "💠",
     image: "/themes/haven.jpg",
-    gradient: "linear-gradient(160deg, #5b91a8 0%, #2f4d58 100%)",
+    gradient: "linear-gradient(160deg, #55819A 0%, #1E3D4D 100%)",
   },
   Wonder: {
-    icon: "🌌",
+    icon: "✨",
     image: "/themes/wonder.jpg",
-    gradient: "linear-gradient(160deg, #435d91 0%, #252c44 100%)",
+    gradient: "linear-gradient(160deg, #20406F 0%, #08234D 100%)",
   },
 };
 
