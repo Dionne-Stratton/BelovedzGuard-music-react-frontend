@@ -166,10 +166,13 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
                               background: theme.gradient,
                             }}
                           >
-                            <div className="playlist-info">
+                            <div className="playlist-left">
+                              <span className="playlist-icon">
+                                {theme.icon}
+                              </span>
                               <h4>{playlist.name}</h4>
-                              <p>{playlist.songs?.length || 0} songs</p>
                             </div>
+                            <p>{playlist.songs?.length || 0} songs</p>
                           </div>
                         );
                       })
