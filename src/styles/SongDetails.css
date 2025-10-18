@@ -63,6 +63,11 @@
   width: 100%;
   max-width: 400px;
   margin-bottom: 2rem;
+  aspect-ratio: 1 / 1; /* Ensure square aspect ratio */
+}
+
+.song-thumbnail-large .song-thumbnail {
+  height: 100% !important; /* Override the 10rem height from Songs.css */
 }
 
 .song-controls {
@@ -141,24 +146,58 @@
 }
 
 .lyrics-content {
-  max-height: 60vh;
+  max-height: 80vh;
   overflow-y: auto;
+  padding-right: 8px; /* Space for scrollbar */
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.lyrics-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lyrics-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lyrics-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.lyrics-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .lyrics-text {
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.6;
-  white-space: pre-wrap;
   margin: 0;
   color: #ebe7e2;
 }
 
+.lyrics-text p {
+  margin-bottom: 1rem;
+}
+
+.lyrics-text p:last-child {
+  margin-bottom: 0;
+}
+
+.lyrics-loading,
+.lyrics-error,
 .no-lyrics {
   font-style: italic;
   color: #dedad9;
   text-align: center;
   padding: 2rem;
+}
+
+.lyrics-error {
+  color: #ff6b6b;
 }
 
 /* Related Songs */

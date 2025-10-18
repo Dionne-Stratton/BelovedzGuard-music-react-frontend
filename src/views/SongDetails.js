@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetSongByIdQuery } from "../state/publicApi";
@@ -6,6 +6,7 @@ import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import { trackUIEvent } from "../utils/analytics";
 import SongThumbnail from "../components/SongThumbnail";
 import AddToPlaylistModal from "../components/AddToPlaylistModal";
+import axios from "axios";
 import "../styles/SongDetails.css";
 
 const GENRE_META = {
@@ -40,6 +41,28 @@ export default function SongDetails() {
 
   const [showAddToPlaylistModal, setShowAddToPlaylistModal] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
+  const [lyrics, setLyrics] = useState("loading...");
+  const [lyricsError, setLyricsError] = useState(false);
+
+  // Fetch lyrics when song changes
+  useEffect(() => {
+    if (!song) return;
+
+    if (song.lyrics) {
+      setLyrics("loading...");
+      setLyricsError(false);
+      axios
+        .get(song.lyrics, { responseType: "text" })
+        .then((res) => setLyrics(res.data))
+        .catch((err) => {
+          console.error("Error fetching lyrics:", err);
+          setLyrics("Failed to load lyrics.");
+          setLyricsError(true);
+        });
+    } else {
+      setLyrics("");
+    }
+  }, [song]);
 
   // Copy link to clipboard
   const handleShare = async () => {
@@ -170,8 +193,23 @@ export default function SongDetails() {
         <div className="song-lyrics-section">
           <h2>Lyrics</h2>
           <div className="lyrics-content">
-            {song.lyrics ? (
-              <pre className="lyrics-text">{song.lyrics}</pre>
+            {lyrics === "loading..." ? (
+              <p className="lyrics-loading">Loading lyrics...</p>
+            ) : lyricsError ? (
+              <p className="lyrics-error">Failed to load lyrics.</p>
+            ) : lyrics ? (
+              <div className="lyrics-text">
+                {lyrics.split("\n\n").map((stanza, idx) => (
+                  <p key={idx}>
+                    {stanza.split("\n").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        <br />
+                      </span>
+                    ))}
+                  </p>
+                ))}
+              </div>
             ) : (
               <p className="no-lyrics">Lyrics not available for this song.</p>
             )}

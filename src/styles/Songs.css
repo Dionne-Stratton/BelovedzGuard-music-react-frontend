@@ -7,7 +7,7 @@
   gap: 1.2rem;
 }
 
-.genre-icon {
+.song-card .genre-icon {
   position: absolute;
   top: -1px;
   left: -1px;
@@ -30,7 +30,7 @@
   background-color: #e7e5e5;
 }
 
-.genre-icon .tooltip {
+.song-card .genre-icon .tooltip {
   visibility: hidden;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.75);
@@ -46,7 +46,7 @@
   transition: opacity 0.2s;
 }
 
-.genre-icon:hover .tooltip {
+.song-card .genre-icon:hover .tooltip {
   visibility: visible;
   opacity: 1;
 }
