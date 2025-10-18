@@ -26,6 +26,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
 
   const [createPlaylist, { isLoading: creatingPlaylist }] =
     useCreatePlaylistMutation();
+  // eslint-disable-next-line
   const [addSongToPlaylist, { isLoading: addingSong }] =
     useAddSongToPlaylistMutation();
 
@@ -61,6 +62,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
 
     try {
       // Create new playlist with Faith theme and the current song
+      // eslint-disable-next-line
       const newPlaylist = await createPlaylist({
         name: newPlaylistName.trim(),
         theme: "Faith",
