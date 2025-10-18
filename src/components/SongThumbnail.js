@@ -1,10 +1,27 @@
 // components/SongThumbnail.js
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
-export default function SongThumbnail({ title, thumbnail, animatedThumbnail }) {
+export default function SongThumbnail({
+  title,
+  thumbnail,
+  animatedThumbnail,
+  playOnLoad = false,
+  playOnHover = true,
+}) {
   const videoRef = useRef(null);
 
+  // Play on load effect
+  useEffect(() => {
+    if (playOnLoad && animatedThumbnail && videoRef.current) {
+      const video = videoRef.current;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+  }, [playOnLoad, animatedThumbnail]);
+
   const handleEnter = () => {
+    if (!playOnHover) return;
+
     const v = videoRef.current;
     if (v) {
       try {
@@ -15,6 +32,8 @@ export default function SongThumbnail({ title, thumbnail, animatedThumbnail }) {
   };
 
   const handleLeave = () => {
+    if (!playOnHover) return;
+
     const v = videoRef.current;
     if (v) {
       try {
@@ -58,8 +77,8 @@ export default function SongThumbnail({ title, thumbnail, animatedThumbnail }) {
   return (
     <div
       className="song-thumbnail"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+      onMouseEnter={playOnHover ? handleEnter : undefined}
+      onMouseLeave={playOnHover ? handleLeave : undefined}
       style={{
         position: "relative",
         overflow: "hidden",

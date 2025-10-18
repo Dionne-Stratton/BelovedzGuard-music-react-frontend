@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import "../styles/SongPlayer.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSong, setPlaying } from "../state/playerSlice";
+import { useNavigate } from "react-router-dom";
 import {
   FaStepBackward,
   FaStepForward,
@@ -16,6 +17,7 @@ import AddToPlaylistModal from "./AddToPlaylistModal";
 
 export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const queue = useSelector((state) => state.player.queue);
   const currentSongId = useSelector((state) => state.player.currentSongId);
   const globalIsPlaying = useSelector((state) => state.player.isPlaying);
@@ -169,6 +171,13 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     setShowAddToPlaylistModal(false);
   };
 
+  const handleSongTitleClick = () => {
+    if (currentSong) {
+      navigate(`/songs/${currentSong._id}`);
+      trackUIEvent("Navigate to Song Details", "From Player");
+    }
+  };
+
   const handlePlay = () => {
     dispatch(setPlaying(true));
     if (currentSong?.title) trackSongPlay(currentSong.title);
@@ -202,7 +211,9 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
               className="song-player-thumbnail"
             />
           )}
-          <div className="song-player-title">{currentSong.title}</div>
+          <div className="song-player-title" onClick={handleSongTitleClick}>
+            {currentSong.title}
+          </div>
           <button
             className="song-player-lyrics-button"
             onClick={() => {

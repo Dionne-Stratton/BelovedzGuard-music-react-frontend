@@ -11,6 +11,7 @@ import About from "./views/About";
 import Watch from "./views/Watch";
 import Partner from "./views/Partner";
 import Listen from "./views/Listen";
+import SongDetails from "./views/SongDetails";
 import SongPlayer from "./components/SongPlayer";
 import LyricsViewer from "./components/LyricsViewer";
 import { initAnalytics, trackPageView } from "./utils/analytics";
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/watch" element={<Watch />} />
           <Route path="/listen/*" element={<Listen />} />
+          <Route path="/songs/:id" element={<SongDetails />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/" element={<Home />} />
         </Routes>
