@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { FiShuffle, FiRepeat } from "react-icons/fi";
 import { trackSongPlay, trackUIEvent } from "../utils/analytics";
+import AddToPlaylistModal from "./AddToPlaylistModal";
 
 export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const [shuffle, setShuffle] = useState(false);
   const [playedStack, setPlayedStack] = useState([]);
   const [futureStack, setFutureStack] = useState([]);
+  const [showAddToPlaylistModal, setShowAddToPlaylistModal] = useState(false);
 
   const audioRef = useRef(null);
   const navRef = useRef(null);
@@ -158,6 +160,15 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     setDisplayLyrics(false);
   };
 
+  const handleAddToPlaylist = () => {
+    setShowAddToPlaylistModal(true);
+    trackUIEvent("Add to Playlist", "Opened from player");
+  };
+
+  const handleCloseModal = () => {
+    setShowAddToPlaylistModal(false);
+  };
+
   const handlePlay = () => {
     dispatch(setPlaying(true));
     if (currentSong?.title) trackSongPlay(currentSong.title);
@@ -201,6 +212,13 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
             }}
           >
             Lyrics
+          </button>
+          <button
+            className="song-player-add-to-playlist-button"
+            onClick={handleAddToPlaylist}
+            title="Add to Playlist"
+          >
+            + Add to Playlist
           </button>
         </div>
 
@@ -311,6 +329,12 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
         onEnded={handleEnded}
         onPlay={handlePlay}
         onPause={handlePause}
+      />
+
+      <AddToPlaylistModal
+        isOpen={showAddToPlaylistModal}
+        onClose={handleCloseModal}
+        song={currentSong}
       />
     </div>
   );
