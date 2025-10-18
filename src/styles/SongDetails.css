@@ -1,0 +1,352 @@
+/* Song Details Page Styles */
+.song-details-page {
+  min-height: 100vh;
+  background-color: #7d7771;
+  padding: 2rem;
+  color: #ebe7e2;
+}
+
+/* Header Section */
+.song-details-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.share-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #52504e;
+  color: #ebe7e2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.share-button:hover {
+  background-color: #6b6966;
+}
+
+.song-details-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.9);
+}
+
+.song-artist {
+  font-size: 1.2rem;
+  color: #dedad9;
+  margin-bottom: 0;
+}
+
+/* Main Content */
+.song-details-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Media Section */
+.song-media-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-thumbnail-large {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+  aspect-ratio: 1 / 1; /* Ensure square aspect ratio */
+}
+
+.song-thumbnail-large .song-thumbnail {
+  height: 100% !important; /* Override the 10rem height from Songs.css */
+}
+
+.song-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.play-button {
+  background-color: #52504e;
+  color: #ebe7e2;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.play-button:hover {
+  background-color: #6b6966;
+}
+
+.add-to-playlist-button {
+  background-color: #52504e;
+  color: #ebe7e2;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.add-to-playlist-button:hover {
+  background-color: #6b6966;
+}
+
+.song-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.genre-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.genre-icon {
+  font-size: 1.2rem;
+}
+
+.genre-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Lyrics Section */
+.song-lyrics-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.song-lyrics-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.lyrics-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 8px; /* Space for scrollbar */
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.lyrics-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lyrics-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lyrics-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.lyrics-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.lyrics-text {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: #ebe7e2;
+}
+
+.lyrics-text p {
+  margin-bottom: 1rem;
+}
+
+.lyrics-text p:last-child {
+  margin-bottom: 0;
+}
+
+.lyrics-loading,
+.lyrics-error,
+.no-lyrics {
+  font-style: italic;
+  color: #dedad9;
+  text-align: center;
+  padding: 2rem;
+}
+
+.lyrics-error {
+  color: #ff6b6b;
+}
+
+/* Related Songs */
+.related-songs-section {
+  margin-bottom: 3rem;
+}
+
+.related-songs-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.related-songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.related-song-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.related-song-card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.related-song-title {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #ebe7e2;
+}
+
+/* External Links */
+.external-links-section {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.external-link {
+  background-color: #52504e;
+  color: #ebe7e2;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+.external-link:hover {
+  background-color: #6b6966;
+}
+
+/* Loading and Error States */
+.song-details-loading,
+.song-details-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ebe7e2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.back-button {
+  background-color: #52504e;
+  color: #ebe7e2;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #6b6966;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .song-details-page {
+    padding: 1rem;
+  }
+
+  .song-details-title {
+    font-size: 2rem;
+  }
+
+  .song-details-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .song-controls {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .play-button,
+  .add-to-playlist-button {
+    width: 100%;
+  }
+
+  .related-songs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .external-links-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .external-link {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}

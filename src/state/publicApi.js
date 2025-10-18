@@ -21,8 +21,17 @@ export const publicApi = createApi({
     getPlaylistById: builder.query({
       query: (id) => `/playlists/${id}`,
     }),
+
+    // 🔹 Get a single song by ID (public)
+    getSongById: builder.query({
+      query: (id) => `/songs/${id}`,
+    }),
   }),
 });
 
-export const { useGetSongsQuery, useGetAlbumsQuery, useGetPlaylistByIdQuery } =
-  publicApi;
+export const {
+  useGetSongsQuery,
+  useGetAlbumsQuery,
+  useGetPlaylistByIdQuery,
+  useGetSongByIdQuery,
+} = publicApi;
