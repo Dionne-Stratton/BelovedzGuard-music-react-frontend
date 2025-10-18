@@ -229,7 +229,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
             onClick={handleAddToPlaylist}
             title="Add to Playlist"
           >
-            + Add to Playlist
+            + Playlist
           </button>
         </div>
 
