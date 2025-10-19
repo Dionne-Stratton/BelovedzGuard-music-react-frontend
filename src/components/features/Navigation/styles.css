@@ -392,6 +392,25 @@ nav a:hover {
   }
 }
 
+@media (max-width: 550px) {
+  .header-logo-container {
+    width: 70px;
+  }
+
+  .header-auth-container {
+    width: 70px;
+  }
+
+  /* Reduce logo text size */
+  #logo h1 {
+    font-size: 180%;
+  }
+
+  #logo h2 {
+    font-size: 70%;
+  }
+}
+
 @media (max-width: 480px) {
   .header-logo-container {
     width: 60px;
