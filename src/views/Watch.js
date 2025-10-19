@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import "../styles/Watch.css";
+import "./Watch.css";
 //get songs from redux
 
 export default function Watch() {

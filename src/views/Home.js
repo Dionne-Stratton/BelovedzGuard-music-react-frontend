@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Home.css";
+import "./Home.css";
 import { NavLink } from "react-router-dom";
 
 export default function Home({ setCurrentIndex }) {
