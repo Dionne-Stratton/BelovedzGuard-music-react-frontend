@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useLocation } from "react-router-dom";
 import profileIcon from "../images/profile.png";
 import { setCredentials } from "../state/authSlice";
 import { trackUIEvent } from "../utils/analytics";
@@ -18,9 +17,7 @@ export default function AuthControls() {
     getAccessTokenSilently,
   } = useAuth0();
 
-  const location = useLocation();
   const dispatch = useDispatch();
-  const currentPath = location.pathname;
 
   const audience = process.env.REACT_APP_AUDIENCE; // ✅ must match your API identifier
 
