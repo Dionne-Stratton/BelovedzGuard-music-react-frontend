@@ -154,9 +154,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Offset to account for asymmetric left/right sections */
-  margin-left: -80px; /* Compensate for logo width */
-  margin-right: -200px; /* Compensate for auth controls width */
 }
 
 .header-right {
