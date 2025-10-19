@@ -1,4 +1,8 @@
 /********************************************** Songs page ********************************************/
+
+.song-card-wrapper {
+  min-height: 372px;
+}
 .song-filters {
   display: flex;
   justify-content: center;

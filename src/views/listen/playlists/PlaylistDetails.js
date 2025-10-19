@@ -101,15 +101,11 @@ export default function PlaylistDetails() {
       <div
         className="playlist-details-container"
         style={{
-          background: theme.gradient, // ← gradient for container
+          "--theme-gradient": theme.gradient,
+          "--theme-image": `url(${theme.image})`,
         }}
       >
-        <div
-          className="playlist-details-header"
-          style={{
-            backgroundImage: `url(${theme.image})`, // ← header image
-          }}
-        >
+        <div className="playlist-details-header">
           <h2>{playlist.name}</h2>
           <button className="play-all-btn" onClick={handlePlayAll}>
             ▶ Play All

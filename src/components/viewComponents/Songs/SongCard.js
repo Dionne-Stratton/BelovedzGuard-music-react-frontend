@@ -15,7 +15,7 @@ export default function SongCard({
   });
 
   return (
-    <div ref={ref} style={{ minHeight: "372px" }}>
+    <div ref={ref} className="song-card-wrapper">
       {inView ? (
         <div className="song-card" onClick={onClick}>
           <div className="genre-icon">
