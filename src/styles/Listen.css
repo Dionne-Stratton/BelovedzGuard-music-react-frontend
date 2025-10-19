@@ -31,5 +31,6 @@
     margin-left: 0;
     max-width: 100%;
     justify-content: flex-start; /* standard flow */
+    padding: 0; /* Remove horizontal padding when ListenNav is on top */
   }
 }
