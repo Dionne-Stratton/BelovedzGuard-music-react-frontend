@@ -81,7 +81,21 @@ export default function PlaylistDetails() {
   if (!playlist) return <p>Playlist not found.</p>;
 
   // Only show edit button if logged in and owner
-  const isOwner = isAuthenticated && user && playlist.owner === user.sub;
+  // If playlist.owner is undefined but user is authenticated, assume ownership
+  const isOwner =
+    isAuthenticated &&
+    user &&
+    (playlist.owner === user.sub ||
+      (playlist.owner === undefined && isAuthenticated));
+
+  // Debug logging
+  console.log("PlaylistDetails Debug:", {
+    isAuthenticated,
+    user: user?.sub,
+    playlistOwner: playlist?.owner,
+    isOwner,
+    playlistName: playlist?.name,
+  });
 
   return (
     <div className="playlist-details-page">
