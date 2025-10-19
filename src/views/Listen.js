@@ -3,6 +3,7 @@ import "../styles/Listen.css";
 import { Routes, Route } from "react-router-dom";
 import ListenNav from "../components/features/Navigation/ListenNav";
 import Songs from "./Songs";
+import SongDetails from "./SongDetails";
 import Albums from "./Albums";
 import Playlists from "./Playlists";
 import PlaylistEditor from "./PlaylistEditor";
@@ -18,6 +19,7 @@ export default function Listen() {
       <div className="listen-content">
         <Routes>
           <Route path="songs" element={<Songs />} />
+          <Route path="songs/:id" element={<SongDetails />} />
           <Route path="albums" element={<Albums />} />
 
           {/* Playlists */}

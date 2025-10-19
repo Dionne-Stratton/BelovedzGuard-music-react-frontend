@@ -226,7 +226,7 @@ export default function SongDetails() {
               <div
                 key={relatedSong._id}
                 className="related-song-card"
-                onClick={() => navigate(`/songs/${relatedSong._id}`)}
+                onClick={() => navigate(`/listen/songs/${relatedSong._id}`)}
               >
                 <SongThumbnail
                   title={relatedSong.title}

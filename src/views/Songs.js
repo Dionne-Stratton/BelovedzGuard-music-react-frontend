@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Songs.css";
+import "./Songs.css";
 import SongThumbnail from "../components/shared/SongThumbnail";
 import AddToPlaylistModal from "../components/features/AddToPlaylist/AddToPlaylistModal";
 
@@ -103,7 +103,7 @@ export default function Songs() {
 
   const handleSongTitleClick = (songId, e) => {
     e.stopPropagation(); // Prevent song card click
-    navigate(`/songs/${songId}`);
+    navigate(`/listen/songs/${songId}`);
   };
 
   return (

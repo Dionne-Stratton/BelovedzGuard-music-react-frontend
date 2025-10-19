@@ -168,7 +168,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
 
   const handleSongTitleClick = () => {
     if (currentSong) {
-      navigate(`/songs/${currentSong._id}`);
+      navigate(`/listen/songs/${currentSong._id}`);
       trackUIEvent("Navigate to Song Details", "From Player");
     }
   };
