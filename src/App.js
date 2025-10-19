@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux"; // ✅ added useSelector
 import { setSongs } from "./state/songsSlice";
 import { useGetSongsQuery } from "./state/publicApi";
 import { Routes, Route, useLocation } from "react-router-dom";
-import HeaderNav from "./components/HeaderNav";
-import Footer from "./components/Footer";
+import HeaderNav from "./components/features/Navigation/HeaderNav";
+import Footer from "./components/features/Navigation/Footer";
 import Home from "./views/Home";
 import About from "./views/About";
 import Watch from "./views/Watch";

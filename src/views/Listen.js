@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Listen.css";
 import { Routes, Route } from "react-router-dom";
-import ListenNav from "../components/ListenNav";
+import ListenNav from "../components/features/Navigation/ListenNav";
 import Songs from "./Songs";
 import Albums from "./Albums";
 import Playlists from "./Playlists";

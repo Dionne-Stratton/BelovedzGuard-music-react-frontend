@@ -7,7 +7,7 @@ import {
   //   FaItunes,
   FaBandcamp,
 } from "react-icons/fa";
-import colors from "../styles/colors";
+import colors from "../../../styles/colors";
 
 export default function Footer() {
   const styles = {
