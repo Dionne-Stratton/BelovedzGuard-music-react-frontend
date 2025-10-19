@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import "../../../styles/SongPlayer.css";
+import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSong, setPlaying } from "../../../state/playerSlice";
 import { useNavigate } from "react-router-dom";

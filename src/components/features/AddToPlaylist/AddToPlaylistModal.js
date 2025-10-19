@@ -7,7 +7,7 @@ import {
 } from "../../../state/playlistApi";
 import { trackUIEvent } from "../../../utils/analytics";
 import themes from "../../../styles/themes";
-import "../../../styles/AddToPlaylistModal.css";
+import "./styles.css";
 
 export default function AddToPlaylistModal({ isOpen, onClose, song }) {
   const {
