@@ -1,13 +1,13 @@
 import React from "react";
-import "../styles/Listen.css";
 import { Routes, Route } from "react-router-dom";
-import ListenNav from "../components/features/Navigation/ListenNav";
-import Songs from "./Songs";
-import SongDetails from "./SongDetails";
-import Albums from "./Albums";
-import Playlists from "./Playlists";
-import PlaylistEditor from "./PlaylistEditor";
-import PlaylistDetails from "./PlaylistDetails";
+import ListenNav from "../../components/features/Navigation/ListenNav";
+import Songs from "./songs/Songs";
+import SongDetails from "./songs/SongDetails";
+import Albums from "./albums/Albums";
+import Playlists from "./playlists/Playlists";
+import PlaylistEditor from "./playlists/PlaylistEditor";
+import PlaylistDetails from "./playlists/PlaylistDetails";
+import "./styles.css";
 
 export default function Listen() {
   return (

@@ -4,14 +4,14 @@ import {
   setCurrentSong,
   setPlaying,
   togglePlay,
-} from "../state/playerSlice";
+} from "../../../state/playerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import "./Songs.css";
-import SongThumbnail from "../components/shared/SongThumbnail";
-import AddToPlaylistModal from "../components/features/AddToPlaylist/AddToPlaylistModal";
+import SongThumbnail from "../../../components/shared/SongThumbnail";
+import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 
 const GENRE_META = {
   Rock: { icon: "🎸", label: "Rock" },

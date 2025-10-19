@@ -8,10 +8,10 @@ import {
   useCreatePlaylistMutation,
   useUpdatePlaylistMutation,
   useGetPlaylistsQuery,
-} from "../state/playlistApi";
+} from "../../../state/playlistApi";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import "../styles/PlaylistEditor.css";
-import ThemeDropdown from "../components/shared/ThemeDropdown"; // ✅ new import
+import "./PlaylistEditor.css";
+import ThemeDropdown from "../../../components/shared/ThemeDropdown";
 
 /* ---------- Genre emoji ---------- */
 const GENRE_META = {

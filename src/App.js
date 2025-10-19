@@ -10,7 +10,7 @@ import Home from "./views/Home";
 import About from "./views/About";
 import Watch from "./views/Watch";
 import Partner from "./views/Partner";
-import Listen from "./views/Listen";
+import Listen from "./views/listen/Listen";
 import SongPlayer from "./components/features/SongPlayer";
 import LyricsViewer from "./components/shared/LyricsViewer";
 import { initAnalytics, trackPageView } from "./utils/analytics";

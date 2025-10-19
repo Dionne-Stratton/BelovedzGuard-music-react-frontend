@@ -1,15 +1,19 @@
 // src/views/Playlists.js
 import React from "react";
-import "../styles/Playlists.css";
+import "./Playlists.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   useGetPlaylistsQuery,
   useDeletePlaylistMutation,
-} from "../state/playlistApi";
-import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
-import themes from "../components/shared/themes"; // ✅ added
+} from "../../../state/playlistApi";
+import {
+  setQueue,
+  setCurrentSong,
+  setPlaying,
+} from "../../../state/playerSlice";
+import themes from "../../../components/shared/themes";
 
 export default function Playlists() {
   const dispatch = useDispatch();

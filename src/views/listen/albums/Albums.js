@@ -1,9 +1,13 @@
 // src/views/Albums.js
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
-import { useGetAlbumsQuery } from "../state/publicApi";
-import "../styles/Albums.css";
+import {
+  setQueue,
+  setCurrentSong,
+  setPlaying,
+} from "../../../state/playerSlice";
+import { useGetAlbumsQuery } from "../../../state/publicApi";
+import "./Albums.css";
 
 export default function Albums() {
   const player = useSelector((state) => state.player);

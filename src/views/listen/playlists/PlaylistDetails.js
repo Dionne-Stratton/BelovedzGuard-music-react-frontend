@@ -1,11 +1,15 @@
 import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useGetPlaylistByIdQuery } from "../state/playlistApi";
-import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
+import { useGetPlaylistByIdQuery } from "../../../state/playlistApi";
+import {
+  setQueue,
+  setCurrentSong,
+  setPlaying,
+} from "../../../state/playerSlice";
 import { useAuth0 } from "@auth0/auth0-react";
-import "../styles/PlaylistDetails.css";
-import themes from "../components/shared/themes";
+import "./PlaylistDetails.css";
+import themes from "../../../components/shared/themes";
 
 export default function PlaylistDetails() {
   const { id } = useParams();
