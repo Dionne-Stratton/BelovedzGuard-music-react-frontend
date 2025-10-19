@@ -295,16 +295,13 @@ nav {
 /************************************* NAVIGATION *************************************************/
 
 /* Positions nav and content */
-.container,
-.site_content,
-.site_content_index {
+.container {
   position: relative;
   box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Fixes nav on scroll */
-header,
-.container-scrolled {
+header {
   /* position: fixed; */
   text-align: center;
   left: 0;
@@ -372,27 +369,13 @@ nav ul ul li a {
 }
 
 /* Background color change on Hover */
-nav a:hover,
-nav li.selected a,
-nav li.selected a:hover {
+nav a:hover {
   background-color: #a5a09b;
   color: #fff;
 }
 
-nav li .down a {
-  display: block;
-}
-
-nav .scroll {
-  display: inline-block;
-}
-
 nav ul ul a {
   font-size: 1em;
-}
-
-nav ul li.icon {
-  display: none;
 }
 
 .logo-link-header {
