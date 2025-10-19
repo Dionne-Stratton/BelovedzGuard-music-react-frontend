@@ -282,7 +282,7 @@ nav a:hover {
   margin: 0.2em 0 0 0;
   text-align: center;
   letter-spacing: 0.2em;
-  font: normal 300% "Tajawal", sans-serif;
+  font: normal clamp(250%, 8vw, 300%) "Tajawal", sans-serif;
   color: #fff;
 }
 
@@ -306,7 +306,7 @@ nav a:hover {
   display: block;
   text-align: center;
   letter-spacing: 0.35em;
-  font: normal 90% "Tajawal", sans-serif;
+  font: normal clamp(75%, 4vw, 90%) "Tajawal", sans-serif;
   color: #ebe7e2;
 }
 
@@ -353,7 +353,7 @@ nav a:hover {
     margin: 0 auto;
     text-align: center;
     letter-spacing: 0.2em;
-    font: normal 185% "Tajawal", sans-serif;
+    font: normal 220% "Tajawal", sans-serif;
     color: #fff;
     padding-top: 0.5em;
   }
@@ -361,7 +361,7 @@ nav a:hover {
     display: block;
     text-align: center;
     letter-spacing: 0.35em;
-    font: normal 70% "Tajawal", sans-serif;
+    font: normal 80% "Tajawal", sans-serif;
     color: #fff;
     padding-top: 1em;
   }
@@ -371,54 +371,14 @@ nav a:hover {
 /* Converted from inline styles in HeaderNav.js */
 
 .header-logo-container {
-  width: 120px;
+  width: clamp(60px, 15vw, 120px);
   display: flex;
   justify-content: flex-start;
 }
 
 .header-auth-container {
-  width: 120px;
+  width: clamp(60px, 15vw, 120px);
   text-align: right;
-}
-
-/* Responsive header containers */
-@media (max-width: 768px) {
-  .header-logo-container {
-    width: 80px;
-  }
-
-  .header-auth-container {
-    width: 80px;
-  }
-}
-
-@media (max-width: 550px) {
-  .header-logo-container {
-    width: 70px;
-  }
-
-  .header-auth-container {
-    width: 70px;
-  }
-
-  /* Reduce logo text size */
-  #logo h1 {
-    font-size: 180%;
-  }
-
-  #logo h2 {
-    font-size: 70%;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-logo-container {
-    width: 60px;
-  }
-
-  .header-auth-container {
-    width: 60px;
-  }
 }
 
 /* ===== Dropdown Menu Styles ===== */
