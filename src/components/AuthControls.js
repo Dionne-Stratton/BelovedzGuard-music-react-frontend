@@ -5,11 +5,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from "react-router-dom";
 import profileIcon from "../images/profile.png";
 import { setCredentials } from "../state/authSlice";
+import { trackUIEvent } from "../utils/analytics";
 import "../styles/AuthControls.css";
 
 export default function AuthControls() {
   const {
-    loginWithRedirect,
+    loginWithPopup,
     logout,
     isAuthenticated,
     user,
@@ -23,13 +24,17 @@ export default function AuthControls() {
 
   const audience = process.env.REACT_APP_AUDIENCE; // ✅ must match your API identifier
 
-  const handleLogin = () => {
-    loginWithRedirect({
-      appState: { returnTo: currentPath },
-      authorizationParams: {
-        audience,
-      },
-    });
+  const handleLogin = async () => {
+    try {
+      await loginWithPopup({
+        authorizationParams: {
+          audience: process.env.REACT_APP_AUDIENCE,
+        },
+      });
+      trackUIEvent("Auth", "Login via popup");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   const handleLogout = () => logout({ localOnly: true });
