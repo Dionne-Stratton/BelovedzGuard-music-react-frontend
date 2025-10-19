@@ -2,10 +2,10 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import profileIcon from "../images/profile.png";
-import { setCredentials } from "../state/authSlice";
-import { trackUIEvent } from "../utils/analytics";
-import "../styles/AuthControls.css";
+import profileIcon from "../../../images/profile.png";
+import { setCredentials } from "../../../state/authSlice";
+import { trackUIEvent } from "../../../utils/analytics";
+import "./styles.css";
 
 export default function AuthControls() {
   const {

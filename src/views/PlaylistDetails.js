@@ -5,7 +5,7 @@ import { useGetPlaylistByIdQuery } from "../state/playlistApi";
 import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/PlaylistDetails.css";
-import themes from "../styles/themes";
+import themes from "../components/shared/themes";
 
 export default function PlaylistDetails() {
   const { id } = useParams();

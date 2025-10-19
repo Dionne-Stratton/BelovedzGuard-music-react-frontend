@@ -6,7 +6,7 @@ import {
   useAddSongToPlaylistMutation,
 } from "../../../state/playlistApi";
 import { trackUIEvent } from "../../../utils/analytics";
-import themes from "../../../styles/themes";
+import themes from "../../shared/themes";
 import "./styles.css";
 
 export default function AddToPlaylistModal({ isOpen, onClose, song }) {

@@ -11,7 +11,7 @@ import {
 } from "../state/playlistApi";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import "../styles/PlaylistEditor.css";
-import ThemeDropdown from "../components/ThemeDropdown"; // ✅ new import
+import ThemeDropdown from "../components/shared/ThemeDropdown"; // ✅ new import
 
 /* ---------- Genre emoji ---------- */
 const GENRE_META = {

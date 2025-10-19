@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useGetSongByIdQuery } from "../state/publicApi";
 import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
 import { trackUIEvent } from "../utils/analytics";
-import SongThumbnail from "../components/SongThumbnail";
+import SongThumbnail from "../components/shared/SongThumbnail";
 import AddToPlaylistModal from "../components/features/AddToPlaylist/AddToPlaylistModal";
 import axios from "axios";
 import "../styles/SongDetails.css";

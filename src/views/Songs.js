@@ -10,7 +10,7 @@ import { useInView } from "react-intersection-observer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Songs.css";
-import SongThumbnail from "../components/SongThumbnail";
+import SongThumbnail from "../components/shared/SongThumbnail";
 import AddToPlaylistModal from "../components/features/AddToPlaylist/AddToPlaylistModal";
 
 const GENRE_META = {

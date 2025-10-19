@@ -1,8 +1,8 @@
 // src/components/HeaderNav.js
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import Logo from "../../Logo";
-import AuthControls from "../../AuthControls";
+import Logo from "./Logo";
+import AuthControls from "../Authentication/AuthControls";
 
 const HeaderNav = () => {
   const [listenOpen, setListenOpen] = useState(false);

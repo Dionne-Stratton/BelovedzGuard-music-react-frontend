@@ -9,7 +9,7 @@ import {
   useDeletePlaylistMutation,
 } from "../state/playlistApi";
 import { setQueue, setCurrentSong, setPlaying } from "../state/playerSlice";
-import themes from "../styles/themes"; // ✅ added
+import themes from "../components/shared/themes"; // ✅ added
 
 export default function Playlists() {
   const dispatch = useDispatch();
