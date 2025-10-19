@@ -10,6 +10,7 @@ import {
 import { trackUIEvent } from "../../../utils/analytics";
 import SongThumbnail from "../../../components/shared/SongThumbnail";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
+import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs";
 import axios from "axios";
 import "./SongDetails.css";
 
@@ -222,28 +223,7 @@ export default function SongDetails() {
       </div>
 
       {/* Related Songs */}
-      {relatedSongs.length > 0 && (
-        <div className="related-songs-section">
-          <h2>More {meta.label} Songs</h2>
-          <div className="related-songs-grid">
-            {relatedSongs.map((relatedSong) => (
-              <div
-                key={relatedSong._id}
-                className="related-song-card"
-                onClick={() => navigate(`/listen/songs/${relatedSong._id}`)}
-              >
-                <SongThumbnail
-                  title={relatedSong.title}
-                  thumbnail={relatedSong.songThumbnail}
-                  animatedThumbnail={relatedSong.animatedSongThumbnail}
-                  playOnHover={true}
-                />
-                <span className="related-song-title">{relatedSong.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
 
       {/* External Links */}
       <div className="external-links-section">

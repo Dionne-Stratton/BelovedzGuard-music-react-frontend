@@ -13,7 +13,7 @@ import {
   setCurrentSong,
   setPlaying,
 } from "../../../state/playerSlice";
-import themes from "../../../components/shared/themes";
+import PlaylistCard from "../../../components/viewComponents/Playlists/PlaylistCard";
 
 export default function Playlists() {
   const dispatch = useDispatch();
@@ -81,58 +81,16 @@ export default function Playlists() {
       )}
 
       <div className="playlists-list">
-        {playlists.map((p) => {
-          // ✅ Look up theme background
-          const themeImage = p.theme && themes[p.theme]?.image;
-
-          return (
-            <div
-              key={p._id}
-              className="add-pointer playlist-card"
-              onClick={() => handleView(p._id)}
-              style={{
-                backgroundImage: themeImage ? `url(${themeImage})` : "none",
-              }}
-            >
-              <h3>{p.name}</h3>
-              <p>
-                {p.songs.length} {p.songs.length === 1 ? "song" : "songs"}
-              </p>
-
-              <div
-                className="playlist-buttons"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  className="icon-button"
-                  onClick={() => handlePlay(p)}
-                  aria-label="Play"
-                >
-                  <span className="tooltip-text">Play</span>
-                  <span className="icon">►</span>
-                </button>
-
-                <button
-                  className="icon-button"
-                  onClick={() => handleEdit(p._id)}
-                  aria-label="Edit"
-                >
-                  <span className="tooltip-text">Edit</span>
-                  <span className="icon">🖍</span>
-                </button>
-
-                <button
-                  className="icon-button"
-                  onClick={() => handleDelete(p._id)}
-                  aria-label="Delete"
-                >
-                  <span className="tooltip-text">Delete</span>
-                  <span className="icon">🗑</span>
-                </button>
-              </div>
-            </div>
-          );
-        })}
+        {playlists.map((playlist) => (
+          <PlaylistCard
+            key={playlist._id}
+            playlist={playlist}
+            onView={handleView}
+            onPlay={handlePlay}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
+        ))}
       </div>
     </div>
   );
