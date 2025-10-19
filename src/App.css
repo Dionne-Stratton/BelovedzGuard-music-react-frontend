@@ -26,13 +26,8 @@ body {
 
 /* Base layout setup */
 .App {
-  /* padding-bottom: 17vh; */
   display: flex;
   flex-direction: column;
-  transition: margin-right 0.3s ease;
-}
-
-.content {
   transition: margin-right 0.3s ease;
 }
 
@@ -105,13 +100,11 @@ nav {
 }
 
 #logo-img {
-  /* position: fixed; */
   display: block;
   margin: 0.5%;
   text-align: center;
   width: 100px;
   height: auto;
-  /* make round */
   border-radius: 50%;
   margin-top: -0.5rem;
   margin-bottom: 0.5rem;
@@ -225,8 +218,6 @@ nav {
 
 .add-pointer {
   cursor: pointer;
-  /* color: #dedad9; */
-  /* transition: color 0.2s ease; */
 }
 
 .page-container {
@@ -302,7 +293,6 @@ nav {
 
 /* Fixes nav on scroll */
 header {
-  /* position: fixed; */
   text-align: center;
   left: 0;
   right: 0;
