@@ -65,7 +65,7 @@ export default function AuthControls() {
       {!isAuthenticated ? (
         <div className="auth-buttons">
           <button className="add-pointer" onClick={handleLogin}>
-            Login / Register
+            Login
           </button>
         </div>
       ) : (

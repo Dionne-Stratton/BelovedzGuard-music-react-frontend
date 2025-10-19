@@ -131,5 +131,41 @@
   color: var(--text-title);
 }
 
+/* ===== HeaderNav Flexbox Layout ===== */
+/* Industry standard: right-aligned auth controls with consistent layout */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7d7771;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding: 0.5rem 0;
+}
+
+.header-left {
+  flex: 0 0 auto;
+  width: 80px; /* Fixed width for logo */
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Offset to account for asymmetric left/right sections */
+  margin-left: -80px; /* Compensate for logo width */
+  margin-right: -200px; /* Compensate for auth controls width */
+}
+
+.header-right {
+  flex: 0 0 auto;
+  width: 200px; /* Fixed width for auth controls */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 /* ===== Shared Navigation Styles ===== */
 /* Common styles used across navigation components */
