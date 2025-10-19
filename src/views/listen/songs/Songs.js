@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import "./Songs.css";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 import SongCard from "../../../components/viewComponents/Songs/SongCard";
+import GenreFilter from "../../../components/shared/GenreFilter";
 
 const GENRE_META = {
   Rock: { icon: "🎸", label: "Rock" },
@@ -118,19 +119,11 @@ export default function Songs() {
           />
         </div>
         <div>
-          <select
+          <GenreFilter
             value={genreFilter}
-            onChange={(e) => handleGenreChange(e.target.value)}
-            className="genre-dropdown-menu"
+            onChange={handleGenreChange}
             disabled={searchQuery.length > 0}
-          >
-            <option value="All">🎶 All Songs</option>
-            <option value="Rock">🎸 Rock</option>
-            <option value="Pop">⭐ Pop</option>
-            <option value="Ballad">💖 Ballad</option>
-            <option value="Theatrical">🎭 Theatrical</option>
-            <option value="Praise">❤️‍🔥 Praise</option>
-          </select>
+          />
         </div>
       </div>
 

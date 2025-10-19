@@ -12,6 +12,7 @@ import {
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import "./PlaylistEditor.css";
 import ThemeDropdown from "../../../components/shared/ThemeDropdown";
+import GenreFilter from "../../../components/shared/GenreFilter";
 
 /* ---------- Genre emoji ---------- */
 const GENRE_META = {
@@ -325,19 +326,11 @@ export default function PlaylistEditor() {
             <h3 className="pe-col-title">Library</h3>
 
             <div className="pe-filters">
-              <select
+              <GenreFilter
                 value={genreFilter}
-                onChange={(e) => setGenreFilter(e.target.value)}
+                onChange={setGenreFilter}
                 className="pe-genre-select"
-                aria-label="Filter by genre"
-              >
-                <option value="All">🎶 All Songs</option>
-                <option value="Rock">🎸 Rock</option>
-                <option value="Pop">⭐ Pop</option>
-                <option value="Ballad">💖 Ballad</option>
-                <option value="Theatrical">🎭 Theatrical</option>
-                <option value="Praise">❤️‍🔥 Praise</option>
-              </select>
+              />
 
               <div className="pe-search search-bar">
                 <input
