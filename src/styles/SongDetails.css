@@ -14,16 +14,13 @@
 }
 
 .share-button {
-  position: absolute;
-  top: 0;
-  right: 0;
   background-color: #52504e;
   color: #ebe7e2;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: background-color 0.2s ease;
 }
 
@@ -317,14 +314,6 @@
   .song-details-title {
     font-size: 2rem;
   }
-  /* Shrink share button on mobile */
-  .share-button {
-    padding: 0.4rem;
-    font-size: 0.8rem;
-    top: 0.5rem;
-    right: 0.5rem;
-  }
-
   .song-details-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -337,7 +326,8 @@
   }
 
   .play-button,
-  .add-to-playlist-button {
+  .add-to-playlist-button,
+  .share-button {
     width: 100%;
   }
 

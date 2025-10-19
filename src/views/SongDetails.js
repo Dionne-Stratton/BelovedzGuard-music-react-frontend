@@ -144,13 +144,6 @@ export default function SongDetails() {
     <div className="song-details-page">
       {/* Header */}
       <div className="song-details-header">
-        <button
-          className="share-button"
-          onClick={handleShare}
-          title="Copy link to share"
-        >
-          {shareCopied ? "✓ Copied!" : "🔗 Share"}
-        </button>
         <h1 className="song-details-title">{song.title}</h1>
         <p className="song-artist">by BelovedzGuard</p>
       </div>
@@ -178,6 +171,13 @@ export default function SongDetails() {
               onClick={handleAddToPlaylist}
             >
               + Add to Playlist
+            </button>
+            <button
+              className="share-button"
+              onClick={handleShare}
+              title="Copy link to share"
+            >
+              {shareCopied ? "✓ Copied!" : "🔗 Share"}
             </button>
           </div>
 
