@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import AuthControls from "../Authentication/AuthControls";
+import "./styles.css";
 
 const HeaderNav = () => {
   const [listenOpen, setListenOpen] = useState(false);

@@ -167,5 +167,228 @@
   align-items: center;
 }
 
+/* ===== HeaderNav Styles ===== */
+/* Main navigation bar styles */
+
+/* Header container */
+header {
+  background-color: #7d7771;
+  display: flex;
+  margin-left: 1%;
+  margin-right: 1%;
+  align-items: center;
+}
+
+/* Navigation container */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1001; /* higher than content, lower than modals if any */
+  padding: 0.5em 0 0.5em 0;
+  background-color: #e8e8e8;
+}
+
+/* Nav container positioning */
+.container {
+  position: relative;
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  z-index: 150;
+}
+
+/* Clear floats */
+nav:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Navigation list styles */
+nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  text-align: center;
+}
+
+/* Navigation items */
+nav ul li {
+  margin: 0px;
+  display: inline-block;
+  text-align: center;
+  background-color: #e8e8e8;
+}
+
+/* Navigation links */
+nav ul li a,
+nav ul ul li a {
+  display: block;
+  padding: 0 12px;
+  color: #000;
+  letter-spacing: 0.1em;
+  font-size: 1.15em;
+  font-family: "Tajawal", sans-serif;
+  line-height: 40px;
+  text-decoration: none;
+  text-align: center;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+/* Navigation hover effects */
+nav a:hover {
+  background-color: #a5a09b;
+  color: #fff;
+}
+
+/* Main navigation link styles */
+.main-nav {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Active link text style */
+.main-nav.active {
+  color: #e7e5e5;
+  text-shadow: 0 0 20px #1a1919, 0 0 5px #252525;
+}
+
+/* Underline animation */
+.main-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #787777;
+  transition: width 0.3s ease;
+}
+
+/* Expand underline from center */
+.main-nav.active::after {
+  width: 100%;
+}
+
+/* Header navigation wrapper */
+.headernav {
+  width: 100%;
+  margin-top: 1px;
+}
+
+/* Logo link header */
+.logo-link-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -10px;
+}
+
+/* ===== Logo Styles ===== */
+/* Logo component styles */
+
+#logo {
+  max-width: 100%;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+#logo h1 {
+  display: block;
+  margin: 0.2em 0 0 0;
+  text-align: center;
+  letter-spacing: 0.2em;
+  font: normal 300% "Tajawal", sans-serif;
+  color: #fff;
+}
+
+#logo-img {
+  display: block;
+  margin: 0.5%;
+  text-align: center;
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 1));
+}
+
+#hidden {
+  display: none;
+}
+
+#logo h2 {
+  display: block;
+  text-align: center;
+  letter-spacing: 0.35em;
+  font: normal 90% "Tajawal", sans-serif;
+  color: #ebe7e2;
+}
+
+#logo h1 a,
+#logo h2 a {
+  text-decoration: none;
+  color: #ebe7e2;
+}
+
+/* Logo responsive styles */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  #logo {
+    position: relative;
+    max-width: 90%;
+    width: 90%;
+  }
+  #logo h1 {
+    display: block;
+    margin: 0.2em 0 0 0;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font: normal 250% "Tajawal", sans-serif;
+    color: #ebe7e2;
+    padding-top: 0.1875em;
+  }
+  #logo h2 {
+    display: block;
+    text-align: center;
+    letter-spacing: 0.35em;
+    font: normal 85% "Tajawal", sans-serif;
+    color: #ebe7e2;
+    padding-top: 0.1875em;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 479px) {
+  #logo {
+    position: relative;
+    max-width: 95%;
+    width: 95%;
+  }
+  #logo h1 {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font: normal 185% "Tajawal", sans-serif;
+    color: #fff;
+    padding-top: 0.5em;
+  }
+  #logo h2 {
+    display: block;
+    text-align: center;
+    letter-spacing: 0.35em;
+    font: normal 70% "Tajawal", sans-serif;
+    color: #fff;
+    padding-top: 1em;
+  }
+}
+
 /* ===== Shared Navigation Styles ===== */
 /* Common styles used across navigation components */
