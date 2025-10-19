@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import "../../styles/SongPlayer.css";
+import "../../../styles/SongPlayer.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentSong, setPlaying } from "../../state/playerSlice";
+import { setCurrentSong, setPlaying } from "../../../state/playerSlice";
 import { useNavigate } from "react-router-dom";
-import { trackSongPlay, trackUIEvent } from "../../utils/analytics";
-import AddToPlaylistModal from "../AddToPlaylistModal";
+import { trackSongPlay, trackUIEvent } from "../../../utils/analytics";
+import AddToPlaylistModal from "../../AddToPlaylistModal";
 import SongInfo from "./SongInfo";
 import PlaybackControls from "./PlaybackControls";
 import VolumeControl from "./VolumeControl";
