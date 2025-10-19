@@ -10,7 +10,7 @@
 .listen-content {
   flex: 1;
   min-width: 0;
-  padding: 0 6.5rem;
+  padding: 0 6.5rem; /* Original padding to account for ListenNav sidebar */
   display: flex;
   justify-content: center; /* center inner pages like playlist lists */
 }

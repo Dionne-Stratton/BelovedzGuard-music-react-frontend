@@ -144,26 +144,6 @@
   padding: 0.5rem 0;
 }
 
-.header-left {
-  flex: 0 0 auto;
-  width: 80px; /* Fixed width for logo */
-}
-
-.header-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-right {
-  flex: 0 0 auto;
-  width: 200px; /* Fixed width for auth controls */
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
 /* ===== HeaderNav Styles ===== */
 /* Main navigation bar styles */
 
@@ -399,6 +379,27 @@ nav a:hover {
 .header-auth-container {
   width: 120px;
   text-align: right;
+}
+
+/* Responsive header containers */
+@media (max-width: 768px) {
+  .header-logo-container {
+    width: 80px;
+  }
+
+  .header-auth-container {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo-container {
+    width: 60px;
+  }
+
+  .header-auth-container {
+    width: 60px;
+  }
 }
 
 /* ===== Dropdown Menu Styles ===== */
