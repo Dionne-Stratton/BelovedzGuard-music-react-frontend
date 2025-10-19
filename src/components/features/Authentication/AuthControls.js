@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import profileIcon from "../../../images/profile.png";
 import { setCredentials } from "../../../state/authSlice";
 import { trackUIEvent } from "../../../utils/analytics";
 import "./styles.css";
@@ -73,7 +72,7 @@ export default function AuthControls() {
       ) : (
         <div className="auth-logged-in">
           <span>
-            <img className="profile-icon" src={profileIcon} alt="Profile" />
+            <img className="profile-icon" src="/profile.png" alt="Profile" />
           </span>
           <button className="add-pointer" onClick={handleLogout}>
             Logout

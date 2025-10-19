@@ -13,7 +13,7 @@ import Partner from "./views/Partner";
 import Listen from "./views/Listen";
 import SongDetails from "./views/SongDetails";
 import SongPlayer from "./components/features/SongPlayer";
-import LyricsViewer from "./components/LyricsViewer";
+import LyricsViewer from "./components/shared/LyricsViewer";
 import { initAnalytics, trackPageView } from "./utils/analytics";
 
 export default function App() {
