@@ -1,4 +1,4 @@
-import "./styles/App.css";
+import "./App.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; // ✅ added useSelector
 import { setSongs } from "./state/songsSlice";

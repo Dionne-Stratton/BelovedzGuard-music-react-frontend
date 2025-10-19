@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Partner.css";
+import "./Partner.css";
 import { trackLinkClick } from "../utils/analytics"; // ✅ use your existing function
 
 const Partner = () => {
