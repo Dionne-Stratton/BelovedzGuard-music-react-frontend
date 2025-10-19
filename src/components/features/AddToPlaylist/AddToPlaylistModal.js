@@ -4,10 +4,10 @@ import {
   useGetPlaylistsQuery,
   useCreatePlaylistMutation,
   useAddSongToPlaylistMutation,
-} from "../state/playlistApi";
-import { trackUIEvent } from "../utils/analytics";
-import themes from "../styles/themes";
-import "../styles/AddToPlaylistModal.css";
+} from "../../../state/playlistApi";
+import { trackUIEvent } from "../../../utils/analytics";
+import themes from "../../../styles/themes";
+import "../../../styles/AddToPlaylistModal.css";
 
 export default function AddToPlaylistModal({ isOpen, onClose, song }) {
   const {

@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Songs.css";
 import SongThumbnail from "../components/SongThumbnail";
-import AddToPlaylistModal from "../components/AddToPlaylistModal";
+import AddToPlaylistModal from "../components/features/AddToPlaylist/AddToPlaylistModal";
 
 const GENRE_META = {
   Rock: { icon: "🎸", label: "Rock" },

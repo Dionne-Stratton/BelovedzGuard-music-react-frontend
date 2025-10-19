@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSong, setPlaying } from "../../../state/playerSlice";
 import { useNavigate } from "react-router-dom";
 import { trackSongPlay, trackUIEvent } from "../../../utils/analytics";
-import AddToPlaylistModal from "../../AddToPlaylistModal";
+import AddToPlaylistModal from "../AddToPlaylist/AddToPlaylistModal";
 import SongInfo from "./SongInfo";
 import PlaybackControls from "./PlaybackControls";
 import VolumeControl from "./VolumeControl";
