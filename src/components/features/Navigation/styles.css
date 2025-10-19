@@ -1,0 +1,232 @@
+/* ===== Navigation Styles ===== */
+/* Consolidated styles for HeaderNav, ListenNav, and Footer components */
+
+/* ===== ListenNav Styles ===== */
+/* (Extracted from src/styles/ListenNav.css) */
+
+/* Floating placement (doesn't affect page layout) */
+.listen-nav-wrapper {
+  position: fixed;
+  margin-top: 5px;
+  top: 200px;
+  left: 0px;
+  z-index: 1000;
+  display: block;
+  /* Let clicks pass through the floating wrapper except on links & toggle */
+}
+
+/* sidebar */
+.listen-nav {
+  background: transparent;
+  pointer-events: auto; /* re-enable normal clicks */
+}
+
+/* Nav links */
+.listen-nav ul {
+  padding: 0 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listen-nav li {
+  margin: 0;
+}
+
+.listen-nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0 0.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.listen-nav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #978080;
+}
+
+.listen-nav a.active {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Small screens: turn into a top bar */
+@media (max-width: 660px) {
+  /* Stop floating; become part of normal flow */
+  .listen-nav-wrapper {
+    position: static;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    pointer-events: auto; /* re-enable normal clicks */
+    width: 100%;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .listen-nav {
+    width: 100%;
+    padding: 0.5rem 0;
+    /* border-right: 0; */
+    overflow: visible;
+  }
+
+  .listen-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 0.75rem;
+  }
+}
+
+/* ===== Footer Styles ===== */
+/* (Extracted from Footer.js inline styles) */
+
+.footer {
+  background-color: #7d7771; /* between header and player tone */
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.4);
+}
+
+.footer-social-container {
+  margin-bottom: 10px;
+}
+
+.footer-icon {
+  color: var(--text-secondary);
+  margin: 0 12px;
+  font-size: 1.45rem;
+  transition: color 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.footer-icon:hover {
+  color: var(--text-title); /* brighter tone on hover */
+  transform: scale(1.15);
+  filter: brightness(1.3);
+}
+
+.footer-copyright {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.footer-back-to-top {
+  margin-top: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.footer-back-to-top:hover {
+  color: var(--text-title);
+}
+
+/* ===== HeaderNav Styles ===== */
+/* (Extracted from src/styles/App.css) */
+
+/* Sets the header background and height */
+header {
+  background-color: #7d7771;
+  display: flex;
+  margin-left: 1%;
+  margin-right: 1%;
+  align-items: center;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1001; /* higher than content, lower than modals if any */
+}
+
+.main-nav {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Active link text style */
+.main-nav.active {
+  color: #e7e5e5;
+  text-shadow: 0 0 20px #1a1919, 0 0 5px #252525;
+}
+
+/* Underline animation */
+.main-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #787777;
+  transition: width 0.3s ease;
+}
+
+/* Expand underline from center */
+.main-nav.active::after {
+  width: 100%;
+}
+
+.headernav {
+  width: 100%;
+  margin-top: 1px;
+}
+
+/* Nav container to center and set width */
+.container {
+  margin: 0 auto;
+  z-index: 150;
+}
+
+/* Background-color to the nav container. */
+nav {
+  padding: 0.5em 0 0.5em 0;
+}
+
+/* Positioning the navigation items inline */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a,
+nav ul ul li a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav li.selected a,
+nav li.selected a:hover {
+  color: #e7e5e5;
+}
+
+.logo-link-header {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== Shared Navigation Styles ===== */
+/* Common styles used across navigation components */
