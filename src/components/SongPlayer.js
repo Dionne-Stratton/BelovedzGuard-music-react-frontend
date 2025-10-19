@@ -3,17 +3,12 @@ import "../styles/SongPlayer.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSong, setPlaying } from "../state/playerSlice";
 import { useNavigate } from "react-router-dom";
-import {
-  FaStepBackward,
-  FaStepForward,
-  FaPlay,
-  FaPause,
-  FaVolumeUp,
-  FaVolumeMute,
-} from "react-icons/fa";
-import { FiShuffle, FiRepeat } from "react-icons/fi";
 import { trackSongPlay, trackUIEvent } from "../utils/analytics";
 import AddToPlaylistModal from "./AddToPlaylistModal";
+import SongInfo from "./SongPlayer/SongInfo";
+import PlaybackControls from "./SongPlayer/PlaybackControls";
+import VolumeControl from "./SongPlayer/VolumeControl";
+import ProgressBar from "./SongPlayer/ProgressBar";
 
 export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const dispatch = useDispatch();
@@ -203,134 +198,40 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
           displayLyrics ? "with-lyrics" : ""
         }`}
       >
-        <div className="song-player-thumbnail-title">
-          {currentSong.songThumbnail && (
-            <img
-              src={currentSong.songThumbnail}
-              alt={currentSong.title}
-              className="song-player-thumbnail"
-            />
-          )}
-          <div className="song-player-title" onClick={handleSongTitleClick}>
-            {currentSong.title}
-          </div>
-          <button
-            className="song-player-lyrics-button"
-            onClick={() => {
-              const newState = !displayLyrics;
-              setDisplayLyrics(newState);
-              trackUIEvent("Lyrics Toggle", newState ? "Opened" : "Closed");
-            }}
-          >
-            Lyrics
-          </button>
-          <button
-            className="song-player-add-to-playlist-button"
-            onClick={handleAddToPlaylist}
-            title="Add to Playlist"
-          >
-            + Playlist
-          </button>
-        </div>
+        <SongInfo
+          currentSong={currentSong}
+          displayLyrics={displayLyrics}
+          setDisplayLyrics={setDisplayLyrics}
+          onSongTitleClick={handleSongTitleClick}
+          onAddToPlaylist={handleAddToPlaylist}
+          trackUIEvent={trackUIEvent}
+        />
 
         <div className="controls-container">
-          <div className="song-player-controls">
-            <FiShuffle
-              size={15}
-              color={shuffle ? "#ffffff" : "#dedad9"}
-              title={shuffle ? "Shuffle On" : "Shuffle Off"}
-              onClick={() => setShuffle((s) => !s)}
-              className={`drop-shadow-thick add-pointer ${
-                shuffle ? "active" : ""
-              }`}
-            />
+          <PlaybackControls
+            shuffle={shuffle}
+            setShuffle={setShuffle}
+            repeatOne={repeatOne}
+            setRepeatOne={setRepeatOne}
+            globalIsPlaying={globalIsPlaying}
+            onPrevSong={prevSong}
+            onNextSong={nextSong}
+            onTogglePlay={togglePlay}
+          />
 
-            <FaStepBackward
-              size={18}
-              color="#dedad9"
-              onClick={prevSong}
-              className="drop-shadow-thick add-pointer"
-            />
-            {globalIsPlaying ? (
-              <FaPause
-                size={20}
-                color="#dedad9"
-                onClick={togglePlay}
-                className="drop-shadow-thick add-pointer"
-              />
-            ) : (
-              <FaPlay
-                size={20}
-                color="#dedad9"
-                onClick={togglePlay}
-                className="drop-shadow-thick add-pointer"
-              />
-            )}
-            <FaStepForward
-              size={18}
-              color="#dedad9"
-              onClick={nextSong}
-              className="drop-shadow-thick add-pointer"
-            />
-
-            <div className="repeat-button-wrapper">
-              <FiRepeat
-                size={15}
-                onClick={() => setRepeatOne((r) => !r)}
-                title={repeatOne ? "Repeat One" : "Repeat All"}
-                className={`drop-shadow-thick add-pointer ${
-                  repeatOne ? "active" : ""
-                }`}
-              />
-              {repeatOne && <span className="repeat-indicator">1</span>}
-            </div>
-          </div>
-
-          <div className="song-player-volume drop-shadow-thick">
-            {volume > 0 ? (
-              <FaVolumeUp color="#dedad9" />
-            ) : (
-              <FaVolumeMute color="#dedad9" />
-            )}
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={volume}
-              onChange={(e) => {
-                const vol = parseFloat(e.target.value);
-                setVolume(vol);
-                if (audioRef.current) audioRef.current.volume = vol;
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="song-player-progress-bar">
-        <span className="song-player-progress-time">
-          {formatTime(audioRef.current?.currentTime || 0)}
-        </span>
-        <div
-          onClick={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            const clickX = e.clientX - rect.left;
-            const percent = clickX / rect.width;
-            audioRef.current.currentTime =
-              (audioRef.current.duration || 0) * percent;
-          }}
-          className="song-player-progress"
-        >
-          <div
-            className="song-player-progress-fill"
-            style={{ width: `${progress}%` }}
+          <VolumeControl
+            volume={volume}
+            setVolume={setVolume}
+            audioRef={audioRef}
           />
         </div>
-        <span className="song-player-progress-time">
-          {formatTime(audioRef.current?.duration || 0)}
-        </span>
       </div>
+
+      <ProgressBar
+        progress={progress}
+        audioRef={audioRef}
+        formatTime={formatTime}
+      />
 
       <audio
         ref={audioRef}
