@@ -16,9 +16,17 @@ const HeaderNav = () => {
   return (
     <div className="headernav">
       <header>
-        <NavLink className="logo-link-header" to="/">
-          <Logo />
-        </NavLink>
+        <div
+          style={{
+            width: "120px",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
+          <NavLink className="logo-link-header" to="/">
+            <Logo />
+          </NavLink>
+        </div>
 
         <div id="logo">
           <h1>
@@ -34,7 +42,9 @@ const HeaderNav = () => {
         </div>
 
         {/* ✅ Use AuthControls here */}
-        <AuthControls />
+        <div style={{ width: "120px", textAlign: "right" }}>
+          <AuthControls />
+        </div>
       </header>
 
       <nav className="container">
