@@ -48,15 +48,15 @@
 }
 
 .theme-thumbnail:hover {
-  transform: scale(2) translateX(0.25em);
-  transform-origin: bottom center;
+  transform: scale(1.5) translateX(0.1em);
+  transform-origin: center center;
   z-index: 99999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* First option has reduced expansion to avoid clipping */
 .pe-theme-option:first-child .theme-thumbnail:hover {
-  transform: scale(1.5) translateX(0.25em);
+  transform: scale(1.5) translateX(0.1em);
   transform-origin: center center;
 }
 
