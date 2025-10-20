@@ -10,6 +10,8 @@ import {
   useGetPlaylistsQuery,
 } from "../../../state/playlistApi";
 import { DragDropContext } from "@hello-pangea/dnd";
+import { useToastContext } from "../../../contexts/ToastContext";
+import ConfirmModal from "../../../components/shared/ConfirmModal";
 import "./PlaylistEditor.css";
 import PlaylistSection from "../../../components/viewComponents/Playlists/PlaylistSection";
 import LibrarySection from "../../../components/viewComponents/Playlists/LibrarySection";
@@ -71,6 +73,9 @@ export default function PlaylistEditor() {
     useCreatePlaylistMutation();
   const [updatePlaylist, { isLoading: savingEdit }] =
     useUpdatePlaylistMutation();
+  const { error: showError, success: showSuccess } = useToastContext();
+  const [showUnsavedModal, setShowUnsavedModal] = useState(false);
+  const [pendingNavigation, setPendingNavigation] = useState(null);
 
   useEffect(() => {
     if (!isEdit || !existing) return;
@@ -91,17 +96,53 @@ export default function PlaylistEditor() {
     return list;
   }, [allSongs, genreFilter, searchQuery]);
 
+  // Handle unsaved changes when trying to refresh/close browser
   useEffect(() => {
-    const beforeUnload = (e) => {
-      if (!isDirty) return;
-      e.preventDefault();
-      e.returnValue = "";
+    const handleBeforeUnload = (e) => {
+      if (isDirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
     };
-    window.addEventListener("beforeunload", beforeUnload);
-    return () => window.removeEventListener("beforeunload", beforeUnload);
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, [isDirty]);
 
   const markDirty = useCallback(() => setIsDirty(true), []);
+
+  // Override navigate to check for unsaved changes
+  const navigateWithUnsavedCheck = useCallback(
+    (path) => {
+      if (isDirty) {
+        setShowUnsavedModal(true);
+        // Store the navigation path for later use
+        setPendingNavigation(() => () => navigate(path));
+      } else {
+        navigate(path);
+      }
+    },
+    [isDirty, navigate]
+  );
+
+  const handleUnsavedConfirm = () => {
+    setIsDirty(false);
+    setShowUnsavedModal(false);
+    if (pendingNavigation) {
+      pendingNavigation();
+      setPendingNavigation(null);
+    } else {
+      navigate("/listen/playlists");
+    }
+  };
+
+  const handleUnsavedCancel = () => {
+    setShowUnsavedModal(false);
+    setPendingNavigation(null);
+  };
 
   /* ---- DnD ---- */
   const onDragEnd = (result) => {
@@ -144,7 +185,7 @@ export default function PlaylistEditor() {
     markDirty();
   };
 
-  const onCancel = () => navigate("/listen/playlists");
+  const onCancel = () => navigateWithUnsavedCheck("/listen/playlists");
 
   const onSave = async () => {
     try {
@@ -166,10 +207,15 @@ export default function PlaylistEditor() {
       else await createPlaylist(payload).unwrap();
 
       setIsDirty(false);
+      showSuccess(
+        isEdit
+          ? "Playlist updated successfully!"
+          : "Playlist created successfully!"
+      );
       navigate("/listen/playlists");
     } catch (err) {
       console.error("Save failed:", err);
-      alert("Could not save playlist. Please try again.");
+      showError("Could not save playlist. Please try again.");
     }
   };
 
@@ -209,6 +255,18 @@ export default function PlaylistEditor() {
           />
         </div>
       </DragDropContext>
+
+      {/* Unsaved Changes Confirmation Modal */}
+      <ConfirmModal
+        isOpen={showUnsavedModal}
+        title="Unsaved Changes"
+        message="You have unsaved changes. Are you sure you want to leave without saving?"
+        onConfirm={handleUnsavedConfirm}
+        onCancel={handleUnsavedCancel}
+        confirmText="Leave Without Saving"
+        cancelText="Continue Editing"
+        type="warning"
+      />
     </div>
   );
 }

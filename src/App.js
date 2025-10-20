@@ -15,14 +15,22 @@ import SongPlayer from "./components/features/SongPlayer";
 import LyricsViewer from "./components/shared/LyricsViewer";
 import ErrorBoundary from "./components/shared/ErrorBoundary";
 import { initAnalytics, trackPageView } from "./utils/analytics";
-import { useGlobalKeyboard, useNavigationKeyboard } from "./hooks/useGlobalKeyboard";
+import {
+  useGlobalKeyboard,
+  useNavigationKeyboard,
+} from "./hooks/useGlobalKeyboard";
+import { ToastProvider, useToastContext } from "./contexts/ToastContext";
+import ToastContainer from "./components/shared/ToastContainer";
 
 /**
  * Main App component - Root component with routing and global state management
  * Handles analytics initialization, data fetching, and conditional CSS classes
  * @returns {JSX.Element} Main application component
  */
-export default function App() {
+/**
+ * Inner App component that uses toast context
+ */
+function AppContent() {
   const dispatch = useDispatch();
   const [displayLyrics, setDisplayLyrics] = useState(false);
   const { data: songs, error } = useGetSongsQuery();
@@ -59,61 +67,87 @@ export default function App() {
   // Register global shortcuts following industry standards
   useEffect(() => {
     // Global shortcut to toggle lyrics (Ctrl+L or Cmd+L)
-    registerShortcut("ctrl+l", () => {
-      setDisplayLyrics(prev => !prev);
-    }, {
-      context: "global",
-      description: "Toggle lyrics display",
-      preventDefault: true,
-    });
+    registerShortcut(
+      "ctrl+l",
+      () => {
+        setDisplayLyrics((prev) => !prev);
+      },
+      {
+        context: "global",
+        description: "Toggle lyrics display",
+        preventDefault: true,
+      }
+    );
 
-    registerShortcut("meta+l", () => {
-      setDisplayLyrics(prev => !prev);
-    }, {
-      context: "global",
-      description: "Toggle lyrics display",
-      preventDefault: true,
-    });
+    registerShortcut(
+      "meta+l",
+      () => {
+        setDisplayLyrics((prev) => !prev);
+      },
+      {
+        context: "global",
+        description: "Toggle lyrics display",
+        preventDefault: true,
+      }
+    );
 
     // Global shortcut for search (/) - industry standard
-    registerShortcut("/", () => {
-      // Focus search if available, otherwise do nothing
-      const searchElement = document.querySelector('input[type="search"], input[placeholder*="search" i]');
-      if (searchElement) {
-        searchElement.focus();
+    registerShortcut(
+      "/",
+      () => {
+        // Focus search if available, otherwise do nothing
+        const searchElement = document.querySelector(
+          'input[type="search"], input[placeholder*="search" i]'
+        );
+        if (searchElement) {
+          searchElement.focus();
+        }
+      },
+      {
+        context: "global",
+        description: "Focus search",
+        preventDefault: true,
       }
-    }, {
-      context: "global",
-      description: "Focus search",
-      preventDefault: true,
-    });
+    );
 
     // Global shortcut for help (?)
-    registerShortcut("?", () => {
-      // Could open help modal or show keyboard shortcuts
-      console.log("Keyboard shortcuts help");
-    }, {
-      context: "global",
-      description: "Show keyboard shortcuts help",
-      preventDefault: true,
-    });
+    registerShortcut(
+      "?",
+      () => {
+        // Could open help modal or show keyboard shortcuts
+        console.log("Keyboard shortcuts help");
+      },
+      {
+        context: "global",
+        description: "Show keyboard shortcuts help",
+        preventDefault: true,
+      }
+    );
 
     // GitHub-style navigation shortcuts
-    registerShortcut("g+h", () => {
-      window.location.href = "/home";
-    }, {
-      context: "global", 
-      description: "Go to Home page",
-      preventDefault: true,
-    });
+    registerShortcut(
+      "g+h",
+      () => {
+        window.location.href = "/home";
+      },
+      {
+        context: "global",
+        description: "Go to Home page",
+        preventDefault: true,
+      }
+    );
 
-    registerShortcut("g+m", () => {
-      window.location.href = "/listen";
-    }, {
-      context: "global",
-      description: "Go to Music page", 
-      preventDefault: true,
-    });
+    registerShortcut(
+      "g+m",
+      () => {
+        window.location.href = "/listen";
+      },
+      {
+        context: "global",
+        description: "Go to Music page",
+        preventDefault: true,
+      }
+    );
   }, [registerShortcut]);
 
   if (error) console.error("Error fetching songs:", error);
@@ -161,4 +195,24 @@ export default function App() {
       </div>
     </ErrorBoundary>
   );
+}
+
+/**
+ * Main App component with ToastProvider wrapper
+ */
+export default function App() {
+  return (
+    <ToastProvider>
+      <AppContent />
+      <ToastWrapper />
+    </ToastProvider>
+  );
+}
+
+/**
+ * Toast wrapper component that uses the toast context
+ */
+function ToastWrapper() {
+  const { toasts, removeToast } = useToastContext();
+  return <ToastContainer toasts={toasts} removeToast={removeToast} />;
 }

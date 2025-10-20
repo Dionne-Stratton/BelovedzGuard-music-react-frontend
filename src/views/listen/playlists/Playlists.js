@@ -1,5 +1,5 @@
 // src/views/Playlists.js
-import React from "react";
+import React, { useState } from "react";
 import "./Playlists.css";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import {
   useGetPlaylistsQuery,
   useDeletePlaylistMutation,
 } from "../../../state/playlistApi";
+import { useToastContext } from "../../../contexts/ToastContext";
+import ConfirmModal from "../../../components/shared/ConfirmModal";
 import {
   setQueue,
   setCurrentSong,
@@ -26,6 +28,12 @@ export default function Playlists() {
     });
 
   const [deletePlaylist] = useDeletePlaylistMutation();
+  const { success: showSuccess, error: showError } = useToastContext();
+  const [confirmDelete, setConfirmDelete] = useState({
+    isOpen: false,
+    playlistId: null,
+    playlistName: "",
+  });
 
   const handlePlay = (playlist) => {
     if (!playlist.songs?.length) return;
@@ -44,13 +52,26 @@ export default function Playlists() {
   const handleEdit = (id) => navigate(`/listen/playlists/${id}/edit`);
   const handleCreate = () => navigate("/listen/playlists/create");
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Delete this playlist?")) return;
+  const handleDelete = (id, name) => {
+    setConfirmDelete({ isOpen: true, playlistId: id, playlistName: name });
+  };
+
+  const confirmDeletePlaylist = async () => {
     try {
-      await deletePlaylist(id).unwrap();
+      await deletePlaylist(confirmDelete.playlistId).unwrap();
+      showSuccess(
+        `Playlist "${confirmDelete.playlistName}" deleted successfully`
+      );
+      setConfirmDelete({ isOpen: false, playlistId: null, playlistName: "" });
     } catch (err) {
       console.error("Failed to delete playlist:", err);
+      showError("Failed to delete playlist. Please try again.");
+      setConfirmDelete({ isOpen: false, playlistId: null, playlistName: "" });
     }
+  };
+
+  const cancelDelete = () => {
+    setConfirmDelete({ isOpen: false, playlistId: null, playlistName: "" });
   };
 
   if (!isAuthenticated && !authLoading) {
@@ -92,6 +113,18 @@ export default function Playlists() {
           />
         ))}
       </div>
+
+      {/* Confirmation Modal */}
+      <ConfirmModal
+        isOpen={confirmDelete.isOpen}
+        title="Delete Playlist"
+        message={`Are you sure you want to delete "${confirmDelete.playlistName}"? This action cannot be undone.`}
+        onConfirm={confirmDeletePlaylist}
+        onCancel={cancelDelete}
+        confirmText="Delete"
+        cancelText="Cancel"
+        type="danger"
+      />
     </div>
   );
 }

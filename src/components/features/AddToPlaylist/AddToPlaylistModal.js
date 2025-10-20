@@ -6,6 +6,7 @@ import {
   useAddSongToPlaylistMutation,
 } from "../../../state/playlistApi";
 import { trackUIEvent } from "../../../utils/analytics";
+import { useToastContext } from "../../../contexts/ToastContext";
 import themes from "../../shared/themes";
 import ThemeDropdown from "../../shared/ThemeDropdown";
 import "./styles.css";
@@ -40,6 +41,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
   // eslint-disable-next-line
   const [addSongToPlaylist, { isLoading: addingSong }] =
     useAddSongToPlaylistMutation();
+  const { error: showError, success: showSuccess } = useToastContext();
 
   const handleAddToExistingPlaylist = async (playlistId) => {
     try {
@@ -53,7 +55,8 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
         playlistId,
       });
 
-      // Show saved message briefly
+      // Show success toast and saved message briefly
+      showSuccess(`Added "${song.title}" to playlist`);
       setShowSavedMessage(true);
       setTimeout(() => {
         setShowSavedMessage(false);
@@ -61,13 +64,13 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
       }, 1500);
     } catch (error) {
       console.error("Failed to add song to playlist:", error);
-      alert("Failed to add song to playlist. Please try again.");
+      showError("Failed to add song to playlist. Please try again.");
     }
   };
 
   const handleCreateAndAdd = async () => {
     if (!newPlaylistName.trim()) {
-      alert("Please enter a playlist name");
+      showError("Please enter a playlist name");
       return;
     }
 
@@ -85,7 +88,10 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
         playlistName: newPlaylistName,
       });
 
-      // Show saved message briefly
+      // Show success toast and saved message briefly
+      showSuccess(
+        `Created playlist "${newPlaylistName}" and added "${song.title}"`
+      );
       setShowSavedMessage(true);
       setTimeout(() => {
         setShowSavedMessage(false);
@@ -95,7 +101,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
       }, 1500);
     } catch (error) {
       console.error("Failed to create playlist:", error);
-      alert("Failed to create playlist. Please try again.");
+      showError("Failed to create playlist. Please try again.");
     }
   };
 
