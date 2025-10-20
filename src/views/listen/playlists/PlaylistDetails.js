@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetPlaylistByIdQuery } from "../../../state/playlistApi";
@@ -8,6 +8,7 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import { useAuth0 } from "@auth0/auth0-react";
+import { trackUIEvent } from "../../../utils/analytics";
 import "./PlaylistDetails.css";
 import themes from "../../../components/shared/themes";
 
@@ -38,6 +39,9 @@ export default function PlaylistDetails() {
 
   const playlist = existingPlaylist || fetchedPlaylist;
   const theme = themes[playlist?.theme] || themes.Faith;
+
+  // Share functionality
+  const [shareCopied, setShareCopied] = useState(false);
 
   // --- Handlers ---
 
@@ -75,6 +79,18 @@ export default function PlaylistDetails() {
     navigate("edit");
   };
 
+  // Copy link to clipboard
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setShareCopied(true);
+      trackUIEvent("Share Playlist", "Copy Link");
+      setTimeout(() => setShareCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+    }
+  };
+
   // --- Render ---
 
   if (isLoading) return <p>Loading playlist...</p>;
@@ -90,13 +106,20 @@ export default function PlaylistDetails() {
 
   return (
     <div className="playlist-details-page">
-      {isOwner && (
-        <div className="playlist-edit-top">
+      <div className="playlist-edit-top">
+        {isOwner && (
           <button className="open-editor-btn" onClick={handleEdit}>
             ✏️ Open in Editor
           </button>
-        </div>
-      )}
+        )}
+        <button
+          className="share-button"
+          onClick={handleShare}
+          title="Copy link to share"
+        >
+          {shareCopied ? "✓ Copied!" : "🔗 Share"}
+        </button>
+      </div>
 
       <div
         className="playlist-details-container"
