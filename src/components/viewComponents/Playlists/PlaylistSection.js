@@ -1,6 +1,7 @@
 import React from "react";
 import { Droppable, Draggable } from "@hello-pangea/dnd";
 import ThemeDropdown from "../../shared/ThemeDropdown";
+import Tooltip from "../../shared/Tooltip";
 import { getGenreIcon } from "../../../utils/genreMetadata";
 
 // Individual playlist row component
@@ -71,13 +72,23 @@ export default function PlaylistSection({
         {error && <div className="pe-error-text">{error}</div>}
 
         {/* 🎨 Theme selection */}
-        <ThemeDropdown
-          theme={theme}
-          onSelect={(value) => {
-            setTheme(value);
-            markDirty();
-          }}
-        />
+        <div className="pe-theme-section">
+          <ThemeDropdown
+            theme={theme}
+            onSelect={(value) => {
+              setTheme(value);
+              markDirty();
+            }}
+          />
+          <Tooltip
+            text="Themes control the look of your playlist."
+            position="right"
+          >
+            <span className="pe-theme-help-icon" aria-label="Theme help">
+              ?
+            </span>
+          </Tooltip>
+        </div>
 
         {/* 💾 Action buttons */}
         <div className="pe-actions">
