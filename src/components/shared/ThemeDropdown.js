@@ -133,7 +133,7 @@ export default function ThemeDropdown({ theme, onSelect }) {
                 aria-selected={isSelected}
                 tabIndex={-1}
               >
-                <ThemeThumbnail image={t.image} themeName={key} />
+                <ThemeThumbnail image={t.imageMini} themeName={key} />
                 <span className="pe-theme-name">{key}</span>
               </div>
             );
