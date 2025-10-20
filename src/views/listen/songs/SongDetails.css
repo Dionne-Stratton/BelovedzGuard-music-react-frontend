@@ -305,8 +305,8 @@
   background-color: #6b6966;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Mobile and Tablet Responsive */
+@media (max-width: 1024px) {
   .song-details-page {
     padding: 1rem;
   }
