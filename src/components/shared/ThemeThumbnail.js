@@ -21,8 +21,8 @@ export default function ThemeThumbnail({ image, themeName }) {
         borderRadius: "6px",
         overflow: "hidden",
         backgroundImage: `url(${image})`,
-        backgroundSize: "200% 200%", // Make image larger so we can crop to corner
-        backgroundPosition: "bottom right", // Focus on lower-right corner
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         flexShrink: 0,
       }}

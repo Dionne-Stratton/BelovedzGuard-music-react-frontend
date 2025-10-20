@@ -126,14 +126,16 @@ export default function ThemeDropdown({ theme, onSelect }) {
             return (
               <div
                 key={key}
-                className={`pe-theme-option ${isSelected ? "selected" : ""}`}
+                className={`pe-theme-option ${isSelected ? "selected" : ""} ${
+                  key === theme ? "selected-theme" : ""
+                }`}
                 style={{ background: t.gradient }}
                 onClick={() => handlePick(key)}
                 role="option"
                 aria-selected={isSelected}
                 tabIndex={-1}
               >
-                <ThemeThumbnail image={t.image} themeName={key} />
+                <ThemeThumbnail image={t.imageMini} themeName={key} />
                 <span className="pe-theme-name">{key}</span>
               </div>
             );
