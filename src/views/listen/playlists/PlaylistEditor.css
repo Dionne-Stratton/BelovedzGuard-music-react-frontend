@@ -35,6 +35,42 @@
   box-shadow: 0 0 5px rgba(29, 24, 21, 0.6);
 }
 
+/* theme section with help icon */
+.pe-theme-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.pe-theme-help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ebe7e2;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pe-theme-help-icon:hover,
+.pe-theme-help-icon:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+  outline: none;
+}
+
+.pe-theme-help-icon:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
 /* actions row */
 .pe-actions {
   display: flex;
