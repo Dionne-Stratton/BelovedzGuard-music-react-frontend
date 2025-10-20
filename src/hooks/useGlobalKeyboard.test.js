@@ -138,6 +138,7 @@ describe("useGlobalKeyboard Hook", () => {
         result.current.focusNext();
       });
 
+      // eslint-disable-next-line testing-library/no-node-access
       const focusedElement = document.activeElement;
       expect(focusedElement.id).toBe("btn1");
     });
@@ -150,6 +151,7 @@ describe("useGlobalKeyboard Hook", () => {
         result.current.focusPrevious(); // Go back
       });
 
+      // eslint-disable-next-line testing-library/no-node-access
       const focusedElement = document.activeElement;
       expect(focusedElement.id).toBe("link1"); // Last element
     });
@@ -161,6 +163,7 @@ describe("useGlobalKeyboard Hook", () => {
         result.current.focusFirst();
       });
 
+      // eslint-disable-next-line testing-library/no-node-access
       const focusedElement = document.activeElement;
       expect(focusedElement.id).toBe("btn1");
     });
@@ -172,6 +175,7 @@ describe("useGlobalKeyboard Hook", () => {
         result.current.focusLast();
       });
 
+      // eslint-disable-next-line testing-library/no-node-access
       const focusedElement = document.activeElement;
       expect(focusedElement.id).toBe("link1");
     });
@@ -249,12 +253,14 @@ describe("useNavigationKeyboard Hook", () => {
       result.current.focusFirst();
     });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.activeElement.id).toBe("btn1");
 
     act(() => {
       result.current.focusLast();
     });
 
+    // eslint-disable-next-line testing-library/no-node-access
     expect(document.activeElement.id).toBe("btn2");
   });
 });
