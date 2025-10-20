@@ -11,8 +11,8 @@ import {
 } from "../../../state/playlistApi";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import "./PlaylistEditor.css";
-import ThemeDropdown from "../../../components/shared/ThemeDropdown";
 import GenreFilter from "../../../components/shared/GenreFilter";
+import PlaylistSection from "../../../components/viewComponents/Playlists/PlaylistSection";
 
 /* ---------- Genre emoji ---------- */
 const GENRE_META = {
@@ -182,37 +182,6 @@ export default function PlaylistEditor() {
 
   if (!isLoading && !isAuthenticated) return null;
 
-  const PlaylistRow = ({ song, index }) => (
-    <Draggable draggableId={`playlist-${song._id}-${index}`} index={index}>
-      {(provided) => (
-        <div
-          className="pe-song-row"
-          ref={provided.innerRef}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-        >
-          <img
-            src={song.songThumbnail}
-            alt={song.title}
-            className="pe-thumb"
-            onError={(e) => (e.currentTarget.style.visibility = "hidden")}
-          />
-          <span className="pe-title">{song.title}</span>
-          <span className="pe-genre">{genreIcon(song.genre)}</span>
-          <button
-            className="pe-remove"
-            title="Remove from playlist"
-            onClick={() =>
-              setPlaylistSongs((prev) => prev.filter((_, i) => i !== index))
-            }
-          >
-            ✖
-          </button>
-        </div>
-      )}
-    </Draggable>
-  );
-
   const LibraryRow = ({ song, index }) => (
     <Draggable draggableId={`library-${song._id}-${index}`} index={index}>
       {(provided) => (
@@ -240,84 +209,22 @@ export default function PlaylistEditor() {
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="pe-columns">
           {/* LEFT COLUMN — THIS PLAYLIST */}
-          <div>
-            <div className="pe-left-controls">
-              {/* 🎵 Playlist name input */}
-              <input
-                type="text"
-                className={`pe-name-input search-bar ${error ? "invalid" : ""}`}
-                placeholder="My Playlist"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  setIsDirty(true);
-                  if (error) setError("");
-                }}
-              />
-              {error && <div className="pe-error-text">{error}</div>}
-
-              {/* 🎨 Theme selection */}
-              <ThemeDropdown
-                theme={theme}
-                onSelect={(value) => {
-                  setTheme(value);
-                  markDirty();
-                }}
-              />
-
-              {/* 💾 Action buttons */}
-              <div className="pe-actions">
-                <button
-                  className="pe-btn subtle"
-                  title="Reverse playlist order"
-                  onClick={reversePlaylist}
-                >
-                  ↕ Reverse
-                </button>
-                <button
-                  className="pe-btn"
-                  title="Cancel changes"
-                  onClick={onCancel}
-                >
-                  ✖ Cancel
-                </button>
-                <button
-                  className="pe-btn primary"
-                  title="Save playlist"
-                  onClick={onSave}
-                  disabled={savingNew || savingEdit}
-                >
-                  ✔ Save
-                </button>
-              </div>
-            </div>
-
-            <Droppable droppableId="playlist" type="SONG">
-              {(provided, snapshot) => (
-                <div
-                  className={`pe-list ${
-                    snapshot.isDraggingOver ? "drag-over" : ""
-                  }`}
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                >
-                  {playlistSongs.length === 0 && (
-                    <div className="pe-empty">
-                      Drag songs here to build your playlist
-                    </div>
-                  )}
-                  {playlistSongs.map((song, i) => (
-                    <PlaylistRow
-                      key={`playlist-key-${song._id}-${i}`}
-                      song={song}
-                      index={i}
-                    />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
+          <PlaylistSection
+            name={name}
+            setName={setName}
+            error={error}
+            setError={setError}
+            theme={theme}
+            setTheme={setTheme}
+            markDirty={markDirty}
+            playlistSongs={playlistSongs}
+            setPlaylistSongs={setPlaylistSongs}
+            reversePlaylist={reversePlaylist}
+            onCancel={onCancel}
+            onSave={onSave}
+            savingNew={savingNew}
+            savingEdit={savingEdit}
+          />
 
           <div className="pe-divider" />
 
