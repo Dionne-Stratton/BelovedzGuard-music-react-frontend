@@ -8,9 +8,9 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import { trackUIEvent } from "../../../utils/analytics";
-import SongThumbnail from "../../../components/shared/SongThumbnail";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs";
+import SongMediaSection from "../../../components/viewComponents/Songs/SongMediaSection";
 import axios from "axios";
 import "./SongDetails.css";
 
@@ -156,43 +156,14 @@ export default function SongDetails() {
       {/* Main Content */}
       <div className="song-details-content">
         {/* Left Column - Media */}
-        <div className="song-media-section">
-          <div className="song-thumbnail-large">
-            <SongThumbnail
-              title={song.title}
-              thumbnail={song.songThumbnail}
-              animatedThumbnail={song.animatedSongThumbnail}
-              playOnLoad={true}
-              playOnHover={true}
-            />
-          </div>
-
-          <div className="song-controls">
-            <button className="play-button" onClick={handlePlay}>
-              ▶ Play Song
-            </button>
-            <button
-              className="add-to-playlist-button"
-              onClick={handleAddToPlaylist}
-            >
-              + Add to Playlist
-            </button>
-            <button
-              className="share-button"
-              onClick={handleShare}
-              title="Copy link to share"
-            >
-              {shareCopied ? "✓ Copied!" : "🔗 Share"}
-            </button>
-          </div>
-
-          <div className="song-info">
-            <div className="genre-info">
-              <span className="genre-icon">{meta.icon}</span>
-              <span className="genre-label">{meta.label}</span>
-            </div>
-          </div>
-        </div>
+        <SongMediaSection
+          song={song}
+          meta={meta}
+          onPlay={handlePlay}
+          onAddToPlaylist={handleAddToPlaylist}
+          onShare={handleShare}
+          shareCopied={shareCopied}
+        />
 
         {/* Right Column - Lyrics */}
         <div className="song-lyrics-section">
