@@ -16,8 +16,8 @@ export default function ThemeDropdown({ theme, onSelect }) {
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
 
-  const selected = themes[theme] || themes.Faith;
-  const themeKeys = Object.keys(themes);
+  const selected = themes[theme] || themes.Theme;
+  const themeKeys = Object.keys(themes).filter((key) => key !== "Theme"); // Exclude "Theme" from dropdown options
 
   /**
    * Handle theme selection and close dropdown
@@ -34,7 +34,7 @@ export default function ThemeDropdown({ theme, onSelect }) {
    */
   const handleKeyDown = (event) => {
     if (!open) {
-      if (event.key === 'Enter' || event.key === ' ') {
+      if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         setOpen(true);
       }
@@ -42,24 +42,26 @@ export default function ThemeDropdown({ theme, onSelect }) {
     }
 
     switch (event.key) {
-      case 'Escape':
+      case "Escape":
         event.preventDefault();
         setOpen(false);
         buttonRef.current?.focus();
         break;
-      case 'ArrowDown':
+      case "ArrowDown":
         event.preventDefault();
-        setSelectedIndex(prev => (prev + 1) % themeKeys.length);
+        setSelectedIndex((prev) => (prev + 1) % themeKeys.length);
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         event.preventDefault();
-        setSelectedIndex(prev => prev === 0 ? themeKeys.length - 1 : prev - 1);
+        setSelectedIndex((prev) =>
+          prev === 0 ? themeKeys.length - 1 : prev - 1
+        );
         break;
-      case 'Enter':
+      case "Enter":
         event.preventDefault();
         handlePick(themeKeys[selectedIndex]);
         break;
-      case ' ':
+      case " ":
         event.preventDefault();
         handlePick(themeKeys[selectedIndex]);
         break;
@@ -81,16 +83,20 @@ export default function ThemeDropdown({ theme, onSelect }) {
     };
 
     if (open) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [open]);
 
   return (
-    <div className="pe-theme-dropdown-wrapper" ref={dropdownRef} onKeyDown={handleKeyDown}>
+    <div
+      className="pe-theme-dropdown-wrapper"
+      ref={dropdownRef}
+      onKeyDown={handleKeyDown}
+    >
       <button
         ref={buttonRef}
         type="button"
@@ -119,7 +125,7 @@ export default function ThemeDropdown({ theme, onSelect }) {
             return (
               <div
                 key={key}
-                className={`pe-theme-option ${isSelected ? 'selected' : ''}`}
+                className={`pe-theme-option ${isSelected ? "selected" : ""}`}
                 style={{ background: t.gradient }}
                 onClick={() => handlePick(key)}
                 role="option"

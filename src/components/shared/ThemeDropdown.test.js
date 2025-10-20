@@ -15,8 +15,8 @@ describe("ThemeDropdown Component", () => {
     test("renders with default theme when no theme prop provided", () => {
       render(<ThemeDropdown onSelect={mockOnSelect} />);
 
-      // Should show undefined theme name but Faith icon as fallback
-      expect(screen.getByText("⛪")).toBeInTheDocument();
+      // Should show undefined theme name but Theme icon as fallback
+      expect(screen.getByText("🎨")).toBeInTheDocument();
     });
 
     test("renders with specified theme", () => {
@@ -120,13 +120,13 @@ describe("ThemeDropdown Component", () => {
 
       // Check that all themes from the themes object are displayed
       const themeNames = Object.keys(themes);
-      
+
       // Check Faith theme (appears twice - button + dropdown)
       expect(screen.getAllByText("Faith")).toHaveLength(2);
       expect(screen.getAllByText(themes.Faith.icon)).toHaveLength(2);
-      
+
       // Check all other themes (appear once in dropdown)
-      const otherThemes = themeNames.filter(name => name !== "Faith");
+      const otherThemes = themeNames.filter((name) => name !== "Faith");
       otherThemes.forEach((themeName) => {
         expect(screen.getByText(themeName)).toBeInTheDocument();
         expect(screen.getByText(themes[themeName].icon)).toBeInTheDocument();
@@ -152,21 +152,21 @@ describe("ThemeDropdown Component", () => {
 
       // Should fallback to Faith theme
       expect(screen.getByText("InvalidTheme")).toBeInTheDocument();
-      expect(screen.getByText("⛪")).toBeInTheDocument(); // Faith icon
+      expect(screen.getByText("🎨")).toBeInTheDocument(); // Choose Theme icon
     });
 
     test("handles undefined theme prop", () => {
       render(<ThemeDropdown theme={undefined} onSelect={mockOnSelect} />);
 
-      // Should show undefined theme name but Faith icon as fallback
-      expect(screen.getByText("⛪")).toBeInTheDocument();
+      // Should show undefined theme name but Theme icon as fallback
+      expect(screen.getByText("🎨")).toBeInTheDocument();
     });
 
     test("handles null theme prop", () => {
       render(<ThemeDropdown theme={null} onSelect={mockOnSelect} />);
 
-      // Should show null theme name but Faith icon as fallback
-      expect(screen.getByText("⛪")).toBeInTheDocument();
+      // Should show null theme name but Theme icon as fallback
+      expect(screen.getByText("🎨")).toBeInTheDocument();
     });
   });
 
@@ -201,7 +201,7 @@ describe("ThemeDropdown Component", () => {
       // Test that the Joy option is clickable and has the correct styling
       const joyOption = screen.getByText("Joy");
       expect(joyOption).toBeInTheDocument();
-      
+
       // Test the styling by checking if clicking works (which means it's properly styled)
       fireEvent.click(joyOption);
       expect(mockOnSelect).toHaveBeenCalledWith("Joy");

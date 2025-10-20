@@ -1,6 +1,11 @@
 // src/styles/themes.js
 
 const themes = {
+  Theme: {
+    icon: "🎨",
+    image: null,
+    gradient: "transparent", // Transparent background
+  },
   Faith: {
     icon: "⛪",
     image: "/themes/faith.jpg",

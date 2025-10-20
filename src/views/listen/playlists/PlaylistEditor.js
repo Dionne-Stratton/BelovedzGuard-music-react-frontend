@@ -20,6 +20,9 @@ const playlistSchema = Yup.object({
     .trim()
     .required("Title required")
     .max(12, "Title too long, max 12 characters"),
+  theme: Yup.string()
+    .required("Please choose a theme")
+    .notOneOf(["Theme"], "Please choose a theme"),
 });
 
 /* ---- Helpers ---- */
@@ -61,7 +64,7 @@ export default function PlaylistEditor() {
 
   // ✅ new state for theme selection
   const [theme, setTheme] = useState(
-    isEdit ? existing?.theme || "Faith" : "Faith"
+    isEdit ? existing?.theme || "Theme" : "Theme"
   );
 
   const [createPlaylist, { isLoading: savingNew }] =
@@ -73,7 +76,7 @@ export default function PlaylistEditor() {
     if (!isEdit || !existing) return;
     setName(existing.name || "");
     setPlaylistSongs(existing.songs || []);
-    setTheme(existing.theme || "Faith");
+    setTheme(existing.theme || "Theme");
     setIsDirty(false);
   }, [isEdit, existing]);
 
@@ -145,7 +148,7 @@ export default function PlaylistEditor() {
 
   const onSave = async () => {
     try {
-      await playlistSchema.validate({ name }, { abortEarly: false });
+      await playlistSchema.validate({ name, theme }, { abortEarly: false });
       setError("");
     } catch (e) {
       setError(e.errors?.[0] || "Title required");

@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   padding: 0.3rem 1rem 0.3rem 0.6rem; /* extra right padding for chevron */
   color: #fff;
