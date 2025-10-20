@@ -126,7 +126,9 @@ export default function ThemeDropdown({ theme, onSelect }) {
             return (
               <div
                 key={key}
-                className={`pe-theme-option ${isSelected ? "selected" : ""}`}
+                className={`pe-theme-option ${isSelected ? "selected" : ""} ${
+                  key === theme ? "selected-theme" : ""
+                }`}
                 style={{ background: t.gradient }}
                 onClick={() => handlePick(key)}
                 role="option"

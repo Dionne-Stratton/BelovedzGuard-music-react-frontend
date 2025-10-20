@@ -86,3 +86,12 @@
 .pe-theme-option:hover {
   filter: brightness(1.15);
 }
+
+.pe-theme-option.selected-theme .theme-thumbnail {
+  border: 1px solid #e6c547; /* lighter muted gold border around thumbnail */
+}
+
+.pe-theme-option.selected-theme {
+  color: #f2d966; /* even lighter muted gold text */
+  text-shadow: 0 0 3px rgba(242, 217, 102, 0.3);
+}
