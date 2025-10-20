@@ -15,6 +15,11 @@ import SongPlayer from "./components/features/SongPlayer";
 import LyricsViewer from "./components/shared/LyricsViewer";
 import { initAnalytics, trackPageView } from "./utils/analytics";
 
+/**
+ * Main App component - Root component with routing and global state management
+ * Handles analytics initialization, data fetching, and conditional CSS classes
+ * @returns {JSX.Element} Main application component
+ */
 export default function App() {
   const dispatch = useDispatch();
   const [displayLyrics, setDisplayLyrics] = useState(false);

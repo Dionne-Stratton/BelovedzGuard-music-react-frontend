@@ -9,6 +9,11 @@ import PlaylistEditor from "./playlists/PlaylistEditor";
 import PlaylistDetails from "./playlists/PlaylistDetails";
 import "./styles.css";
 
+/**
+ * Listen component - Main music browsing layout with sidebar navigation
+ * Provides nested routing for songs, albums, and playlists
+ * @returns {JSX.Element} Music browsing layout component
+ */
 export default function Listen() {
   return (
     <div className="listen-layout">

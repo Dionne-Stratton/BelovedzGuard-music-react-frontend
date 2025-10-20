@@ -10,6 +10,15 @@ import themes from "../../shared/themes";
 import ThemeDropdown from "../../shared/ThemeDropdown";
 import "./styles.css";
 
+/**
+ * AddToPlaylistModal component - Modal for adding songs to playlists
+ * Handles both adding to existing playlists and creating new ones with theme selection
+ * @param {object} props - Component props
+ * @param {boolean} props.isOpen - Whether the modal is open
+ * @param {function} props.onClose - Function to close the modal
+ * @param {Object} props.song - Song object to add to playlist
+ * @returns {JSX.Element} Add to playlist modal component
+ */
 export default function AddToPlaylistModal({ isOpen, onClose, song }) {
   const {
     isAuthenticated,
