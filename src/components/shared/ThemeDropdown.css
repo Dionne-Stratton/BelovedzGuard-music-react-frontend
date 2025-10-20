@@ -30,6 +30,19 @@
 .pe-theme-icon {
   font-size: 1.2rem;
 }
+
+/* Theme thumbnail styling */
+.theme-thumbnail {
+  width: 2em;
+  height: 2em;
+  border-radius: 6px;
+  overflow: hidden;
+  background-size: 200% 200%;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 .pe-theme-chevron {
   font-size: 0.85rem;
   opacity: 0.9;
@@ -52,12 +65,12 @@
 .pe-theme-option {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.8rem;
   padding: 0.45rem 0.7rem;
   color: #fff;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .pe-theme-option:hover {

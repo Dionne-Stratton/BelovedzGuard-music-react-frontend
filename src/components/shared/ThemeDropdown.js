@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import themes from "./themes"; // ✅ default export object (keys: Faith, Joy, ...; fields: icon, gradient)
+import ThemeThumbnail from "./ThemeThumbnail";
 import "./ThemeDropdown.css";
 
 /**
@@ -132,7 +133,7 @@ export default function ThemeDropdown({ theme, onSelect }) {
                 aria-selected={isSelected}
                 tabIndex={-1}
               >
-                <span className="pe-theme-icon">{t.icon}</span>
+                <ThemeThumbnail image={t.image} themeName={key} />
                 <span className="pe-theme-name">{key}</span>
               </div>
             );

@@ -123,13 +123,17 @@ describe("ThemeDropdown Component", () => {
 
       // Check Faith theme (appears twice - button + dropdown)
       expect(screen.getAllByText("Faith")).toHaveLength(2);
-      expect(screen.getAllByText(themes.Faith.icon)).toHaveLength(2);
+      expect(screen.getAllByText(themes.Faith.icon)).toHaveLength(1); // Only in button, not dropdown
 
       // Check all other themes (appear once in dropdown)
-      const otherThemes = themeNames.filter((name) => name !== "Faith");
+      const otherThemes = themeNames.filter(
+        (name) => name !== "Faith" && name !== "Theme"
+      );
       otherThemes.forEach((themeName) => {
         expect(screen.getByText(themeName)).toBeInTheDocument();
-        expect(screen.getByText(themes[themeName].icon)).toBeInTheDocument();
+        // Check for thumbnail instead of emoji in dropdown
+        const thumbnail = screen.getByTitle(themeName);
+        expect(thumbnail).toBeInTheDocument();
       });
     });
 
