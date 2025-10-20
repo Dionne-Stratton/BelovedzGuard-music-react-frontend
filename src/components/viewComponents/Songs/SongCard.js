@@ -34,13 +34,13 @@ export default function SongCard({
   return (
     <div ref={ref} className="song-card-wrapper">
       {inView ? (
-        <div className="song-card" onClick={onClick}>
+        <div className="song-card">
           <div className="genre-icon">
             {meta.icon}
             <div className="tooltip">{meta.label}</div>
           </div>
 
-          <div className="thumbnail-wrapper">
+          <div className="thumbnail-wrapper" onClick={onClick}>
             <div className="play-overlay">🎧</div>
             <SongThumbnail
               title={song.title}

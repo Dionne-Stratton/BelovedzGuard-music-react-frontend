@@ -47,6 +47,8 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **CSS3** - Pure CSS with centralized color variables
 - **Yup** - Form validation
 - **React Intersection Observer** - Scroll-based interactions
+- **Custom Toast System** - User feedback notifications
+- **Keyboard Accessibility** - WCAG 2.1 compliant shortcuts
 
 ---
 
@@ -99,6 +101,15 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Desktop Experience** - Full-featured desktop interface
 - **Touch-Friendly** - Optimized touch interactions
 
+### User Experience & Accessibility
+
+- **Custom Toast Notifications** - Themed user feedback system replacing browser alerts
+- **Confirmation Modals** - Custom themed confirmation dialogs
+- **Keyboard Accessibility** - WCAG 2.1 compliant keyboard shortcuts
+- **Context-Aware Shortcuts** - Different shortcuts for global, player, and navigation contexts
+- **Form Input Protection** - Keyboard shortcuts disabled when typing in forms
+- **Unsaved Changes Protection** - Prevents accidental data loss with custom modals
+
 ---
 
 ## Component Architecture
@@ -117,7 +128,13 @@ src/
 │   │   ├── ThemeDropdown.js       # Theme selection component
 │   │   ├── LyricsViewer.js         # Lyrics display component
 │   │   ├── SongThumbnail.js       # Song display component
-│   │   └── GenreFilter.js         # Genre filtering
+│   │   ├── GenreFilter.js         # Genre filtering
+│   │   ├── Toast.js               # Toast notification component
+│   │   ├── ToastContainer.js      # Toast notification container
+│   │   ├── ConfirmModal.js        # Confirmation modal component
+│   │   ├── ErrorBoundary.js       # Error boundary component
+│   │   ├── ThemeThumbnail.js      # Theme thumbnail component
+│   │   └── Tooltip.js             # Tooltip component
 │   └── viewComponents/             # View-specific components
 │       ├── Albums/                 # Album-related components
 │       ├── Playlists/              # Playlist-related components
@@ -139,10 +156,14 @@ src/
 │   ├── songsSlice.js              # Songs data state
 │   ├── playlistApi.js             # Playlist API endpoints
 │   └── publicApi.js               # Public API endpoints
-└── styles/                         # CSS styling
-    ├── themes.js                  # Theme definitions
-    ├── colors.js                  # Color palette
-    └── [Component].css            # Component-specific styles
+├── hooks/                          # Custom React hooks
+│   ├── useGlobalKeyboard.js       # Keyboard accessibility hooks
+│   └── useToast.js                # Toast notification hook
+├── contexts/                       # React contexts
+│   └── ToastContext.js            # Toast notification context
+└── utils/                          # Utility functions
+    ├── analytics.js               # Analytics tracking
+    └── genreMetadata.js           # Genre metadata
 ```
 
 ### Key Features by Component
@@ -155,6 +176,9 @@ src/
 | **LyricsViewer**       | Full-screen lyrics display, scrollable content         |
 | **ListenNav**          | Sidebar navigation for music browsing                  |
 | **HeaderNav**          | Global navigation with auth controls                   |
+| **Toast**              | Themed notification system for user feedback           |
+| **ConfirmModal**       | Custom confirmation dialogs replacing browser alerts   |
+| **SongCard**           | Interactive song cards with hover effects              |
 
 ---
 
@@ -214,6 +238,39 @@ This enables the app to track whether music is playing from songs list, album, o
 - **Public API** - Songs, albums, and public playlists
 - **Playlist API** - User-specific playlist operations
 - **Auth0 Integration** - Secure authentication flow
+
+### Keyboard Accessibility System
+
+The application includes a comprehensive keyboard accessibility system with WCAG 2.1 compliance:
+
+#### Global Shortcuts
+
+- **Ctrl/Cmd + L** - Toggle lyrics display
+- **/** - Focus search input
+- **?** - Show help modal
+- **G + H** - Navigate to home
+- **G + M** - Navigate to listen page
+
+#### Player-Specific Shortcuts
+
+- **Space** - Play/pause
+- **Arrow Keys** - Previous/next song
+- **Ctrl/Cmd + ↑/↓** - Volume up/down
+- **Ctrl/Cmd + M** - Mute/unmute
+- **Ctrl/Cmd + L** - Toggle lyrics
+
+#### Navigation Shortcuts
+
+- **Tab** - Navigate through focusable elements
+- **Shift + Tab** - Navigate backwards
+- **Enter** - Activate focused element
+- **Escape** - Close modals/dropdowns
+
+#### Smart Context Awareness
+
+- **Form Input Protection** - Shortcuts disabled when typing in forms
+- **Context Switching** - Different shortcuts for different app contexts
+- **Focus Management** - Proper focus handling for accessibility
 
 ---
 
@@ -307,7 +364,7 @@ npm run build
 - **Netlify** - Automatic deployments from Git
 - **Vercel** - Zero-config deployments
 - **AWS S3** - Static website hosting
-- **GitHub Pages** - Free hosting for public repos
+- **Cloudflare Pages** - Fast static site hosting
 
 ### Environment Configuration
 
@@ -347,6 +404,32 @@ const themes = {
 - **Lyrics Integration** - Full-screen lyrics display
 - **Responsive Design** - Mobile-optimized player controls
 
+### Custom UI Components
+
+The application features a comprehensive custom UI system replacing browser defaults:
+
+#### Toast Notification System
+
+- **Themed Notifications** - Success, error, warning, and info toasts
+- **Context Provider** - Global toast management
+- **Auto-dismiss** - Configurable timeout durations
+- **Smooth Animations** - Enter/exit transitions
+- **Accessibility** - ARIA live regions for screen readers
+
+#### Confirmation Modal System
+
+- **Custom Styling** - Matches application theme
+- **Type Variations** - Info, warning, and danger variants
+- **Keyboard Navigation** - Full keyboard accessibility
+- **Focus Management** - Proper focus trapping and restoration
+
+#### Enhanced Song Cards
+
+- **Selective Clickability** - Thumbnail and buttons only
+- **Hover Effects** - Subtle animations for all interactive elements
+- **Visual Feedback** - Clear indication of clickable areas
+- **Accessibility** - Proper ARIA labels and keyboard navigation
+
 ### Routing Structure
 
 - **Main Routes** - Home, About, Watch, Partner, Listen
@@ -376,7 +459,7 @@ const themes = {
 ### Styling
 
 - **Pure CSS** - No CSS-in-JS frameworks
-- **Centralized Colors** - Use `src/styles/colors.js`
+- **Centralized Colors** - Use `src/components/shared/colors.js`
 - **Component Styles** - Separate CSS files per component
 - **Responsive Design** - Mobile-first breakpoints
 
