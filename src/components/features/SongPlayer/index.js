@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCurrentSong, setPlaying } from "../../../state/playerSlice";
 import { useNavigate } from "react-router-dom";
 import { trackSongPlay, trackUIEvent } from "../../../utils/analytics";
+import { usePlayerKeyboard } from "../../../hooks/useGlobalKeyboard";
 import AddToPlaylistModal from "../AddToPlaylist/AddToPlaylistModal";
 import SongInfo from "./SongInfo";
 import PlaybackControls from "./PlaybackControls";
@@ -163,6 +164,26 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     dispatch(setCurrentSong(null));
     setDisplayLyrics(false);
   };
+
+  // Volume control functions for keyboard shortcuts
+  const handleVolumeUp = () => {
+    setVolume(prev => Math.min(1, prev + 0.1));
+  };
+
+  const handleVolumeDown = () => {
+    setVolume(prev => Math.max(0, prev - 0.1));
+  };
+
+  // Integrate keyboard shortcuts for player controls
+  usePlayerKeyboard({
+    onPlayPause: togglePlay,
+    onNext: nextSong,
+    onPrevious: prevSong,
+    onVolumeUp: handleVolumeUp,
+    onVolumeDown: handleVolumeDown,
+    onToggleLyrics: () => setDisplayLyrics(!displayLyrics),
+    onClosePlayer: closePlayer,
+  });
 
   const handleAddToPlaylist = () => {
     setShowAddToPlaylistModal(true);

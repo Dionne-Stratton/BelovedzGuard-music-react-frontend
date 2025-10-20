@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import themes from "./themes"; // ✅ default export object (keys: Faith, Joy, ...; fields: icon, gradient)
 import "./ThemeDropdown.css";
 
@@ -12,8 +12,12 @@ import "./ThemeDropdown.css";
  */
 export default function ThemeDropdown({ theme, onSelect }) {
   const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const selected = themes[theme] || themes.Faith;
+  const themeKeys = Object.keys(themes);
 
   /**
    * Handle theme selection and close dropdown
@@ -22,14 +26,79 @@ export default function ThemeDropdown({ theme, onSelect }) {
   const handlePick = (key) => {
     onSelect(key);
     setOpen(false);
+    setSelectedIndex(0);
   };
 
+  /**
+   * Handle keyboard navigation
+   */
+  const handleKeyDown = (event) => {
+    if (!open) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setOpen(true);
+      }
+      return;
+    }
+
+    switch (event.key) {
+      case 'Escape':
+        event.preventDefault();
+        setOpen(false);
+        buttonRef.current?.focus();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        setSelectedIndex(prev => (prev + 1) % themeKeys.length);
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        setSelectedIndex(prev => prev === 0 ? themeKeys.length - 1 : prev - 1);
+        break;
+      case 'Enter':
+        event.preventDefault();
+        handlePick(themeKeys[selectedIndex]);
+        break;
+      case ' ':
+        event.preventDefault();
+        handlePick(themeKeys[selectedIndex]);
+        break;
+      default:
+        // Do nothing for other keys
+        break;
+    }
+  };
+
+  /**
+   * Close dropdown when clicking outside
+   */
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+        setSelectedIndex(0);
+      }
+    };
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open]);
+
   return (
-    <div className="pe-theme-dropdown-wrapper">
+    <div className="pe-theme-dropdown-wrapper" ref={dropdownRef} onKeyDown={handleKeyDown}>
       <button
+        ref={buttonRef}
         type="button"
         className="pe-theme-dropdown"
         onClick={() => setOpen((o) => !o)}
+        onKeyDown={handleKeyDown}
+        aria-expanded={open}
+        aria-haspopup="listbox"
         style={{
           background:
             selected?.gradient || "linear-gradient(135deg, #555, #333)",
@@ -43,15 +112,19 @@ export default function ThemeDropdown({ theme, onSelect }) {
       </button>
 
       {open && (
-        <div className="pe-theme-menu">
-          {Object.keys(themes).map((key) => {
+        <div className="pe-theme-menu" role="listbox">
+          {themeKeys.map((key, index) => {
             const t = themes[key];
+            const isSelected = index === selectedIndex;
             return (
               <div
                 key={key}
-                className="pe-theme-option"
+                className={`pe-theme-option ${isSelected ? 'selected' : ''}`}
                 style={{ background: t.gradient }}
                 onClick={() => handlePick(key)}
+                role="option"
+                aria-selected={isSelected}
+                tabIndex={-1}
               >
                 <span className="pe-theme-icon">{t.icon}</span>
                 <span className="pe-theme-name">{key}</span>

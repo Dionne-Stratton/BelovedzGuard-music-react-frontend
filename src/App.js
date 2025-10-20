@@ -15,6 +15,7 @@ import SongPlayer from "./components/features/SongPlayer";
 import LyricsViewer from "./components/shared/LyricsViewer";
 import ErrorBoundary from "./components/shared/ErrorBoundary";
 import { initAnalytics, trackPageView } from "./utils/analytics";
+import { useGlobalKeyboard, useNavigationKeyboard } from "./hooks/useGlobalKeyboard";
 
 /**
  * Main App component - Root component with routing and global state management
@@ -45,6 +46,46 @@ export default function App() {
       dispatch(setSongs(songs));
     }
   }, [songs, dispatch]);
+
+  // Set up global keyboard shortcuts
+  const { registerShortcut } = useGlobalKeyboard({
+    context: "global",
+    enabled: true,
+  });
+
+  // Set up navigation keyboard shortcuts
+  useNavigationKeyboard();
+
+  // Register global shortcuts
+  useEffect(() => {
+    // Global shortcut to toggle lyrics (L key)
+    registerShortcut("l", () => {
+      setDisplayLyrics(prev => !prev);
+    }, {
+      context: "global",
+      description: "Toggle lyrics display",
+      preventDefault: true,
+    });
+
+    // Global shortcut to go home (H key)
+    registerShortcut("h", () => {
+      window.location.href = "/home";
+    }, {
+      context: "global", 
+      description: "Navigate to home page",
+      preventDefault: true,
+    });
+
+    // Global shortcut to go to listen page (M key for Music)
+    registerShortcut("m", () => {
+      window.location.href = "/listen";
+    }, {
+      context: "global",
+      description: "Navigate to music/listen page", 
+      preventDefault: true,
+    });
+  }, [registerShortcut]);
+
   if (error) console.error("Error fetching songs:", error);
   return (
     <ErrorBoundary>
