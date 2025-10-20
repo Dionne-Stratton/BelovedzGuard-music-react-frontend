@@ -328,7 +328,7 @@ nav a:hover {
     margin: 0.2em 0 0 0;
     text-align: center;
     letter-spacing: 0.2em;
-    font: normal 250% "Tajawal", sans-serif;
+    font: normal clamp(100%, 7vw, 200%) "Tajawal", sans-serif;
     color: #ebe7e2;
     padding-top: 0.1875em;
   }
@@ -336,13 +336,13 @@ nav a:hover {
     display: block;
     text-align: center;
     letter-spacing: 0.35em;
-    font: normal 85% "Tajawal", sans-serif;
+    font: normal clamp(80%, 4vw, 85%) "Tajawal", sans-serif;
     color: #ebe7e2;
     padding-top: 0.1875em;
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 479px) {
+@media screen and (max-width: 479px) {
   #logo {
     position: relative;
     max-width: 95%;
@@ -353,7 +353,7 @@ nav a:hover {
     margin: 0 auto;
     text-align: center;
     letter-spacing: 0.2em;
-    font: normal 220% "Tajawal", sans-serif;
+    font: normal clamp(100%, 6vw, 200%) "Tajawal", sans-serif;
     color: #fff;
     padding-top: 0.5em;
   }
@@ -361,7 +361,7 @@ nav a:hover {
     display: block;
     text-align: center;
     letter-spacing: 0.35em;
-    font: normal 80% "Tajawal", sans-serif;
+    font: normal clamp(65%, 2vw, 70%) "Tajawal", sans-serif;
     color: #fff;
     padding-top: 1em;
   }
