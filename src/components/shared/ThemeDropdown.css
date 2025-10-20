@@ -4,6 +4,7 @@
   display: inline-block;
   width: 150px; /* ← adjust here */
   font-size: 1rem;
+  overflow: visible; /* Allow expanded thumbnails to extend beyond boundaries */
 }
 
 .pe-theme-dropdown {
@@ -37,11 +38,19 @@
   height: 2em;
   border-radius: 6px;
   overflow: hidden;
-  background-size: 200% 200%;
-  background-position: bottom right;
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.theme-thumbnail:hover {
+  transform: scale(2);
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 .pe-theme-chevron {
   font-size: 0.85rem;
@@ -56,6 +65,7 @@
   width: 100%;
   max-height: 250px;
   overflow-y: auto;
+  overflow-x: visible; /* Allow horizontal overflow for expanded thumbnails */
   border-radius: 8px;
   background: #222;
   z-index: 99;
