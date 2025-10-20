@@ -56,10 +56,10 @@ export default function App() {
   // Set up navigation keyboard shortcuts
   useNavigationKeyboard();
 
-  // Register global shortcuts
+  // Register global shortcuts following industry standards
   useEffect(() => {
-    // Global shortcut to toggle lyrics (L key)
-    registerShortcut("l", () => {
+    // Global shortcut to toggle lyrics (Ctrl+L or Cmd+L)
+    registerShortcut("ctrl+l", () => {
       setDisplayLyrics(prev => !prev);
     }, {
       context: "global",
@@ -67,21 +67,51 @@ export default function App() {
       preventDefault: true,
     });
 
-    // Global shortcut to go home (H key)
-    registerShortcut("h", () => {
-      window.location.href = "/home";
+    registerShortcut("meta+l", () => {
+      setDisplayLyrics(prev => !prev);
     }, {
-      context: "global", 
-      description: "Navigate to home page",
+      context: "global",
+      description: "Toggle lyrics display",
       preventDefault: true,
     });
 
-    // Global shortcut to go to listen page (M key for Music)
-    registerShortcut("m", () => {
+    // Global shortcut for search (/) - industry standard
+    registerShortcut("/", () => {
+      // Focus search if available, otherwise do nothing
+      const searchElement = document.querySelector('input[type="search"], input[placeholder*="search" i]');
+      if (searchElement) {
+        searchElement.focus();
+      }
+    }, {
+      context: "global",
+      description: "Focus search",
+      preventDefault: true,
+    });
+
+    // Global shortcut for help (?)
+    registerShortcut("?", () => {
+      // Could open help modal or show keyboard shortcuts
+      console.log("Keyboard shortcuts help");
+    }, {
+      context: "global",
+      description: "Show keyboard shortcuts help",
+      preventDefault: true,
+    });
+
+    // GitHub-style navigation shortcuts
+    registerShortcut("g+h", () => {
+      window.location.href = "/home";
+    }, {
+      context: "global", 
+      description: "Go to Home page",
+      preventDefault: true,
+    });
+
+    registerShortcut("g+m", () => {
       window.location.href = "/listen";
     }, {
       context: "global",
-      description: "Navigate to music/listen page", 
+      description: "Go to Music page", 
       preventDefault: true,
     });
   }, [registerShortcut]);

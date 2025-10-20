@@ -174,7 +174,12 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     setVolume(prev => Math.max(0, prev - 0.1));
   };
 
-  // Integrate keyboard shortcuts for player controls
+  // Mute/unmute function for industry standard
+  const handleMute = () => {
+    setVolume(prev => prev > 0 ? 0 : 1);
+  };
+
+  // Integrate keyboard shortcuts for player controls (industry standard)
   usePlayerKeyboard({
     onPlayPause: togglePlay,
     onNext: nextSong,
@@ -183,6 +188,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
     onVolumeDown: handleVolumeDown,
     onToggleLyrics: () => setDisplayLyrics(!displayLyrics),
     onClosePlayer: closePlayer,
+    onMute: handleMute, // Add mute functionality
   });
 
   const handleAddToPlaylist = () => {
