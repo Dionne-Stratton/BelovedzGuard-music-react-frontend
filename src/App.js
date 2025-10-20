@@ -13,6 +13,7 @@ import Partner from "./views/Partner";
 import Listen from "./views/listen/Listen";
 import SongPlayer from "./components/features/SongPlayer";
 import LyricsViewer from "./components/shared/LyricsViewer";
+import ErrorBoundary from "./components/shared/ErrorBoundary";
 import { initAnalytics, trackPageView } from "./utils/analytics";
 
 /**
@@ -46,33 +47,47 @@ export default function App() {
   }, [songs, dispatch]);
   if (error) console.error("Error fetching songs:", error);
   return (
-    <div className="App layout">
-      {/* ✅ Add both conditional classes */}
-      <div
-        className={`content ${displayLyrics ? "with-lyrics" : ""} ${
-          currentSongId ? "with-player" : ""
-        }`}
-      >
-        <HeaderNav />
+    <ErrorBoundary>
+      <div className="App layout">
+        {/* ✅ Add both conditional classes */}
+        <div
+          className={`content ${displayLyrics ? "with-lyrics" : ""} ${
+            currentSongId ? "with-player" : ""
+          }`}
+        >
+          <ErrorBoundary>
+            <HeaderNav />
+          </ErrorBoundary>
 
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/watch" element={<Watch />} />
-          <Route path="/listen/*" element={<Listen />} />
-          <Route path="/partner" element={<Partner />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/watch" element={<Watch />} />
+              <Route path="/listen/*" element={<Listen />} />
+              <Route path="/partner" element={<Partner />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </ErrorBoundary>
 
-        <Footer />
+          <ErrorBoundary>
+            <Footer />
+          </ErrorBoundary>
 
-        <SongPlayer
-          setDisplayLyrics={setDisplayLyrics}
-          displayLyrics={displayLyrics}
-        />
+          <ErrorBoundary>
+            <SongPlayer
+              setDisplayLyrics={setDisplayLyrics}
+              displayLyrics={displayLyrics}
+            />
+          </ErrorBoundary>
+        </div>
+
+        {displayLyrics && (
+          <ErrorBoundary>
+            <LyricsViewer setDisplayLyrics={setDisplayLyrics} />
+          </ErrorBoundary>
+        )}
       </div>
-
-      {displayLyrics && <LyricsViewer setDisplayLyrics={setDisplayLyrics} />}
-    </div>
+    </ErrorBoundary>
   );
 }
