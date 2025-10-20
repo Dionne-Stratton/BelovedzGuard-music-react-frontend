@@ -195,12 +195,39 @@ export const useGlobalKeyboard = (options = {}) => {
   );
 
   /**
+   * Check if the current focus is on a form input element
+   * @param {Element} activeElement - The currently focused element
+   * @returns {boolean} Whether the focus is on a form input
+   */
+  const isFormInput = useCallback((activeElement) => {
+    if (!activeElement) return false;
+    
+    const tagName = activeElement.tagName.toLowerCase();
+    const inputTypes = ['input', 'textarea', 'select'];
+    
+    // Check if it's a form input element
+    if (inputTypes.includes(tagName)) return true;
+    
+    // Check if it's a contenteditable element
+    if (activeElement.contentEditable === 'true') return true;
+    
+    // Check if it's inside a form input (for custom components)
+    const closestInput = activeElement.closest('input, textarea, select, [contenteditable="true"]');
+    return !!closestInput;
+  }, []);
+
+  /**
    * Handle keyboard events
    * @param {KeyboardEvent} event - Keyboard event
    */
   const handleKeyDown = useCallback(
     (event) => {
       if (!enabled) return;
+
+      // Skip shortcuts if user is typing in a form input
+      if (isFormInput(document.activeElement)) {
+        return;
+      }
 
       // Find matching shortcut
       const shortcuts = Array.from(shortcutsRef.current.values());
@@ -227,7 +254,7 @@ export const useGlobalKeyboard = (options = {}) => {
         onShortcut(event);
       }
     },
-    [enabled, context, matchesKey, onShortcut]
+    [enabled, context, matchesKey, onShortcut, isFormInput]
   );
 
   /**
@@ -300,7 +327,7 @@ export const usePlayerKeyboard = (playerActions = {}) => {
   });
 
   useEffect(() => {
-    // Register player shortcuts
+    // Register player shortcuts - using modifier keys to avoid conflicts
     registerShortcut("space", onPlayPause, {
       context: "player",
       description: "Play or pause current song",
@@ -331,13 +358,27 @@ export const usePlayerKeyboard = (playerActions = {}) => {
       preventDefault: true,
     });
 
-    registerShortcut("l", onToggleLyrics, {
+    // Use Ctrl/Cmd + L for lyrics to avoid conflict with typing 'l'
+    registerShortcut("control+l", onToggleLyrics, {
       context: "player",
       description: "Toggle lyrics display",
       preventDefault: true,
     });
 
-    registerShortcut("m", onMute, {
+    registerShortcut("meta+l", onToggleLyrics, {
+      context: "player",
+      description: "Toggle lyrics display",
+      preventDefault: true,
+    });
+
+    // Use Ctrl/Cmd + M for mute to avoid conflict with typing 'm'
+    registerShortcut("control+m", onMute, {
+      context: "player",
+      description: "Mute/unmute audio",
+      preventDefault: true,
+    });
+
+    registerShortcut("meta+m", onMute, {
       context: "player",
       description: "Mute/unmute audio",
       preventDefault: true,
@@ -356,8 +397,10 @@ export const usePlayerKeyboard = (playerActions = {}) => {
       unregisterShortcut("arrowleft");
       unregisterShortcut("arrowup");
       unregisterShortcut("arrowdown");
-      unregisterShortcut("l");
-      unregisterShortcut("m");
+      unregisterShortcut("control+l");
+      unregisterShortcut("meta+l");
+      unregisterShortcut("control+m");
+      unregisterShortcut("meta+m");
       unregisterShortcut("escape");
     };
   }, [
