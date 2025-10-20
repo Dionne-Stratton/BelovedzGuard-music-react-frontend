@@ -49,9 +49,11 @@
 
 .theme-thumbnail:hover {
   transform: scale(2) translateX(0.25em);
-  z-index: 9999;
+  transform-origin: bottom center;
+  z-index: 99999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
+
 .pe-theme-chevron {
   font-size: 0.85rem;
   opacity: 0.9;
@@ -93,5 +95,5 @@
 
 .pe-theme-option.selected-theme {
   color: #f2d966; /* even lighter muted gold text */
-  text-shadow: 0 0 3px rgba(242, 217, 102, 0.3);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
