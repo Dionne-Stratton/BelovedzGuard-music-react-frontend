@@ -1,9 +1,10 @@
 .playlist-details-container {
   border-radius: 10px;
   padding: 1rem 1.5rem;
-  max-width: 900px;
+  max-width: min(900px, 95vw);
   margin: 2rem auto;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  background: var(--theme-gradient);
 }
 
 .playlist-details-header {
@@ -12,6 +13,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  background-image: var(--theme-image);
 }
 
 .playlist-details-header h2 {
