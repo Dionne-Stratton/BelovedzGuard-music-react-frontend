@@ -7,6 +7,7 @@ import {
 } from "../../../state/playlistApi";
 import { trackUIEvent } from "../../../utils/analytics";
 import themes from "../../shared/themes";
+import ThemeDropdown from "../../shared/ThemeDropdown";
 import "./styles.css";
 
 export default function AddToPlaylistModal({ isOpen, onClose, song }) {
@@ -17,6 +18,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
   } = useAuth0();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState("");
+  const [selectedTheme, setSelectedTheme] = useState("Faith");
   const [showSavedMessage, setShowSavedMessage] = useState(false);
 
   const { data: playlists = [], isLoading: playlistsLoading } =
@@ -61,11 +63,11 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
     }
 
     try {
-      // Create new playlist with Faith theme and the current song
+      // Create new playlist with selected theme and the current song
       // eslint-disable-next-line
       const newPlaylist = await createPlaylist({
         name: newPlaylistName.trim(),
-        theme: "Faith",
+        theme: selectedTheme,
         songs: [song._id],
       }).unwrap();
 
@@ -92,6 +94,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
     onClose();
     setShowCreateForm(false);
     setNewPlaylistName("");
+    setSelectedTheme("Faith");
   };
 
   const handleLogin = async () => {
@@ -204,10 +207,18 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
                     />
                   </div>
 
+                  <div className="form-group">
+                    <label htmlFor="playlist-theme">Theme</label>
+                    <ThemeDropdown
+                      theme={selectedTheme}
+                      onSelect={setSelectedTheme}
+                    />
+                  </div>
+
                   <div className="form-info">
                     <p>
-                      A new playlist will be created with the "Faith" theme and
-                      this song added to it.
+                      A new playlist will be created with the "{selectedTheme}"
+                      theme and this song added to it.
                     </p>
                   </div>
 

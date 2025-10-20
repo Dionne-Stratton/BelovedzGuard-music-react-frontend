@@ -242,6 +242,30 @@
   color: #999;
 }
 
+/* Theme dropdown styling within the modal */
+.form-group .pe-theme-dropdown-wrapper {
+  width: 100%;
+}
+
+.form-group .pe-theme-dropdown {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: border-color 0.2s;
+}
+
+.form-group .pe-theme-dropdown:hover {
+  border-color: #666;
+}
+
+.form-group .pe-theme-menu {
+  width: 100%;
+  max-height: 200px;
+  z-index: 1003; /* Higher than modal overlay */
+}
+
 .form-info {
   background: rgba(255, 255, 255, 0.05);
   padding: 12px 16px;
