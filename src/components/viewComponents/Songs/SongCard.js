@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import SongThumbnail from "../../shared/SongThumbnail";
+import { trackUIEvent } from "../../../utils/analytics";
 
 export default function SongCard({
   song,
@@ -13,6 +14,22 @@ export default function SongCard({
     triggerOnce: true,
     rootMargin: "200px",
   });
+
+  const [shareCopied, setShareCopied] = useState(false);
+
+  // Copy link to clipboard
+  const handleShare = async (e) => {
+    e.stopPropagation();
+    try {
+      const songUrl = `${window.location.origin}/listen/songs/${song._id}`;
+      await navigator.clipboard.writeText(songUrl);
+      setShareCopied(true);
+      trackUIEvent("Share Song", "Copy Link");
+      setTimeout(() => setShareCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy link:", err);
+    }
+  };
 
   return (
     <div ref={ref} className="song-card-wrapper">
@@ -48,7 +65,14 @@ export default function SongCard({
               onClick={(e) => onAddToPlaylist(song, e)}
               title="Add to Playlist"
             >
-              + Add to Playlist
+              + Playlist
+            </button>
+            <button
+              className="song-share-button"
+              onClick={handleShare}
+              title="Share"
+            >
+              {shareCopied ? "✓" : "🔗"}
             </button>
           </div>
 

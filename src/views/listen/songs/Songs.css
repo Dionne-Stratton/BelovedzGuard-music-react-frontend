@@ -113,6 +113,21 @@
   transition: background 0.2s ease;
 }
 
+.song-share-button {
+  background-color: #29262678;
+  color: #ebe7e2;
+  border: none;
+  border-radius: 5px;
+  width: 27px;
+  height: 27px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
 .song-add-to-playlist-button {
   background-color: #29262678;
   color: #ebe7e2;
@@ -131,6 +146,7 @@
 }
 
 .song-play-button:hover,
+.song-share-button:hover,
 .song-add-to-playlist-button:hover {
   background-color: #5c554c;
 }
