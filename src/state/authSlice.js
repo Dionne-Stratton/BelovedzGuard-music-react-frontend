@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Load user data from localStorage with error handling
 let userFromStorage = null;
 try {
   const storedUser = localStorage.getItem("user");
@@ -21,6 +22,13 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    /**
+     * Set user credentials and persist to localStorage
+     * @param {object} state - Current auth state
+     * @param {object} action - Action payload containing user and token
+     * @param {object} action.payload.user - User profile data
+     * @param {string} action.payload.token - Authentication token
+     */
     setCredentials: (state, action) => {
       const { user, token } = action.payload;
       state.user = user;
@@ -29,6 +37,10 @@ const authSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
     },
+    /**
+     * Clear user credentials and remove from localStorage
+     * @param {object} state - Current auth state
+     */
     logout: (state) => {
       state.user = null;
       state.token = null;

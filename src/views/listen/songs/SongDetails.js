@@ -13,16 +13,8 @@ import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs"
 import SongMediaSection from "../../../components/viewComponents/Songs/SongMediaSection";
 import SongLyricsSection from "../../../components/viewComponents/Songs/SongLyricsSection";
 import axios from "axios";
+import { getGenreMetadata } from "../../../utils/genreMetadata";
 import "./SongDetails.css";
-
-const GENRE_META = {
-  Rock: { icon: "🎸", label: "Rock" },
-  Pop: { icon: "⭐", label: "Pop" },
-  Ballad: { icon: "💖", label: "Ballad" },
-  Theatrical: { icon: "🎭", label: "Theatrical" },
-  Praise: { icon: "❤️‍🔥", label: "Praise" },
-};
-const DEFAULT_META = { icon: "🎶", label: "Other" };
 
 export default function SongDetails() {
   const { id } = useParams();
@@ -43,7 +35,7 @@ export default function SongDetails() {
   });
 
   const song = songFromState || songFromApi;
-  const meta = song ? GENRE_META[song.genre] || DEFAULT_META : DEFAULT_META;
+  const meta = song ? getGenreMetadata(song.genre) : getGenreMetadata();
 
   const [showAddToPlaylistModal, setShowAddToPlaylistModal] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);

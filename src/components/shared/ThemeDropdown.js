@@ -2,11 +2,23 @@ import React, { useState } from "react";
 import themes from "./themes"; // ✅ default export object (keys: Faith, Joy, ...; fields: icon, gradient)
 import "./ThemeDropdown.css";
 
+/**
+ * ThemeDropdown component for selecting playlist themes
+ * @param {object} props - Component props
+ * @param {string} props.theme - Currently selected theme name
+ * @param {function} props.onSelect - Callback function when theme is selected
+ * @param {string} props.onSelect.themeKey - The selected theme key
+ * @returns {JSX.Element} Theme dropdown component
+ */
 export default function ThemeDropdown({ theme, onSelect }) {
   const [open, setOpen] = useState(false);
 
   const selected = themes[theme] || themes.Faith;
 
+  /**
+   * Handle theme selection and close dropdown
+   * @param {string} key - The theme key to select
+   */
   const handlePick = (key) => {
     onSelect(key);
     setOpen(false);

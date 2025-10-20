@@ -10,6 +10,13 @@ import PlaybackControls from "./PlaybackControls";
 import VolumeControl from "./VolumeControl";
 import ProgressBar from "./ProgressBar";
 
+/**
+ * SongPlayer component - Main music player with controls and queue management
+ * @param {object} props - Component props
+ * @param {function} props.setDisplayLyrics - Function to toggle lyrics display
+ * @param {boolean} props.displayLyrics - Whether lyrics are currently displayed
+ * @returns {JSX.Element} Music player component
+ */
 export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();

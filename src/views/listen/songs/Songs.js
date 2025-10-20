@@ -12,15 +12,7 @@ import "./Songs.css";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 import SongCard from "../../../components/viewComponents/Songs/SongCard";
 import GenreFilter from "../../../components/shared/GenreFilter";
-
-const GENRE_META = {
-  Rock: { icon: "🎸", label: "Rock" },
-  Pop: { icon: "⭐", label: "Pop" },
-  Ballad: { icon: "💖", label: "Ballad" },
-  Theatrical: { icon: "🎭", label: "Theatrical" },
-  Praise: { icon: "❤️‍🔥", label: "Praise" },
-};
-const DEFAULT_META = { icon: "🎶", label: "Other" };
+import { getGenreMetadata } from "../../../utils/genreMetadata";
 
 export default function Songs() {
   const dispatch = useDispatch();
@@ -129,7 +121,7 @@ export default function Songs() {
 
       <div className="song-list">
         {filteredSongs.map((song) => {
-          const meta = GENRE_META[song.genre] || DEFAULT_META;
+          const meta = getGenreMetadata(song.genre);
           return (
             <SongCard
               key={song._id}

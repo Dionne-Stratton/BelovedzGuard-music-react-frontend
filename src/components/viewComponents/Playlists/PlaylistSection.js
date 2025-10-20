@@ -1,16 +1,7 @@
 import React from "react";
 import { Droppable, Draggable } from "@hello-pangea/dnd";
 import ThemeDropdown from "../../shared/ThemeDropdown";
-
-// Genre emoji helper
-const GENRE_META = {
-  Rock: "🎸",
-  Pop: "⭐",
-  Ballad: "💖",
-  Theatrical: "🎭",
-  Praise: "❤️‍🔥",
-};
-const genreIcon = (g) => GENRE_META[g] || "🎶";
+import { getGenreIcon } from "../../../utils/genreMetadata";
 
 // Individual playlist row component
 const PlaylistRow = ({ song, index, onRemove }) => (
@@ -29,7 +20,7 @@ const PlaylistRow = ({ song, index, onRemove }) => (
           onError={(e) => (e.currentTarget.style.visibility = "hidden")}
         />
         <span className="pe-title">{song.title}</span>
-        <span className="pe-genre">{genreIcon(song.genre)}</span>
+        <span className="pe-genre">{getGenreIcon(song.genre)}</span>
         <button
           className="pe-remove"
           title="Remove from playlist"
