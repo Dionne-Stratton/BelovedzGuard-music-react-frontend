@@ -11,6 +11,7 @@ import { trackUIEvent } from "../../../utils/analytics";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs";
 import SongMediaSection from "../../../components/viewComponents/Songs/SongMediaSection";
+import SongLyricsSection from "../../../components/viewComponents/Songs/SongLyricsSection";
 import axios from "axios";
 import "./SongDetails.css";
 
@@ -166,31 +167,7 @@ export default function SongDetails() {
         />
 
         {/* Right Column - Lyrics */}
-        <div className="song-lyrics-section">
-          <h2>Lyrics</h2>
-          <div className="lyrics-content">
-            {lyrics === "loading..." ? (
-              <p className="lyrics-loading">Loading lyrics...</p>
-            ) : lyricsError ? (
-              <p className="lyrics-error">Failed to load lyrics.</p>
-            ) : lyrics ? (
-              <div className="lyrics-text">
-                {lyrics.split("\n\n").map((stanza, idx) => (
-                  <p key={idx}>
-                    {stanza.split("\n").map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        <br />
-                      </span>
-                    ))}
-                  </p>
-                ))}
-              </div>
-            ) : (
-              <p className="no-lyrics">Lyrics not available for this song.</p>
-            )}
-          </div>
-        </div>
+        <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
       </div>
 
       {/* Related Songs */}
