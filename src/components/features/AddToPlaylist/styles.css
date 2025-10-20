@@ -238,8 +238,24 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-.form-group input::placeholder {
-  color: #999;
+.pe-name-input::placeholder {
+  color: #bbb;
+}
+
+/* Chrome-specific placeholder styling */
+.pe-name-input::-webkit-input-placeholder {
+  color: #ddd;
+  opacity: 1;
+}
+
+.pe-name-input::-moz-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+.pe-name-input:-ms-input-placeholder {
+  color: #bbb;
+  opacity: 1;
 }
 
 /* Theme dropdown styling within the modal */
