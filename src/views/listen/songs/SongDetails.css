@@ -305,6 +305,13 @@
   background-color: #6b6966;
 }
 
+/* Ensure footer shadow is visible on song details page */
+.footer {
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.6) !important;
+  position: relative;
+  z-index: 10;
+}
+
 /* Mobile and Tablet Responsive */
 @media (max-width: 1024px) {
   .song-details-page {
