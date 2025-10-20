@@ -291,6 +291,7 @@ export const usePlayerKeyboard = (playerActions = {}) => {
     onVolumeDown = () => {},
     onToggleLyrics = () => {},
     onClosePlayer = () => {},
+    onMute = () => {},
   } = playerActions;
 
   const { registerShortcut, unregisterShortcut } = useGlobalKeyboard({
@@ -336,6 +337,12 @@ export const usePlayerKeyboard = (playerActions = {}) => {
       preventDefault: true,
     });
 
+    registerShortcut("m", onMute, {
+      context: "player",
+      description: "Mute/unmute audio",
+      preventDefault: true,
+    });
+
     registerShortcut("escape", onClosePlayer, {
       context: "player",
       description: "Close music player",
@@ -350,6 +357,7 @@ export const usePlayerKeyboard = (playerActions = {}) => {
       unregisterShortcut("arrowup");
       unregisterShortcut("arrowdown");
       unregisterShortcut("l");
+      unregisterShortcut("m");
       unregisterShortcut("escape");
     };
   }, [
@@ -361,6 +369,7 @@ export const usePlayerKeyboard = (playerActions = {}) => {
     onVolumeUp,
     onVolumeDown,
     onToggleLyrics,
+    onMute,
     onClosePlayer,
   ]);
 
