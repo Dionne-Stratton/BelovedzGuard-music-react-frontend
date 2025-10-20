@@ -45,7 +45,7 @@ export default function PlaylistCard({
 
         <button
           className="icon-button"
-          onClick={() => onDelete(playlist._id)}
+          onClick={() => onDelete(playlist._id, playlist.name)}
           aria-label="Delete"
         >
           <span className="tooltip-text">Delete</span>

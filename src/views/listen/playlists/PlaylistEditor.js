@@ -10,6 +10,7 @@ import {
   useGetPlaylistsQuery,
 } from "../../../state/playlistApi";
 import { DragDropContext } from "@hello-pangea/dnd";
+import { useToastContext } from "../../../contexts/ToastContext";
 import "./PlaylistEditor.css";
 import PlaylistSection from "../../../components/viewComponents/Playlists/PlaylistSection";
 import LibrarySection from "../../../components/viewComponents/Playlists/LibrarySection";
@@ -71,6 +72,7 @@ export default function PlaylistEditor() {
     useCreatePlaylistMutation();
   const [updatePlaylist, { isLoading: savingEdit }] =
     useUpdatePlaylistMutation();
+  const { error: showError, success: showSuccess } = useToastContext();
 
   useEffect(() => {
     if (!isEdit || !existing) return;
@@ -166,10 +168,15 @@ export default function PlaylistEditor() {
       else await createPlaylist(payload).unwrap();
 
       setIsDirty(false);
+      showSuccess(
+        isEdit
+          ? "Playlist updated successfully!"
+          : "Playlist created successfully!"
+      );
       navigate("/listen/playlists");
     } catch (err) {
       console.error("Save failed:", err);
-      alert("Could not save playlist. Please try again.");
+      showError("Could not save playlist. Please try again.");
     }
   };
 
