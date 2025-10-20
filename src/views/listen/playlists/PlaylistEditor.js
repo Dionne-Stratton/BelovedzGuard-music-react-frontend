@@ -212,7 +212,7 @@ export default function PlaylistEditor() {
           ? "Playlist updated successfully!"
           : "Playlist created successfully!"
       );
-      navigateWithUnsavedCheck("/listen/playlists");
+      navigate("/listen/playlists");
     } catch (err) {
       console.error("Save failed:", err);
       showError("Could not save playlist. Please try again.");
