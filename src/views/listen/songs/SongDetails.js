@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { FaYoutube } from "react-icons/fa";
 import { useGetSongByIdQuery } from "../../../state/publicApi";
 import {
   setQueue,
@@ -174,7 +175,7 @@ export default function SongDetails() {
             rel="noopener noreferrer"
             className="external-link youtube-link"
           >
-            📺 Watch on YouTube
+            <FaYoutube /> Watch on YouTube
           </a>
         )}
         {song.bandcamp && (
