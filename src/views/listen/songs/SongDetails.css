@@ -263,6 +263,17 @@
   background-color: #6b6966;
 }
 
+.external-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.external-link svg {
+  font-size: 1.2rem;
+  color: #ebe7e2;
+}
+
 /* Loading and Error States */
 .song-details-loading,
 .song-details-error {
