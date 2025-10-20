@@ -112,11 +112,6 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
     setSelectedTheme("Faith");
   };
 
-  // Test toast function
-  const testToast = () => {
-    showSuccess("Test toast notification!", 8000); // 8 seconds to see it clearly
-  };
-
   const handleLogin = async () => {
     try {
       await loginWithPopup({
@@ -142,23 +137,6 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
           <h3>Add "{song.title}" to Playlist</h3>
           <button className="close-button" onClick={handleClose}>
             ✖
-          </button>
-        </div>
-
-        {/* Test Toast Button */}
-        <div style={{ padding: "10px", textAlign: "center" }}>
-          <button
-            onClick={testToast}
-            style={{
-              padding: "8px 16px",
-              background: "#2196f3",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Test Toast
           </button>
         </div>
 
