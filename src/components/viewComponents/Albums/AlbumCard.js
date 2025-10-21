@@ -1,4 +1,5 @@
 import React from "react";
+import { PlayIcon, ExpandMoreIcon, ExpandLessIcon } from "../../shared/Icons";
 
 export default function AlbumCard({
   album,
@@ -16,7 +17,11 @@ export default function AlbumCard({
             onClick={() => onToggle(album._id)}
             title={isExpanded ? "Hide track list" : "Show track list"}
           >
-            {isExpanded ? "▼" : "▲"}
+            {isExpanded ? (
+              <ExpandMoreIcon size={20} />
+            ) : (
+              <ExpandLessIcon size={20} />
+            )}
           </button>
           <div className="album-title">{album.title}</div>
         </div>
@@ -28,7 +33,7 @@ export default function AlbumCard({
             disabled={!album.songs?.length}
             title={album.songs?.length ? "Play album" : "No songs yet"}
           >
-            ▶ Play Album
+            <PlayIcon size={16} /> Play Album
           </button>
         </div>
       </div>

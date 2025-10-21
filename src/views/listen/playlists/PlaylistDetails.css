@@ -127,3 +127,33 @@
 .share-button:hover {
   background-color: #5c554c;
 }
+
+/* Mobile responsive styling for button layout */
+@media (max-width: 600px) {
+  .playlist-edit-top {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0 0.5rem;
+  }
+
+  .open-editor-btn,
+  .share-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: fit-content;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 400px) {
+  .playlist-edit-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .open-editor-btn,
+  .share-button {
+    width: 100%;
+  }
+}

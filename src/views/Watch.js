@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { PlayIcon } from "../components/shared/Icons";
 import "./Watch.css";
 //get songs from redux
 
@@ -45,7 +46,9 @@ export default function Watch() {
                   alt={song.title}
                   className="video-thumbnail"
                 />
-                <div className="play-overlay drop-shadow-thick">▶</div>
+                <div className="play-overlay drop-shadow-thick">
+                  <PlayIcon size={32} />
+                </div>
               </div>
               <div className="video-title">{song.title}</div>
             </div>

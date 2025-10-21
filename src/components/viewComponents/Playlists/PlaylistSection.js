@@ -3,6 +3,7 @@ import { Droppable, Draggable } from "@hello-pangea/dnd";
 import ThemeDropdown from "../../shared/ThemeDropdown";
 import Tooltip from "../../shared/Tooltip";
 import { getGenreIcon } from "../../../utils/genreMetadata";
+import { CloseIcon, CheckIcon } from "../../shared/Icons";
 
 // Individual playlist row component
 const PlaylistRow = ({ song, index, onRemove }) => (
@@ -27,7 +28,7 @@ const PlaylistRow = ({ song, index, onRemove }) => (
           title="Remove from playlist"
           onClick={() => onRemove(index)}
         >
-          ✖
+          <CloseIcon size={14} />
         </button>
       </div>
     )}
@@ -100,7 +101,7 @@ export default function PlaylistSection({
             ↕ Reverse
           </button>
           <button className="pe-btn" title="Cancel changes" onClick={onCancel}>
-            ✖ Cancel
+            <CloseIcon size={14} /> Cancel
           </button>
           <button
             className="pe-btn primary"
@@ -108,7 +109,7 @@ export default function PlaylistSection({
             onClick={onSave}
             disabled={savingNew || savingEdit}
           >
-            ✔ Save
+            <CheckIcon size={14} /> Save
           </button>
         </div>
       </div>

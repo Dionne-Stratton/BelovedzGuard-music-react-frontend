@@ -17,7 +17,8 @@
 
 /* input */
 .pe-name-input {
-  flex: 1;
+  width: 100%;
+  max-width: 280px; /* Narrow for stacked ring effect */
   background: transparent;
   color: #f6f6f6;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -41,6 +42,8 @@
   align-items: center;
   gap: 0.5rem;
   justify-content: center;
+  width: 100%;
+  max-width: 320px; /* Slightly wider than title for stacked effect */
 }
 
 .pe-theme-help-icon {
@@ -76,6 +79,8 @@
   display: flex;
   gap: 0.5rem;
   justify-content: center; /* center buttons under the title */
+  width: 100%;
+  max-width: 360px; /* Widest for stacked ring effect */
 }
 
 /* buttons */
@@ -100,8 +105,8 @@
 /* columns */
 .pe-columns {
   display: grid;
-  grid-template-columns: 1fr 10px 1fr;
-  gap: 0.75rem;
+  grid-template-columns: 1fr 1px 1fr;
+  column-gap: 1.5rem;
   align-items: start;
 }
 
@@ -183,6 +188,30 @@
   color: #f0eae3;
   opacity: 0.9;
   cursor: pointer;
+}
+
+.pe-add {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #f0eae3;
+  padding: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pe-add:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Library rows have an extra column for the + button */
+.library-row {
+  grid-template-columns: 66px 1fr 24px 28px;
 }
 
 /* Center the right controls and make the select fit its content */

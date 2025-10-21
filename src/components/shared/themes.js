@@ -8,23 +8,20 @@ const themes = {
     gradient: "transparent", // Transparent background
   },
   Faith: {
-    // icon: "⛪",
-    icon: "/themes/icons/faith.svg",
+    icon: "⛪",
     image: "/themes/faith.jpg",
     imageMini: "/themes/faith-mini.jpg",
     gradient: "linear-gradient(160deg, #76716B 0%, #52483F 100%)",
   },
   Abide: {
-    // icon: "🍇",
-    icon: "/themes/icons/abide.svg",
+    icon: "🍇",
     image: "/themes/abide.jpg",
     imageMini: "/themes/abide-mini.jpg",
     gradient: "linear-gradient(160deg, #7C7771 0%, #44385E 100%)",
   },
   Devotion: {
-    // icon: "🌸",
+    icon: "🌸",
     image: "/themes/devotion.jpg",
-    icon: "/themes/icons/devotion.svg",
     imageMini: "/themes/devotion-mini.jpg",
     gradient: "linear-gradient(160deg, #AE989A 0%, #624F51 100%)",
   },

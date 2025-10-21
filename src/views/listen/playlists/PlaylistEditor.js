@@ -185,6 +185,11 @@ export default function PlaylistEditor() {
     markDirty();
   };
 
+  const handleAddSong = (song) => {
+    setPlaylistSongs((prev) => [...prev, song]);
+    markDirty();
+  };
+
   const onCancel = () => navigateWithUnsavedCheck("/listen/playlists");
 
   const onSave = async () => {
@@ -252,6 +257,7 @@ export default function PlaylistEditor() {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             availableSongs={availableSongs}
+            onAddSong={handleAddSong}
           />
         </div>
       </DragDropContext>

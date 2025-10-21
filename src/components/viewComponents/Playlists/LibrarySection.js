@@ -2,13 +2,14 @@ import React from "react";
 import { Droppable, Draggable } from "@hello-pangea/dnd";
 import GenreFilter from "../../shared/GenreFilter";
 import { getGenreIcon } from "../../../utils/genreMetadata";
+import { PlusIcon } from "../../shared/Icons";
 
 // Individual library row component
-const LibraryRow = ({ song, index }) => (
+const LibraryRow = ({ song, index, onAdd }) => (
   <Draggable draggableId={`library-${song._id}-${index}`} index={index}>
     {(provided) => (
       <div
-        className="pe-song-row"
+        className="pe-song-row library-row"
         ref={provided.innerRef}
         {...provided.draggableProps}
         {...provided.dragHandleProps}
@@ -21,6 +22,16 @@ const LibraryRow = ({ song, index }) => (
         />
         <span className="pe-title">{song.title}</span>
         <span className="pe-genre">{getGenreIcon(song.genre)}</span>
+        <button
+          className="pe-add"
+          title="Add to playlist"
+          onClick={(e) => {
+            e.stopPropagation();
+            onAdd(song);
+          }}
+        >
+          <PlusIcon size={16} />
+        </button>
       </div>
     )}
   </Draggable>
@@ -32,6 +43,7 @@ export default function LibrarySection({
   searchQuery,
   setSearchQuery,
   availableSongs,
+  onAddSong,
 }) {
   return (
     <div>
@@ -67,6 +79,7 @@ export default function LibrarySection({
                 key={`library-key-${song._id}-${i}`}
                 song={song}
                 index={i}
+                onAdd={onAddSong}
               />
             ))}
             {provided.placeholder}
