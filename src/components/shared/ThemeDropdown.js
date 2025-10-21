@@ -112,7 +112,17 @@ export default function ThemeDropdown({ theme, onSelect }) {
         }}
       >
         <span className="pe-theme-left">
-          <span className="pe-theme-icon">{selected?.icon}</span>
+          <span className="pe-theme-icon">
+            {selected?.icon?.startsWith("/") ? (
+              <img
+                src={selected.icon}
+                alt={`${theme} icon`}
+                className="pe-theme-svg-icon"
+              />
+            ) : (
+              selected?.icon
+            )}
+          </span>
           <span className="pe-theme-name">{theme}</span>
         </span>
         <span className="pe-theme-chevron">▼</span>
