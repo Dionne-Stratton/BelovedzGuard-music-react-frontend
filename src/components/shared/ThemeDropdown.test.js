@@ -23,7 +23,10 @@ describe("ThemeDropdown Component", () => {
       render(<ThemeDropdown theme="Joy" onSelect={mockOnSelect} />);
 
       expect(screen.getByText("Joy")).toBeInTheDocument();
-      expect(screen.getByText("🌻")).toBeInTheDocument();
+      // Joy now uses SVG icon instead of emoji
+      const icon = screen.getByAltText("Joy icon");
+      expect(icon).toBeInTheDocument();
+      expect(icon).toHaveAttribute("src", "/themes/icons/joy.svg");
     });
 
     test("renders dropdown button with correct styling", () => {
@@ -123,7 +126,9 @@ describe("ThemeDropdown Component", () => {
 
       // Check Faith theme (appears twice - button + dropdown)
       expect(screen.getAllByText("Faith")).toHaveLength(2);
-      expect(screen.getAllByText(themes.Faith.icon)).toHaveLength(1); // Only in button, not dropdown
+      // Faith now uses SVG icon, so check for img element instead
+      const faithIcon = screen.getByAltText("Faith icon");
+      expect(faithIcon).toBeInTheDocument();
 
       // Check all other themes (appear once in dropdown)
       const otherThemes = themeNames.filter(
