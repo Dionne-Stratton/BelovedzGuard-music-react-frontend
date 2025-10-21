@@ -2,12 +2,13 @@
 
 ## Current
 
-- [] Style the Share button on the playlist details page to match the Edit button.
-- [] Make SVG icons for themes more reliable by using react components for them.
 - [] Add a "recent releases" section to the home page. Talk through details first.
 
 ## Completed
 
+- [x] Make theme icons reliable by converting from SVG to PNG format
+
+- [x] Style the Share button on the playlist details page to match the Edit button
 - [x] Narrow the playlist title input field for better visual balance; align its width progression with the components below it for that "stacked ring" visual flow
 - [x] Change styling of + button on the end of the library song cards in the playlist editor to match the x button on the playlist side
 - [x] Shorten area of library elements on especially mobile devices
