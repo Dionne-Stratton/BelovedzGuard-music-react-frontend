@@ -246,6 +246,7 @@ export default function PlaylistEditor() {
             onSave={onSave}
             savingNew={savingNew}
             savingEdit={savingEdit}
+            showWarning={showError}
           />
 
           <div className="pe-divider" />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Droppable, Draggable } from "@hello-pangea/dnd";
 import ThemeDropdown from "../../shared/ThemeDropdown";
 import Tooltip from "../../shared/Tooltip";
@@ -50,7 +50,10 @@ export default function PlaylistSection({
   onSave,
   savingNew,
   savingEdit,
+  showWarning,
 }) {
+  const hasShownLimitWarning = useRef(false);
+
   const handleRemoveSong = (index) => {
     setPlaylistSongs((prev) => prev.filter((_, i) => i !== index));
   };
@@ -64,10 +67,28 @@ export default function PlaylistSection({
           className={`pe-name-input search-bar ${error ? "invalid" : ""}`}
           placeholder="My Playlist"
           value={name}
+          maxLength={12}
           onChange={(e) => {
             setName(e.target.value);
             markDirty();
             if (error) setError("");
+            // Reset warning flag when user deletes characters
+            if (e.target.value.length < 12) {
+              hasShownLimitWarning.current = false;
+            }
+          }}
+          onKeyDown={(e) => {
+            // Show warning when they try to type beyond limit
+            if (
+              name.length >= 12 &&
+              e.key.length === 1 &&
+              !hasShownLimitWarning.current
+            ) {
+              hasShownLimitWarning.current = true;
+              if (showWarning) {
+                showWarning("Playlist name limited to 12 characters");
+              }
+            }
           }}
         />
         {error && <div className="pe-error-text">{error}</div>}

@@ -238,6 +238,13 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+.char-counter {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: right;
+  margin-top: 4px;
+}
+
 .pe-name-input::placeholder {
   color: #bbb;
 }
