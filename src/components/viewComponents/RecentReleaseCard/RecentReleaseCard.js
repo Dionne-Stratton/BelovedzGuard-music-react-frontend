@@ -7,7 +7,8 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import SongThumbnail from "../../shared/SongThumbnail";
-import { ShareIcon } from "../../shared/Icons";
+import { PlayIcon, ShareIcon } from "../../shared/Icons";
+import { getGenreMetadata } from "../../../utils/genreMetadata";
 import { trackUIEvent } from "../../../utils/analytics";
 import "./RecentReleaseCard.css";
 
@@ -77,16 +78,20 @@ export default function RecentReleaseCard({ song, allSongs }) {
     }
   };
 
+  const genreData = getGenreMetadata(song.genre);
+
   return (
     <div className="recent-release-card">
       <div className="recent-release-header">
-        <span className="recent-release-badge">Recent Release</span>
+        <span className="recent-release-badge drop-shadow-thick">
+          ✨ New Release!
+        </span>
       </div>
 
       <div className="recent-release-content">
         {/* Left side: Animated thumbnail */}
         <div
-          className="recent-release-thumbnail thumbnail-wrapper"
+          className="recent-release-thumbnail thumbnail-wrapper drop-shadow-thick"
           onClick={handleThumbnailClick}
         >
           <div className="play-overlay">🎧</div>
@@ -94,17 +99,21 @@ export default function RecentReleaseCard({ song, allSongs }) {
             title={song.title}
             thumbnail={song.songThumbnail}
             animatedThumbnail={song.animatedSongThumbnail}
+            playOnLoad={true}
             playOnHover={true}
           />
         </div>
 
         {/* Right side: Song info and actions */}
         <div className="recent-release-info">
-          <h3 className="recent-release-title">{song.title}</h3>
+          <h3 className="recent-release-title" onClick={handleMoreClick}>
+            {song.title}
+          </h3>
 
-          <div className="recent-release-meta">
-            <span className="recent-release-genre">
-              <span>{song.genre}</span>
+          <div className="recent-release-genre-info">
+            <span className="recent-release-genre-icon">{genreData.icon}</span>
+            <span className="recent-release-genre-label">
+              {genreData.label}
             </span>
           </div>
 
@@ -121,24 +130,28 @@ export default function RecentReleaseCard({ song, allSongs }) {
 
           {/* Action buttons */}
           <div className="recent-release-actions">
-            <button className="rr-btn rr-btn-primary" onClick={handlePlay}>
-              Play
+            <button
+              className="rr-btn rr-btn-primary drop-shadow-thick"
+              onClick={handlePlay}
+              title="Play all songs"
+            >
+              <PlayIcon size={18} />
             </button>
             <button
-              className="rr-btn rr-btn-secondary"
+              className="rr-btn rr-btn-secondary drop-shadow-thick"
               onClick={handleMoreClick}
             >
               More
             </button>
             <button
-              className="rr-btn rr-btn-icon"
+              className="rr-btn rr-btn-icon drop-shadow-thick"
               onClick={handleShare}
               title="Share"
             >
               <ShareIcon size={18} />
             </button>
             <button
-              className="rr-btn rr-btn-secondary"
+              className="rr-btn rr-btn-secondary drop-shadow-thick"
               onClick={handleDiscoverClick}
             >
               Discover

@@ -23,26 +23,27 @@
 
 .recent-release-badge {
   display: inline-block;
-  background-color: #4c4740;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #ebe7e2;
-  padding: 0.4rem 0.8rem;
+  padding: 0.1rem 0.2rem;
   border-radius: 6px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
 }
 
 .recent-release-content {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 300px 1fr;
   gap: 2rem;
   align-items: start;
 }
 
 .recent-release-thumbnail {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   cursor: pointer;
   overflow: hidden;
   border-radius: 16px;
@@ -64,27 +65,41 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  max-width: 600px;
 }
 
 .recent-release-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #f0eae3;
   margin: 0;
+  text-align: left;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
 }
 
-.recent-release-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.recent-release-title:hover {
+  text-decoration: underline;
 }
 
-.recent-release-genre {
+.recent-release-genre-info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: rgba(240, 234, 227, 0.8);
-  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.recent-release-genre-icon {
+  font-size: 1.2rem;
+}
+
+.recent-release-genre-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f0eae3;
 }
 
 .recent-release-description {
@@ -124,10 +139,13 @@
 .rr-btn-primary {
   background-color: #4c4740;
   color: #ebe7e2;
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .rr-btn-primary:hover {
   background-color: #5c554c;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .rr-btn-secondary {
