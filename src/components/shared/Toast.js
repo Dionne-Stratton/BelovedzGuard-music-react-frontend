@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { CheckIcon, CloseIcon, WarningIcon, InfoIcon } from "./Icons";
 import "./Toast.css";
 
 /**
@@ -48,14 +49,14 @@ export default function Toast({
   const getIcon = () => {
     switch (type) {
       case "success":
-        return "✓";
+        return <CheckIcon size={18} />;
       case "error":
-        return "✕";
+        return <CloseIcon size={18} />;
       case "warning":
-        return "⚠";
+        return <WarningIcon size={18} />;
       case "info":
       default:
-        return "ℹ";
+        return <InfoIcon size={18} />;
     }
   };
 
@@ -78,7 +79,7 @@ export default function Toast({
           aria-label="Close notification"
           type="button"
         >
-          ×
+          <CloseIcon size={16} />
         </button>
       </div>
     </div>

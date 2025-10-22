@@ -9,6 +9,7 @@ import { trackUIEvent } from "../../../utils/analytics";
 import { useToastContext } from "../../../contexts/ToastContext";
 import themes from "../../shared/themes";
 import ThemeDropdown from "../../shared/ThemeDropdown";
+import { CloseIcon } from "../../shared/Icons";
 import "./styles.css";
 
 /**
@@ -136,7 +137,7 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
         <div className="modal-header">
           <h3>Add "{song.title}" to Playlist</h3>
           <button className="close-button" onClick={handleClose}>
-            ✖
+            <CloseIcon size={20} />
           </button>
         </div>
 
@@ -188,7 +189,15 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
                           >
                             <div className="playlist-left">
                               <span className="playlist-icon">
-                                {theme.icon}
+                                {theme.icon?.startsWith("/") ? (
+                                  <img
+                                    src={theme.icon}
+                                    alt=""
+                                    style={{ width: "24px", height: "24px" }}
+                                  />
+                                ) : (
+                                  theme.icon
+                                )}
                               </span>
                               <h4>{playlist.name}</h4>
                             </div>
@@ -218,8 +227,11 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
                       value={newPlaylistName}
                       onChange={(e) => setNewPlaylistName(e.target.value)}
                       placeholder="Enter playlist name..."
-                      maxLength={50}
+                      maxLength={12}
                     />
+                    <div className="char-counter">
+                      {newPlaylistName.length}/12 characters
+                    </div>
                   </div>
 
                   <div className="form-group">
@@ -228,13 +240,6 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
                       theme={selectedTheme}
                       onSelect={setSelectedTheme}
                     />
-                  </div>
-
-                  <div className="form-info">
-                    <p>
-                      A new playlist will be created with the "{selectedTheme}"
-                      theme and this song added to it.
-                    </p>
                   </div>
 
                   <div className="modal-actions">

@@ -185,6 +185,11 @@ export default function PlaylistEditor() {
     markDirty();
   };
 
+  const handleAddSong = (song) => {
+    setPlaylistSongs((prev) => [...prev, song]);
+    markDirty();
+  };
+
   const onCancel = () => navigateWithUnsavedCheck("/listen/playlists");
 
   const onSave = async () => {
@@ -241,6 +246,7 @@ export default function PlaylistEditor() {
             onSave={onSave}
             savingNew={savingNew}
             savingEdit={savingEdit}
+            showWarning={showError}
           />
 
           <div className="pe-divider" />
@@ -252,6 +258,7 @@ export default function PlaylistEditor() {
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
             availableSongs={availableSongs}
+            onAddSong={handleAddSong}
           />
         </div>
       </DragDropContext>

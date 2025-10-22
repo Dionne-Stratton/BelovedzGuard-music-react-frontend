@@ -10,6 +10,7 @@ import SongInfo from "./SongInfo";
 import PlaybackControls from "./PlaybackControls";
 import VolumeControl from "./VolumeControl";
 import ProgressBar from "./ProgressBar";
+import { CloseIcon } from "../../shared/Icons";
 
 /**
  * SongPlayer component - Main music player with controls and queue management
@@ -167,16 +168,16 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
 
   // Volume control functions for keyboard shortcuts
   const handleVolumeUp = () => {
-    setVolume(prev => Math.min(1, prev + 0.1));
+    setVolume((prev) => Math.min(1, prev + 0.1));
   };
 
   const handleVolumeDown = () => {
-    setVolume(prev => Math.max(0, prev - 0.1));
+    setVolume((prev) => Math.max(0, prev - 0.1));
   };
 
   // Mute/unmute function for industry standard
   const handleMute = () => {
-    setVolume(prev => prev > 0 ? 0 : 1);
+    setVolume((prev) => (prev > 0 ? 0 : 1));
   };
 
   // Integrate keyboard shortcuts for player controls (industry standard)
@@ -224,7 +225,7 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
       style={displayLyrics ? { width: "calc(100% - 300px)" } : {}}
     >
       <button onClick={closePlayer} className="close-player-button">
-        ✖
+        <CloseIcon size={20} />
       </button>
 
       <div
