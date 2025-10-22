@@ -2,13 +2,16 @@
 
 ## Current
 
-- [] Update all share buttons with link icon to use the ShareIcon from recent release card
+- [] Fix buttons on the song details page to all look the same, using the share button as the template.
+- [] Add to about page. write-look.mp4 to the left of the first <p> . add prayer.mp4 to the right of both <p> tags under the header "Artist Statement". style and behavior of both the same as the mp4 in the recent release card without the overlay.
+- [] Add offering2.png to the partner page. to the left of both paragraphs under the first header. style and behavior the same as the mp4 in the recent release card without the overlay.
 - [] Add on hover underline to "Start Listening" and "Learn More" on home page
-- [] Add logo based images to about page
 - [] Add images gospel1 and gospel2 to the gospel message section on home page. Image one to left of first <p> and image two on the left of the second <p>.
 - [] Add carousel of other recent songs to Recent Release section. Talk through details first.
 
 ## Completed
+
+- [x] Update all share buttons with link icon to use the ShareIcon from recent release card
 
 - [x] Add a "recent releases" section to the home page
 

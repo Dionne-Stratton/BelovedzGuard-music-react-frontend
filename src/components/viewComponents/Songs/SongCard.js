@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import SongThumbnail from "../../shared/SongThumbnail";
+import { ShareIcon } from "../../shared/Icons";
 import { trackUIEvent } from "../../../utils/analytics";
 
 export default function SongCard({
@@ -72,7 +73,7 @@ export default function SongCard({
               onClick={handleShare}
               title="Share"
             >
-              {shareCopied ? "✓" : "🔗"}
+              {shareCopied ? "✓" : <ShareIcon size={16} />}
             </button>
           </div>
 
