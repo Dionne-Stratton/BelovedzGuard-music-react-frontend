@@ -1,6 +1,69 @@
 /********************************************** About page *********************************************/
 
 .about {
-  padding: 15vh;
+  padding: 7.5vh 15vh 15vh 15vh;
   color: #ebe7e2;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.about h2 {
+  text-align: center;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
+}
+
+/* Media sections with video/image */
+/*  */
+
+.about-section-with-media p {
+  padding: 1rem;
+  margin-bottom: 0;
+}
+
+.about-section-with-media .about-media {
+  float: left;
+  margin-right: 1rem;
+}
+
+.about-section-with-media.media-right .about-media {
+  float: right;
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+.about-media {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Clear floats after sections */
+.about-section-with-media::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Tablet - shrink video */
+@media (max-width: 1024px) {
+  .about-media {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Mobile - stack vertically */
+@media (max-width: 768px) {
+  .about-section-with-media .about-media,
+  .about-section-with-media.media-right .about-media {
+    float: none;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about-media {
+    width: 200px;
+    height: 200px;
+  }
 }

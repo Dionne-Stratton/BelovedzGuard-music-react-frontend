@@ -57,9 +57,9 @@ export default function Home({ setCurrentIndex }) {
         1:12).
       </p>
       <p className="border-below"></p>
-      <h4>
+      <p>
         If you’re ready to receive this gift, you can pray this simple prayer:
-      </h4>
+      </p>
 
       <p>
         “Lord Jesus, I know I am a sinner, and I need Your forgiveness. Thank
