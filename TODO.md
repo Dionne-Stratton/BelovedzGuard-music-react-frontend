@@ -2,9 +2,11 @@
 
 ## Current
 
-- [] Add a "recent releases" section to the home page. Talk through details first.
+- [] Add carousel of other recent songs to Recent Release section. Talk through details first.
 
 ## Completed
+
+- [x] Add a "recent releases" section to the home page
 
 - [x] Make theme icons reliable by converting from SVG to PNG format
 

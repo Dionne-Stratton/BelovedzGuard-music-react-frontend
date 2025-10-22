@@ -1,8 +1,12 @@
 import React from "react";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
+import { useGetSongsQuery } from "../state/publicApi";
+import RecentReleaseCard from "../components/viewComponents/RecentReleaseCard/RecentReleaseCard";
 
 export default function Home({ setCurrentIndex }) {
+  const { data: songs = [], isLoading } = useGetSongsQuery();
+
   return (
     <div className="page-container home">
       <h1>Welcome to BelovedzGuard</h1>
@@ -27,6 +31,11 @@ export default function Home({ setCurrentIndex }) {
         music and let it lead you to Him. He is waiting with open arms, ready to
         fill your heart with His love and grace.
       </p>
+
+      {/* Recent Release Card */}
+      {!isLoading && songs.length > 0 && (
+        <RecentReleaseCard song={songs[0]} allSongs={songs} />
+      )}
 
       <h3>The Gospel Message:</h3>
 

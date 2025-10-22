@@ -94,24 +94,11 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.open-editor-btn {
-  background-color: #4c4740;
-  color: #ebe7e2;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-  margin-top: 1.7rem;
-}
-
-.open-editor-btn:hover {
-  background-color: #5c554c;
-}
-
+.open-editor-btn,
 .share-button {
   background-color: #4c4740;
   color: #ebe7e2;
@@ -122,8 +109,11 @@
   font-size: 1rem;
   transition: background 0.2s ease;
   margin-top: 1.7rem;
+  flex: 1;
+  max-width: 200px;
 }
 
+.open-editor-btn:hover,
 .share-button:hover {
   background-color: #5c554c;
 }
@@ -140,7 +130,6 @@
   .share-button {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
-    flex: 1;
     min-width: fit-content;
   }
 }
