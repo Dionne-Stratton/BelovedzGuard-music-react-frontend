@@ -1,0 +1,219 @@
+.recent-release-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recent-release-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.recent-release-header {
+  margin-bottom: 1rem;
+}
+
+.recent-release-badge {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #ebe7e2;
+  padding: 0.1rem 0.2rem;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+
+.recent-release-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.recent-release-thumbnail {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.recent-release-thumbnail .song-thumbnail {
+  width: 100%;
+  height: 100%;
+}
+
+.recent-release-thumbnail img,
+.recent-release-thumbnail video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent-release-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 600px;
+}
+
+.recent-release-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f0eae3;
+  margin: 0;
+  text-align: left;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.recent-release-title:hover {
+  text-decoration: underline;
+}
+
+.recent-release-genre-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.recent-release-genre-icon {
+  font-size: 1.2rem;
+}
+
+.recent-release-genre-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f0eae3;
+}
+
+.recent-release-description {
+  color: rgba(240, 234, 227, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.recent-release-scripture {
+  color: rgba(240, 234, 227, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.recent-release-actions {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.rr-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rr-btn-primary {
+  background-color: #4c4740;
+  color: #ebe7e2;
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rr-btn-primary:hover {
+  background-color: #5c554c;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.rr-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0eae3;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rr-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.rr-btn-icon {
+  background: transparent;
+  color: #f0eae3;
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rr-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .recent-release-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .recent-release-thumbnail {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .recent-release-title {
+    font-size: 1.5rem;
+  }
+
+  .recent-release-actions {
+    flex-wrap: wrap;
+  }
+
+  .rr-btn {
+    flex: 1;
+    min-width: calc(50% - 0.4rem);
+    justify-content: center;
+  }
+
+  .rr-btn-icon {
+    flex: 0;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .recent-release-card {
+    padding: 1rem;
+  }
+
+  .recent-release-title {
+    font-size: 1.3rem;
+  }
+
+  .recent-release-description {
+    font-size: 0.9rem;
+  }
+}

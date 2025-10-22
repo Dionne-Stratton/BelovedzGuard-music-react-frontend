@@ -25,7 +25,9 @@ describe("ThemeDropdown Component", () => {
       expect(screen.getByText("Joy")).toBeInTheDocument();
       // Joy now uses PNG icon, check for img element with the icon path
       const icons = screen.getAllByRole("img", { hidden: true });
-      const joyIcon = icons.find(img => img.src.includes("/themes/icons/joy.png"));
+      const joyIcon = icons.find((img) =>
+        img.src.includes("/themes/icons/joy.png")
+      );
       expect(joyIcon).toBeInTheDocument();
       expect(joyIcon).toHaveAttribute("src", "/themes/icons/joy.png");
     });
@@ -129,7 +131,9 @@ describe("ThemeDropdown Component", () => {
       expect(screen.getAllByText("Faith")).toHaveLength(2);
       // Faith now uses PNG icon, check for img element with the icon path
       const faithIcons = screen.getAllByRole("img", { hidden: true });
-      const faithIcon = faithIcons.find(img => img.src.includes("/themes/icons/faith.png"));
+      const faithIcon = faithIcons.find((img) =>
+        img.src.includes("/themes/icons/faith.png")
+      );
       expect(faithIcon).toBeInTheDocument();
 
       // Check all other themes (appear once in dropdown)

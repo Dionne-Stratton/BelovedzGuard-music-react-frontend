@@ -1,21 +1,31 @@
 import React from "react";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
+import { useGetSongsQuery } from "../state/publicApi";
+import RecentReleaseCard from "../components/viewComponents/RecentReleaseCard/RecentReleaseCard";
 
 export default function Home({ setCurrentIndex }) {
+  const { data: songs = [], isLoading } = useGetSongsQuery();
+
   return (
     <div className="page-container home">
       <h1>Welcome to BelovedzGuard</h1>
 
       <h3>A Ministry of Worship Through Music</h3>
-      <h4>New Updates Weekly</h4>
+      <p className="border-below"></p>
+
+      {/* Recent Release Card */}
+      {!isLoading && songs.length > 0 && (
+        <RecentReleaseCard song={songs[0]} allSongs={songs} />
+      )}
+      <p className="border-below"></p>
       <p>
         This is a space devoted to uplifting, Christ-centered music - songs
         birthed in worship, grounded in Scripture, and overflowing with love for
         Jesus. Everything here was created to stir your heart, strengthen your
         spirit, and help you draw near to Him.
       </p>
-
+      <p className="border-below"></p>
       <p>
         Whether you're weary or rejoicing, searching or sure - you're welcome
         here. Come listen, rest, and be refreshed in the presence of the One who
@@ -27,7 +37,7 @@ export default function Home({ setCurrentIndex }) {
         music and let it lead you to Him. He is waiting with open arms, ready to
         fill your heart with His love and grace.
       </p>
-
+      <p className="border-below"></p>
       <h3>The Gospel Message:</h3>
 
       <p>
