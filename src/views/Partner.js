@@ -5,20 +5,39 @@ import { trackLinkClick } from "../utils/analytics"; // ✅ use your existing fu
 const Partner = () => {
   return (
     <div className="partner">
+      <p className="border-below"></p>
       <h2>Partner With Me</h2>
-      <p>
-        Creating music is a labor of love — one that I’ve given to the Lord to
-        use however He desires. Every lyric, melody, and video is crafted with
-        the hope of drawing people closer to Jesus. If you’ve been blessed by
-        these songs and want to be part of what God is doing through them, I
-        invite you to partner with me.
-      </p>
+      <div className="partner-section-with-media">
+        <video
+          className="partner-media drop-shadow-thick"
+          src="/marketingPages/partner/offering2.mp4"
+          autoPlay
+          muted
+          playsInline
+          onMouseEnter={(e) => {
+            e.target.currentTime = 0;
+            e.target.play();
+          }}
+          onMouseLeave={(e) => {
+            e.target.pause();
+            e.target.currentTime = 0;
+          }}
+        />
 
-      <p>
-        Your support helps cover the costs of production, equipment, and sharing
-        these songs with a wider audience. It also allows me to dedicate more
-        time to creating new music and worship experiences.
-      </p>
+        <p>
+          Creating music is a labor of love — one that I've given to the Lord to
+          use however He desires. Every lyric, melody, and video is crafted with
+          the hope of drawing people closer to Jesus. If you've been blessed by
+          these songs and want to be part of what God is doing through them, I
+          invite you to partner with me.
+        </p>
+
+        <p>
+          Your support helps cover the costs of production, equipment, and
+          sharing these songs with a wider audience. It also allows me to
+          dedicate more time to creating new music and worship experiences.
+        </p>
+      </div>
       <p className="border-below"></p>
       <h2>🎧 Patreon – Studio Access</h2>
       <p>
@@ -39,6 +58,7 @@ const Partner = () => {
         </a>
       </div>
 
+      <p className="border-below"></p>
       <h2>♫ Bandcamp – Music Downloads</h2>
       <p>
         Purchase songs directly through Bandcamp, a platform that gives artists
@@ -56,7 +76,7 @@ const Partner = () => {
           Purchase Music
         </a>
       </div>
-
+      <p className="border-below"></p>
       <h2>💌 One-Time Donations</h2>
       <p>
         Prefer a small, casual way to show support? Ko-fi is like a digital tip

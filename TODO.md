@@ -2,7 +2,7 @@
 
 ## Current
 
-- [] Add offering2.png to the partner page. to the left of both paragraphs under the first header. style and behavior the same as the mp4 in the recent release card without the overlay.
+- [] Add offering2.mp4 to the partner page. to the left of both paragraphs under the first header. style and behavior the same as the mp4 in the recent release card without the overlay.
 - [] Add on hover underline to "Start Listening" and "Learn More" on home page
 - [] Add images gospel1 and gospel2 to the gospel message section on home page. Image one to left of first <p> and image two on the left of the second <p>.
 - [] Add carousel of other recent songs to Recent Release section. Talk through details first.
