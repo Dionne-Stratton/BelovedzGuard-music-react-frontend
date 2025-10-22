@@ -2,6 +2,10 @@
 
 ## Current
 
+- [] Update all share buttons with link icon to use the ShareIcon from recent release card
+- [] Add on hover underline to "Start Listening" and "Learn More" on home page
+- [] Add logo based images to about page
+- [] Add images gospel1 and gospel2 to the gospel message section on home page. Image one to left of first <p> and image two on the left of the second <p>.
 - [] Add carousel of other recent songs to Recent Release section. Talk through details first.
 
 ## Completed
