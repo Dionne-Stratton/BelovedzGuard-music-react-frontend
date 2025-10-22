@@ -40,26 +40,40 @@ export default function Home({ setCurrentIndex }) {
       <p className="border-below"></p>
       <h3>The Gospel Message:</h3>
 
-      <p>
-        God created us to be in a loving relationship with Him, but our sin
-        separates us from Him (Romans 3:23). Sin brings spiritual death and
-        brokenness, but God, in His great love, sent His Son, Jesus Christ, to
-        pay for our sins through His death on the cross (John 3:16, Romans 5:8).
-        Jesus rose from the dead, conquering sin and death, and offering us new
-        life in Him (1 Corinthians 15:3-4).
-      </p>
+      <div className="home-section-with-media">
+        <img
+          className="home-media drop-shadow-thick"
+          src="/marketingPages/home/gospel1.png"
+          alt=""
+        />
+        <p>
+          God created us to be in a loving relationship with Him, but our sin
+          separates us from Him (Romans 3:23). Sin brings spiritual death and
+          brokenness, but God, in His great love, sent His Son, Jesus Christ, to
+          pay for our sins through His death on the cross (John 3:16, Romans
+          5:8). Jesus rose from the dead, conquering sin and death, and offering
+          us new life in Him (1 Corinthians 15:3-4).
+        </p>
+      </div>
 
-      <p>
-        When we turn from our sins and trust Jesus as our Savior, we are
-        forgiven, and we become children of God, united with Him forever (Acts
-        3:19, Ephesians 2:8-9). This gift of salvation is free—by faith, not by
-        works—and brings us into a new, eternal relationship with God (John
-        1:12).
-      </p>
+      <div className="home-section-with-media media-right">
+        <img
+          className="home-media drop-shadow-thick"
+          src="/marketingPages/home/gospel2.png"
+          alt=""
+        />
+        <p>
+          When we turn from our sins and trust Jesus as our Savior, we are
+          forgiven, and we become children of God, united with Him forever (Acts
+          3:19, Ephesians 2:8-9). This gift of salvation is free—by faith, not
+          by works—and brings us into a new, eternal relationship with God (John
+          1:12).
+        </p>
+      </div>
       <p className="border-below"></p>
-      <h4>
+      <p>
         If you’re ready to receive this gift, you can pray this simple prayer:
-      </h4>
+      </p>
 
       <p>
         “Lord Jesus, I know I am a sinner, and I need Your forgiveness. Thank

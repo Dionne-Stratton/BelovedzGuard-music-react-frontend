@@ -8,6 +8,7 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ShareIcon } from "../../../components/shared/Icons";
 import { trackUIEvent } from "../../../utils/analytics";
 import "./PlaylistDetails.css";
 import themes from "../../../components/shared/themes";
@@ -117,7 +118,13 @@ export default function PlaylistDetails() {
           onClick={handleShare}
           title="Copy link to share"
         >
-          {shareCopied ? "✓ Copied!" : "🔗 Share"}
+          {shareCopied ? (
+            "✓ Copied!"
+          ) : (
+            <>
+              <ShareIcon size={16} /> Share
+            </>
+          )}
         </button>
       </div>
 

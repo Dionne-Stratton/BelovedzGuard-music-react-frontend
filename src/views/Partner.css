@@ -1,8 +1,59 @@
 /********************************************** Partner page ********************************************/
 
 .partner {
-  padding: 15vh;
+  padding: 7.5vh 15vh 15vh 15vh;
   color: #ebe7e2;
+  font-size: 1.1rem;
+}
+
+/* Media sections with video/image */
+/* .partner-section-with-media {
+} */
+
+.partner-section-with-media p {
+  padding: 1rem;
+  margin-bottom: 0;
+}
+
+.partner-section-with-media .partner-media {
+  float: left;
+  margin-right: 1rem;
+}
+
+.partner-media {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Clear floats after sections */
+.partner-section-with-media::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Tablet - shrink video */
+@media (max-width: 1024px) {
+  .partner-media {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Mobile - stack vertically */
+@media (max-width: 768px) {
+  .partner-section-with-media .partner-media {
+    float: none;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .partner-media {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .partner-button {

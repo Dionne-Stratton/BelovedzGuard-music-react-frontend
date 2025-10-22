@@ -13,21 +13,6 @@
   position: relative;
 }
 
-.share-button {
-  background-color: #52504e;
-  color: #ebe7e2;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
-}
-
-.share-button:hover {
-  background-color: #6b6966;
-}
-
 .song-details-title {
   font-size: 3rem;
   font-weight: bold;
@@ -71,36 +56,21 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 2rem;
+  align-items: center;
 }
 
-.play-button {
+.song-control-btn {
   background-color: #52504e;
   color: #ebe7e2;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
-
-.play-button:hover {
-  background-color: #6b6966;
-}
-
-.add-to-playlist-button {
-  background-color: #52504e;
-  color: #ebe7e2;
-  border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.2s ease;
 }
 
-.add-to-playlist-button:hover {
+.song-control-btn:hover {
   background-color: #6b6966;
 }
 
@@ -347,9 +317,7 @@
     max-width: 300px;
   }
 
-  .play-button,
-  .add-to-playlist-button,
-  .share-button {
+  .song-control-btn {
     width: 100%;
   }
 
