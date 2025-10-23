@@ -46,10 +46,19 @@
   }
 }
 
+@media (max-width: 900px) {
+  .partner {
+    padding: 4vh 8.5vh;
+  }
+}
 /* Mobile - stack vertically */
-@media (max-width: 788px) {
+@media (max-width: 800px) {
   .partner {
     padding: 3vh 7vh;
+  }
+
+  .partner h2 {
+    text-align: center;
   }
 
   .partner-section-with-media .partner-media {

@@ -56,8 +56,14 @@
   }
 }
 
+@media (max-width: 900px) {
+  .about {
+    padding: 4vh 8.5vh;
+  }
+}
+
 /* Mobile - stack vertically */
-@media (max-width: 788px) {
+@media (max-width: 800px) {
   .about {
     padding: 3vh 7vh;
   }
