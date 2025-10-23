@@ -158,7 +158,7 @@
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .toast {
     left: 20px;
     right: 20px;

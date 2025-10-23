@@ -147,7 +147,7 @@
 }
 
 /* Mobile responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .confirm-modal {
     min-width: 320px;
     margin: 20px;
