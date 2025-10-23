@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import "./LyricsViewer.css";
 
-const LyricsViewer = ({ setDisplayLyrics }) => {
+const LyricsViewer = ({ setDisplayLyrics, lyricsWidth, setLyricsWidth }) => {
   const songs = useSelector((state) => state.songs);
   const currentSongId = useSelector((state) => state.player.currentSongId);
 
   const [lyrics, setLyrics] = useState("loading...");
   const [title, setTitle] = useState("");
+  const [isResizing, setIsResizing] = useState(false);
+  const startXRef = useRef(0);
+  const startWidthRef = useRef(0);
 
   useEffect(() => {
     if (!currentSongId) return;
@@ -31,10 +34,71 @@ const LyricsViewer = ({ setDisplayLyrics }) => {
     }
   }, [currentSongId, songs]);
 
+  // Handle resize start
+  const handleMouseDown = (e) => {
+    setIsResizing(true);
+    startXRef.current = e.clientX;
+    startWidthRef.current = lyricsWidth;
+    e.preventDefault();
+  };
+
+  // Handle window resize - adjust lyrics width if it's outside new constraints
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const maxWidth = window.innerWidth * 0.3;
+      // On narrow windows, allow lyrics to shrink below 200px to fit
+      const minWidth = Math.min(200, window.innerWidth * 0.2);
+
+      setLyricsWidth((currentWidth) => {
+        // Only update if current width is outside new constraints
+        if (currentWidth > maxWidth) return maxWidth;
+        if (currentWidth < minWidth) return minWidth;
+        return currentWidth;
+      });
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, [setLyricsWidth]);
+
+  // Handle resize during drag
+  useEffect(() => {
+    if (!isResizing) return;
+
+    const handleMouseMove = (e) => {
+      const deltaX = startXRef.current - e.clientX; // Inverted: dragging left increases width
+      const newWidth = startWidthRef.current + deltaX;
+      const maxWidth = window.innerWidth * 0.3; // 30% of viewport
+      // On narrow windows, allow lyrics to shrink below 200px to fit
+      const minWidth = Math.min(200, window.innerWidth * 0.2);
+
+      const clampedWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
+      setLyricsWidth(clampedWidth);
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isResizing, setLyricsWidth]);
+
   if (!currentSongId) return null;
 
   return (
-    <div className="lyrics-viewer">
+    <div className="lyrics-viewer" style={{ width: `${lyricsWidth}px` }}>
+      <div
+        className="resize-handle"
+        onMouseDown={handleMouseDown}
+        style={{ cursor: isResizing ? "col-resize" : "col-resize" }}
+      />
+
       <button className="close-btn" onClick={() => setDisplayLyrics(false)}>
         ×
       </button>

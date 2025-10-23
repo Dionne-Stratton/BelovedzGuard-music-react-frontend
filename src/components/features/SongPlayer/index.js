@@ -222,7 +222,11 @@ export default function SongPlayer({ setDisplayLyrics, displayLyrics }) {
   return (
     <div
       className="song-player"
-      style={displayLyrics ? { width: "calc(100% - 300px)" } : {}}
+      style={
+        displayLyrics
+          ? { width: "calc(100% - var(--lyrics-width, 300px))" }
+          : {}
+      }
     >
       <button onClick={closePlayer} className="close-player-button">
         <CloseIcon size={20} />

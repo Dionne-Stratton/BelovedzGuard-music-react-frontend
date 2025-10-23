@@ -2,6 +2,7 @@
 
 ## Current
 
+- [] Allow lyrics viewer component to be resized by the user.
 - [] Add carousel of other recent songs to Recent Release section. Talk through details first.
 
 ## Completed

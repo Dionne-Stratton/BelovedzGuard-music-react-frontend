@@ -39,6 +39,22 @@ function AppContent() {
   // ✅ Pull player state from Redux (assuming your song player stores this)
   const currentSongId = useSelector((state) => state.player?.currentSongId);
 
+  // Lyrics viewer width state with localStorage persistence
+  const [lyricsWidth, setLyricsWidth] = useState(() => {
+    const saved = localStorage.getItem("lyricsViewerWidth");
+    return saved ? parseInt(saved, 10) : 300;
+  });
+
+  // Save lyrics width to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("lyricsViewerWidth", lyricsWidth.toString());
+    // Update CSS variable for dynamic margin
+    document.documentElement.style.setProperty(
+      "--lyrics-width",
+      `${lyricsWidth}px`
+    );
+  }, [lyricsWidth]);
+
   // initialize GA once
   useEffect(() => {
     initAnalytics();
@@ -164,6 +180,7 @@ function AppContent() {
           className={`content ${displayLyrics ? "with-lyrics" : ""} ${
             currentSongId ? "with-player" : ""
           }`}
+          style={displayLyrics ? { marginRight: `${lyricsWidth}px` } : {}}
         >
           <ErrorBoundary>
             <HeaderNav />
@@ -194,7 +211,11 @@ function AppContent() {
 
         {displayLyrics && (
           <ErrorBoundary>
-            <LyricsViewer setDisplayLyrics={setDisplayLyrics} />
+            <LyricsViewer
+              setDisplayLyrics={setDisplayLyrics}
+              lyricsWidth={lyricsWidth}
+              setLyricsWidth={setLyricsWidth}
+            />
           </ErrorBoundary>
         )}
       </div>
