@@ -49,6 +49,11 @@ function AppContent() {
     trackPageView(location.pathname + location.search);
   }, [location]);
 
+  // scroll to top on page navigation
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.key]);
+
   useEffect(() => {
     if (songs) {
       dispatch(setSongs(songs));

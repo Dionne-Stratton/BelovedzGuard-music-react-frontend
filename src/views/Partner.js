@@ -10,7 +10,7 @@ const Partner = () => {
       <div className="partner-section-with-media">
         <video
           className="partner-media drop-shadow-thick"
-          src="/marketingPages/partner/offering2.mp4"
+          src="/marketingPages/partner/offering.mp4"
           autoPlay
           muted
           playsInline
