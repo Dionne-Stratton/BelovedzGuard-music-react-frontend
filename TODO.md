@@ -3,6 +3,8 @@
 ## Current
 
 - [] Add carousel of other recent songs to Recent Release section. Talk through details first.
+- [] And bug reporting form
+- [] Add metadata to new songs for the new release section and remove the placeholder text.
 
 ## Completed
 
