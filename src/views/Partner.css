@@ -40,10 +40,18 @@
     width: 120px;
     height: 120px;
   }
+
+  .partner {
+    padding: 5vh 10vh;
+  }
 }
 
 /* Mobile - stack vertically */
 @media (max-width: 768px) {
+  .partner {
+    padding: 3vh 7vh;
+  }
+
   .partner-section-with-media .partner-media {
     float: none;
     margin: 0 auto;

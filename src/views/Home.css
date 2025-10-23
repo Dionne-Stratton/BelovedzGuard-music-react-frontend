@@ -61,6 +61,10 @@
     width: 120px;
     height: 120px;
   }
+
+  .home {
+    padding: 5vh 10vh;
+  }
 }
 
 /* Mobile - stack vertically */
@@ -75,5 +79,9 @@
   .home-media {
     width: 200px;
     height: 200px;
+  }
+
+  .home {
+    padding: 3vh 7vh;
   }
 }

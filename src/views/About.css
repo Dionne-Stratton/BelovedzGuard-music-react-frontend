@@ -13,7 +13,6 @@
 }
 
 /* Media sections with video/image */
-/*  */
 
 .about-section-with-media p {
   padding: 1rem;
@@ -51,10 +50,18 @@
     width: 120px;
     height: 120px;
   }
+
+  .about {
+    padding: 5vh 10vh;
+  }
 }
 
 /* Mobile - stack vertically */
 @media (max-width: 768px) {
+  .about {
+    padding: 3vh 7vh;
+  }
+
   .about-section-with-media .about-media,
   .about-section-with-media.media-right .about-media {
     float: none;

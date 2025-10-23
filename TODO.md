@@ -2,11 +2,11 @@
 
 ## Current
 
-- [] Tweak padding on marketing pages on mobile devices.
 - [] Add carousel of other recent songs to Recent Release section. Talk through details first.
 
 ## Completed
 
+- [x] Tweak padding on marketing pages on mobile devices.s
 - [x] Have all pages scroll to the top when the page is loaded.
 - [x] Add images to "the gospel message" section on home page. gospel1.png to left of first <p> and gospel2.png to the right of the second <p>. reference the mp4s in about.js and about.css for style.
 - [x] Add on hover underline to "Start Listening" and "Learn More" on home page
