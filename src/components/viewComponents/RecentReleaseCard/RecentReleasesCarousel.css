@@ -6,11 +6,21 @@
   margin-top: 1rem;
   transition: box-shadow 0.3s ease, border 0.3s ease;
   border: 2px solid transparent;
-  width: clamp(300px, 90vw, 100%);
+
+  /* 🔧 containment + width corrections */
+  display: block;
+  width: 100%;
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  overflow: hidden;
+
+  /* 🔧 prevent child overflow from stretching parent */
+  overflow-x: auto;
+  overflow-y: hidden;
+  contain: layout paint;
+
+  /* temporary visual check */
+  /* outline: 3px solid cyan; */
 }
 
 /* Engaged state - soft glow */
@@ -26,10 +36,18 @@
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: smooth;
-  padding: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.5rem;
   width: 100%;
+  max-width: 100%;
   min-width: 0;
-  /* Hide scrollbar on some browsers */
+
+  /* 👇 This line is key — it isolates the scroll area from affecting page width */
+  contain: layout inline-size;
+
+  /* 👇 And this one makes sure flex doesn't break parent grid flow */
+  flex: 1 1 auto;
+
+  /* Optional polish */
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
@@ -52,11 +70,13 @@
   background: rgba(255, 255, 255, 0.6);
 }
 
-/* Individual carousel cards - fixed size */
+/* Individual carousel cards */
 .carousel-card {
   flex: 0 0 auto;
   width: 150px;
   height: 150px;
+  min-width: 0; /* critical for preventing layout overflow */
+  max-width: 100%;
   border-radius: 16px;
   overflow: hidden;
   transition: box-shadow 0.3s ease, border 0.3s ease, transform 0.2s ease;

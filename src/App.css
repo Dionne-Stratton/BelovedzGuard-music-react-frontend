@@ -222,3 +222,27 @@ h3 {
 div li.hide {
   display: none;
 }
+body {
+  outline: 3px solid red !important;
+}
+#root {
+  outline: 3px solid orange !important;
+}
+main,
+.home-page,
+.main-content {
+  outline: 3px solid rgb(247, 0, 255) !important;
+}
+.recent-release-card {
+  outline: 3px solid lime !important;
+}
+.recent-releases-carousel {
+  outline: 3px solid cyan !important;
+}
+.recent-releases-carousel {
+  outline: 3px solid cyan !important; /* keep visible for check */
+  overflow-x: auto !important; /* 🔥 allow internal scroll instead of stretching page */
+  max-width: 100% !important; /* 🔥 clamp width */
+  min-width: 0 !important;
+  contain: layout !important; /* 🔥 isolate its layout so parent doesn’t expand */
+}
