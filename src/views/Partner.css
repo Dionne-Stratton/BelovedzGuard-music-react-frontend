@@ -47,7 +47,7 @@
 }
 
 /* Mobile - stack vertically */
-@media (max-width: 768px) {
+@media (max-width: 788px) {
   .partner {
     padding: 3vh 7vh;
   }

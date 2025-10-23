@@ -68,7 +68,7 @@
 }
 
 /* Mobile - stack vertically */
-@media (max-width: 768px) {
+@media (max-width: 788px) {
   .home-section-with-media .home-media,
   .home-section-with-media.media-right .home-media {
     float: none;
