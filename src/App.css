@@ -52,7 +52,11 @@ body {
   margin-right: 0;
 }
 
-/* margin-right for .content.with-lyrics applied via inline style for real-time updates */
+.content.with-lyrics {
+  flex: none; /* Remove flex: 1 when lyrics open to respect explicit width */
+  width: calc(100% - var(--lyrics-width, 300px));
+  margin-right: var(--lyrics-width, 300px);
+}
 
 .content.with-player {
   padding-bottom: 130px; /* space for player */

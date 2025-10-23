@@ -44,21 +44,32 @@ const LyricsViewer = ({ setDisplayLyrics, lyricsWidth, setLyricsWidth }) => {
 
   // Handle window resize - adjust lyrics width if it's outside new constraints
   useEffect(() => {
+    let resizeTimeout;
     const handleWindowResize = () => {
-      const maxWidth = window.innerWidth * 0.3;
-      // On narrow windows, allow lyrics to shrink below 200px to fit
-      const minWidth = Math.min(200, window.innerWidth * 0.2);
+      // Debounce resize events to prevent excessive re-renders
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const maxWidth = window.innerWidth * 0.3; // 30% of viewport
+        const minWidth = 200; // Hard minimum
 
-      setLyricsWidth((currentWidth) => {
-        // Only update if current width is outside new constraints
-        if (currentWidth > maxWidth) return maxWidth;
-        if (currentWidth < minWidth) return minWidth;
-        return currentWidth;
-      });
+        setLyricsWidth((currentWidth) => {
+          // Only update if current width is ACTUALLY outside constraints
+          const needsAdjustment =
+            currentWidth > maxWidth || currentWidth < minWidth;
+          if (!needsAdjustment) return currentWidth; // No change, prevent re-render
+
+          if (currentWidth > maxWidth) return maxWidth;
+          if (currentWidth < minWidth) return minWidth;
+          return currentWidth;
+        });
+      }, 300); // Wait 300ms after resize stops
     };
 
     window.addEventListener("resize", handleWindowResize);
-    return () => window.removeEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+      clearTimeout(resizeTimeout);
+    };
   }, [setLyricsWidth]);
 
   // Handle resize during drag
@@ -69,8 +80,7 @@ const LyricsViewer = ({ setDisplayLyrics, lyricsWidth, setLyricsWidth }) => {
       const deltaX = startXRef.current - e.clientX; // Inverted: dragging left increases width
       const newWidth = startWidthRef.current + deltaX;
       const maxWidth = window.innerWidth * 0.3; // 30% of viewport
-      // On narrow windows, allow lyrics to shrink below 200px to fit
-      const minWidth = Math.min(200, window.innerWidth * 0.2);
+      const minWidth = 200; // Hard minimum
 
       const clampedWidth = Math.min(Math.max(newWidth, minWidth), maxWidth);
       setLyricsWidth(clampedWidth);
