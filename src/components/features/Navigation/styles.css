@@ -201,10 +201,10 @@ nav ul li {
 nav ul li a,
 nav ul ul li a {
   display: block;
-  padding: 0 12px;
+  padding: 0 clamp(6px, 1.5vw, 12px);
   color: #000;
   letter-spacing: 0.1em;
-  font-size: 1.15em;
+  font-size: clamp(0.95em, 2vw, 1.15em);
   font-family: "Tajawal", sans-serif;
   line-height: 40px;
   text-decoration: none;
@@ -281,8 +281,8 @@ nav a:hover {
   display: block;
   margin: 0.2em 0 0 0;
   text-align: center;
-  letter-spacing: 0.2em;
-  font: normal clamp(250%, 8vw, 300%) "Tajawal", sans-serif;
+  letter-spacing: clamp(0.1em, 1vw, 0.2em);
+  font: normal clamp(150%, 8vw, 300%) "Tajawal", sans-serif;
   color: #fff;
 }
 
@@ -305,8 +305,8 @@ nav a:hover {
 #logo h2 {
   display: block;
   text-align: center;
-  letter-spacing: 0.35em;
-  font: normal clamp(75%, 4vw, 90%) "Tajawal", sans-serif;
+  letter-spacing: clamp(0.2em, 2vw, 0.35em);
+  font: normal clamp(70%, 4vw, 90%) "Tajawal", sans-serif;
   color: #ebe7e2;
 }
 
@@ -371,13 +371,13 @@ nav a:hover {
 /* Converted from inline styles in HeaderNav.js */
 
 .header-logo-container {
-  width: clamp(60px, 15vw, 120px);
+  width: clamp(50px, 12vw, 120px);
   display: flex;
   justify-content: flex-start;
 }
 
 .header-auth-container {
-  width: clamp(60px, 15vw, 120px);
+  width: clamp(50px, 12vw, 120px);
   text-align: right;
 }
 

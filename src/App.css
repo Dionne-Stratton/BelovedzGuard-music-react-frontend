@@ -33,7 +33,7 @@ body {
 /* Shift everything when lyrics are open */
 .App.lyrics-open .main-content,
 .App.lyrics-open .SongPlayer {
-  margin-right: 300px; /* adjust if sidebar width changes */
+  margin-right: var(--lyrics-width, 300px);
 }
 
 /* Lyrics sidebar */
@@ -48,13 +48,14 @@ body {
 /* main content container */
 .content {
   flex: 1;
-  transition: all 0.3s ease;
+  transition: padding-bottom 0.3s ease;
   margin-right: 0;
 }
 
-/* when lyrics viewer is open */
 .content.with-lyrics {
-  margin-right: 300px;
+  flex: none; /* Remove flex: 1 when lyrics open to respect explicit width */
+  width: calc(100% - var(--lyrics-width, 300px));
+  margin-right: var(--lyrics-width, 300px);
 }
 
 .content.with-player {
