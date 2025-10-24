@@ -10,6 +10,7 @@ import SongThumbnail from "../../shared/SongThumbnail";
 import { PlayIcon, ShareIcon } from "../../shared/Icons";
 import { getGenreMetadata } from "../../../utils/genreMetadata";
 import { trackUIEvent } from "../../../utils/analytics";
+import RecentReleasesCarousel from "./RecentReleasesCarousel";
 import "./RecentReleaseCard.css";
 
 /**
@@ -24,11 +25,18 @@ export default function RecentReleaseCard({ song, allSongs }) {
   if (!song) return null;
 
   const handlePlay = () => {
-    // Load all songs into player queue and start with the first (most recent)
-    dispatch(setQueue({ songs: allSongs, source: "songs", sourceId: null }));
+    // Load only first 6 songs into player queue and start with the first (most recent)
+    const recentSongs = allSongs.slice(0, 6);
+    dispatch(
+      setQueue({
+        songs: recentSongs,
+        source: "recent-releases",
+        sourceId: null,
+      })
+    );
     dispatch(setCurrentSong(song._id));
     dispatch(setPlaying(true));
-    trackUIEvent("Recent Release", "Play all from recent release", {
+    trackUIEvent("Recent Release", "Play recent releases showcase", {
       songTitle: song.title,
     });
   };
@@ -81,84 +89,91 @@ export default function RecentReleaseCard({ song, allSongs }) {
   const genreData = getGenreMetadata(song.genre);
 
   return (
-    <div className="recent-release-card">
-      <div className="recent-release-header">
-        <span className="recent-release-badge drop-shadow-thick">
-          ✨ New Release!
-        </span>
-      </div>
-
-      <div className="recent-release-content">
-        {/* Left side: Animated thumbnail */}
-        <div
-          className="recent-release-thumbnail thumbnail-wrapper drop-shadow-thick"
-          onClick={handleThumbnailClick}
-        >
-          <div className="play-overlay">🎧</div>
-          <SongThumbnail
-            title={song.title}
-            thumbnail={song.songThumbnail}
-            animatedThumbnail={song.animatedSongThumbnail}
-            playOnLoad={true}
-            playOnHover={true}
-          />
+    <>
+      <div className="recent-release-card">
+        <div className="recent-release-header">
+          <span className="recent-release-badge drop-shadow-thick">
+            ✨ New Release!
+          </span>
         </div>
 
-        {/* Right side: Song info and actions */}
-        <div className="recent-release-info">
-          <h3 className="recent-release-title" onClick={handleMoreClick}>
-            {song.title}
-          </h3>
-
-          <div className="recent-release-genre-info">
-            <span className="recent-release-genre-icon">{genreData.icon}</span>
-            <span className="recent-release-genre-label">
-              {genreData.label}
-            </span>
+        <div className="recent-release-content">
+          {/* Left side: Animated thumbnail */}
+          <div
+            className="recent-release-thumbnail thumbnail-wrapper drop-shadow-thick"
+            onClick={handleThumbnailClick}
+          >
+            <div className="play-overlay">🎧</div>
+            <SongThumbnail
+              title={song.title}
+              thumbnail={song.songThumbnail}
+              animatedThumbnail={song.animatedSongThumbnail}
+              playOnLoad={true}
+              playOnHover={true}
+            />
           </div>
 
-          {/* Placeholder for description */}
-          <p className="recent-release-description">
-            A new song of worship, birthed in the presence of Jesus. Let this
-            melody draw your heart closer to Him.
-          </p>
+          {/* Right side: Song info and actions */}
+          <div className="recent-release-info">
+            <h3 className="recent-release-title" onClick={handleMoreClick}>
+              {song.title}
+            </h3>
 
-          {/* Placeholder for scripture reference */}
-          <p className="recent-release-scripture">
-            Scripture reference coming soon
-          </p>
+            <div className="recent-release-genre-info">
+              <span className="recent-release-genre-icon">
+                {genreData.icon}
+              </span>
+              <span className="recent-release-genre-label">
+                {genreData.label}
+              </span>
+            </div>
 
-          {/* Action buttons */}
-          <div className="recent-release-actions">
-            <button
-              className="rr-btn rr-btn-primary drop-shadow-thick"
-              onClick={handlePlay}
-              title="Play all songs"
-            >
-              <PlayIcon size={18} />
-            </button>
-            <button
-              className="rr-btn rr-btn-secondary drop-shadow-thick"
-              onClick={handleMoreClick}
-            >
-              More
-            </button>
-            <button
-              className="rr-btn rr-btn-icon drop-shadow-thick"
-              onClick={handleShare}
-              title="Share"
-            >
-              <ShareIcon size={18} />
-            </button>
-            <button
-              className="rr-btn rr-btn-secondary drop-shadow-thick"
-              onClick={handleDiscoverClick}
-            >
-              Discover
-            </button>
+            {/* Placeholder for description */}
+            <p className="recent-release-description">
+              A new song of worship, birthed in the presence of Jesus. Let this
+              melody draw your heart closer to Him.
+            </p>
+
+            {/* Placeholder for scripture reference */}
+            <p className="recent-release-scripture">
+              Scripture reference coming soon
+            </p>
+
+            {/* Action buttons */}
+            <div className="recent-release-actions">
+              <button
+                className="rr-btn rr-btn-primary drop-shadow-thick"
+                onClick={handlePlay}
+                title="Play recent releases showcase"
+              >
+                <PlayIcon size={18} />
+              </button>
+              <button
+                className="rr-btn rr-btn-secondary drop-shadow-thick"
+                onClick={handleMoreClick}
+              >
+                More
+              </button>
+              <button
+                className="rr-btn rr-btn-icon drop-shadow-thick"
+                onClick={handleShare}
+                title="Share"
+              >
+                <ShareIcon size={18} />
+              </button>
+              <button
+                className="rr-btn rr-btn-secondary drop-shadow-thick"
+                onClick={handleDiscoverClick}
+              >
+                Discover
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Recent Releases Carousel */}
+      <RecentReleasesCarousel songs={allSongs} />
+    </>
   );
 }

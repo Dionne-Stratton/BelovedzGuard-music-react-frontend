@@ -10,6 +10,11 @@
   margin: 2rem 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .recent-release-card:hover {
@@ -38,6 +43,7 @@
   grid-template-columns: 300px 1fr;
   gap: 2rem;
   align-items: start;
+  min-width: 0;
 }
 
 .recent-release-thumbnail {
@@ -179,7 +185,7 @@
   }
 
   .recent-release-thumbnail {
-    width: 100%;
+    width: 70%;
     height: auto;
     aspect-ratio: 1;
   }
