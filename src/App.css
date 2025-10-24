@@ -222,7 +222,7 @@ h3 {
 div li.hide {
   display: none;
 }
-body {
+/* body {
   outline: 3px solid red !important;
 }
 #root {
@@ -238,11 +238,4 @@ main,
 }
 .recent-releases-carousel {
   outline: 3px solid cyan !important;
-}
-.recent-releases-carousel {
-  outline: 3px solid cyan !important; /* keep visible for check */
-  overflow-x: auto !important; /* 🔥 allow internal scroll instead of stretching page */
-  max-width: 100% !important; /* 🔥 clamp width */
-  min-width: 0 !important;
-  contain: layout !important; /* 🔥 isolate its layout so parent doesn’t expand */
-}
+} */
