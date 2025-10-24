@@ -119,6 +119,26 @@
   opacity: 0.8;
 }
 
+.footer-contact-btn {
+  background-color: #e8e8e8;
+  color: #000;
+  border: none;
+  border-radius: 0px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Tajawal", sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 2px 0 8px 0;
+}
+
+.footer-contact-btn:hover {
+  background-color: #a5a09b;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 .footer-back-to-top {
   margin-top: 8px;
   cursor: pointer;

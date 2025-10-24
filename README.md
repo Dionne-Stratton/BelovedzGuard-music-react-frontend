@@ -16,9 +16,13 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
   - [Authentication](#authentication)
   - [Music Player](#music-player)
   - [Playlist Management](#playlist-management)
+  - [Discovery & Featured Content](#discovery--featured-content)
   - [Theme System](#theme-system)
   - [Navigation](#navigation)
   - [Responsive Design](#responsive-design)
+  - [User Experience & Accessibility](#user-experience--accessibility)
+  - [Marketing & Content Pages](#marketing--content-pages)
+  - [Contact Form](#contact-form)
 - [Component Architecture](#component-architecture)
 - [State Management](#state-management)
 - [Installation and Setup](#installation-and-setup)
@@ -67,7 +71,8 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Audio Controls** - Play, pause, next, previous functionality
 - **Progress Tracking** - Visual progress bar with seek functionality
 - **Volume Control** - Adjustable audio volume
-- **Lyrics Display** - Full-screen lyrics viewer
+- **Resizable Lyrics Viewer** - Draggable lyrics panel with persistent width preferences (200px-30vw)
+- **Lyrics Display** - Full-screen lyrics viewer with smooth transitions
 - **Song Information** - Display current song title, artist, and artwork
 
 ### Playlist Management
@@ -78,6 +83,16 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Playlist Organization** - View and manage all user playlists
 - **Song Management** - Add/remove songs from playlists
 - **Playlist Editor** - Dedicated interface for playlist editing
+
+### Discovery & Featured Content
+
+- **Recent Releases Showcase** - Featured card displaying the latest song with animated thumbnail and quick actions
+- **Recent Releases Carousel** - Horizontal scrolling carousel of the 5 most recent songs (150px thumbnails)
+- **Engaged State Highlighting** - Soft glow when playing from the 6-song showcase queue
+- **Auto-Scroll Navigation** - Carousel smoothly follows the currently playing track
+- **Context-Aware Playback** - Limited 6-song queue with auto-stop after final track
+- **End-of-Queue Prompt** - "Keep listening" card with link to full songs library
+- **Share Functionality** - Native share dialog with clipboard fallback for all songs and playlists
 
 ### Theme System
 
@@ -109,6 +124,30 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Context-Aware Shortcuts** - Different shortcuts for global, player, and navigation contexts
 - **Form Input Protection** - Keyboard shortcuts disabled when typing in forms
 - **Unsaved Changes Protection** - Prevents accidental data loss with custom modals
+- **Auto Scroll to Top** - Smooth navigation with instant scroll to top on page changes
+
+### Marketing & Content Pages
+
+- **Rich Media Integration** - Animated MP4 backgrounds and images throughout marketing pages
+- **Responsive Media** - Images and videos adapt to screen size (200px desktop, 120px tablet)
+- **Interactive Videos** - Auto-play on load, restart on hover, pause on mouse leave
+- **Gospel Message Section** - Visual storytelling with floating images and scripture references
+- **About Page** - Personal story with integrated video content
+- **Partner Page** - Partnership information with visual elements
+- **Smooth Scaling** - Clamp-based responsive typography for seamless text sizing
+
+### Contact Form
+
+- **Comprehensive Validation** - Yup schema validation with real-time error feedback
+- **Required Field Indicators** - Visual asterisks and "required field" notice for user clarity
+- **Smart Submit Button** - Automatically disabled until all fields are properly filled
+- **Spam Protection** - Multi-layered protection including:
+  - **Honeypot Field** - Hidden field that catches automated bots silently
+  - **Time-Based Validation** - Rejects submissions faster than 3 seconds
+  - **Analytics Tracking** - Logs spam attempts for monitoring and improvement
+- **Toast Notifications** - Success/error feedback using the application's custom toast system
+- **Responsive Design** - Mobile-optimized layout with touch-friendly inputs
+- **Accessibility** - Proper labels, ARIA attributes, and keyboard navigation
 
 ---
 
@@ -144,6 +183,7 @@ src/
 │   ├── About.js                    # About page
 │   ├── Watch.js                    # Watch page
 │   ├── Partner.js                  # Partner page
+│   ├── Contact.js                  # Contact form page
 │   └── listen/                     # Music browsing pages
 │       ├── Listen.js               # Main listen layout
 │       ├── songs/                  # Song pages
@@ -235,7 +275,7 @@ This enables the app to track whether music is playing from songs list, album, o
 ### API Integration
 
 - **RTK Query** - Efficient data fetching and caching
-- **Public API** - Songs, albums, and public playlists
+- **Public API** - Songs, albums, public playlists, and contact form submission
 - **Playlist API** - User-specific playlist operations
 - **Auth0 Integration** - Secure authentication flow
 
@@ -432,7 +472,7 @@ The application features a comprehensive custom UI system replacing browser defa
 
 ### Routing Structure
 
-- **Main Routes** - Home, About, Watch, Partner, Listen
+- **Main Routes** - Home, About, Watch, Partner, Contact, Listen
 - **Nested Listen Routes** - Songs, Albums, Playlists with sub-routes
 - **Dynamic Routes** - Song details, playlist editing, album views
 - **Protected Routes** - Authentication-required sections
