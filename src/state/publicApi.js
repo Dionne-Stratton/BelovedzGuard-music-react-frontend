@@ -44,6 +44,23 @@ export const publicApi = createApi({
     getSongById: builder.query({
       query: (id) => `/songs/${id}`,
     }),
+
+    /**
+     * Send a contact form message (public endpoint)
+     * @param {Object} data - Contact form data
+     * @param {string} data.name - Sender's name
+     * @param {string} data.email - Sender's email
+     * @param {string} data.subject - Message subject
+     * @param {string} data.message - Message content
+     * @returns {Promise<Object>} Success message
+     */
+    sendContactMessage: builder.mutation({
+      query: (data) => ({
+        url: "/contact",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -52,4 +69,5 @@ export const {
   useGetAlbumsQuery,
   useGetPlaylistByIdQuery,
   useGetSongByIdQuery,
+  useSendContactMessageMutation,
 } = publicApi;

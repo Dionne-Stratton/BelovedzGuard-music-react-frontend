@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaFacebook,
   FaYoutube,
@@ -11,6 +12,7 @@ import "./styles.css";
 
 export default function Footer() {
   const [hovered, setHovered] = React.useState(null);
+  const navigate = useNavigate();
 
   const socialLinks = [
     {
@@ -57,12 +59,20 @@ export default function Footer() {
             aria-label={id}
             onMouseEnter={() => setHovered(id)}
             onMouseLeave={() => setHovered(null)}
-            className={`footer-icon ${hovered === id ? 'footer-icon:hover' : ''}`}
+            className={`footer-icon ${
+              hovered === id ? "footer-icon:hover" : ""
+            }`}
           >
             {icon}
           </a>
         ))}
       </div>
+      <button
+        className="footer-contact-btn"
+        onClick={() => navigate("/contact")}
+      >
+        Contact
+      </button>
       <div className="footer-copyright">
         © {new Date().getFullYear()} BelovedzGuard. All rights reserved.
       </div>

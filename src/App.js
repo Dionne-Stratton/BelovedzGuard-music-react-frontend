@@ -10,6 +10,7 @@ import Home from "./views/Home";
 import About from "./views/About";
 import Watch from "./views/Watch";
 import Partner from "./views/Partner";
+import Contact from "./views/Contact";
 import Listen from "./views/listen/Listen";
 import SongPlayer from "./components/features/SongPlayer";
 import LyricsViewer from "./components/shared/LyricsViewer";
@@ -193,6 +194,7 @@ function AppContent() {
               <Route path="/watch" element={<Watch />} />
               <Route path="/listen/*" element={<Listen />} />
               <Route path="/partner" element={<Partner />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </ErrorBoundary>
