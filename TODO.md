@@ -2,12 +2,12 @@
 
 ## Current
 
-- [] Add carousel of other recent songs to Recent Release section. Talk through details first.
-- [] And bug reporting form
+- [] And contact form
 - [] Add metadata to new songs for the new release section and remove the placeholder text.
 
 ## Completed
 
+- [x] Add carousel of other recent songs to Recent Release section.
 - [x] Allow lyrics viewer component to be resized by the user.
 - [x] Tweak padding on marketing pages on mobile devices.s
 - [x] Have all pages scroll to the top when the page is loaded.

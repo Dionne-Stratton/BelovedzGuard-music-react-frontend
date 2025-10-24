@@ -16,9 +16,12 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
   - [Authentication](#authentication)
   - [Music Player](#music-player)
   - [Playlist Management](#playlist-management)
+  - [Discovery & Featured Content](#discovery--featured-content)
   - [Theme System](#theme-system)
   - [Navigation](#navigation)
   - [Responsive Design](#responsive-design)
+  - [User Experience & Accessibility](#user-experience--accessibility)
+  - [Marketing & Content Pages](#marketing--content-pages)
 - [Component Architecture](#component-architecture)
 - [State Management](#state-management)
 - [Installation and Setup](#installation-and-setup)
@@ -67,7 +70,8 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Audio Controls** - Play, pause, next, previous functionality
 - **Progress Tracking** - Visual progress bar with seek functionality
 - **Volume Control** - Adjustable audio volume
-- **Lyrics Display** - Full-screen lyrics viewer
+- **Resizable Lyrics Viewer** - Draggable lyrics panel with persistent width preferences (200px-30vw)
+- **Lyrics Display** - Full-screen lyrics viewer with smooth transitions
 - **Song Information** - Display current song title, artist, and artwork
 
 ### Playlist Management
@@ -78,6 +82,16 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Playlist Organization** - View and manage all user playlists
 - **Song Management** - Add/remove songs from playlists
 - **Playlist Editor** - Dedicated interface for playlist editing
+
+### Discovery & Featured Content
+
+- **Recent Releases Showcase** - Featured card displaying the latest song with animated thumbnail and quick actions
+- **Recent Releases Carousel** - Horizontal scrolling carousel of the 5 most recent songs (150px thumbnails)
+- **Engaged State Highlighting** - Soft glow when playing from the 6-song showcase queue
+- **Auto-Scroll Navigation** - Carousel smoothly follows the currently playing track
+- **Context-Aware Playback** - Limited 6-song queue with auto-stop after final track
+- **End-of-Queue Prompt** - "Keep listening" card with link to full songs library
+- **Share Functionality** - Native share dialog with clipboard fallback for all songs and playlists
 
 ### Theme System
 
@@ -109,6 +123,17 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Context-Aware Shortcuts** - Different shortcuts for global, player, and navigation contexts
 - **Form Input Protection** - Keyboard shortcuts disabled when typing in forms
 - **Unsaved Changes Protection** - Prevents accidental data loss with custom modals
+- **Auto Scroll to Top** - Smooth navigation with instant scroll to top on page changes
+
+### Marketing & Content Pages
+
+- **Rich Media Integration** - Animated MP4 backgrounds and images throughout marketing pages
+- **Responsive Media** - Images and videos adapt to screen size (200px desktop, 120px tablet)
+- **Interactive Videos** - Auto-play on load, restart on hover, pause on mouse leave
+- **Gospel Message Section** - Visual storytelling with floating images and scripture references
+- **About Page** - Personal story with integrated video content
+- **Partner Page** - Partnership information with visual elements
+- **Smooth Scaling** - Clamp-based responsive typography for seamless text sizing
 
 ---
 
