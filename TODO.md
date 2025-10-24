@@ -4,9 +4,13 @@
 
 - [] Add metadata to new songs for the new release section and remove the placeholder text.
 - [] Implement rate limiting on backend for contact form endpoint (3 submissions per IP per hour recommended)
+- [] Create demo video of entire site
+- [] Add social share options
 
 ## Completed
 
+- [x] Add underline and link to song detail page by clicking the song title on the music player
+- [x] Use toast notifications for all share buttons across the site (with brief checkmark in button for immediate feedback)
 - [x] Add contact form with Yup validation, honeypot spam filter, and time-based validation
 - [x] Add carousel of other recent songs to Recent Release section.
 - [x] Allow lyrics viewer component to be resized by the user.

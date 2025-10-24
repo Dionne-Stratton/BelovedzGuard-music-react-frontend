@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useInView } from "react-intersection-observer";
 import SongThumbnail from "../../shared/SongThumbnail";
 import { ShareIcon } from "../../shared/Icons";
 import { trackUIEvent } from "../../../utils/analytics";
+import { useToastContext } from "../../../contexts/ToastContext";
 
 export default function SongCard({
   song,
@@ -15,8 +16,8 @@ export default function SongCard({
     triggerOnce: true,
     rootMargin: "200px",
   });
-
-  const [shareCopied, setShareCopied] = useState(false);
+  const { success: showSuccess, error: showError } = useToastContext();
+  const [shareCopied, setShareCopied] = React.useState(false);
 
   // Copy link to clipboard
   const handleShare = async (e) => {
@@ -25,10 +26,12 @@ export default function SongCard({
       const songUrl = `${window.location.origin}/listen/songs/${song._id}`;
       await navigator.clipboard.writeText(songUrl);
       setShareCopied(true);
+      showSuccess("Link copied to clipboard!");
       trackUIEvent("Share Song", "Copy Link");
       setTimeout(() => setShareCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy link:", err);
+      showError("Failed to copy link");
     }
   };
 

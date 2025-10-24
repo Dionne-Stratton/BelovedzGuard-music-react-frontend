@@ -10,6 +10,7 @@ import SongThumbnail from "../../shared/SongThumbnail";
 import { PlayIcon, ShareIcon } from "../../shared/Icons";
 import { getGenreMetadata } from "../../../utils/genreMetadata";
 import { trackUIEvent } from "../../../utils/analytics";
+import { useToastContext } from "../../../contexts/ToastContext";
 import RecentReleasesCarousel from "./RecentReleasesCarousel";
 import "./RecentReleaseCard.css";
 
@@ -21,6 +22,8 @@ import "./RecentReleaseCard.css";
 export default function RecentReleaseCard({ song, allSongs }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { success: showSuccess, error: showError } = useToastContext();
+  const [shareCopied, setShareCopied] = React.useState(false);
 
   if (!song) return null;
 
@@ -76,13 +79,16 @@ export default function RecentReleaseCard({ song, allSongs }) {
       } else {
         // Fallback: copy to clipboard
         await navigator.clipboard.writeText(shareData.url);
+        setShareCopied(true);
+        showSuccess("Link copied to clipboard!");
         trackUIEvent("Recent Release", "Copied song link", {
           songTitle: song.title,
         });
-        // TODO: Show toast notification
+        setTimeout(() => setShareCopied(false), 2000);
       }
     } catch (err) {
       console.error("Error sharing:", err);
+      showError("Failed to share song");
     }
   };
 
@@ -159,7 +165,7 @@ export default function RecentReleaseCard({ song, allSongs }) {
                 onClick={handleShare}
                 title="Share"
               >
-                <ShareIcon size={18} />
+                {shareCopied ? "✓" : <ShareIcon size={18} />}
               </button>
               <button
                 className="rr-btn rr-btn-secondary drop-shadow-thick"

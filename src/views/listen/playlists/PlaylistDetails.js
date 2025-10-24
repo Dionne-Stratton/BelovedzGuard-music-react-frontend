@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetPlaylistByIdQuery } from "../../../state/playlistApi";
@@ -10,6 +10,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { ShareIcon } from "../../../components/shared/Icons";
 import { trackUIEvent } from "../../../utils/analytics";
+import { useToastContext } from "../../../contexts/ToastContext";
 import "./PlaylistDetails.css";
 import themes from "../../../components/shared/themes";
 
@@ -18,6 +19,8 @@ export default function PlaylistDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
+  const { success: showSuccess, error: showError } = useToastContext();
+  const [shareCopied, setShareCopied] = React.useState(false);
 
   // Try to find playlist in RTK Query cache first
   const playlists = useSelector((state) => state.playlistApi?.queries);
@@ -40,9 +43,6 @@ export default function PlaylistDetails() {
 
   const playlist = existingPlaylist || fetchedPlaylist;
   const theme = themes[playlist?.theme] || themes.Faith;
-
-  // Share functionality
-  const [shareCopied, setShareCopied] = useState(false);
 
   // --- Handlers ---
 
@@ -85,10 +85,12 @@ export default function PlaylistDetails() {
     try {
       await navigator.clipboard.writeText(window.location.href);
       setShareCopied(true);
+      showSuccess("Link copied to clipboard!");
       trackUIEvent("Share Playlist", "Copy Link");
       setTimeout(() => setShareCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy link:", err);
+      showError("Failed to copy link");
     }
   };
 

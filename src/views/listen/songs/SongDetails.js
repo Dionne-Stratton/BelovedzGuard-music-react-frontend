@@ -9,6 +9,7 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import { trackUIEvent } from "../../../utils/analytics";
+import { useToastContext } from "../../../contexts/ToastContext";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs";
 import SongMediaSection from "../../../components/viewComponents/Songs/SongMediaSection";
@@ -21,6 +22,7 @@ export default function SongDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { success: showSuccess, error: showError } = useToastContext();
 
   // Get songs from Redux state first
   const songs = useSelector((state) => state.songs);
@@ -68,10 +70,12 @@ export default function SongDetails() {
     try {
       await navigator.clipboard.writeText(window.location.href);
       setShareCopied(true);
+      showSuccess("Link copied to clipboard!");
       trackUIEvent("Share Song", "Copy Link");
       setTimeout(() => setShareCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy link:", err);
+      showError("Failed to copy link");
     }
   };
 

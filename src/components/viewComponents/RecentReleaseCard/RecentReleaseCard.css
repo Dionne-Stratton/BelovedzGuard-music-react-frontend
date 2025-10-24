@@ -170,6 +170,10 @@
   color: #f0eae3;
   padding: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 42px;
+  min-height: 42px;
+  justify-content: center;
+  align-items: center;
 }
 
 .rr-btn-icon:hover {
