@@ -33,12 +33,42 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
 
+  // Spam prevention
+  const [pageLoadTime] = useState(Date.now());
+  const [website, setWebsite] = useState(""); // Honeypot field
+
   const handleBlur = (field) => {
     setTouched({ ...touched, [field]: true });
   };
 
+  // Check if form is valid for submit button
+  const isFormValid = () => {
+    return (
+      name.trim().length >= 2 &&
+      email.trim().length > 0 &&
+      email.includes("@") &&
+      subject.trim().length >= 3 &&
+      message.trim().length >= 10
+    );
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Spam prevention checks
+    // 1. Honeypot: reject if the hidden field is filled
+    if (website) {
+      trackUIEvent("Contact", "Spam blocked - honeypot");
+      return; // Silently reject
+    }
+
+    // 2. Time-based: reject if submitted too quickly (< 3 seconds)
+    const timeSinceLoad = Date.now() - pageLoadTime;
+    if (timeSinceLoad < 3000) {
+      trackUIEvent("Contact", "Spam blocked - too fast", { timeSinceLoad });
+      showError("Please take a moment to review your message.");
+      return;
+    }
 
     // Validate all fields
     try {
@@ -65,6 +95,7 @@ export default function Contact() {
         setEmail("");
         setSubject("");
         setMessage("");
+        setWebsite(""); // Reset honeypot
         setTouched({});
       } catch (error) {
         const errorMessage =
@@ -92,9 +123,13 @@ export default function Contact() {
         <p className="contact-intro">
           Want to get in touch? I'd love to hear from you!
         </p>
+        <p className="required-note">* marks a required field</p>
 
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-field">
+            <label htmlFor="name">
+              Name <span className="required-asterisk">*</span>
+            </label>
             <input
               type="text"
               id="name"
@@ -112,6 +147,9 @@ export default function Contact() {
           </div>
 
           <div className="form-field">
+            <label htmlFor="email">
+              Email <span className="required-asterisk">*</span>
+            </label>
             <input
               type="email"
               id="email"
@@ -129,6 +167,9 @@ export default function Contact() {
           </div>
 
           <div className="form-field">
+            <label htmlFor="subject">
+              Subject <span className="required-asterisk">*</span>
+            </label>
             <input
               type="text"
               id="subject"
@@ -145,7 +186,29 @@ export default function Contact() {
             )}
           </div>
 
+          {/* Honeypot field - hidden from users, visible to bots */}
+          <input
+            type="text"
+            name="website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            style={{
+              position: "absolute",
+              left: "-9999px",
+              width: "1px",
+              height: "1px",
+              opacity: 0,
+              pointerEvents: "none",
+            }}
+            tabIndex="-1"
+            autoComplete="off"
+            aria-hidden="true"
+          />
+
           <div className="form-field">
+            <label htmlFor="message">
+              Message <span className="required-asterisk">*</span>
+            </label>
             <textarea
               id="message"
               name="message"
@@ -165,7 +228,7 @@ export default function Contact() {
           <button
             type="submit"
             className="contact-submit-btn"
-            disabled={isLoading}
+            disabled={isLoading || !isFormValid()}
           >
             {isLoading ? "Sending..." : "Send Message"}
           </button>

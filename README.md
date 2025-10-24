@@ -22,6 +22,7 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
   - [Responsive Design](#responsive-design)
   - [User Experience & Accessibility](#user-experience--accessibility)
   - [Marketing & Content Pages](#marketing--content-pages)
+  - [Contact Form](#contact-form)
 - [Component Architecture](#component-architecture)
 - [State Management](#state-management)
 - [Installation and Setup](#installation-and-setup)
@@ -135,6 +136,19 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Partner Page** - Partnership information with visual elements
 - **Smooth Scaling** - Clamp-based responsive typography for seamless text sizing
 
+### Contact Form
+
+- **Comprehensive Validation** - Yup schema validation with real-time error feedback
+- **Required Field Indicators** - Visual asterisks and "required field" notice for user clarity
+- **Smart Submit Button** - Automatically disabled until all fields are properly filled
+- **Spam Protection** - Multi-layered protection including:
+  - **Honeypot Field** - Hidden field that catches automated bots silently
+  - **Time-Based Validation** - Rejects submissions faster than 3 seconds
+  - **Analytics Tracking** - Logs spam attempts for monitoring and improvement
+- **Toast Notifications** - Success/error feedback using the application's custom toast system
+- **Responsive Design** - Mobile-optimized layout with touch-friendly inputs
+- **Accessibility** - Proper labels, ARIA attributes, and keyboard navigation
+
 ---
 
 ## Component Architecture
@@ -169,6 +183,7 @@ src/
 │   ├── About.js                    # About page
 │   ├── Watch.js                    # Watch page
 │   ├── Partner.js                  # Partner page
+│   ├── Contact.js                  # Contact form page
 │   └── listen/                     # Music browsing pages
 │       ├── Listen.js               # Main listen layout
 │       ├── songs/                  # Song pages
@@ -260,7 +275,7 @@ This enables the app to track whether music is playing from songs list, album, o
 ### API Integration
 
 - **RTK Query** - Efficient data fetching and caching
-- **Public API** - Songs, albums, and public playlists
+- **Public API** - Songs, albums, public playlists, and contact form submission
 - **Playlist API** - User-specific playlist operations
 - **Auth0 Integration** - Secure authentication flow
 
@@ -457,7 +472,7 @@ The application features a comprehensive custom UI system replacing browser defa
 
 ### Routing Structure
 
-- **Main Routes** - Home, About, Watch, Partner, Listen
+- **Main Routes** - Home, About, Watch, Partner, Contact, Listen
 - **Nested Listen Routes** - Songs, Albums, Playlists with sub-routes
 - **Dynamic Routes** - Song details, playlist editing, album views
 - **Protected Routes** - Authentication-required sections

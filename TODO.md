@@ -2,11 +2,12 @@
 
 ## Current
 
-- [] And contact form
 - [] Add metadata to new songs for the new release section and remove the placeholder text.
+- [] Implement rate limiting on backend for contact form endpoint (3 submissions per IP per hour recommended)
 
 ## Completed
 
+- [x] Add contact form with Yup validation, honeypot spam filter, and time-based validation
 - [x] Add carousel of other recent songs to Recent Release section.
 - [x] Allow lyrics viewer component to be resized by the user.
 - [x] Tweak padding on marketing pages on mobile devices.s
