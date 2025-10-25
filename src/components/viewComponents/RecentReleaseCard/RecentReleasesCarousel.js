@@ -20,16 +20,6 @@ const RecentReleasesCarousel = ({ songs }) => {
     queue.length === 6 &&
     queueIds.every((id, idx) => id === recentSongsIds[idx]);
 
-  // Firefox fix: Force carousel to always behave as "active"
-  const forceActive = true;
-
-  // Force re-render on mount to "prime" video elements for Firefox
-  useEffect(() => {
-    // This effect runs on mount and should trigger the same state changes
-    // that happen when the carousel becomes "active"
-    console.log("Carousel mounted - priming for Firefox");
-  }, []);
-
   // Firefox fix: Keep video elements "active" even when player is paused
   useEffect(() => {
     if (!isPlaying) {
@@ -43,9 +33,7 @@ const RecentReleasesCarousel = ({ songs }) => {
             .then(() => {
               video.pause();
             })
-            .catch(() => {
-              // Ignore errors
-            });
+            .catch(() => {});
         }
       });
     }
@@ -80,7 +68,11 @@ const RecentReleasesCarousel = ({ songs }) => {
   }, [currentCarouselIndex, isRecentReleasesQueue, isPlaying]);
 
   return (
-    <div className={`recent-releases-carousel ${forceActive ? "engaged" : ""}`}>
+    <div
+      className={`recent-releases-carousel ${
+        isRecentReleasesQueue && isPlaying ? "engaged" : ""
+      }`}
+    >
       <div className="carousel-scroll-container" ref={scrollContainerRef}>
         {/* Song thumbnails (songs 1-5) */}
         {carouselSongs.map((song, index) => {
