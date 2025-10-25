@@ -118,6 +118,13 @@
   background-color: #5c554c;
 }
 
+/* Center SVGs vertically in buttons */
+.open-editor-btn svg,
+.share-button svg {
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
 /* Mobile responsive styling for button layout */
 @media (max-width: 600px) {
   .playlist-edit-top {

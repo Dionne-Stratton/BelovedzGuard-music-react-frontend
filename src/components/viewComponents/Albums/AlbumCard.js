@@ -33,7 +33,7 @@ export default function AlbumCard({
             disabled={!album.songs?.length}
             title={album.songs?.length ? "Play album" : "No songs yet"}
           >
-            <PlayIcon size={16} /> Play Album
+            <PlayIcon size={20} /> Play Album
           </button>
         </div>
       </div>

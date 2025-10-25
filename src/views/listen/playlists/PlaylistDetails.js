@@ -117,7 +117,7 @@ export default function PlaylistDetails() {
       <div className="playlist-edit-top">
         {isOwner && (
           <button className="open-editor-btn" onClick={handleEdit}>
-            <EditIcon size={16} /> Open in Editor
+            <EditIcon size={20} /> Open in Editor
           </button>
         )}
         <button
@@ -127,11 +127,11 @@ export default function PlaylistDetails() {
         >
           {shareCopied ? (
             <>
-              <CheckIcon size={16} /> Copied!
+              <CheckIcon size={20} /> Copied!
             </>
           ) : (
             <>
-              <ShareIcon size={16} /> Share
+              <ShareIcon size={20} /> Share
             </>
           )}
         </button>
@@ -147,7 +147,7 @@ export default function PlaylistDetails() {
         <div className="playlist-details-header">
           <h2>{playlist.name}</h2>
           <button className="play-all-btn" onClick={handlePlayAll}>
-            <PlayIcon size={16} /> Play All
+            <PlayIcon size={20} /> Play All
           </button>
         </div>
 

@@ -32,7 +32,7 @@ export default function PlaylistCard({
           aria-label="Play"
         >
           <span className="tooltip-text">Play</span>
-          <PlayIcon size={16} />
+          <PlayIcon size={20} />
         </button>
 
         <button
@@ -41,7 +41,7 @@ export default function PlaylistCard({
           aria-label="Edit"
         >
           <span className="tooltip-text">Edit</span>
-          <EditIcon size={16} />
+          <EditIcon size={20} />
         </button>
 
         <button
@@ -50,7 +50,7 @@ export default function PlaylistCard({
           aria-label="Delete"
         >
           <span className="tooltip-text">Delete</span>
-          <TrashIcon size={16} />
+          <TrashIcon size={20} />
         </button>
       </div>
     </div>

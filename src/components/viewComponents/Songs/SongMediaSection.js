@@ -24,7 +24,7 @@ export default function SongMediaSection({
 
       <div className="song-controls">
         <button className="song-control-btn" onClick={onPlay}>
-          <PlayIcon size={16} /> Play Song
+          <PlayIcon size={20} /> Play Song
         </button>
         <button className="song-control-btn" onClick={onAddToPlaylist}>
           + Add to Playlist
