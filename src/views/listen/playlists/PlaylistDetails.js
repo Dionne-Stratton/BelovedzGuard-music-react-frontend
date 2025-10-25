@@ -8,7 +8,12 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import { useAuth0 } from "@auth0/auth0-react";
-import { ShareIcon } from "../../../components/shared/Icons";
+import {
+  EditIcon,
+  ShareIcon,
+  CheckIcon,
+  PlayIcon,
+} from "../../../components/shared/Icons";
 import { trackUIEvent } from "../../../utils/analytics";
 import { useToastContext } from "../../../contexts/ToastContext";
 import "./PlaylistDetails.css";
@@ -112,7 +117,7 @@ export default function PlaylistDetails() {
       <div className="playlist-edit-top">
         {isOwner && (
           <button className="open-editor-btn" onClick={handleEdit}>
-            ✏️ Open in Editor
+            <EditIcon size={16} /> Open in Editor
           </button>
         )}
         <button
@@ -121,7 +126,9 @@ export default function PlaylistDetails() {
           title="Copy link to share"
         >
           {shareCopied ? (
-            "✓ Copied!"
+            <>
+              <CheckIcon size={16} /> Copied!
+            </>
           ) : (
             <>
               <ShareIcon size={16} /> Share
@@ -140,7 +147,7 @@ export default function PlaylistDetails() {
         <div className="playlist-details-header">
           <h2>{playlist.name}</h2>
           <button className="play-all-btn" onClick={handlePlayAll}>
-            ▶ Play All
+            <PlayIcon size={16} /> Play All
           </button>
         </div>
 
@@ -159,7 +166,7 @@ export default function PlaylistDetails() {
                 onClick={() => handlePlaySong(song._id)}
                 title="Play this song"
               >
-                ▶
+                <PlayIcon size={14} />
               </button>
             </div>
           ))}

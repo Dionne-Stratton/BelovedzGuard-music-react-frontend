@@ -102,7 +102,12 @@ body {
 
 /* Trigger a quick fade-in then fade-out when hovered */
 .thumbnail-wrapper:hover .play-overlay {
-  animation: fadeOverlay 1s ease forwards;
+  animation: fadeOverlay 2s ease forwards;
+}
+
+/* Add shadow to headphones icon for visibility over light backgrounds */
+.play-overlay svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
 }
 
 /* Keyframes for one-time fade in/out */

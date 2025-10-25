@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import themes from "./themes"; // ✅ default export object (keys: Faith, Joy, ...; fields: icon, gradient)
 import ThemeThumbnail from "./ThemeThumbnail";
+import { ChevronDownIcon } from "./Icons";
 import "./ThemeDropdown.css";
 
 /**
@@ -113,15 +114,20 @@ export default function ThemeDropdown({ theme, onSelect }) {
       >
         <span className="pe-theme-left">
           <span className="pe-theme-icon">
-            {selected?.icon?.startsWith("/") ? (
+            {typeof selected?.icon === "string" &&
+            selected.icon.startsWith("/") ? (
               <img src={selected.icon} alt="" className="pe-theme-svg-icon" />
+            ) : typeof selected?.icon === "function" ? (
+              <selected.icon size={20} />
             ) : (
               selected?.icon
             )}
           </span>
           <span className="pe-theme-name">{theme}</span>
         </span>
-        <span className="pe-theme-chevron">▼</span>
+        <span className="pe-theme-chevron">
+          <ChevronDownIcon size={14} />
+        </span>
       </button>
 
       {open && (

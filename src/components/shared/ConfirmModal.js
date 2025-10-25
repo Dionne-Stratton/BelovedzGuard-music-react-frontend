@@ -1,4 +1,5 @@
 import React from "react";
+import { WarningIcon, InfoIcon } from "./Icons";
 import "./ConfirmModal.css";
 
 /**
@@ -45,12 +46,12 @@ export default function ConfirmModal({
   const getIcon = () => {
     switch (type) {
       case "danger":
-        return "⚠";
+        return <WarningIcon size={24} />;
       case "warning":
-        return "⚠";
+        return <WarningIcon size={24} />;
       case "info":
       default:
-        return "ℹ";
+        return <InfoIcon size={24} />;
     }
   };
 

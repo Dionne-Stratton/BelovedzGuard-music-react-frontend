@@ -1,7 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import SongThumbnail from "../../shared/SongThumbnail";
-import { ShareIcon } from "../../shared/Icons";
+import { ShareIcon, HeadphonesIcon } from "../../shared/Icons";
 import { trackUIEvent } from "../../../utils/analytics";
 import { useToastContext } from "../../../contexts/ToastContext";
 
@@ -45,7 +45,9 @@ export default function SongCard({
           </div>
 
           <div className="thumbnail-wrapper" onClick={onClick}>
-            <div className="play-overlay">🎧</div>
+            <div className="play-overlay">
+              <HeadphonesIcon size={60} />
+            </div>
             <SongThumbnail
               title={song.title}
               thumbnail={song.songThumbnail}

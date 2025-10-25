@@ -15,6 +15,7 @@ import {
   setCurrentSong,
   setPlaying,
 } from "../../../state/playerSlice";
+import { PlusIcon } from "../../../components/shared/Icons";
 import PlaylistCard from "../../../components/viewComponents/Playlists/PlaylistCard";
 
 export default function Playlists() {
@@ -92,7 +93,7 @@ export default function Playlists() {
         <h2>Your Playlists</h2>
         {isAuthenticated && (
           <button className="create-playlist-button" onClick={handleCreate}>
-            <span>✚ Create Playlist</span>
+            <PlusIcon size={16} /> Create Playlist
           </button>
         )}
       </div>

@@ -7,7 +7,7 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import SongThumbnail from "../../shared/SongThumbnail";
-import { PlayIcon, ShareIcon } from "../../shared/Icons";
+import { PlayIcon, ShareIcon, HeadphonesIcon } from "../../shared/Icons";
 import { getGenreMetadata } from "../../../utils/genreMetadata";
 import { trackUIEvent } from "../../../utils/analytics";
 import { useToastContext } from "../../../contexts/ToastContext";
@@ -109,7 +109,9 @@ export default function RecentReleaseCard({ song, allSongs }) {
             className="recent-release-thumbnail thumbnail-wrapper drop-shadow-thick"
             onClick={handleThumbnailClick}
           >
-            <div className="play-overlay">🎧</div>
+            <div className="play-overlay">
+              <HeadphonesIcon size={60} />
+            </div>
             <SongThumbnail
               title={song.title}
               thumbnail={song.songThumbnail}

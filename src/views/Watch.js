@@ -47,7 +47,7 @@ export default function Watch() {
                   className="video-thumbnail"
                 />
                 <div className="play-overlay drop-shadow-thick">
-                  <PlayIcon size={32} />
+                  <PlayIcon size={96} />
                 </div>
               </div>
               <div className="video-title">{song.title}</div>

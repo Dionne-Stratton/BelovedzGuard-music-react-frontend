@@ -8,6 +8,7 @@ import {
   //   FaItunes,
   FaBandcamp,
 } from "react-icons/fa";
+import { UpArrowIcon } from "../../shared/Icons";
 import "./styles.css";
 
 export default function Footer() {
@@ -80,7 +81,7 @@ export default function Footer() {
         className="footer-back-to-top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        Back to top ↑
+        Back to top <UpArrowIcon size={16} />
       </div>
     </footer>
   );
