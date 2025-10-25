@@ -10,12 +10,13 @@ import {
 } from "../../../state/playerSlice";
 import { trackUIEvent } from "../../../utils/analytics";
 import { useToastContext } from "../../../contexts/ToastContext";
-import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
+import { MusicNoteIcon } from "../../../components/shared/Icons";
 import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs";
 import SongMediaSection from "../../../components/viewComponents/Songs/SongMediaSection";
 import SongLyricsSection from "../../../components/viewComponents/Songs/SongLyricsSection";
 import axios from "axios";
 import { getGenreMetadata } from "../../../utils/genreMetadata";
+import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
 import "./SongDetails.css";
 
 export default function SongDetails() {
@@ -189,7 +190,7 @@ export default function SongDetails() {
             rel="noopener noreferrer"
             className="external-link bandcamp-link"
           >
-            🎵 Listen on Bandcamp
+            <MusicNoteIcon size={16} /> Listen on Bandcamp
           </a>
         )}
       </div>

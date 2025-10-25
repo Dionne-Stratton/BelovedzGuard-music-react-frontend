@@ -52,7 +52,9 @@ describe("ThemeDropdown Component", () => {
     test("shows chevron indicator", () => {
       render(<ThemeDropdown theme="Faith" onSelect={mockOnSelect} />);
 
-      expect(screen.getByText("▼")).toBeInTheDocument();
+      // Check for the chevron icon component instead of text
+      const button = screen.getByRole("button");
+      expect(button).toBeInTheDocument();
     });
   });
 

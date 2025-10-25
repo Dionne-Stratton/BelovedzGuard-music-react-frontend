@@ -1,4 +1,6 @@
 import React from "react";
+import { MusicNoteIcon } from "./Icons";
+import "./ErrorBoundary.css";
 
 /**
  * ErrorBoundary component to catch JavaScript errors anywhere in the child component tree
@@ -61,7 +63,9 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="error-boundary">
           <div className="error-boundary-content">
-            <h2>🎵 Oops! Something went wrong</h2>
+            <h2>
+              <MusicNoteIcon size={24} /> Oops! Something went wrong
+            </h2>
             <p>
               We're sorry, but something unexpected happened while loading the
               music player.

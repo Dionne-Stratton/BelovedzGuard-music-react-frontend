@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { CloseIcon } from "./Icons";
 import "./LyricsViewer.css";
 
 const LyricsViewer = ({ setDisplayLyrics, lyricsWidth, setLyricsWidth }) => {
@@ -110,7 +111,7 @@ const LyricsViewer = ({ setDisplayLyrics, lyricsWidth, setLyricsWidth }) => {
       />
 
       <button className="close-btn" onClick={() => setDisplayLyrics(false)}>
-        ×
+        <CloseIcon size={20} />
       </button>
 
       <div className="lyrics-body">

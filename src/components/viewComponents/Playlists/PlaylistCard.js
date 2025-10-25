@@ -1,5 +1,6 @@
 import React from "react";
 import themes from "../../shared/themes";
+import { PlayIcon, EditIcon, TrashIcon } from "../../shared/Icons";
 
 export default function PlaylistCard({
   playlist,
@@ -31,7 +32,7 @@ export default function PlaylistCard({
           aria-label="Play"
         >
           <span className="tooltip-text">Play</span>
-          <span className="icon">►</span>
+          <PlayIcon size={16} />
         </button>
 
         <button
@@ -40,7 +41,7 @@ export default function PlaylistCard({
           aria-label="Edit"
         >
           <span className="tooltip-text">Edit</span>
-          <span className="icon">🖍</span>
+          <EditIcon size={16} />
         </button>
 
         <button
@@ -49,7 +50,7 @@ export default function PlaylistCard({
           aria-label="Delete"
         >
           <span className="tooltip-text">Delete</span>
-          <span className="icon">🗑</span>
+          <TrashIcon size={16} />
         </button>
       </div>
     </div>
