@@ -505,6 +505,23 @@ The application features a comprehensive custom UI system replacing browser defa
 
 ---
 
+## Browser Compatibility
+
+### Known Issues
+
+- **Firefox**: Carousel video hover behavior requires a workaround due to Firefox-specific video element state management. See `RecentReleasesCarousel.js` for details.
+
+### Testing
+
+This application has been tested on:
+
+- Chrome ✅
+- Firefox ✅ (with workaround)
+- Safari ✅
+- Edge ✅
+
+---
+
 ## Contributing
 
 This project follows modern React best practices and includes:
