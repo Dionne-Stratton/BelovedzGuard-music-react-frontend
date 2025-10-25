@@ -49,7 +49,7 @@ describe("ErrorBoundary Component", () => {
       );
 
       expect(
-        screen.getByText("🎵 Oops! Something went wrong")
+        screen.getByText("Oops! Something went wrong")
       ).toBeInTheDocument();
       expect(
         screen.getByText(/We're sorry, but something unexpected happened/)
@@ -91,7 +91,7 @@ describe("ErrorBoundary Component", () => {
 
       // Should show error UI
       expect(
-        screen.getByText("🎵 Oops! Something went wrong")
+        screen.getByText("Oops! Something went wrong")
       ).toBeInTheDocument();
 
       // Retry button should exist and be clickable
@@ -207,7 +207,7 @@ describe("ErrorBoundary Component", () => {
       );
 
       const errorHeading = screen.getByRole("heading", { level: 2 });
-      expect(errorHeading).toHaveTextContent("🎵 Oops! Something went wrong");
+      expect(errorHeading).toHaveTextContent("Oops! Something went wrong");
     });
   });
 });
