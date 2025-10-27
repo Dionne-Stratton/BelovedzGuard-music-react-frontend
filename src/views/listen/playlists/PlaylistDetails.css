@@ -19,7 +19,7 @@
 .playlist-details-header h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #f6f6f6;
+  color: var(--color-text-primary);
   text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
   padding: 15px;
   margin: 0;
@@ -27,7 +27,7 @@
 
 .play-all-btn {
   background: rgba(38, 36, 36, 0.513);
-  color: #f6f6f6;
+  color: var(--color-text-primary);
   border: none;
   border-radius: 6px;
   padding: 0.4rem 0.8rem;
@@ -65,20 +65,20 @@
 .playlist-song-title {
   margin-left: 0.8rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-white);
   font-size: 1.1rem;
 }
 
 .playlist-song-genre {
   text-align: right;
-  color: #d0c5b8;
+  color: var(--color-text-secondary);
   font-size: 0.9rem;
   margin-right: 1rem;
 }
 
 .playlist-song-play {
   background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  color: var(--color-white);
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -100,8 +100,8 @@
 
 .open-editor-btn,
 .share-button {
-  background-color: #4c4740;
-  color: #ebe7e2;
+  background-color: var(--color-card-gradient-start);
+  color: var(--color-text-title);
   border: none;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -115,7 +115,7 @@
 
 .open-editor-btn:hover,
 .share-button:hover {
-  background-color: #5c554c;
+  background-color: var(--color-card-hover);
 }
 
 /* Center SVGs vertically in buttons */

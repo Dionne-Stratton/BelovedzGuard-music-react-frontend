@@ -7,6 +7,8 @@
 
 ## Completed
 
+- [x] Update colors.js to have the correct colors and use them in the app.
+
 - [x] Add metadata to new songs for the new release section and remove the placeholder text.
 - [x] Implement rate limiting on backend for contact form endpoint (3 submissions per IP per hour recommended)
 - [x] Add underline and link to song detail page by clicking the song title on the music player

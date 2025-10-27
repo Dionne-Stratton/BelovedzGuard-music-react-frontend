@@ -16,12 +16,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #413b34;
-  color: #fff;
+  background-color: var(--color-player-bg);
+  color: var(--color-white);
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--color-border-dark);
   z-index: 1000;
   box-shadow: 0 -3px 10px rgba(36, 33, 33, 0.75);
 }
@@ -50,7 +50,7 @@
 .song-player-title {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #ebe7e2;
+  color: var(--color-text-title);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
   max-width: 130px;
   cursor: pointer;
@@ -85,18 +85,18 @@
 }
 
 .song-player-controls .active {
-  background-color: #41321f;
+  background-color: var(--color-player-active);
 }
 
 .song-player-progress-time {
   font-size: 0.8rem;
-  color: #dedad9;
+  color: var(--color-text-secondary);
 }
 
 .song-player-progress {
   flex-grow: 1;
   height: 4px;
-  background: #7d7771; /* Track color */
+  background: var(--color-player-accent);
   position: relative;
   cursor: pointer;
 }
@@ -104,13 +104,13 @@
 .song-player-progress-fill {
   position: absolute;
   height: 100%;
-  background: #fff; /* Fill color */
+  background: var(--color-white);
   transition: width 0.2s ease;
 }
 
 .song-player-lyrics-button {
-  background-color: #52504e;
-  color: #ebe7e2;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   border: none;
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
@@ -120,13 +120,13 @@
 }
 
 .song-player-lyrics-button:hover {
-  background-color: #6b6966;
-  color: #fff;
+  background-color: var(--color-button-hover-alt);
+  color: var(--color-white);
 }
 
 .song-player-add-to-playlist-button {
-  background-color: #52504e;
-  color: #ebe7e2;
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
   border: none;
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
@@ -137,15 +137,15 @@
 }
 
 .song-player-add-to-playlist-button:hover {
-  background-color: #6b6966;
-  color: #fff;
+  background-color: var(--color-button-hover-alt);
+  color: var(--color-white);
 }
 
 .close-player-button {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  color: #dedad9;
+  color: var(--color-text-secondary);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -155,7 +155,7 @@ input[type="range"] {
   /* -webkit-appearance: none; */
   width: 100px;
   height: 6px;
-  background: #444; /* Track color */
+  background: var(--color-range-track);
   border-radius: 5px;
   outline: none;
   margin-left: 1rem;
@@ -166,24 +166,24 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 14px;
   height: 14px;
-  background: #fff; /* Thumb color */
+  background: var(--color-range-thumb);
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #888;
+  border: 2px solid var(--color-range-border);
 }
 
 /* Firefox */
 input[type="range"]::-moz-range-thumb {
   width: 14px;
   height: 14px;
-  background: #fff;
+  background: var(--color-range-thumb);
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #888;
+  border: 2px solid var(--color-range-border);
 }
 
 input[type="range"]::-moz-range-track {
-  background: #7a6969;
+  background: var(--color-range-track-alt);
   height: 6px;
   border-radius: 5px;
 }

@@ -29,7 +29,7 @@
 .recent-release-badge {
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.3);
-  color: #ebe7e2;
+  color: var(--color-text-title);
   padding: 0.1rem 0.2rem;
   border-radius: 6px;
   font-size: 1.2rem;
@@ -77,7 +77,7 @@
 .recent-release-title {
   font-size: 2rem;
   font-weight: 600;
-  color: #f0eae3;
+  color: var(--color-text-light);
   margin: 0;
   text-align: left;
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
@@ -105,7 +105,7 @@
 .recent-release-genre-label {
   font-size: 1rem;
   font-weight: 500;
-  color: #f0eae3;
+  color: var(--color-text-light);
 }
 
 .recent-release-description {
@@ -143,20 +143,20 @@
 }
 
 .rr-btn-primary {
-  background-color: #4c4740;
-  color: #ebe7e2;
+  background-color: var(--color-card-gradient-start);
+  color: var(--color-text-title);
   padding: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .rr-btn-primary:hover {
-  background-color: #5c554c;
+  background-color: var(--color-card-hover);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
 .rr-btn-secondary {
   background: rgba(255, 255, 255, 0.1);
-  color: #f0eae3;
+  color: var(--color-text-light);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -167,7 +167,7 @@
 
 .rr-btn-icon {
   background: transparent;
-  color: #f0eae3;
+  color: var(--color-text-light);
   padding: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
   min-width: 42px;
