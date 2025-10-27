@@ -136,16 +136,15 @@ export default function RecentReleaseCard({ song, allSongs }) {
               </span>
             </div>
 
-            {/* Placeholder for description */}
-            <p className="recent-release-description">
-              A new song of worship, birthed in the presence of Jesus. Let this
-              melody draw your heart closer to Him.
-            </p>
+            {/* Description */}
+            {song.description && (
+              <p className="recent-release-description">{song.description}</p>
+            )}
 
-            {/* Placeholder for scripture reference */}
-            <p className="recent-release-scripture">
-              Scripture reference coming soon
-            </p>
+            {/* Scripture verse */}
+            {song.verse && (
+              <p className="recent-release-scripture">{song.verse}</p>
+            )}
 
             {/* Action buttons */}
             <div className="recent-release-actions">
