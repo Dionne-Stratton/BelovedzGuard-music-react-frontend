@@ -2,13 +2,13 @@
 
 ## Current
 
-- [] Add metadata to new songs for the new release section and remove the placeholder text.
-- [] Implement rate limiting on backend for contact form endpoint (3 submissions per IP per hour recommended)
 - [] Create demo video of entire site
 - [] Add social share options
 
 ## Completed
 
+- [x] Add metadata to new songs for the new release section and remove the placeholder text.
+- [x] Implement rate limiting on backend for contact form endpoint (3 submissions per IP per hour recommended)
 - [x] Add underline and link to song detail page by clicking the song title on the music player
 - [x] Use toast notifications for all share buttons across the site (with brief checkmark in button for immediate feedback)
 - [x] Add contact form with Yup validation, honeypot spam filter, and time-based validation
