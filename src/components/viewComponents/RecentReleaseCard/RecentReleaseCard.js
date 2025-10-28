@@ -101,6 +101,10 @@ export default function RecentReleaseCard({ song, allSongs }) {
           <span className="recent-release-badge drop-shadow-thick">
             ✨ New Release!
           </span>
+          <div className="recent-release-header-genre-icon">
+            {genreData.icon}
+            <div className="tooltip">{genreData.label}</div>
+          </div>
         </div>
 
         <div className="recent-release-content">
@@ -126,15 +130,6 @@ export default function RecentReleaseCard({ song, allSongs }) {
             <h3 className="recent-release-title" onClick={handleMoreClick}>
               {song.title}
             </h3>
-
-            <div className="recent-release-genre-info">
-              <span className="recent-release-genre-icon">
-                {genreData.icon}
-              </span>
-              <span className="recent-release-genre-label">
-                {genreData.label}
-              </span>
-            </div>
 
             {/* Description */}
             {song.description && (

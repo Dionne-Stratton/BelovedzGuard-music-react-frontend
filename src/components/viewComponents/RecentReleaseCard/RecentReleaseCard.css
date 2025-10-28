@@ -24,6 +24,9 @@
 
 .recent-release-header {
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .recent-release-badge {
@@ -78,7 +81,7 @@
   font-size: 2rem;
   font-weight: 600;
   color: var(--color-text-light);
-  margin: 0;
+  margin: 0 0 1rem 0;
   text-align: left;
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
   cursor: pointer;
@@ -100,6 +103,43 @@
 
 .recent-release-genre-icon {
   font-size: 1.2rem;
+}
+
+/* Genre icon in header */
+.recent-release-header-genre-icon {
+  font-size: 2rem;
+  filter: grayscale(30%) opacity(90%);
+  cursor: default;
+  text-shadow: 0 0 3px #232121ff;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.recent-release-header-genre-icon:hover {
+  filter: grayscale(0%) opacity(100%);
+  transform: scale(1.1);
+}
+
+.recent-release-header-genre-icon .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  right: 0;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  transition: opacity 0.2s;
+}
+
+.recent-release-header-genre-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .recent-release-genre-label {
@@ -194,6 +234,10 @@
     aspect-ratio: 1;
   }
 
+  .recent-release-header-genre-icon {
+    font-size: 1.8rem;
+  }
+
   .recent-release-title {
     font-size: 1.5rem;
   }
@@ -225,5 +269,9 @@
 
   .recent-release-description {
     font-size: 0.9rem;
+  }
+
+  .recent-release-header-genre-icon {
+    font-size: 1.5rem;
   }
 }
