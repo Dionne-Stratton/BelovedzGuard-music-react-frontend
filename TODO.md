@@ -2,10 +2,11 @@
 
 ## Current
 
-- [] Create demo video of entire site
 - [] Add social share options
 
 ## Completed
+
+- [x] Use description and verse on the song details page to display the description and verse of the song if it exists.
 
 - [x] Update colors.js to have the correct colors and use them in the app.
 

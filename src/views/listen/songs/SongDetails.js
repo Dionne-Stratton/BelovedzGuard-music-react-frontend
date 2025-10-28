@@ -152,6 +152,16 @@ export default function SongDetails() {
         <p className="song-artist">by BelovedzGuard</p>
       </div>
 
+      {/* Description and Verse */}
+      {(song.description || song.verse) && (
+        <div className="song-description-verse-section">
+          {song.description && (
+            <p className="song-description">{song.description}</p>
+          )}
+          {song.verse && <p className="song-verse">{song.verse}</p>}
+        </div>
+      )}
+
       {/* Main Content */}
       <div className="song-details-content">
         {/* Left Column - Media */}
