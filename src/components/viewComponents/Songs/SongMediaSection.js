@@ -42,12 +42,41 @@ export default function SongMediaSection({
         </button>
       </div>
 
-      <div className="song-info">
-        <div className="genre-info">
-          <span className="genre-icon">{meta.icon}</span>
-          <span className="genre-label">{meta.label}</span>
+      {/* Description and Verse */}
+      {(song.description || song.verse) && (
+        <div className="song-media-description-verse">
+          {song.description && (
+            <p className="song-media-description">{song.description}</p>
+          )}
+          {song.verse && (
+            <>
+              {(() => {
+                // Use regex to split on hyphen with optional spaces
+                const match = song.verse.match(/^(.+?)\s*-\s*(.+)$/);
+                if (match) {
+                  const verseText = match[1].trim();
+                  const reference = match[2].trim();
+                  return (
+                    <div className="song-media-verse-container">
+                      <p className="song-media-verse-text">{verseText}</p>
+                      <p className="song-media-verse-reference">
+                        - {reference}
+                      </p>
+                    </div>
+                  );
+                } else {
+                  // If no separator found, just display the verse as is
+                  return (
+                    <div className="song-media-verse-container">
+                      <p className="song-media-verse-text">{song.verse}</p>
+                    </div>
+                  );
+                }
+              })()}
+            </>
+          )}
         </div>
-      </div>
+      )}
     </div>
   );
 }
