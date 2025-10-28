@@ -316,6 +316,10 @@
     padding: 1rem;
   }
 
+  .song-details-header {
+    margin-top: 1.5rem;
+  }
+
   .song-details-title {
     font-size: 2rem;
   }
@@ -365,5 +369,6 @@
     width: 100%;
     max-width: 300px;
     text-align: center;
+    justify-content: center;
   }
 }
