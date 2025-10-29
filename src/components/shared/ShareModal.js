@@ -29,7 +29,7 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
     let shareUrl = "";
     switch (platform) {
       case "facebook":
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        shareUrl = `https://www.facebook.com/sharer.php?u=${encodedUrl}`;
         break;
       case "twitter":
         shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`;
@@ -51,7 +51,11 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
     }
 
     console.log("Sharing to", platform, "with URL:", shareUrl);
-    const popup = window.open(shareUrl, "_blank", "width=600,height=400,menubar=no,toolbar=no,resizable=yes,scrollbars=yes");
+    const popup = window.open(
+      shareUrl,
+      "_blank",
+      "width=600,height=400,menubar=no,toolbar=no,resizable=yes,scrollbars=yes"
+    );
     if (!popup) {
       showError("Popup blocked. Please allow popups for this site.");
     }
@@ -74,7 +78,7 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
               onClick={() => handleSocialShare("facebook")}
               title="Share on Facebook"
             >
-              <span className="share-social-icon">🔷</span>
+              <span className="share-social-icon">f</span>
               <span>Facebook</span>
             </button>
             <button
@@ -82,15 +86,15 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
               onClick={() => handleSocialShare("twitter")}
               title="Share on Twitter"
             >
-              <span className="share-social-icon">🐦</span>
-              <span>Twitter</span>
+              <span className="share-social-icon">𝕏</span>
+              <span>X</span>
             </button>
             <button
               className="share-social-btn"
               onClick={() => handleSocialShare("reddit")}
               title="Share on Reddit"
             >
-              <span className="share-social-icon">🤖</span>
+              <span className="share-social-icon">r</span>
               <span>Reddit</span>
             </button>
             <button
@@ -98,7 +102,7 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
               onClick={() => handleSocialShare("linkedin")}
               title="Share on LinkedIn"
             >
-              <span className="share-social-icon">💼</span>
+              <span className="share-social-icon">in</span>
               <span>LinkedIn</span>
             </button>
             <button
@@ -106,7 +110,7 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
               onClick={() => handleSocialShare("tumblr")}
               title="Share on Tumblr"
             >
-              <span className="share-social-icon">🎨</span>
+              <span className="share-social-icon">t</span>
               <span>Tumblr</span>
             </button>
             <button
@@ -114,7 +118,7 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
               onClick={() => handleSocialShare("email")}
               title="Share via Email"
             >
-              <span className="share-social-icon">✉️</span>
+              <span className="share-social-icon">✉</span>
               <span>Email</span>
             </button>
           </div>
@@ -141,4 +145,3 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
     </div>
   );
 }
-

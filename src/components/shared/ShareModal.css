@@ -87,7 +87,10 @@
 }
 
 .share-social-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 24px;
+  text-align: center;
 }
 
 .share-copy-section {
@@ -130,4 +133,3 @@
     grid-template-columns: 1fr;
   }
 }
-
