@@ -66,6 +66,63 @@ export default function SongDetails() {
     }
   }, [song]);
 
+  // Update meta tags for social sharing
+  useEffect(() => {
+    if (!song) return;
+
+    const siteUrl = window.location.origin;
+    const pageUrl = `${siteUrl}/listen/songs/${song._id}`;
+
+    // Update or create Open Graph meta tags
+    const updateMetaTag = (property, content) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("property", property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+
+    const updateNameMeta = (name, content) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("name", name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+
+    // Title
+    document.title = `${song.title} by BelovedzGuard | BelovedzGaurd Music`;
+
+    // Description
+    const description =
+      song.description || `Listen to "${song.title}" by BelovedzGuard`;
+    updateMetaTag("og:title", song.title);
+    updateMetaTag("og:description", description);
+    updateMetaTag("og:url", pageUrl);
+    updateMetaTag("og:type", "music.song");
+    updateMetaTag("og:site_name", "BelovedzGaurd Music");
+    if (song.songThumbnail) {
+      updateMetaTag("og:image", song.songThumbnail);
+    }
+
+    // Twitter card
+    updateNameMeta("twitter:card", "summary_large_image");
+    updateNameMeta("twitter:title", song.title);
+    updateNameMeta("twitter:description", description);
+    if (song.songThumbnail) {
+      updateNameMeta("twitter:image", song.songThumbnail);
+    }
+
+    // Cleanup function
+    return () => {
+      document.title = "BelovedzGaurd Music";
+    };
+  }, [song]);
+
   // Copy link to clipboard
   const handleShare = async () => {
     try {

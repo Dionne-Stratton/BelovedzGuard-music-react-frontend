@@ -2,10 +2,9 @@
 
 ## Current
 
-- [] Add social share options using “Quick-share” links
-
 ## Completed
 
+- [] Add social share options using “Quick-share” links
 - [x] Use description and verse on the song details page to display the description and verse of the song if it exists.
 
 - [x] Update colors.js to have the correct colors and use them in the app.
