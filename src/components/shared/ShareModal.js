@@ -50,7 +50,11 @@ export default function ShareModal({ isOpen, onClose, title, url, text }) {
         return;
     }
 
-    window.open(shareUrl, "_blank", "width=600,height=400");
+    console.log("Sharing to", platform, "with URL:", shareUrl);
+    const popup = window.open(shareUrl, "_blank", "width=600,height=400,menubar=no,toolbar=no,resizable=yes,scrollbars=yes");
+    if (!popup) {
+      showError("Popup blocked. Please allow popups for this site.");
+    }
   };
 
   return (
