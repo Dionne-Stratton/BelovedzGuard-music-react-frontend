@@ -11,11 +11,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {
   EditIcon,
   ShareIcon,
-  CheckIcon,
   PlayIcon,
 } from "../../../components/shared/Icons";
+import ShareModal from "../../../components/shared/ShareModal";
 import { trackUIEvent } from "../../../utils/analytics";
-import { useToastContext } from "../../../contexts/ToastContext";
 import "./PlaylistDetails.css";
 import themes from "../../../components/shared/themes";
 
@@ -24,8 +23,7 @@ export default function PlaylistDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useAuth0();
-  const { success: showSuccess, error: showError } = useToastContext();
-  const [shareCopied, setShareCopied] = React.useState(false);
+  const [showShareModal, setShowShareModal] = React.useState(false);
 
   // Try to find playlist in RTK Query cache first
   const playlists = useSelector((state) => state.playlistApi?.queries);
@@ -85,18 +83,10 @@ export default function PlaylistDetails() {
     navigate("edit");
   };
 
-  // Copy link to clipboard
-  const handleShare = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setShareCopied(true);
-      showSuccess("Link copied to clipboard!");
-      trackUIEvent("Share Playlist", "Copy Link");
-      setTimeout(() => setShareCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy link:", err);
-      showError("Failed to copy link");
-    }
+  // Open share modal
+  const handleShare = () => {
+    setShowShareModal(true);
+    trackUIEvent("Share Playlist", "Open share modal");
   };
 
   // --- Render ---
@@ -125,15 +115,7 @@ export default function PlaylistDetails() {
           onClick={handleShare}
           title="Copy link to share"
         >
-          {shareCopied ? (
-            <>
-              <CheckIcon size={20} /> Copied!
-            </>
-          ) : (
-            <>
-              <ShareIcon size={20} /> Share
-            </>
-          )}
+          <ShareIcon size={20} /> Share
         </button>
       </div>
 
@@ -172,6 +154,15 @@ export default function PlaylistDetails() {
           ))}
         </div>
       </div>
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={playlist.name}
+        url={window.location.href}
+        text={`Check out the "${playlist.name}" playlist by BelovedzGuard`}
+      />
     </div>
   );
 }

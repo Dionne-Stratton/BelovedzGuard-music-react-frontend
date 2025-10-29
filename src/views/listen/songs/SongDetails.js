@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaYoutube } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 import { useGetSongByIdQuery } from "../../../state/publicApi";
 import {
   setQueue,
@@ -9,11 +10,11 @@ import {
   setPlaying,
 } from "../../../state/playerSlice";
 import { trackUIEvent } from "../../../utils/analytics";
-import { useToastContext } from "../../../contexts/ToastContext";
 import { MusicNoteIcon } from "../../../components/shared/Icons";
 import RelatedSongs from "../../../components/viewComponents/Songs/RelatedSongs";
 import SongMediaSection from "../../../components/viewComponents/Songs/SongMediaSection";
 import SongLyricsSection from "../../../components/viewComponents/Songs/SongLyricsSection";
+import ShareModal from "../../../components/shared/ShareModal";
 import axios from "axios";
 import { getGenreMetadata } from "../../../utils/genreMetadata";
 import AddToPlaylistModal from "../../../components/features/AddToPlaylist/AddToPlaylistModal";
@@ -23,7 +24,6 @@ export default function SongDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { success: showSuccess, error: showError } = useToastContext();
 
   // Get songs from Redux state first
   const songs = useSelector((state) => state.songs);
@@ -42,7 +42,7 @@ export default function SongDetails() {
   const meta = song ? getGenreMetadata(song.genre) : getGenreMetadata();
 
   const [showAddToPlaylistModal, setShowAddToPlaylistModal] = useState(false);
-  const [shareCopied, setShareCopied] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
   const [lyrics, setLyrics] = useState("loading...");
   const [lyricsError, setLyricsError] = useState(false);
 
@@ -66,75 +66,10 @@ export default function SongDetails() {
     }
   }, [song]);
 
-  // Update meta tags for social sharing
-  useEffect(() => {
-    if (!song) return;
-
-    const siteUrl = window.location.origin;
-    const pageUrl = `${siteUrl}/listen/songs/${song._id}`;
-
-    // Update or create Open Graph meta tags
-    const updateMetaTag = (property, content) => {
-      let meta = document.querySelector(`meta[property="${property}"]`);
-      if (!meta) {
-        meta = document.createElement("meta");
-        meta.setAttribute("property", property);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute("content", content);
-    };
-
-    const updateNameMeta = (name, content) => {
-      let meta = document.querySelector(`meta[name="${name}"]`);
-      if (!meta) {
-        meta = document.createElement("meta");
-        meta.setAttribute("name", name);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute("content", content);
-    };
-
-    // Title
-    document.title = `${song.title} by BelovedzGuard | BelovedzGaurd Music`;
-
-    // Description
-    const description =
-      song.description || `Listen to "${song.title}" by BelovedzGuard`;
-    updateMetaTag("og:title", song.title);
-    updateMetaTag("og:description", description);
-    updateMetaTag("og:url", pageUrl);
-    updateMetaTag("og:type", "music.song");
-    updateMetaTag("og:site_name", "BelovedzGaurd Music");
-    if (song.songThumbnail) {
-      updateMetaTag("og:image", song.songThumbnail);
-    }
-
-    // Twitter card
-    updateNameMeta("twitter:card", "summary_large_image");
-    updateNameMeta("twitter:title", song.title);
-    updateNameMeta("twitter:description", description);
-    if (song.songThumbnail) {
-      updateNameMeta("twitter:image", song.songThumbnail);
-    }
-
-    // Cleanup function
-    return () => {
-      document.title = "BelovedzGaurd Music";
-    };
-  }, [song]);
-
-  // Copy link to clipboard
-  const handleShare = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setShareCopied(true);
-      showSuccess("Link copied to clipboard!");
-      trackUIEvent("Share Song", "Copy Link");
-      setTimeout(() => setShareCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy link:", err);
-      showError("Failed to copy link");
-    }
+  // Open share modal
+  const handleShare = () => {
+    setShowShareModal(true);
+    trackUIEvent("Share Song", "Open share modal");
   };
 
   // Play song
@@ -199,64 +134,93 @@ export default function SongDetails() {
     );
   }
 
-  if (!song) return null;
+  const siteUrl = window.location.origin;
+  const pageUrl = `${siteUrl}/listen/songs/${song._id}`;
+  const description =
+    song.description || `Listen to "${song.title}" by BelovedzGuard`;
 
   return (
-    <div className="song-details-page">
-      {/* Header */}
-      <div className="song-details-header">
-        <h1 className="song-details-title">{song.title}</h1>
-        <p className="song-artist">by BelovedzGuard</p>
-      </div>
+    <>
+      <Helmet>
+        <title>{`${song.title} by BelovedzGuard | BelovedzGaurd Music`}</title>
+        <meta property="og:title" content={song.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="music.song" />
+        <meta property="og:site_name" content="BelovedzGaurd Music" />
+        {song.songThumbnail && (
+          <meta property="og:image" content={song.songThumbnail} />
+        )}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={song.title} />
+        <meta name="twitter:description" content={description} />
+        {song.songThumbnail && (
+          <meta name="twitter:image" content={song.songThumbnail} />
+        )}
+      </Helmet>
+      <div className="song-details-page">
+        {/* Header */}
+        <div className="song-details-header">
+          <h1 className="song-details-title">{song.title}</h1>
+          <p className="song-artist">by BelovedzGuard</p>
+        </div>
 
-      {/* Main Content */}
-      <div className="song-details-content">
-        {/* Left Column - Media */}
-        <SongMediaSection
+        {/* Main Content */}
+        <div className="song-details-content">
+          {/* Left Column - Media */}
+          <SongMediaSection
+            song={song}
+            meta={meta}
+            onPlay={handlePlay}
+            onAddToPlaylist={handleAddToPlaylist}
+            onShare={handleShare}
+          />
+
+          {/* Right Column - Lyrics */}
+          <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
+        </div>
+
+        {/* Related Songs */}
+        <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
+
+        {/* External Links */}
+        <div className="external-links-section">
+          {song.youTube && (
+            <a
+              href={song.youTube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="external-link youtube-link"
+            >
+              <FaYoutube /> Watch on YouTube
+            </a>
+          )}
+          {song.bandcamp && (
+            <a
+              href={song.bandcamp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="external-link bandcamp-link"
+            >
+              <MusicNoteIcon size={16} /> Listen on Bandcamp
+            </a>
+          )}
+        </div>
+
+        <AddToPlaylistModal
+          isOpen={showAddToPlaylistModal}
+          onClose={handleCloseModal}
           song={song}
-          meta={meta}
-          onPlay={handlePlay}
-          onAddToPlaylist={handleAddToPlaylist}
-          onShare={handleShare}
-          shareCopied={shareCopied}
         />
 
-        {/* Right Column - Lyrics */}
-        <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
+        <ShareModal
+          isOpen={showShareModal}
+          onClose={() => setShowShareModal(false)}
+          title={song.title}
+          url={window.location.href}
+          text={`Check out "${song.title}" by BelovedzGuard`}
+        />
       </div>
-
-      {/* Related Songs */}
-      <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
-
-      {/* External Links */}
-      <div className="external-links-section">
-        {song.youTube && (
-          <a
-            href={song.youTube}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="external-link youtube-link"
-          >
-            <FaYoutube /> Watch on YouTube
-          </a>
-        )}
-        {song.bandcamp && (
-          <a
-            href={song.bandcamp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="external-link bandcamp-link"
-          >
-            <MusicNoteIcon size={16} /> Listen on Bandcamp
-          </a>
-        )}
-      </div>
-
-      <AddToPlaylistModal
-        isOpen={showAddToPlaylistModal}
-        onClose={handleCloseModal}
-        song={song}
-      />
-    </div>
+    </>
   );
 }

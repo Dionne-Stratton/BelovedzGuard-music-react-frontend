@@ -1,6 +1,6 @@
 import React from "react";
 import SongThumbnail from "../../shared/SongThumbnail";
-import { PlayIcon, CheckIcon, ShareIcon } from "../../shared/Icons";
+import { PlayIcon, ShareIcon } from "../../shared/Icons";
 
 export default function SongMediaSection({
   song,
@@ -8,7 +8,6 @@ export default function SongMediaSection({
   onPlay,
   onAddToPlaylist,
   onShare,
-  shareCopied,
 }) {
   return (
     <div className="song-media-section">
@@ -30,15 +29,7 @@ export default function SongMediaSection({
           + Add to Playlist
         </button>
         <button className="song-control-btn" onClick={onShare}>
-          {shareCopied ? (
-            <>
-              <CheckIcon size={16} /> Copied!
-            </>
-          ) : (
-            <>
-              <ShareIcon size={16} /> Share
-            </>
-          )}
+          <ShareIcon size={16} /> Share
         </button>
       </div>
 

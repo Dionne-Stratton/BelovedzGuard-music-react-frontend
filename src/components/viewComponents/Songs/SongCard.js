@@ -2,8 +2,8 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import SongThumbnail from "../../shared/SongThumbnail";
 import { ShareIcon, HeadphonesIcon } from "../../shared/Icons";
+import ShareModal from "../../shared/ShareModal";
 import { trackUIEvent } from "../../../utils/analytics";
-import { useToastContext } from "../../../contexts/ToastContext";
 
 export default function SongCard({
   song,
@@ -16,23 +16,13 @@ export default function SongCard({
     triggerOnce: true,
     rootMargin: "200px",
   });
-  const { success: showSuccess, error: showError } = useToastContext();
-  const [shareCopied, setShareCopied] = React.useState(false);
+  const [showShareModal, setShowShareModal] = React.useState(false);
 
-  // Copy link to clipboard
-  const handleShare = async (e) => {
+  // Open share modal
+  const handleShare = (e) => {
     e.stopPropagation();
-    try {
-      const songUrl = `${window.location.origin}/listen/songs/${song._id}`;
-      await navigator.clipboard.writeText(songUrl);
-      setShareCopied(true);
-      showSuccess("Link copied to clipboard!");
-      trackUIEvent("Share Song", "Copy Link");
-      setTimeout(() => setShareCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy link:", err);
-      showError("Failed to copy link");
-    }
+    setShowShareModal(true);
+    trackUIEvent("Share Song", "Open share modal");
   };
 
   return (
@@ -78,7 +68,7 @@ export default function SongCard({
               onClick={handleShare}
               title="Share"
             >
-              {shareCopied ? "✓" : <ShareIcon size={16} />}
+              <ShareIcon size={16} />
             </button>
           </div>
 
@@ -101,6 +91,15 @@ export default function SongCard({
           }}
         ></div>
       )}
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={song.title}
+        url={`${window.location.origin}/listen/songs/${song._id}`}
+        text={`Check out "${song.title}" by BelovedzGuard`}
+      />
     </div>
   );
 }
