@@ -10,7 +10,7 @@ import SongThumbnail from "../../shared/SongThumbnail";
 import { PlayIcon, ShareIcon, HeadphonesIcon } from "../../shared/Icons";
 import { getGenreMetadata } from "../../../utils/genreMetadata";
 import { trackUIEvent } from "../../../utils/analytics";
-import { useToastContext } from "../../../contexts/ToastContext";
+import ShareModal from "../../shared/ShareModal";
 import RecentReleasesCarousel from "./RecentReleasesCarousel";
 import "./RecentReleaseCard.css";
 
@@ -22,8 +22,7 @@ import "./RecentReleaseCard.css";
 export default function RecentReleaseCard({ song, allSongs }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { success: showSuccess, error: showError } = useToastContext();
-  const [shareCopied, setShareCopied] = React.useState(false);
+  const [shareModalOpen, setShareModalOpen] = React.useState(false);
 
   if (!song) return null;
 
@@ -63,33 +62,9 @@ export default function RecentReleaseCard({ song, allSongs }) {
     trackUIEvent("Recent Release", "Discover more songs");
   };
 
-  const handleShare = async () => {
-    const shareData = {
-      title: song.title,
-      text: `Check out "${song.title}" by BelovedzGuard`,
-      url: `${window.location.origin}/listen/songs/${song._id}`,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-        trackUIEvent("Recent Release", "Shared song", {
-          songTitle: song.title,
-        });
-      } else {
-        // Fallback: copy to clipboard
-        await navigator.clipboard.writeText(shareData.url);
-        setShareCopied(true);
-        showSuccess("Link copied to clipboard!");
-        trackUIEvent("Recent Release", "Copied song link", {
-          songTitle: song.title,
-        });
-        setTimeout(() => setShareCopied(false), 2000);
-      }
-    } catch (err) {
-      console.error("Error sharing:", err);
-      showError("Failed to share song");
-    }
+  const handleShare = () => {
+    setShareModalOpen(true);
+    trackUIEvent("Recent Release", "Open share modal");
   };
 
   const genreData = getGenreMetadata(song.genre);
@@ -158,11 +133,11 @@ export default function RecentReleaseCard({ song, allSongs }) {
               </button>
               <button
                 className="rr-btn rr-btn-icon drop-shadow-thick"
-                onClick={handleShare}
-                title="Share"
-              >
-                {shareCopied ? "✓" : <ShareIcon size={18} />}
-              </button>
+              onClick={handleShare}
+              title="Share"
+            >
+              <ShareIcon size={18} />
+            </button>
               <button
                 className="rr-btn rr-btn-secondary drop-shadow-thick"
                 onClick={handleDiscoverClick}
@@ -176,6 +151,15 @@ export default function RecentReleaseCard({ song, allSongs }) {
 
       {/* Recent Releases Carousel */}
       <RecentReleasesCarousel songs={allSongs} />
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={shareModalOpen}
+        onClose={() => setShareModalOpen(false)}
+        title={song.title}
+        url={`${window.location.origin}/listen/songs/${song._id}`}
+        text={`Check out "${song.title}" by BelovedzGuard`}
+      />
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 ## Current
 
-- [] Add social share options
+- [] Add social share options using “Quick-share” links
 
 ## Completed
 
