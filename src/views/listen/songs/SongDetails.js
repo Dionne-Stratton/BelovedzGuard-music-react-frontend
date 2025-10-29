@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaYoutube } from "react-icons/fa";
-import { Helmet } from "react-helmet-async";
 import { useGetSongByIdQuery } from "../../../state/publicApi";
 import {
   setQueue,
@@ -64,6 +63,16 @@ export default function SongDetails() {
     } else {
       setLyrics("");
     }
+  }, [song]);
+
+  // Update document title
+  useEffect(() => {
+    if (!song) return;
+
+    document.title = `${song.title} by BelovedzGuard | BelovedzGaurd Music`;
+    return () => {
+      document.title = "BelovedzGaurd Music";
+    };
   }, [song]);
 
   // Open share modal
@@ -134,93 +143,69 @@ export default function SongDetails() {
     );
   }
 
-  const siteUrl = window.location.origin;
-  const pageUrl = `${siteUrl}/listen/songs/${song._id}`;
-  const description =
-    song.description || `Listen to "${song.title}" by BelovedzGuard`;
-
   return (
-    <>
-      <Helmet>
-        <title>{`${song.title} by BelovedzGuard | BelovedzGaurd Music`}</title>
-        <meta property="og:title" content={song.title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:type" content="music.song" />
-        <meta property="og:site_name" content="BelovedzGaurd Music" />
-        {song.songThumbnail && (
-          <meta property="og:image" content={song.songThumbnail} />
-        )}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={song.title} />
-        <meta name="twitter:description" content={description} />
-        {song.songThumbnail && (
-          <meta name="twitter:image" content={song.songThumbnail} />
-        )}
-      </Helmet>
-      <div className="song-details-page">
-        {/* Header */}
-        <div className="song-details-header">
-          <h1 className="song-details-title">{song.title}</h1>
-          <p className="song-artist">by BelovedzGuard</p>
-        </div>
-
-        {/* Main Content */}
-        <div className="song-details-content">
-          {/* Left Column - Media */}
-          <SongMediaSection
-            song={song}
-            meta={meta}
-            onPlay={handlePlay}
-            onAddToPlaylist={handleAddToPlaylist}
-            onShare={handleShare}
-          />
-
-          {/* Right Column - Lyrics */}
-          <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
-        </div>
-
-        {/* Related Songs */}
-        <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
-
-        {/* External Links */}
-        <div className="external-links-section">
-          {song.youTube && (
-            <a
-              href={song.youTube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="external-link youtube-link"
-            >
-              <FaYoutube /> Watch on YouTube
-            </a>
-          )}
-          {song.bandcamp && (
-            <a
-              href={song.bandcamp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="external-link bandcamp-link"
-            >
-              <MusicNoteIcon size={16} /> Listen on Bandcamp
-            </a>
-          )}
-        </div>
-
-        <AddToPlaylistModal
-          isOpen={showAddToPlaylistModal}
-          onClose={handleCloseModal}
-          song={song}
-        />
-
-        <ShareModal
-          isOpen={showShareModal}
-          onClose={() => setShowShareModal(false)}
-          title={song.title}
-          url={window.location.href}
-          text={`Check out "${song.title}" by BelovedzGuard`}
-        />
+    <div className="song-details-page">
+      {/* Header */}
+      <div className="song-details-header">
+        <h1 className="song-details-title">{song.title}</h1>
+        <p className="song-artist">by BelovedzGuard</p>
       </div>
-    </>
+
+      {/* Main Content */}
+      <div className="song-details-content">
+        {/* Left Column - Media */}
+        <SongMediaSection
+          song={song}
+          meta={meta}
+          onPlay={handlePlay}
+          onAddToPlaylist={handleAddToPlaylist}
+          onShare={handleShare}
+        />
+
+        {/* Right Column - Lyrics */}
+        <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
+      </div>
+
+      {/* Related Songs */}
+      <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
+
+      {/* External Links */}
+      <div className="external-links-section">
+        {song.youTube && (
+          <a
+            href={song.youTube}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="external-link youtube-link"
+          >
+            <FaYoutube /> Watch on YouTube
+          </a>
+        )}
+        {song.bandcamp && (
+          <a
+            href={song.bandcamp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="external-link bandcamp-link"
+          >
+            <MusicNoteIcon size={16} /> Listen on Bandcamp
+          </a>
+        )}
+      </div>
+
+      <AddToPlaylistModal
+        isOpen={showAddToPlaylistModal}
+        onClose={handleCloseModal}
+        song={song}
+      />
+
+      <ShareModal
+        isOpen={showShareModal}
+        onClose={() => setShowShareModal(false)}
+        title={song.title}
+        url={window.location.href}
+        text={`Check out "${song.title}" by BelovedzGuard`}
+      />
+    </div>
   );
 }

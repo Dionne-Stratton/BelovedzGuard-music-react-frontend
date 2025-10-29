@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { HelmetProvider } from "react-helmet-async";
 import { store } from "./state/store";
 import App from "./App";
 import colors from "./components/shared/colors";
@@ -47,12 +46,10 @@ const root = createRoot(domNode);
 
 root.render(
   <Provider store={store}>
-    <HelmetProvider>
-      <Router>
-        <Auth0ProviderWithNavigate>
-          <App />
-        </Auth0ProviderWithNavigate>
-      </Router>
-    </HelmetProvider>
+    <Router>
+      <Auth0ProviderWithNavigate>
+        <App />
+      </Auth0ProviderWithNavigate>
+    </Router>
   </Provider>
 );
