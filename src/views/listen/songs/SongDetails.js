@@ -42,6 +42,7 @@ export default function SongDetails() {
 
   const [showAddToPlaylistModal, setShowAddToPlaylistModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showYouTubeModal, setShowYouTubeModal] = useState(false);
   const [lyrics, setLyrics] = useState("loading...");
   const [lyricsError, setLyricsError] = useState(false);
 
@@ -108,6 +109,29 @@ export default function SongDetails() {
     setShowAddToPlaylistModal(false);
   };
 
+  // Convert YouTube URL to embed format if needed
+  const getYouTubeEmbedUrl = (url) => {
+    if (!url) return "";
+
+    // If already an embed URL, return as is
+    if (url.includes("/embed/")) return url;
+
+    // Extract video ID from various YouTube URL formats
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match && match[1]) {
+        return `https://www.youtube.com/embed/${match[1]}`;
+      }
+    }
+
+    // If no pattern matches, try to return as is (might already be embed URL)
+    return url;
+  };
+
   // Get related songs by genre (max 5)
   const relatedSongs = songs
     .filter((s) => s._id !== id && s.genre === song?.genre)
@@ -172,14 +196,12 @@ export default function SongDetails() {
       {/* External Links */}
       <div className="external-links-section">
         {song.youTube && (
-          <a
-            href={song.youTube}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => setShowYouTubeModal(true)}
             className="external-link youtube-link"
           >
             <FaYoutube /> Watch on YouTube
-          </a>
+          </button>
         )}
         {song.bandcamp && (
           <a
@@ -192,6 +214,26 @@ export default function SongDetails() {
           </a>
         )}
       </div>
+
+      {/* YouTube Video Modal */}
+      {showYouTubeModal && song.youTube && (
+        <div onClick={() => setShowYouTubeModal(false)} className="video-modal">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="video-modal-content"
+          >
+            <iframe
+              width="100%"
+              height="100%"
+              src={getYouTubeEmbedUrl(song.youTube)}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
 
       <AddToPlaylistModal
         isOpen={showAddToPlaylistModal}
