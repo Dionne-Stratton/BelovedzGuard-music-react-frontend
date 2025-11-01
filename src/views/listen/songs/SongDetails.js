@@ -70,10 +70,10 @@ export default function SongDetails() {
   // Signal to prerender.io that page is ready once song is loaded
   useEffect(() => {
     if (song && window.prerenderReady !== undefined) {
-      // Small delay to ensure Helmet has rendered meta tags
+      // Delay to ensure Helmet has rendered meta tags after React hydration
       setTimeout(() => {
         window.prerenderReady = true;
-      }, 100);
+      }, 500);
     }
   }, [song]);
 
@@ -168,8 +168,7 @@ export default function SongDetails() {
     );
   }
 
-  const siteUrl = window.location.origin;
-  const pageUrl = `${siteUrl}/listen/songs/${song._id}`;
+  const pageUrl = window.location.href;
   const description =
     song.description || `Listen to "${song.title}" by BelovedzGuard`;
   const thumbnail = song.videoThumbnail || song.songThumbnail;

@@ -21,7 +21,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.belovedzguard.com" />
+    <!-- og:url removed - will be set dynamically by React Helmet per page -->
     <meta property="og:title" content="BelovedzGaurd Music" />
     <meta property="og:site_name" content="BelovedzGaurd Music" />
     <meta
@@ -90,10 +90,12 @@
       // Signal to prerender.io that the page is ready after React renders
       window.prerenderReady = false;
       window.addEventListener("load", function () {
-        // Give React time to render meta tags
+        // Give React time to render meta tags - increased wait time
         setTimeout(function () {
-          window.prerenderReady = true;
-        }, 2000);
+          if (!window.prerenderReady) {
+            window.prerenderReady = true;
+          }
+        }, 5000);
       });
     </script>
     <!--
