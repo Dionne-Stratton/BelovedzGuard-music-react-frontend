@@ -111,6 +111,7 @@ export default function PlaylistDetails() {
   const pageUrl = window.location.href;
   const playlistName = playlist?.name || "Playlist";
   const songCount = playlist?.songs?.length || 0;
+  const displayTitle = `My Playlist: ${playlistName}`;
   const description = playlist
     ? `${songCount} ${
         songCount === 1 ? "song" : "songs"
@@ -129,7 +130,7 @@ export default function PlaylistDetails() {
       <Helmet>
         <title>{`${playlistName} | BelovedzGaurd Music`}</title>
         <meta name="description" content={description} />
-        <meta property="og:title" content={playlistName} />
+        <meta property="og:title" content={displayTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="music.playlist" />
@@ -138,7 +139,7 @@ export default function PlaylistDetails() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={playlistName} />
+        <meta name="twitter:title" content={displayTitle} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={thumbnail} />
       </Helmet>
