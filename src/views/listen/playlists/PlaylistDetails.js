@@ -111,11 +111,12 @@ export default function PlaylistDetails() {
         songCount === 1 ? "song" : "songs"
       } - A playlist by BelovedzGuard`
     : "A playlist by BelovedzGuard";
-  // Use first song's videoThumbnail, fallback to songThumbnail, then theme image, then default logo
+  // Use first song's videoThumbnail, fallback to songThumbnail, then default logo
+  // Note: theme.image is a relative path and not suitable for meta tags (need absolute URL)
+  // We still use theme.image for CSS styling, but skip it for meta tags
   const thumbnail =
     playlist?.songs?.[0]?.videoThumbnail ||
     playlist?.songs?.[0]?.songThumbnail ||
-    theme.image ||
     "https://media.belovedzguard.com/assets/logo192.png";
 
   return (
