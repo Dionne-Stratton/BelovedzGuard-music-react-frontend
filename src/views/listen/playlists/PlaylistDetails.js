@@ -94,10 +94,10 @@ export default function PlaylistDetails() {
   React.useEffect(() => {
     if (playlist && !isLoading && window.prerenderReady !== undefined) {
       // Delay to ensure Helmet has rendered meta tags after React hydration
-      // Playlists may need more time for API data to load
+      // Playlists may need more time for API data to load and React to render
       setTimeout(() => {
         window.prerenderReady = true;
-      }, 1500);
+      }, 2500);
     }
   }, [playlist, isLoading]);
 
