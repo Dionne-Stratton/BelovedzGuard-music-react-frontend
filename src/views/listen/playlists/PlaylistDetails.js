@@ -92,13 +92,14 @@ export default function PlaylistDetails() {
 
   // Signal to prerender.io that page is ready once playlist is loaded
   React.useEffect(() => {
-    if (playlist && window.prerenderReady !== undefined) {
+    if (playlist && !isLoading && window.prerenderReady !== undefined) {
       // Delay to ensure Helmet has rendered meta tags after React hydration
+      // Playlists may need more time for API data to load
       setTimeout(() => {
         window.prerenderReady = true;
-      }, 500);
+      }, 1500);
     }
-  }, [playlist]);
+  }, [playlist, isLoading]);
 
   // --- Render ---
 
@@ -119,10 +120,12 @@ export default function PlaylistDetails() {
   const description = `${songCount} ${
     songCount === 1 ? "song" : "songs"
   } - A playlist by BelovedzGuard`;
+  // Use first song's videoThumbnail, fallback to songThumbnail, then theme image, then default logo
   const thumbnail =
     playlist.songs?.[0]?.videoThumbnail ||
     playlist.songs?.[0]?.songThumbnail ||
-    theme.image;
+    theme.image ||
+    "https://media.belovedzguard.com/assets/logo192.png";
 
   return (
     <>
@@ -134,17 +137,13 @@ export default function PlaylistDetails() {
         <meta property="og:url" content={pageUrl} />
         <meta property="og:type" content="music.playlist" />
         <meta property="og:site_name" content="BelovedzGaurd Music" />
-        {thumbnail && <meta property="og:image" content={thumbnail} />}
-        {thumbnail && (
-          <>
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
-          </>
-        )}
+        <meta property="og:image" content={thumbnail} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={playlist.name} />
         <meta name="twitter:description" content={description} />
-        {thumbnail && <meta name="twitter:image" content={thumbnail} />}
+        <meta name="twitter:image" content={thumbnail} />
       </Helmet>
       <div className="playlist-details-page">
         <div className="playlist-edit-top">
