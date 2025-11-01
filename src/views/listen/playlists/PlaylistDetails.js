@@ -90,34 +90,15 @@ export default function PlaylistDetails() {
     trackUIEvent("Share Playlist", "Open share modal");
   };
 
-  // Signal to prerender.io that page is ready once playlist is loaded and Helmet tags are rendered
+  // Signal to prerender.io that page is ready once playlist is loaded
   React.useEffect(() => {
-    if (playlist && !isLoading && window.prerenderReady !== undefined) {
-      let attempts = 0;
-      const maxAttempts = 60; // 3 seconds total (60 * 50ms)
-
-      // Poll for og:image meta tag to appear in DOM (Helmet has rendered)
-      const checkForMetaTag = () => {
-        const ogImage = document.querySelector('meta[property="og:image"]');
-        if (ogImage && ogImage.getAttribute("content")) {
-          // Found the meta tag, signal ready
-          window.prerenderReady = true;
-        } else {
-          attempts++;
-          if (attempts < maxAttempts) {
-            // Keep checking every 50ms
-            setTimeout(checkForMetaTag, 50);
-          } else {
-            // Timeout after 3 seconds, signal ready anyway
-            window.prerenderReady = true;
-          }
-        }
-      };
-
-      // Small delay to let React start rendering, then check for meta tag
-      setTimeout(checkForMetaTag, 100);
+    if (playlist && window.prerenderReady !== undefined) {
+      // Delay to ensure Helmet has rendered meta tags after React hydration
+      setTimeout(() => {
+        window.prerenderReady = true;
+      }, 500);
     }
-  }, [playlist, isLoading]);
+  }, [playlist]);
 
   // --- Render ---
 
