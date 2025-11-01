@@ -2,7 +2,8 @@ import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet-async";
-import { useGetPlaylistByIdQuery } from "../../../state/playlistApi";
+import { useGetPlaylistByIdQuery as useGetPublicPlaylistByIdQuery } from "../../../state/publicApi";
+import { useGetPlaylistByIdQuery as useGetAuthPlaylistByIdQuery } from "../../../state/playlistApi";
 import {
   setQueue,
   setCurrentSong,
@@ -26,7 +27,7 @@ export default function PlaylistDetails() {
   const { user, isAuthenticated } = useAuth0();
   const [showShareModal, setShowShareModal] = React.useState(false);
 
-  // Try to find playlist in RTK Query cache first
+  // Try to find playlist in RTK Query cache first (for optimistic updates from edits)
   const playlists = useSelector((state) => state.playlistApi?.queries);
   const existingPlaylist = useMemo(() => {
     if (!playlists) return null;
@@ -40,12 +41,16 @@ export default function PlaylistDetails() {
     return null;
   }, [playlists, id]);
 
-  // Fetch only if not cached
-  const { data: fetchedPlaylist, isLoading } = useGetPlaylistByIdQuery(id, {
+  // Fetch from auth API only if not cached (for optimistic updates)
+  const { data: fetchedAuthPlaylist } = useGetAuthPlaylistByIdQuery(id, {
     skip: !!existingPlaylist,
   });
 
-  const playlist = existingPlaylist || fetchedPlaylist;
+  // Always fetch from public API as fallback (for Prerender.io compatibility)
+  const { data: publicPlaylist, isLoading } = useGetPublicPlaylistByIdQuery(id);
+
+  // Use cached playlist first (for immediate updates), then auth API, then public API
+  const playlist = existingPlaylist || fetchedAuthPlaylist || publicPlaylist;
   const theme = themes[playlist?.theme] || themes.Faith;
 
   // --- Handlers ---
