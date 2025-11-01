@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaYoutube } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 import { useGetSongByIdQuery } from "../../../state/publicApi";
 import {
   setQueue,
@@ -64,16 +65,6 @@ export default function SongDetails() {
     } else {
       setLyrics("");
     }
-  }, [song]);
-
-  // Update document title
-  useEffect(() => {
-    if (!song) return;
-
-    document.title = `${song.title} by BelovedzGuard | BelovedzGaurd Music`;
-    return () => {
-      document.title = "BelovedzGaurd Music";
-    };
   }, [song]);
 
   // Open share modal
@@ -167,87 +158,118 @@ export default function SongDetails() {
     );
   }
 
-  return (
-    <div className="song-details-page">
-      {/* Header */}
-      <div className="song-details-header">
-        <h1 className="song-details-title">{song.title}</h1>
-        <p className="song-artist">by BelovedzGuard</p>
-      </div>
+  const siteUrl = window.location.origin;
+  const pageUrl = `${siteUrl}/listen/songs/${song._id}`;
+  const description =
+    song.description || `Listen to "${song.title}" by BelovedzGuard`;
+  const thumbnail = song.videoThumbnail || song.songThumbnail;
 
-      {/* Main Content */}
-      <div className="song-details-content">
-        {/* Left Column - Media */}
-        <SongMediaSection
+  return (
+    <>
+      <Helmet>
+        <title>{`${song.title} by BelovedzGuard | BelovedzGaurd Music`}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={song.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="music.song" />
+        <meta property="og:site_name" content="BelovedzGaurd Music" />
+        {thumbnail && <meta property="og:image" content={thumbnail} />}
+        {thumbnail && (
+          <>
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+          </>
+        )}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={song.title} />
+        <meta name="twitter:description" content={description} />
+        {thumbnail && <meta name="twitter:image" content={thumbnail} />}
+      </Helmet>
+      <div className="song-details-page">
+        {/* Header */}
+        <div className="song-details-header">
+          <h1 className="song-details-title">{song.title}</h1>
+          <p className="song-artist">by BelovedzGuard</p>
+        </div>
+
+        {/* Main Content */}
+        <div className="song-details-content">
+          {/* Left Column - Media */}
+          <SongMediaSection
+            song={song}
+            meta={meta}
+            onPlay={handlePlay}
+            onAddToPlaylist={handleAddToPlaylist}
+            onShare={handleShare}
+          />
+
+          {/* Right Column - Lyrics */}
+          <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
+        </div>
+
+        {/* Related Songs */}
+        <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
+
+        {/* External Links */}
+        <div className="external-links-section">
+          {song.youTube && (
+            <button
+              onClick={() => setShowYouTubeModal(true)}
+              className="external-link youtube-link"
+            >
+              <FaYoutube /> Watch on YouTube
+            </button>
+          )}
+          {song.bandcamp && (
+            <a
+              href={song.bandcamp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="external-link bandcamp-link"
+            >
+              <MusicNoteIcon size={16} /> Listen on Bandcamp
+            </a>
+          )}
+        </div>
+
+        {/* YouTube Video Modal */}
+        {showYouTubeModal && song.youTube && (
+          <div
+            onClick={() => setShowYouTubeModal(false)}
+            className="video-modal"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="video-modal-content"
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                src={getYouTubeEmbedUrl(song.youTube)}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        )}
+
+        <AddToPlaylistModal
+          isOpen={showAddToPlaylistModal}
+          onClose={handleCloseModal}
           song={song}
-          meta={meta}
-          onPlay={handlePlay}
-          onAddToPlaylist={handleAddToPlaylist}
-          onShare={handleShare}
         />
 
-        {/* Right Column - Lyrics */}
-        <SongLyricsSection lyrics={lyrics} lyricsError={lyricsError} />
+        <ShareModal
+          isOpen={showShareModal}
+          onClose={() => setShowShareModal(false)}
+          title={song.title}
+          url={window.location.href}
+          text={`Check out "${song.title}" by BelovedzGuard`}
+        />
       </div>
-
-      {/* Related Songs */}
-      <RelatedSongs relatedSongs={relatedSongs} genreLabel={meta.label} />
-
-      {/* External Links */}
-      <div className="external-links-section">
-        {song.youTube && (
-          <button
-            onClick={() => setShowYouTubeModal(true)}
-            className="external-link youtube-link"
-          >
-            <FaYoutube /> Watch on YouTube
-          </button>
-        )}
-        {song.bandcamp && (
-          <a
-            href={song.bandcamp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="external-link bandcamp-link"
-          >
-            <MusicNoteIcon size={16} /> Listen on Bandcamp
-          </a>
-        )}
-      </div>
-
-      {/* YouTube Video Modal */}
-      {showYouTubeModal && song.youTube && (
-        <div onClick={() => setShowYouTubeModal(false)} className="video-modal">
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="video-modal-content"
-          >
-            <iframe
-              width="100%"
-              height="100%"
-              src={getYouTubeEmbedUrl(song.youTube)}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
-
-      <AddToPlaylistModal
-        isOpen={showAddToPlaylistModal}
-        onClose={handleCloseModal}
-        song={song}
-      />
-
-      <ShareModal
-        isOpen={showShareModal}
-        onClose={() => setShowShareModal(false)}
-        title={song.title}
-        url={window.location.href}
-        text={`Check out "${song.title}" by BelovedzGuard`}
-      />
-    </div>
+    </>
   );
 }
