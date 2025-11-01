@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { Helmet } from "react-helmet-async";
 import { useGetPlaylistByIdQuery } from "../../../state/playlistApi";
 import {
   setQueue,
@@ -89,6 +90,16 @@ export default function PlaylistDetails() {
     trackUIEvent("Share Playlist", "Open share modal");
   };
 
+  // Signal to prerender.io that page is ready once playlist is loaded
+  React.useEffect(() => {
+    if (playlist && window.prerenderReady !== undefined) {
+      // Delay to ensure Helmet has rendered meta tags after React hydration
+      setTimeout(() => {
+        window.prerenderReady = true;
+      }, 500);
+    }
+  }, [playlist]);
+
   // --- Render ---
 
   if (isLoading) return <p>Loading playlist...</p>;
@@ -102,67 +113,100 @@ export default function PlaylistDetails() {
     (playlist.owner === user.sub ||
       (playlist.owner === undefined && isAuthenticated));
 
+  // Meta tags for social sharing
+  const pageUrl = window.location.href;
+  const songCount = playlist.songs?.length || 0;
+  const description = `${songCount} ${
+    songCount === 1 ? "song" : "songs"
+  } - A playlist by BelovedzGuard`;
+  const thumbnail =
+    playlist.songs?.[0]?.videoThumbnail ||
+    playlist.songs?.[0]?.songThumbnail ||
+    theme.image;
+
   return (
-    <div className="playlist-details-page">
-      <div className="playlist-edit-top">
-        {isOwner && (
-          <button className="open-editor-btn" onClick={handleEdit}>
-            <EditIcon size={20} /> Open in Editor
-          </button>
+    <>
+      <Helmet>
+        <title>{`${playlist.name} | BelovedzGaurd Music`}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={playlist.name} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:type" content="music.playlist" />
+        <meta property="og:site_name" content="BelovedzGaurd Music" />
+        {thumbnail && <meta property="og:image" content={thumbnail} />}
+        {thumbnail && (
+          <>
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+          </>
         )}
-        <button
-          className="share-button"
-          onClick={handleShare}
-          title="Copy link to share"
-        >
-          <ShareIcon size={20} /> Share
-        </button>
-      </div>
-
-      <div
-        className="playlist-details-container"
-        style={{
-          "--theme-gradient": theme.gradient,
-          "--theme-image": `url(${theme.image})`,
-        }}
-      >
-        <div className="playlist-details-header">
-          <h2>{playlist.name}</h2>
-          <button className="play-all-btn" onClick={handlePlayAll}>
-            <PlayIcon size={20} /> Play All
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={playlist.name} />
+        <meta name="twitter:description" content={description} />
+        {thumbnail && <meta name="twitter:image" content={thumbnail} />}
+      </Helmet>
+      <div className="playlist-details-page">
+        <div className="playlist-edit-top">
+          {isOwner && (
+            <button className="open-editor-btn" onClick={handleEdit}>
+              <EditIcon size={20} /> Open in Editor
+            </button>
+          )}
+          <button
+            className="share-button"
+            onClick={handleShare}
+            title="Copy link to share"
+          >
+            <ShareIcon size={20} /> Share
           </button>
         </div>
 
-        <div className="playlist-song-list">
-          {playlist.songs.map((song) => (
-            <div key={song._id} className="playlist-song-row">
-              <img
-                src={song.songThumbnail}
-                alt={song.title}
-                className="playlist-song-thumb"
-              />
-              <span className="playlist-song-title">{song.title}</span>
-              <span className="playlist-song-genre">{song.genre}</span>
-              <button
-                className="playlist-song-play"
-                onClick={() => handlePlaySong(song._id)}
-                title="Play this song"
-              >
-                <PlayIcon size={14} />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
+        <div
+          className="playlist-details-container"
+          style={{
+            "--theme-gradient": theme.gradient,
+            "--theme-image": `url(${theme.image})`,
+          }}
+        >
+          <div className="playlist-details-header">
+            <h2>{playlist.name}</h2>
+            <button className="play-all-btn" onClick={handlePlayAll}>
+              <PlayIcon size={20} /> Play All
+            </button>
+          </div>
 
-      {/* Share Modal */}
-      <ShareModal
-        isOpen={showShareModal}
-        onClose={() => setShowShareModal(false)}
-        title={playlist.name}
-        url={window.location.href}
-        text={`Check out the "${playlist.name}" playlist by BelovedzGuard`}
-      />
-    </div>
+          <div className="playlist-song-list">
+            {playlist.songs.map((song) => (
+              <div key={song._id} className="playlist-song-row">
+                <img
+                  src={song.songThumbnail}
+                  alt={song.title}
+                  className="playlist-song-thumb"
+                />
+                <span className="playlist-song-title">{song.title}</span>
+                <span className="playlist-song-genre">{song.genre}</span>
+                <button
+                  className="playlist-song-play"
+                  onClick={() => handlePlaySong(song._id)}
+                  title="Play this song"
+                >
+                  <PlayIcon size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Share Modal */}
+        <ShareModal
+          isOpen={showShareModal}
+          onClose={() => setShowShareModal(false)}
+          title={playlist.name}
+          url={window.location.href}
+          text={`Check out the "${playlist.name}" playlist by BelovedzGuard`}
+        />
+      </div>
+    </>
   );
 }
