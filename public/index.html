@@ -77,10 +77,25 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>BelovedzGaurd Music</title>
+    <meta name="prerender-status-code" content="200" />
+    <meta
+      name="prerender-header"
+      content='<meta name="prerender-status-code" content="200">'
+    />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      // Signal to prerender.io that the page is ready after React renders
+      window.prerenderReady = false;
+      window.addEventListener("load", function () {
+        // Give React time to render meta tags
+        setTimeout(function () {
+          window.prerenderReady = true;
+        }, 2000);
+      });
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

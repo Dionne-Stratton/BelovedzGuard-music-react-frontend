@@ -67,6 +67,16 @@ export default function SongDetails() {
     }
   }, [song]);
 
+  // Signal to prerender.io that page is ready once song is loaded
+  useEffect(() => {
+    if (song && window.prerenderReady !== undefined) {
+      // Small delay to ensure Helmet has rendered meta tags
+      setTimeout(() => {
+        window.prerenderReady = true;
+      }, 100);
+    }
+  }, [song]);
+
   // Open share modal
   const handleShare = () => {
     setShowShareModal(true);
