@@ -51,6 +51,9 @@ export default function PlaylistDetails() {
 
   // Use cached playlist first (for immediate updates), then auth API, then public API
   const playlist = existingPlaylist || fetchedAuthPlaylist || publicPlaylist;
+  // Always use public API for meta tags (Prerender.io can access it)
+  // Use full playlist for UI, but ensure meta tags have public data
+  const playlistForMeta = publicPlaylist || playlist;
   const theme = themes[playlist?.theme] || themes.Faith;
 
   // --- Handlers ---
@@ -96,31 +99,39 @@ export default function PlaylistDetails() {
   };
 
   // Signal to prerender.io that page is ready once playlist is loaded
+  // Use publicPlaylist specifically so Prerender.io waits for the public API (which it can access)
   React.useEffect(() => {
-    if (playlist && window.prerenderReady !== undefined) {
+    if (publicPlaylist && !isLoading && window.prerenderReady !== undefined) {
       // Delay to ensure Helmet has rendered meta tags after React hydration
+      // Wait longer for playlist data to fully load (songs array populated)
       setTimeout(() => {
         window.prerenderReady = true;
-      }, 500);
+      }, 1000);
     }
-  }, [playlist]);
+  }, [publicPlaylist, isLoading]);
 
   // --- Render ---
 
   // Meta tags for social sharing (always render, even during loading)
+  // Use publicPlaylist for meta tags so Prerender.io can always access the data
   const pageUrl = window.location.href;
-  const playlistName = playlist?.name || "Playlist";
-  const songCount = playlist?.songs?.length || 0;
+  const playlistName = playlistForMeta?.name || playlist?.name || "Playlist";
+  const songCount =
+    playlistForMeta?.songs?.length || playlist?.songs?.length || 0;
   const displayTitle = `My Playlist: ${playlistName}`;
-  const description = playlist
-    ? `${songCount} ${
-        songCount === 1 ? "song" : "songs"
-      } - A playlist by BelovedzGuard`
-    : "A playlist by BelovedzGuard";
+  const description =
+    playlistForMeta || playlist
+      ? `${songCount} ${
+          songCount === 1 ? "song" : "songs"
+        } - A playlist by BelovedzGuard`
+      : "A playlist by BelovedzGuard";
   // Use first song's videoThumbnail, fallback to songThumbnail, then default logo
+  // Use publicPlaylist for meta tags so Prerender.io can always access the data
   // Note: theme.image is a relative path and not suitable for meta tags (need absolute URL)
   // We still use theme.image for CSS styling, but skip it for meta tags
   const thumbnail =
+    playlistForMeta?.songs?.[0]?.videoThumbnail ||
+    playlistForMeta?.songs?.[0]?.songThumbnail ||
     playlist?.songs?.[0]?.videoThumbnail ||
     playlist?.songs?.[0]?.songThumbnail ||
     "https://media.belovedzguard.com/assets/logo192.png";
