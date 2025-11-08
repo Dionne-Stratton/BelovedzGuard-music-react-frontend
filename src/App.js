@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"; // ✅ added useSelector
+import { useAuth0 } from "@auth0/auth0-react";
 import { setSongs } from "./state/songsSlice";
 import { useGetSongsQuery } from "./state/publicApi";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -22,6 +23,7 @@ import {
 } from "./hooks/useGlobalKeyboard";
 import { ToastProvider, useToastContext } from "./contexts/ToastContext";
 import ToastContainer from "./components/shared/ToastContainer";
+import { playlistApi } from "./state/playlistApi";
 
 /**
  * Main App component - Root component with routing and global state management
@@ -36,6 +38,7 @@ function AppContent() {
   const [displayLyrics, setDisplayLyrics] = useState(false);
   const { data: songs, error } = useGetSongsQuery();
   const location = useLocation();
+  const { isAuthenticated, isLoading: authLoading } = useAuth0();
 
   // ✅ Pull player state from Redux (assuming your song player stores this)
   const currentSongId = useSelector((state) => state.player?.currentSongId);
@@ -70,6 +73,12 @@ function AppContent() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.key]);
+
+  useEffect(() => {
+    if (!authLoading && isAuthenticated) {
+      dispatch(playlistApi.util.invalidateTags(["Playlist"]));
+    }
+  }, [dispatch, isAuthenticated, authLoading]);
 
   useEffect(() => {
     if (songs) {

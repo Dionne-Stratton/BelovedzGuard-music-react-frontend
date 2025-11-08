@@ -2,9 +2,11 @@
 
 ## Current
 
+- [ ] add checks for profanity or inappropriate content on the playlist title input field.
+
 ## Completed
 
-- [] Add social share options using “Quick-share” links
+- [x] Add social share options using “Quick-share” links
 - [x] Use description and verse on the song details page to display the description and verse of the song if it exists.
 
 - [x] Update colors.js to have the correct colors and use them in the app.
