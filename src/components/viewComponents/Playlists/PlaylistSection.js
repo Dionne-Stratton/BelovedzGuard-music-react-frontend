@@ -53,6 +53,14 @@ export default function PlaylistSection({
   showWarning,
 }) {
   const hasShownLimitWarning = useRef(false);
+  const MAX_NAME_LENGTH = 20;
+  const MIN_INPUT_WIDTH = 10;
+  const placeholderText = "My Playlist";
+  const displayLength = (name || placeholderText).length;
+  const inputWidthCh = Math.min(
+    MAX_NAME_LENGTH + 1,
+    Math.max(MIN_INPUT_WIDTH, displayLength + 1)
+  );
 
   const handleRemoveSong = (index) => {
     setPlaylistSongs((prev) => prev.filter((_, i) => i !== index));
@@ -67,26 +75,29 @@ export default function PlaylistSection({
           className={`pe-name-input search-bar ${error ? "invalid" : ""}`}
           placeholder="My Playlist"
           value={name}
-          maxLength={12}
+          maxLength={MAX_NAME_LENGTH}
+          style={{ width: `${inputWidthCh}ch` }}
           onChange={(e) => {
             setName(e.target.value);
             markDirty();
             if (error) setError("");
             // Reset warning flag when user deletes characters
-            if (e.target.value.length < 12) {
+            if (e.target.value.length < MAX_NAME_LENGTH) {
               hasShownLimitWarning.current = false;
             }
           }}
           onKeyDown={(e) => {
             // Show warning when they try to type beyond limit
             if (
-              name.length >= 12 &&
+              name.length >= MAX_NAME_LENGTH &&
               e.key.length === 1 &&
               !hasShownLimitWarning.current
             ) {
               hasShownLimitWarning.current = true;
               if (showWarning) {
-                showWarning("Playlist name limited to 12 characters");
+                showWarning(
+                  `Playlist name limited to ${MAX_NAME_LENGTH} characters`
+                );
               }
             }
           }}

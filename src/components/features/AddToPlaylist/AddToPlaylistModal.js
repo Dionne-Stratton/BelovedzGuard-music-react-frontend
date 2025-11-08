@@ -227,10 +227,10 @@ export default function AddToPlaylistModal({ isOpen, onClose, song }) {
                       value={newPlaylistName}
                       onChange={(e) => setNewPlaylistName(e.target.value)}
                       placeholder="Enter playlist name..."
-                      maxLength={12}
+                      maxLength={20}
                     />
                     <div className="char-counter">
-                      {newPlaylistName.length}/12 characters
+                      {newPlaylistName.length}/20 characters
                     </div>
                   </div>
 

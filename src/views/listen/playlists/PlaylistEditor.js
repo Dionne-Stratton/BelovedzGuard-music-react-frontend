@@ -15,13 +15,19 @@ import ConfirmModal from "../../../components/shared/ConfirmModal";
 import "./PlaylistEditor.css";
 import PlaylistSection from "../../../components/viewComponents/Playlists/PlaylistSection";
 import LibrarySection from "../../../components/viewComponents/Playlists/LibrarySection";
+import { containsProfanity } from "../../../utils/profanityFilter";
 
 /* ---- Validation ---- */
 const playlistSchema = Yup.object({
   name: Yup.string()
     .trim()
     .required("Title required")
-    .max(12, "Title too long, max 12 characters"),
+    .max(20, "Title too long, max 20 characters")
+    .test(
+      "no-profanity",
+      "Please choose a different name—this title violates our content guidelines.",
+      (value) => !containsProfanity(value)
+    ),
   theme: Yup.string()
     .required("Please choose a theme")
     .notOneOf(["Theme"], "Please choose a theme"),

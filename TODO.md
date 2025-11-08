@@ -2,10 +2,9 @@
 
 ## Current
 
-- [ ] add checks for profanity or inappropriate content on the playlist title input field.
-
 ## Completed
 
+- [x] Added checks for profanity or inappropriate content on the playlist title input field.
 - [x] Add social share options using “Quick-share” links
 - [x] Use description and verse on the song details page to display the description and verse of the song if it exists.
 
