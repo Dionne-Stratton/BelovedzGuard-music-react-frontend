@@ -35,7 +35,6 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 ## Related Repos
 
 - [Backend API Server](https://github.com/Dionne-Stratton/belovedzguard-music-server-mongo.git)
-- [Live Website](https://belovedzguard.com/)
 
 ---
 
