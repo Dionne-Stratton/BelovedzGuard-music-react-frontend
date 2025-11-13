@@ -67,12 +67,11 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 ### Music Player
 
 - **Context-Aware Queue System** - Tracks music source (songs, album, playlist)
-- **Audio Controls** - Play, pause, next, previous functionality
+- **Audio Controls** - Play, pause, next, previous, shuffle, repeat one functionality
 - **Progress Tracking** - Visual progress bar with seek functionality
 - **Volume Control** - Adjustable audio volume
 - **Resizable Lyrics Viewer** - Draggable lyrics panel with persistent width preferences (200px-30vw)
-- **Lyrics Display** - Full-screen lyrics viewer with smooth transitions
-- **Song Information** - Display current song title, artist, and artwork
+- **Song Information** - Display current song title, and artwork with lyrics and add to playlist buttons
 
 ### Playlist Management
 
@@ -80,8 +79,7 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Add Songs Modal** - Add songs to existing playlists via modal interface
 - **Theme Customization** - Choose from 12 beautiful themes
 - **Playlist Organization** - View and manage all user playlists
-- **Song Management** - Add/remove songs from playlists
-- **Playlist Editor** - Dedicated interface for playlist editing
+- **Playlist Editor** - Dedicated interface for playlist editing - add, remove, move - via drag and drop
 
 ### Discovery & Featured Content
 
@@ -89,7 +87,7 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Recent Releases Carousel** - Horizontal scrolling carousel of the 5 most recent songs (150px thumbnails)
 - **Engaged State Highlighting** - Soft glow when playing from the 6-song showcase queue
 - **Auto-Scroll Navigation** - Carousel smoothly follows the currently playing track
-- **Context-Aware Playback** - Limited 6-song queue with auto-stop after final track
+- **Context-Aware Playback** - Limited 6-song queue with auto-loop
 - **End-of-Queue Prompt** - "Keep listening" card with link to full songs library
 - **Share Functionality** - Native share dialog with clipboard fallback for all songs and playlists
 
@@ -106,13 +104,13 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Listen Navigation** - Dedicated sidebar navigation for music browsing
 - **Nested Routing** - Organized route structure under `/listen/*`
 - **Footer Links** - Social media and external links
-- **Mobile-First Design** - Optimized for mobile devices
 
 ### Responsive Design
 
 - **Mobile-First** - Optimized for mobile devices
 - **Tablet Support** - Responsive design for tablet screens
 - **Desktop Experience** - Full-featured desktop interface
+- **Smooth Scaling** - Clamp-based responsive typography for seamless text sizing
 - **Touch-Friendly** - Optimized touch interactions
 
 ### User Experience & Accessibility
@@ -133,7 +131,6 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
 - **Gospel Message Section** - Visual storytelling with floating images and scripture references
 - **About Page** - Personal story with integrated video content
 - **Partner Page** - Partnership information with visual elements
-- **Smooth Scaling** - Clamp-based responsive typography for seamless text sizing
 
 ### Contact Form
 
@@ -145,8 +142,6 @@ BelovedZGuard Music provides a beautiful, responsive web interface for discoveri
   - **Time-Based Validation** - Rejects submissions faster than 3 seconds
   - **Analytics Tracking** - Logs spam attempts for monitoring and improvement
 - **Toast Notifications** - Success/error feedback using the application's custom toast system
-- **Responsive Design** - Mobile-optimized layout with touch-friendly inputs
-- **Accessibility** - Proper labels, ARIA attributes, and keyboard navigation
 
 ---
 
