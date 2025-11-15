@@ -86,9 +86,9 @@ const About = () => {
       <p>
         <strong>Disclaimer:</strong> I am not a professional musician or part of
         the music industry. All lyrics, concepts, and creative direction are my
-        own. The accompanying music and vocal performances are produced using
-        various software and AI-based composition tools, including but not
-        limited to generative AI platforms. These tools are used to bring my
+        own. The accompanying music, vocal performances, and visuals are produced using
+        various online and often AI-based tools, including but not
+        limited to generative AI platforms such as Suno and AI assisted sites like Canva. These tools are used to bring my
         original lyrics and vision to life.
       </p>
       <p>
