@@ -8,7 +8,7 @@ This is a **React 18 + Redux Toolkit** music streaming application with authenti
 
 - **State Management**: Redux Toolkit with RTK Query for API calls
 - **Routing**: React Router v6 with nested routes pattern in `/listen/*`
-- **HTTP Client**: Axios for REST API calls to Heroku backend
+- **HTTP Client**: Axios for REST API calls to Cloudflare Workers backend
 - **Analytics**: Google Analytics 4 via react-ga4
 - **Icons**: React Icons (FontAwesome and Feather)
 - **Styling**: Pure CSS with centralized color variables in `src/styles/colors.js`
@@ -69,7 +69,7 @@ Auth state automatically syncs with localStorage. Use `setCredentials` action to
 
 ### Backend Base URL
 
-Production API: `https://belovedzguard-ebf890192e0e.herokuapp.com`
+Production API: `https://belovedzguard-music-api.dionnestratton.workers.dev`
 
 ### RTK Query Pattern
 
