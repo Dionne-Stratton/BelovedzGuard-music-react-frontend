@@ -39,26 +39,6 @@ const Partner = () => {
         </p>
       </div>
       <p className="border-below"></p>
-      <h2>🎧 Patreon – Studio Access</h2>
-      <p>
-        By joining my Patreon at the <strong>Studio Access</strong> tier, you'll
-        get exclusive early access to alternate mixes of my songs — different
-        versions I create and love but don’t publicly share. I release 2–5
-        private versions per month just for patrons.
-      </p>
-      <div className="partner-button-container">
-        <a
-          href="https://www.patreon.com/BelovedzGuard"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="drop-shadow-thick partner-button"
-          onClick={() => trackLinkClick("Patreon")}
-        >
-          Become a Patron
-        </a>
-      </div>
-
-      <p className="border-below"></p>
       <h2>♫ Bandcamp – Music Downloads</h2>
       <p>
         Purchase songs directly through Bandcamp, a platform that gives artists
